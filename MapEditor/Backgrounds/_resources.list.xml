@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="bk_grid16" type="RESOURCE"/>
+  <resource name="bk_grid8" type="RESOURCE"/>
+</resources>

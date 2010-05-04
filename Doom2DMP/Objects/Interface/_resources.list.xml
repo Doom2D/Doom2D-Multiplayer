@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="o_con" type="RESOURCE"/>
+  <resource name="o_menu" type="RESOURCE"/>
+  <resource name="o_auth" type="RESOURCE"/>
+</resources>

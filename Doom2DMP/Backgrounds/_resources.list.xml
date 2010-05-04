@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="bkg_titlepic" type="RESOURCE"/>
+  <resource name="bkg_console" type="RESOURCE"/>
+  <resource name="bkg_inter" type="RESOURCE"/>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="con_init" type="RESOURCE"/>
+  <resource name="con_add" type="RESOURCE"/>
+  <resource name="con_draw" type="RESOURCE"/>
+  <resource name="con_parse" type="RESOURCE"/>
+  <resource name="msg_init" type="RESOURCE"/>
+  <resource name="msg_add" type="RESOURCE"/>
+  <resource name="msg_draw" type="RESOURCE"/>
+</resources>

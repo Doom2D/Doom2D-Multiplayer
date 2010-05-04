@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="s_meds" type="RESOURCE"/>
+  <resource name="s_armor1" type="RESOURCE"/>
+  <resource name="s_armor2" type="RESOURCE"/>
+  <resource name="s_weaps" type="RESOURCE"/>
+  <resource name="s_bsphr" type="RESOURCE"/>
+  <resource name="s_wsphr" type="RESOURCE"/>
+  <resource name="s_inv" type="RESOURCE"/>
+  <resource name="s_ammo" type="RESOURCE"/>
+  <resource name="s_jetpack" type="RESOURCE"/>
+  <resource name="tex_none" type="RESOURCE"/>
+  <resource name="s_lifts" type="RESOURCE"/>
+  <resource name="s_spawn" type="RESOURCE"/>
+</resources>

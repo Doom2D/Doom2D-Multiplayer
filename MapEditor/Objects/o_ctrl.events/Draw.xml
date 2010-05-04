@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">ed_spr_select();
+if sprite_exists(spr)
+{
+  draw_sprite_ext(spr, im, floor(mouse_x/global.ed_g_sz)*global.ed_g_sz, floor(mouse_y/global.ed_g_sz)*global.ed_g_sz, 1, 1, 0, c_white, 0.5);
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

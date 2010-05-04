@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">ed_keys(); //check for keys
+cmd1 = API_Check_Command(1);
+switch (cmd1)
+{
+  case ui_mbar_m1q:
+   if API_Dialog_MessageBox(window_handle(), 'Вы действительно уходите?', 'Вопрос жизни, Вселенной и всего такого', MB_YESNO) == false {exit;}
+   game_end();
+  break;
+  
+  case ui_mbar_m1n:
+   if API_Dialog_MessageBox(window_handle(), 'Вы действительно хотите очистить карту?', 'Вопрос жизни, Вселенной и всего такого', MB_YESNO) == false {exit;}
+   ed_windows_destroy();
+   game_restart();
+  break;
+  
+  case ui_mbar_m1l:
+    //map_load(get_open_filename('D2DMP Maps|*.dlv', 'data/maps/Unnamed.dlv'));
+  break;
+  
+  case ui_mbar_m1s:
+    //map_load(get_open_filename('D2DMP Maps|*.dlv', 'data/maps/Unnamed.dlv'));
+  break;
+  
+  case ui_mbar_m3a:
+    ed_about();
+  break;
+}
+cmd2 = API_Check_Command(2);
+if cmd2 == ui_tx_bt
+{
+  ed_tex_load();
+}  
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="sys_init" type="RESOURCE"/>
+  <resource name="Input" type="GROUP"/>
+  <resource name="Misc" type="GROUP"/>
+  <resource name="Configs" type="GROUP"/>
+</resources>

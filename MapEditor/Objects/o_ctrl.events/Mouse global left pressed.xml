@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="MOUSE" id="53">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">var sl;
+sl = API_Combobox_GetSel(ui_tl_cb);
+xx = floor(mouse_x/global.ed_g_sz)*global.ed_g_sz;
+yy = floor(mouse_y/global.ed_g_sz)*global.ed_g_sz;
+switch sl
+{
+  case 0:
+   o = instance_create(xx, yy, o_solid);
+   o.o_id = sl;
+   o.sprite_index = global.tex[tx];
+   o.image_single = 0;
+  break;
+  case 1:
+   o = instance_create(xx, yy, o_jthr);
+   o.o_id = sl;
+   o.sprite_index = global.tex[tx];
+   o.image_single = 0;
+  break;
+  case 2:
+   o = instance_create(xx, yy, o_bkg);
+   o.o_id = sl;
+   o.sprite_index = global.tex[tx];
+   o.image_single = 0;
+  break;
+  case 3:
+   o = instance_create(xx, yy, o_frg);
+   o.o_id = sl;
+   o.sprite_index = global.tex[tx];
+   o.image_single = 0;
+  break;
+  case 4:
+   o = instance_create(xx, yy, o_liquid);
+   o.o_id = sl;
+   o.sprite_index = global.tex[tx];
+   o.image_single = 0;
+  break;
+  case 5:
+   o = instance_create(xx, yy, o_liquid);
+   o.o_id = sl;
+   o.sprite_index = global.tex[tx];
+   o.image_single = 0;
+  break;
+  case 6:
+   o = instance_create(xx, yy, o_liquid);
+   o.o_id = sl;
+   o.sprite_index = global.tex[tx];
+   o.image_single = 0;
+  break;
+  case 7:
+   o = instance_create(xx, yy, o_lift);
+   o.o_id = sl;
+   o.sprite_index = s_lifts;
+   o.image_single = 0;
+  break;
+  case 8:
+   o = instance_create(xx, yy, o_lift);
+   o.o_id = sl;
+   o.sprite_index = s_lifts;
+   o.image_single = 1;
+  break;
+  case 9:
+   o = instance_create(xx, yy, o_lift);
+   o.o_id = sl;
+   o.sprite_index = s_lifts;
+   o.image_single = 2;
+  break;
+  case 10:
+   o = instance_create(xx, yy, o_lift);
+   o.o_id = sl;
+   o.sprite_index = s_lifts;
+   o.image_single = 3;
+  break;
+  case 11:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_meds;
+   o.image_single = 0;
+  break;
+  case 12:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_meds;
+   o.image_single = 1;
+  break;
+  case 13:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_armor1;
+   o.image_single = 0;
+  break;
+  case 14:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_armor2;
+   o.image_single = 0;
+  break;
+  case 15:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_bsphr;
+   o.image_single = 0;
+  break;
+  case 16:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_wsphr;
+   o.image_single = 0;
+  break;
+  case 17:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_inv;
+   o.image_single = 0;
+  break;
+  case 18:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_jetpack;
+   o.image_single = 0;
+  break;
+  case 19:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_meds;
+   o.image_single = 2;
+  break;
+  
+  case 20:
+  case 21:
+  case 22:
+  case 23:
+  case 24:
+  case 25:
+  case 26:
+  case 27:
+  case 28:
+  case 29:
+  case 30:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_ammo;
+   o.image_single = sl-20;
+  break;
+  
+  case 31:
+  case 32:
+  case 33:
+  case 34:
+  case 35:
+  case 36:
+  case 37:
+  case 38:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.sprite_index = s_weaps;
+   o.image_single = sl-31;
+  break;
+  case 39:
+   o = instance_create(xx, yy, o_spawn);
+   o.o_id = sl;
+  break;
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Console" type="GROUP"/>
+  <resource name="Menu" type="GROUP"/>
+  <resource name="Fonts" type="GROUP"/>
+</resources>

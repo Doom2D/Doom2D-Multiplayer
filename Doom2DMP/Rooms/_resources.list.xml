@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="rm_init" type="RESOURCE"/>
+  <resource name="rm_game" type="RESOURCE"/>
+  <resource name="Menu" type="GROUP"/>
+</resources>

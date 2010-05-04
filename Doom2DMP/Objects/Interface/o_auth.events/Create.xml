@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">str = '';
+str += 'Doom 2D Multiplayer v0.6###';
+str += 'глава проекта и программер:#Prostovitalik##';
+str += 'художник и генератор идей:#Черный Думер##';
+str += 'некоторые скрипты:#Кто-то##';
+str += 'тестеры:#Jabberwock#Черный Думер#Dendroidon#Hero#IDDQD Community# и другие##';
+str += '###спасибо также:# Марку Овермарсу за Game Maker#ONL1NE за его Online Engine#Prikol Software за Doom 2D#Разработчикам D2DF за графику и другие вещи#';
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="menu_init" type="RESOURCE"/>
+  <resource name="menu_scroll" type="RESOURCE"/>
+  <resource name="menu_select" type="RESOURCE"/>
+  <resource name="menu_draw" type="RESOURCE"/>
+</resources>

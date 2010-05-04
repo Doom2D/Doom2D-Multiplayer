@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<room>
+  <caption/>
+  <size height="768" width="1024"/>
+  <grid>
+    <isometric>false</isometric>
+    <snap x="16" y="16"/>
+  </grid>
+  <speed>60</speed>
+  <persistent>false</persistent>
+  <creationCode/>
+  <backgroundColor>C0C0C0</backgroundColor>
+  <drawBackgroundColor>true</drawBackgroundColor>
+  <backgrounds>
+    <backgroundDef>
+      <visibleOnRoomStart>true</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage>bkg_titlepic</backgroundImage>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+  </backgrounds>
+  <enableViews>false</enableViews>
+  <instances>
+    <instance>
+      <object>o_menu</object>
+      <position x="400" y="368"/>
+      <creationCode>str[1, 0] = 'Начать игру';
+str[1, 1] = 'show_message("LOL")';
+str[2, 0] = 'Настройки';
+str[2, 1] = 'show_message("BUGOGA")';
+str[3, 0] = 'Авторы';
+str[3, 1] = 'room_goto(rm_credits)';
+str[4, 0] = 'Выход';
+str[4, 1] = 'game_end();';
+</creationCode>
+      <locked>false</locked>
+    </instance>
+  </instances>
+  <tiles/>
+  <editorSettings remember="false"/>
+</room>

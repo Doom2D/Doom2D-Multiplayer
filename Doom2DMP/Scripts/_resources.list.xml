@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Game" type="GROUP"/>
+  <resource name="System" type="GROUP"/>
+  <resource name="Sound" type="GROUP"/>
+  <resource name="Interface" type="GROUP"/>
+</resources>
