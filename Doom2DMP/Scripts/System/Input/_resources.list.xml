@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="key_init" type="RESOURCE"/>
   <resource name="key_bind" type="RESOURCE"/>
   <resource name="key_code" type="RESOURCE"/>
   <resource name="key_name" type="RESOURCE"/>

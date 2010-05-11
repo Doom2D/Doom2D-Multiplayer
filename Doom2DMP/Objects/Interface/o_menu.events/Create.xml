@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">menu_init(global.fnt_big, c_red, 4);
+        <argument kind="STRING">image_speed = 0.025;
 </argument>
       </arguments>
     </action>

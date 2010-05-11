@@ -1,6 +1,6 @@
 //inits menu
 //argument0 = font
-//argument1 = selection color
+//argument1 = color
 //argument2 = string number
 //menu strings define in object's create event under menu_str[n1, n2] array
 //where n1 - string number, n2 defines script which menu does if it = 1 and string text if it = 0

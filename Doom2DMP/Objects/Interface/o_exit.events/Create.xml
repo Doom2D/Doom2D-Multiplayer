@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">tx[1] = 'Струсил?';
+tx[2] = 'Что, патроны закончились?';
+tx[3] = 'Ну и возвращайся к своей скучной работе.';
+tx[4] = 'Нажатие клавиши Y нередко приводит к летальному исходу.';
+tx[5] = 'Быть или не быть?';
+tx[6] = 'А, сбежать вздумал?';
+tx[7] = 'Передавай привет друзьям.';
+tx[8] = 'Мы еще встретимся в Аду.';
+tx[9] = 'К мамочке бежим?';
+tx[10] = 'Как тебе не стыдно.';
+txt = tx[choose(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)];
+
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

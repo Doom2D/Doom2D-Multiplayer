@@ -3,4 +3,5 @@
   <resource name="o_con" type="RESOURCE"/>
   <resource name="o_menu" type="RESOURCE"/>
   <resource name="o_auth" type="RESOURCE"/>
+  <resource name="o_exit" type="RESOURCE"/>
 </resources>

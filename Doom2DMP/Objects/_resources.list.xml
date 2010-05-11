@@ -2,4 +2,5 @@
 <resources>
   <resource name="Interface" type="GROUP"/>
   <resource name="Player" type="GROUP"/>
+  <resource name="World" type="GROUP"/>
 </resources>

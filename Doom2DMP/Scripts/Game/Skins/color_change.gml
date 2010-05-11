@@ -34,5 +34,5 @@ if room == rm_game
   exit;
 }
 global.pl_color = make_color_rgb(real(ds_list_find_value(cmd, 1)),real(ds_list_find_value(cmd, 2)),real(ds_list_find_value(cmd, 3)));
-con_add('Теперь игрок имеет цвет ' + string(global.pl_color));
+//con_add('Теперь игрок имеет цвет ' + string(global.pl_color));
 

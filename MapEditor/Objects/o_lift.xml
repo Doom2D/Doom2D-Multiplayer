@@ -5,6 +5,6 @@
   <visible>true</visible>
   <depth>-10</depth>
   <persistent>false</persistent>
-  <parent/>
+  <parent>par_obj</parent>
   <mask/>
 </object>

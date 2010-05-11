@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="o_solid" type="RESOURCE"/>
+  <resource name="o_bkg" type="RESOURCE"/>
+  <resource name="o_frg" type="RESOURCE"/>
+  <resource name="o_jthr" type="RESOURCE"/>
+  <resource name="o_liq" type="RESOURCE"/>
+</resources>

@@ -2,7 +2,7 @@
 <settings>
   <graphics>
     <scalingPercent>-1</scalingPercent>
-    <displayCursor>true</displayCursor>
+    <displayCursor>false</displayCursor>
     <useVsync>false</useVsync>
     <interpolateColors>false</interpolateColors>
     <colorOutsideRoom>000000</colorOutsideRoom>
@@ -17,20 +17,20 @@
   </windowing>
   <splashImage>
     <showCustom>true</showCustom>
-    <partiallyTransparent>false</partiallyTransparent>
-    <alphaTransparency>255</alphaTransparency>
+    <partiallyTransparent>true</partiallyTransparent>
+    <alphaTransparency>0</alphaTransparency>
   </splashImage>
   <progressBar>
-    <mode>LOADBAR_DEFAULT</mode>
+    <mode>LOADBAR_NONE</mode>
     <scaleImage>true</scaleImage>
   </progressBar>
   <keys>
-    <letF1ShowGameInfo>true</letF1ShowGameInfo>
-    <letF4SwitchFullscreen>true</letF4SwitchFullscreen>
-    <letF5SaveF6Load>true</letF5SaveF6Load>
+    <letF1ShowGameInfo>false</letF1ShowGameInfo>
+    <letF4SwitchFullscreen>false</letF4SwitchFullscreen>
+    <letF5SaveF6Load>false</letF5SaveF6Load>
     <letF9Screenshot>true</letF9Screenshot>
-    <letEscEndGame>true</letEscEndGame>
-    <treatCloseAsEscape>true</treatCloseAsEscape>
+    <letEscEndGame>false</letEscEndGame>
+    <treatCloseAsEscape>false</treatCloseAsEscape>
   </keys>
   <errors>
     <displayErrors>true</displayErrors>
@@ -39,7 +39,7 @@
     <treatUninitializedAsZero>false</treatUninitializedAsZero>
   </errors>
   <gameInfo>
-    <gameId>441514293</gameId>
+    <gameId>13376669</gameId>
     <author/>
     <version>100</version>
     <information/>
@@ -51,11 +51,11 @@
     <product/>
     <copyright/>
     <description/>
-    <directPlayGuid>b06cf0daa86cf0daa06cf0da986cf0da</directPlayGuid>
+    <directPlayGuid>30363e7328363e7320363e7318363e73</directPlayGuid>
   </gameInfo>
   <system>
     <processPriority>PRIORITY_NORMAL</processPriority>
-    <disableScreensavers>true</disableScreensavers>
+    <disableScreensavers>false</disableScreensavers>
     <freezeOnLoseFocus>false</freezeOnLoseFocus>
   </system>
   <includes>

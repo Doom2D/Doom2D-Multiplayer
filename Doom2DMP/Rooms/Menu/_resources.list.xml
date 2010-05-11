@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="rm_menu" type="RESOURCE"/>
+  <resource name="rm_set" type="RESOURCE"/>
+  <resource name="rm_set_sys" type="RESOURCE"/>
+  <resource name="rm_set_bind" type="RESOURCE"/>
+  <resource name="rm_set_pl" type="RESOURCE"/>
+  <resource name="rm_exit" type="RESOURCE"/>
   <resource name="rm_credits" type="RESOURCE"/>
 </resources>

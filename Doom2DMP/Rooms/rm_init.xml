@@ -8,7 +8,12 @@
   </grid>
   <speed>60</speed>
   <persistent>false</persistent>
-  <creationCode>
+  <creationCode>if !file_exists('GMFMODSimple.dll') 
+{
+  log_add(global.sys_log, ':: ERROR: Could not init FMOD. Reason: GMFMODSimple.dll not found in ' + string(working_directory) + '. Aborting...'); 
+  show_message('ERROR:#Could not init GMFMOD FMOD.##REASON:#GMFMODSimple.dll not found in ' + string(working_directory) + '. ##Aborting...');
+  game_end();
+}
 </creationCode>
   <backgroundColor>000000</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>

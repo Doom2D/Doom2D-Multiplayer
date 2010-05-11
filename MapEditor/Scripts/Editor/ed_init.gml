@@ -5,12 +5,17 @@ API_Init ();
 for (i = 0; i < 1024; i += 1)
 {
   global.tex[i] = -1;
+  global.tex_nm[i] = -1;
 }
 global.tex[0] = tex_none;
+global.tex_n = 1;
+
 
 //map settings
 global.map_name = 'Unnamed Map';
-global.map_auth = 'Unknown';
+global.map_desc = 'Temp Description';
+global.map_mus = 'data\music\AC.xm';
+global.map_bkg = 'data\textures\sky\D2DSKY1.png';
 room_set_width(rm_edit, 1024);
 room_set_height(rm_edit, 1024);
 

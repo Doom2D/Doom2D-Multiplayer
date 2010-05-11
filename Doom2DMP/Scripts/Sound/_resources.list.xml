@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="FMOD" type="GROUP"/>
   <resource name="snd_init" type="RESOURCE"/>
+  <resource name="snd_load" type="RESOURCE"/>
+  <resource name="mus_play" type="RESOURCE"/>
 </resources>

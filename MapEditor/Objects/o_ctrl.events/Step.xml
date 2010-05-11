@@ -28,12 +28,12 @@ switch (cmd1)
    game_restart();
   break;
   
-  case ui_mbar_m1l:
-    //map_load(get_open_filename('D2DMP Maps|*.dlv', 'data/maps/Unnamed.dlv'));
+  case ui_mbar_m1o:
+    map_load();
   break;
   
   case ui_mbar_m1s:
-    //map_load(get_open_filename('D2DMP Maps|*.dlv', 'data/maps/Unnamed.dlv'));
+    map_save();
   break;
   
   case ui_mbar_m3a:
@@ -43,7 +43,7 @@ switch (cmd1)
 cmd2 = API_Check_Command(2);
 if cmd2 == ui_tx_bt
 {
-  ed_tex_load();
+  ed_tex_load(get_open_filename('TGAs |*.tga', 'data\textures\STD_1_16_16.tga'));
 }  
 </argument>
       </arguments>

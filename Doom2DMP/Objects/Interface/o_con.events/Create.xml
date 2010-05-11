@@ -14,6 +14,8 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">sys_init(); //inits all engine shit
+cfg_load('game.cfg');
+mus_play(global.mus_menu);
 room_goto(rm_menu);
 </argument>
       </arguments>

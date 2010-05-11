@@ -9,4 +9,5 @@ con_add('+attack: '+key_name(global.key_atk));
 con_add('+chat: '+key_name(global.key_chat));
 con_add('+strafe: '+key_name(global.key_str));
 con_add('+scores: '+key_name(global.key_scr));
+con_add('+nextweapon: '+key_name(global.key_chw));
 con_add('==BIND INFO END==');

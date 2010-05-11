@@ -28,4 +28,4 @@ switch (command)
   case '+scores': global.key_scr = key; break;
   case '+nextweapon': global.key_chw = key; break;
 }
-con_add('Команда ' + string(command) + ' теперь висит на клавише ' + string(argument0) + '.');
+//con_add('Команда ' + string(command) + ' теперь висит на клавише ' + string(argument0) + '.');

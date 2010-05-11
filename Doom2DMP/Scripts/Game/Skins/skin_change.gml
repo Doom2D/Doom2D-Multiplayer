@@ -19,4 +19,4 @@ if !file_exists('data\skins\'+ds_list_find_value(cmd, 1)+'\seeup.tga')
   exit;
 }
 global.pl_skin = string(ds_list_find_value(cmd, 1));
-con_add('Скин игрока сменен на ' + string(global.pl_skin));
+//con_add('Скин игрока сменен на ' + string(global.pl_skin));

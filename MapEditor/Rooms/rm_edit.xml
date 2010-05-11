@@ -149,7 +149,7 @@
       <object>o_ctrl</object>
       <position x="0" y="0"/>
       <creationCode/>
-      <locked>false</locked>
+      <locked>true</locked>
     </instance>
   </instances>
   <tiles/>

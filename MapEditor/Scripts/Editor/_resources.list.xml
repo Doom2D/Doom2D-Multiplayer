@@ -10,4 +10,5 @@
   <resource name="ed_ui_tex" type="RESOURCE"/>
   <resource name="ed_spr_select" type="RESOURCE"/>
   <resource name="ed_ui_edset" type="RESOURCE"/>
+  <resource name="Map" type="GROUP"/>
 </resources>

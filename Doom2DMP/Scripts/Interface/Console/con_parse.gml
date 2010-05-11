@@ -35,8 +35,37 @@ if ds_list_find_value(cmd, 0) == 'name'
     con_add(string(global.pl_name));
     exit;
   } 
-  global.pl_name = string(ds_list_find_value(cmd, 1));
-  con_add('Теперь игрока зовут ' + string(global.pl_name));
+  global.pl_name = ds_list_find_value(cmd, 1);
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'sound_vol'
+{
+  if is_real(ds_list_find_value(cmd, 1))
+  {
+    con_add(string(FMODGroupGetVolume(2)*100));
+    exit;
+  } 
+  if ds_list_find_value(cmd, 1) == ''
+  {
+    con_add(string(FMODGroupGetVolume(2)*100));
+    exit;
+  } 
+  FMODGroupSetVolume(2, real(ds_list_find_value(cmd, 1))/100);
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'music_vol'
+{
+  if is_real(ds_list_find_value(cmd, 1))
+  {
+    con_add(string(FMODGroupGetVolume(3)*100));
+    exit;
+  } 
+  if ds_list_find_value(cmd, 1) == ''
+  {
+    con_add(string(FMODGroupGetVolume(3)*100));
+    exit;
+  } 
+  FMODGroupSetVolume(3, real(ds_list_find_value(cmd, 1))/100);
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'color'

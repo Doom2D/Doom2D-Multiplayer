@@ -1,19 +1,21 @@
 global.sys_ver = '0.6';
-global.sys_bld = '100 (02.05.2010)';
+global.sys_bld = '105';
+global.sys_log = 'client_' + string(current_day) + string(current_month) + string(current_year) + '_' + string(current_hour) + string(current_minute);
+_pth = 'data\logs\' + string(global.sys_log) + '.log';
+_log = file_text_open_write(_pth);
+file_text_close(_log);
 con_init();
 msg_init();
+key_init();
 con_add('================GAME START================');
-snd_init();
-con_add(':: GMFMOD FMOD Initialized.');
-con_add(':: Sounds loaded.');
+con_add(':: Date: ' + string(current_day) + '.' + string(current_month) + '.' + string(current_year) + ', ' + string(current_hour) + ':' + string(current_minute)) ;
+if file_exists('GMFMODSimple.dll'){snd_init();}
 fnt_load();
-con_add(':: Fonts loaded.');
 con_add(':: Everything looks OK.');
 con_add('==========================================');
 con_add('Doom 2D Multiplayer v'+string(global.sys_ver)+' build '+string(global.sys_bld) + ' started.');
 con_add('==========================================');
-cfg_load('user.cfg');
 msg_str = '';
 global.pl_name = 'Unnamed';
-global.pl_color = make_color_rgb(128, 255, 128);
+global.pl_color = make_color_rgb(32, 255, 32);
 global.pl_skin = 'default';
