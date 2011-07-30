@@ -185,6 +185,7 @@ switch w
         b.p_t = 1;
         b.image_angle = b_dir;
         b.dmg = 12 + st_ber * 8;
+        b.kb = st_ber;
         b.alarm[0] = 2;
         plr_send_stat();
         plr_send_sprite(cl_id, 1, 0);

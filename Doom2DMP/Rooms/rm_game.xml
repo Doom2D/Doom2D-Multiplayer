@@ -149,13 +149,13 @@
       <object>o_camera</object>
       <position x="16" y="0"/>
       <creationCode/>
-      <locked>true</locked>
+      <locked>false</locked>
     </instance>
     <instance>
       <object>o_client</object>
       <position x="0" y="0"/>
       <creationCode/>
-      <locked>true</locked>
+      <locked>false</locked>
     </instance>
   </instances>
   <tiles/>

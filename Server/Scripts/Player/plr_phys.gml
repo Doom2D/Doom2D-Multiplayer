@@ -87,7 +87,7 @@ repeat(floor(vrep)) {
 if !place_meeting(x,y+sign(vsp),o_solid){
 
 
-col_jumpthrough = collision_line(x+1,y+32,x+11,y+32,o_jthr,0,1)
+col_jumpthrough = collision_rectangle(x - 16,y + 32,x + 16,y+36,o_jthr,0,1)
 if col_jumpthrough > 0 and vsp >= 0{
 cjy=col_jumpthrough.y
 if y < cjy-30+vsp {
@@ -104,7 +104,7 @@ vsp=0
 if place_meeting(x,y+1,o_solid){
 free=false;freemd=true}else{
 freemd=false
-col_jumpthrough = collision_line(x+1,y+32,x+11,y+32,o_jthr,0,1)
+col_jumpthrough = collision_rectangle(x - 16,y + 32,x + 16,y+36,o_jthr,0,1)
 if col_jumpthrough > 0 and vsp >= 0{
 cjy=col_jumpthrough.y
 if y < cjy-30+vsp {
@@ -137,6 +137,8 @@ if place_meeting(x, y, o_jthr)
 {
     free = false;
 }
+
+if vsp > 10 {vsp = 10;}
 
 if place_meeting(x, y, o_lift_up) && vsp > -6 {vsp -= 0.5;}
 if place_meeting(x, y, o_lift_down) && vsp > 3 {vsp -= 0.5;}

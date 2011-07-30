@@ -15,8 +15,8 @@
       <arguments>
         <argument kind="STRING">if !sprite_exists(sprites[spr, 0]) {exit;}
 if r_weapon {draw_sprite(s_wpns, wpn, x, y);}
-draw_sprite_ext(sprites[2, 0], image_index, x, y, image_xscale, image_yscale, 0, c_white, 1);
-draw_sprite_ext(sprites[2, 1], image_index, x, y, image_xscale, image_yscale, 0, color, 1);
+draw_sprite_ext(sprites[1, 0], 0, x, y, image_xscale, image_yscale, 0, c_white, 1);
+draw_sprite_ext(sprites[1, 1], 0, x, y, image_xscale, image_yscale, 0, color, 1);
 
 
 </argument>
