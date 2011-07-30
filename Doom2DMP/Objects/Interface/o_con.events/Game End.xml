@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">sys_exit();
+        <argument kind="STRING">sys_exit(1);
 </argument>
       </arguments>
     </action>

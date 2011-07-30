@@ -15,6 +15,14 @@
       <arguments>
         <argument kind="STRING">sys_init(); //inits all engine shit
 cfg_load('game.cfg');
+if global.s_preload
+{
+    for (i = 0; i &lt; 32; i += 1)
+    {
+        snd_free(i);
+        snd_load(i);
+    }
+}
 mus_play(global.mus_menu);
 room_goto(rm_menu);
 </argument>

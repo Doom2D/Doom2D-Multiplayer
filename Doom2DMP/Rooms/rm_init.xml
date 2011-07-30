@@ -10,10 +10,20 @@
   <persistent>false</persistent>
   <creationCode>if !file_exists('GMFMODSimple.dll') 
 {
-  log_add(global.sys_log, ':: ERROR: Could not init FMOD. Reason: GMFMODSimple.dll not found in ' + string(working_directory) + '. Aborting...'); 
-  show_message('ERROR:#Could not init GMFMOD FMOD.##REASON:#GMFMODSimple.dll not found in ' + string(working_directory) + '. ##Aborting...');
-  game_end();
+  con_add(global.sys_log, ':: ERROR: Could not init FMOD. Reason: GMFMODSimple.dll not found in ' + string(working_directory) + '. Aborting...'); 
+  sys_exit();
 }
+if !file_exists('fmodex.dll') 
+{
+  con_add(global.sys_log, ':: ERROR: Could not init FMOD. Reason: fmodex.dll not found in ' + string(working_directory) + '. Aborting...'); 
+  sys_exit();
+}
+
+//load backgrounds
+background_replace(bkg_titlepic, 'data/textures/gui/bkg_titlepic.png', 0, 0);
+background_replace(bkg_inter, 'data/textures/gui/bkg_inter.png', 0, 0);
+background_replace(bkg_console, 'data/textures/gui/bkg_console.png', 0, 0);
+background_replace(tex_hud, 'data/textures/gui/tx_hud.png', 0, 0);
 </creationCode>
   <backgroundColor>000000</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>

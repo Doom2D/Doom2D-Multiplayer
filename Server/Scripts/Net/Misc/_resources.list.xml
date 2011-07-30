@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="id_to_cl" type="RESOURCE"/>
+  <resource name="net_my_ip" type="RESOURCE"/>
+  <resource name="net_list_clients" type="RESOURCE"/>
+  <resource name="List" type="GROUP"/>
+</resources>

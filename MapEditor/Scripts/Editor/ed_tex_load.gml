@@ -1,4 +1,5 @@
 tx_f = argument0;
+if !file_exists(tx_f) {exit;}
 for (i = 0; i < 1024; i += 1)
 {
   if global.tex[i] == -1 {break;}

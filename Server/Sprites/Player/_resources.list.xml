@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="s_pl_mask" type="RESOURCE"/>
+  <resource name="s_bullet" type="RESOURCE"/>
+  <resource name="msk_projectile" type="RESOURCE"/>
+  <resource name="msk_expl1" type="RESOURCE"/>
+  <resource name="msk_expl2" type="RESOURCE"/>
+</resources>

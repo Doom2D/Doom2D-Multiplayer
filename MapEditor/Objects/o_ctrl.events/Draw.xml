@@ -18,6 +18,10 @@ if sprite_exists(spr)
 {
   draw_sprite_ext(spr, im, floor(mouse_x/global.ed_g_sz)*global.ed_g_sz, floor(mouse_y/global.ed_g_sz)*global.ed_g_sz, 1, 1, 0, c_white, 0.5);
 }
+draw_set_color(c_white);
+draw_set_alpha(0.5);
+draw_text(mouse_x + 8, mouse_y, string(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz) + "#" + string(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz));
+draw_set_alpha(1);
 </argument>
       </arguments>
     </action>

@@ -37,9 +37,9 @@ API_Combobox_AddString(ui_tl_cb, '5 ракет');
 API_Combobox_AddString(ui_tl_cb, 'Батарейка');
 API_Combobox_AddString(ui_tl_cb, 'Батарея');
 API_Combobox_AddString(ui_tl_cb, 'Ружье'); //31
-API_Combobox_AddString(ui_tl_cb, 'Двуство8лка');
+API_Combobox_AddString(ui_tl_cb, 'Двустволка');
 API_Combobox_AddString(ui_tl_cb, 'Пулемет');
-API_Combobox_AddString(ui_tl_cb, 'Гранатомет');
+API_Combobox_AddString(ui_tl_cb, 'Бензопила');
 API_Combobox_AddString(ui_tl_cb, 'Ракетница');
 API_Combobox_AddString(ui_tl_cb, 'Плазмаган'); //36
 API_Combobox_AddString(ui_tl_cb, 'BFG9000');

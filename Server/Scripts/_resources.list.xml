@@ -2,4 +2,6 @@
 <resources>
   <resource name="System" type="GROUP"/>
   <resource name="Net" type="GROUP"/>
+  <resource name="Map" type="GROUP"/>
+  <resource name="Player" type="GROUP"/>
 </resources>

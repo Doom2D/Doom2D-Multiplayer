@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="COLLISION" with="o_acid">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if pt &gt; 0 || st_inv {exit;}
+if ap &lt; 1
+{
+    hp -= other.dmg;
+}
+else
+{
+    ap -= other.dmg;
+    hp -= round(other.dmg/2);
+}
+killer_id = 0;
+kill_type = 10;
+plr_send_stat();
+plr_send_pain();
+pt = 48;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

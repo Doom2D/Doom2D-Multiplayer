@@ -1,6 +1,6 @@
 //scrolls menu strings
 //argument0 = -1 or 1 - up or down
-FMODSoundPlay(global.snd[0]);
+snd_play(0);
 if argument0 = 1
 {
   if sel < menu_n

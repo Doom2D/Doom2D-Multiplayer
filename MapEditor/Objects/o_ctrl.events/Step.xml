@@ -18,14 +18,15 @@ cmd1 = API_Check_Command(1);
 switch (cmd1)
 {
   case ui_mbar_m1q:
-   if API_Dialog_MessageBox(window_handle(), 'Вы действительно уходите?', 'Вопрос жизни, Вселенной и всего такого', MB_YESNO) == false {exit;}
+   if API_Dialog_MessageBox(window_handle(), 'Вы действительно уходите?', 'Вопрос жизни, Вселенной и всего такого', MB_YESNO) == 7 {exit;}
    game_end();
   break;
   
   case ui_mbar_m1n:
-   if API_Dialog_MessageBox(window_handle(), 'Вы действительно хотите очистить карту?', 'Вопрос жизни, Вселенной и всего такого', MB_YESNO) == false {exit;}
-   ed_windows_destroy();
-   game_restart();
+   if API_Dialog_MessageBox(window_handle(), 'Вы действительно хотите очистить карту?', 'Вопрос жизни, Вселенной и всего такого', MB_YESNO) == 7 {exit;}
+   API_Free();
+   execute_program('d2dmp_ed.exe', 0, 0);
+   game_end();
   break;
   
   case ui_mbar_m1o:
@@ -39,12 +40,87 @@ switch (cmd1)
   case ui_mbar_m3a:
     ed_about();
   break;
+  
+  case ui_mbar_m2e:
+    ed_settings();
+  break;
+  
+  case ui_mbar_m2m:
+    ed_map_settings();
+  break;
+  
+  case ui_mbar_m2r:
+    ed_tools_reset();
+  break;
 }
 cmd2 = API_Check_Command(2);
 if cmd2 == ui_tx_bt
 {
-  ed_tex_load(get_open_filename('TGAs |*.tga', 'data\textures\STD_1_16_16.tga'));
+  ed_tex_load(get_open_filename('Images |*.tga; *.png; *.jpg; *.gif', 'data\textures\STD_1_16_16.tga'));
 }  
+cmd3 = API_Check_Command(3);
+if cmd3 != 0
+{
+    switch cmd3
+    {
+        case ui_win2_b1:
+            background_color = get_color(background_color);
+        break;
+        
+        case ui_win2_rb1:
+            background_assign(bk_current, bk_grid16);
+            global.ed_g_sz = 16;
+        break;
+        
+        case ui_win2_rb2:
+            background_assign(bk_current, bk_grid8);
+            global.ed_g_sz = 8;
+        break;
+        
+        case ui_win2_rb3:
+            background_assign(bk_current, bk_nogrid);
+            global.ed_g_sz = 1;
+        break;
+        
+        case ui_win2_b2:
+            API_Window_Destroy(ui_win2);
+            API_Control_Destroy(ui_win2);
+        break;
+    }
+}
+cmd4 = API_Check_Command(4);
+if cmd4 != 0
+{
+    switch cmd4
+    {
+        case ui_win3_b1:
+            _tmp = get_open_filename('Music |*.xm; *.mod; *.it; *.s3m; *.wav; *.mp3; *.ogg; *.mid', 'data\music\AC.xm');
+            if !file_exists(_tmp) {exit;}
+            _tmp = string_replace(_tmp, working_directory + '\', '');
+            global.map_mus = _tmp;
+            API_Control_SetText(ui_win3_t1, string_replace(global.map_mus, "data\music\", ""));
+        break;
+        
+        case ui_win3_b2:
+            _tmp = get_open_filename('Images |*.tga; *.png; *.jpg; *.gif', 'data\textures\sky\D2DSKY1.png');
+            if !file_exists(_tmp) {exit;}
+            _tmp = string_replace(_tmp, working_directory + '\', '');
+            global.map_bkg = _tmp;
+            API_Control_SetText(ui_win3_t2, string_replace(global.map_bkg, "data\textures\sky\", "")); 
+        break;
+        
+        case ui_win3_b3:
+            global.map_w = real(API_Control_GetText(ui_win3_e1));
+            global.map_h = real(API_Control_GetText(ui_win3_e2));
+            global.map_name = API_Control_GetText(ui_win3_e3);
+            global.map_desc = API_Control_GetText(ui_win3_e4);
+            API_Window_Destroy(ui_win3);
+            API_Control_Destroy(ui_win3);
+        break;
+    }
+}
+            
+            
 </argument>
       </arguments>
     </action>

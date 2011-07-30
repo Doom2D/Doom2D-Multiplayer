@@ -3,5 +3,8 @@
   <resource name="FMOD" type="GROUP"/>
   <resource name="snd_init" type="RESOURCE"/>
   <resource name="snd_load" type="RESOURCE"/>
+  <resource name="snd_free" type="RESOURCE"/>
+  <resource name="snd_play" type="RESOURCE"/>
+  <resource name="snd_play_pos" type="RESOURCE"/>
   <resource name="mus_play" type="RESOURCE"/>
 </resources>

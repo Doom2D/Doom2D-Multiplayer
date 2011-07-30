@@ -7,4 +7,6 @@
   <resource name="msg_init" type="RESOURCE"/>
   <resource name="msg_add" type="RESOURCE"/>
   <resource name="msg_draw" type="RESOURCE"/>
+  <resource name="con_timestamp" type="RESOURCE"/>
+  <resource name="con_echo" type="RESOURCE"/>
 </resources>

@@ -14,9 +14,9 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if !sprite_exists(sprites[spr, 0]) {exit;}
-draw_sprite(s_wpns, wpn, x, y);
-draw_sprite_ext(sprites[spr, 0], image_index, x, y, image_xscale, image_yscale, 0, c_white, 1);
-draw_sprite_ext(sprites[spr, 1], image_index, x, y, image_xscale, image_yscale, 0, color, 1);
+if r_weapon {draw_sprite(s_wpns, wpn, x, y);}
+draw_sprite_ext(sprites[2, 0], image_index, x, y, image_xscale, image_yscale, 0, c_white, 1);
+draw_sprite_ext(sprites[2, 1], image_index, x, y, image_xscale, image_yscale, 0, color, 1);
 
 
 </argument>

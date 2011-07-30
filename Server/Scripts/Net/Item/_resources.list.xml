@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="item_find_slot" type="RESOURCE"/>
+  <resource name="item_send_create" type="RESOURCE"/>
+  <resource name="item_send_destroy" type="RESOURCE"/>
+</resources>

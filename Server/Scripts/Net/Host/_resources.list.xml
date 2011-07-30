@@ -2,4 +2,8 @@
 <resources>
   <resource name="host_init" type="RESOURCE"/>
   <resource name="host_exit" type="RESOURCE"/>
+  <resource name="host_cl_accept" type="RESOURCE"/>
+  <resource name="host_find_slot" type="RESOURCE"/>
+  <resource name="host_add_player" type="RESOURCE"/>
+  <resource name="host_process_msgs" type="RESOURCE"/>
 </resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if !active {exit;}
+if !instance_exists(global.cl_inst){exit;}
+draw_set_font(global.fnt_sys);
+draw_background(tex_hud, view_xview + 824, view_yview);
+draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Map: " + global.sv_map + "###" + net_list_clients());
+draw_text(view_xview + 832, view_yview + 730, "Ping: " + string(global.cl_last_ping) + "#FPS: " + string(fps));
+
+draw_set_font(global.fnt_big);
+draw_set_color(c_red);
+if global.cl_inst.hp &lt; 250 
+{draw_text(view_xview + 936, view_yview + 22, global.cl_inst.hp);}
+else
+{
+    draw_set_blend_mode_ext(bm_inv_dest_color, bm_inv_src_color);
+    draw_set_color(c_white);
+    draw_rectangle(view_xview, view_yview, view_xview+824, view_yview+768, 0);
+    draw_set_blend_mode(bm_normal);
+    draw_set_color(c_red);
+}
+draw_text(view_xview + 936, view_yview + 72, global.cl_inst.ap);
+draw_text(view_xview + 936, view_yview + 72, global.cl_inst.ap);
+draw_sprite(s_hud_weaps, global.cl_inst.w, view_xview + 872, view_yview + 156);
+
+if global.cl_inst.w == 1 || global.cl_inst.w == 4
+{
+    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a1);
+}
+if global.cl_inst.w == 2 || global.cl_inst.w == 3 || global.cl_inst.w == 8
+{
+    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a2);
+}
+if global.cl_inst.w == 2 || global.cl_inst.w == 3 || global.cl_inst.w == 8
+{
+    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a2);
+}
+if global.cl_inst.w == 5
+{
+    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a3);
+}
+if global.cl_inst.w == 6 || global.cl_inst.w == 7
+{
+    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a4);
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

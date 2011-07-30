@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<room>
+  <caption/>
+  <size height="768" width="1024"/>
+  <grid>
+    <isometric>false</isometric>
+    <snap x="16" y="16"/>
+  </grid>
+  <speed>60</speed>
+  <persistent>false</persistent>
+  <creationCode>
+</creationCode>
+  <backgroundColor>C0C0C0</backgroundColor>
+  <drawBackgroundColor>true</drawBackgroundColor>
+  <backgrounds>
+    <backgroundDef>
+      <visibleOnRoomStart>true</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage>bkg_titlepic</backgroundImage>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+    <backgroundDef>
+      <visibleOnRoomStart>false</visibleOnRoomStart>
+      <isForeground>false</isForeground>
+      <backgroundImage/>
+      <offset x="0" y="0"/>
+      <speed x="0" y="0"/>
+      <tileHorizontally>true</tileHorizontally>
+      <tileVertically>true</tileVertically>
+      <stretch>false</stretch>
+    </backgroundDef>
+  </backgrounds>
+  <enableViews>false</enableViews>
+  <instances>
+    <instance>
+      <object>o_menu</object>
+      <position x="400" y="368"/>
+      <creationCode>menu_init(global.fnt_big, c_white, 5);
+
+if window_get_fullscreen()
+{
+    str[1, 0] = 'В окне: НЕТ';
+}
+else
+{
+    str[1, 0] = 'В окне: ДА';
+}
+str[1, 1] = "
+    if window_get_fullscreen()
+    {
+        con_parse('r_window 1');
+        str[1, 0] = 'В окне: ДА';
+    }
+    else
+    {
+        con_parse('r_window 0');
+        str[1, 0] = 'В окне: НЕТ';
+    }";
+
+
+if global.r_gfx {str[2, 0] = 'Эффекты: ДА';} else {str[2, 0] = 'Эффекты: НЕТ';}
+str[2, 1] = 'if global.r_gfx {global.r_gfx = 0; str[2, 0] = "Эффекты: НЕТ";} else {global.r_gfx = 1; str[2, 0] = "Эффекты: ДА";};';
+
+str[3, 0] = 'Насилие: ' + string(global.r_massacre);
+str[3, 1] = '
+    global.r_massacre += 1;
+    if global.r_massacre &gt; 3 {global.r_massacre = 0;}
+    str[3, 0] = "Насилие: " + string(global.r_massacre);';
+
+if global.r_names {str[4, 0] = 'Имена: ДА';} else {str[4, 0] = 'Имена: НЕТ';}
+str[4, 1] = 'if global.r_names {global.r_names = 0; str[4, 0] = "Имена: НЕТ";} else {global.r_names = 1; str[4, 0] = "Имена: ДА";};';
+
+str[5, 0] = 'Назад';
+str[5, 1] = 'room_goto(rm_set);';
+</creationCode>
+      <locked>false</locked>
+    </instance>
+  </instances>
+  <tiles/>
+  <editorSettings remember="false"/>
+</room>

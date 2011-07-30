@@ -11,4 +11,7 @@
   <resource name="ed_spr_select" type="RESOURCE"/>
   <resource name="ed_ui_edset" type="RESOURCE"/>
   <resource name="Map" type="GROUP"/>
+  <resource name="ed_settings" type="RESOURCE"/>
+  <resource name="ed_map_settings" type="RESOURCE"/>
+  <resource name="ed_tools_reset" type="RESOURCE"/>
 </resources>

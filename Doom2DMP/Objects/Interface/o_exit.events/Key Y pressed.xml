@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">FMODSoundPlay(global.snd[2]);
+        <argument kind="STRING">snd_play(2);
 sleep(3200);
 game_end();
 </argument>

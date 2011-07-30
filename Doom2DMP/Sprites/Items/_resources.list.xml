@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="s_item_aid" type="RESOURCE"/>
+  <resource name="s_item_bsphr" type="RESOURCE"/>
+  <resource name="s_item_wsphr" type="RESOURCE"/>
+  <resource name="s_item_armor1" type="RESOURCE"/>
+  <resource name="s_item_armor2" type="RESOURCE"/>
+  <resource name="s_item_jet" type="RESOURCE"/>
+  <resource name="s_item_ammo" type="RESOURCE"/>
+  <resource name="s_item_weaps" type="RESOURCE"/>
+  <resource name="s_item_inv" type="RESOURCE"/>
+</resources>

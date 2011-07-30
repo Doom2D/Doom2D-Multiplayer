@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="5">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//bfg projectile
+if aim == 1 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn {b_dir = 0;}
+if aim == -1 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn {b_dir = 180;}
+if !global.mp_oldaim
+{
+    if aim == 1 &amp;&amp; kb_lkdn {b_dir = 315;}
+    if aim == -1 &amp;&amp; kb_lkdn {b_dir = 225;}
+    if aim == 1 &amp;&amp; kb_lkup {b_dir = 45;}
+    if aim == -1 &amp;&amp; kb_lkup {b_dir = 135;}
+}
+else
+{
+    if aim == 1 &amp;&amp; kb_lkdn {b_dir = 325;}
+    if aim == -1 &amp;&amp; kb_lkdn {b_dir = 215;}
+    if aim == 1 &amp;&amp; kb_lkup {b_dir = 55;}
+    if aim == -1 &amp;&amp; kb_lkup {b_dir = 125;}
+}
+p = instance_create(x, y, o_projectile);
+p.l_id = cl_id;
+p.direction = b_dir;
+p.p_type = 3;
+p.p_spd = 10;
+plr_send_projectile(cl_id, 3, b_dir, x, y);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

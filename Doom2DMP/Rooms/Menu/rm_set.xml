@@ -19,8 +19,8 @@
       <backgroundImage>bkg_titlepic</backgroundImage>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
-      <tileHorizontally>true</tileHorizontally>
-      <tileVertically>true</tileVertically>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
       <stretch>false</stretch>
     </backgroundDef>
     <backgroundDef>
@@ -99,18 +99,20 @@
     <instance>
       <object>o_menu</object>
       <position x="400" y="368"/>
-      <creationCode>menu_init(global.fnt_big, c_white, 4);
+      <creationCode>menu_init(global.fnt_big, c_white, 5);
 str[0, 0] = 'НАСТРОЙКИ';
-str[1, 0] = 'Система';
-str[1, 1] = 'room_goto(rm_set_sys);';
-str[2, 0] = 'Управление';
-str[2, 1] = 'room_goto(rm_set_bind);';
-str[3, 0] = 'Игрок';
-str[3, 1] = 'room_goto(rm_set_pl);';
-str[4, 0] = 'Назад';
-str[4, 1] = 'room_goto(rm_menu);';
+str[1, 0] = 'Видео';
+str[1, 1] = 'room_goto(rm_set_gfx);';
+str[2, 0] = 'Аудио';
+str[2, 1] = 'room_goto(rm_set_snd);';
+str[3, 0] = 'Управление';
+str[3, 1] = 'room_goto(rm_set_bind);';
+str[4, 0] = 'Игрок';
+str[4, 1] = 'room_goto(rm_set_pl);';
+str[5, 0] = 'Назад';
+str[5, 1] = 'room_goto(rm_menu);';
 </creationCode>
-      <locked>true</locked>
+      <locked>false</locked>
     </instance>
   </instances>
   <tiles/>

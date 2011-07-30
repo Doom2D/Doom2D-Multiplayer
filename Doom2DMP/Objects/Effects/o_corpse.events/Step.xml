@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if image_index &lt; image_number - 1.25 {image_index += 0.25;}
+if place_meeting(x, y + 1, o_solid) {gravity = 0; vspeed = 0; hspeed = hspeed/1.5;} else {gravity = 0.3;}
+if place_meeting(x, y - 2, o_solid) {vspeed = 0;}
+if place_meeting(x + hspeed, y, o_solid) {hspeed = 0;}
+if place_meeting(x, y, o_liq) &amp;&amp; vspeed &gt; 2 {vspeed = 2;}
+if x &lt; 0 || y &lt; 0 || x &gt; global.map_w || y &gt; global.map_h {instance_destroy();}
+if place_meeting(x, y, o_lift_up) {vspeed -= 0.5;}
+if place_meeting(x, y, o_lift_down) {vspeed += 0.5;}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

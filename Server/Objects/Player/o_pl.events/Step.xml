@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if !variable_local_exists('cl_is_bot') {host_process_msgs();} else {bot_ai();}
+
+if y &gt; global.map_h &amp;&amp; !dead
+{
+    //if a player fell
+    hp = 0;
+    killer_id = 0;
+    kill_type = 12;
+    plr_send_sound(6, x, y);
+}
+
+cd -= 1;
+pt -= 1;
+ct -= 1;
+
+if hp &lt; 1 &amp;&amp; dead == 0 {plr_die();}
+if hp &gt;= 1 &amp;&amp; dead == 1 {dead = 0;}
+
+if place_meeting(x, y - 32, o_water) &amp;&amp; drown == 0  &amp;&amp; alarm[2] &lt; 1 {alarm[2] = 1800;}
+if !place_meeting(x, y - 32, o_water) &amp;&amp; drown == 1 {drown = 0;}
+
+if drown &amp;&amp; pt &lt; 0 
+{
+    hp -= 5;
+    killer_id = 0;
+    kill_type = 9;
+    plr_send_stat();
+    plr_send_pain();
+    pt = 48;
+}
+
+if !variable_local_exists('cl_is_bot') {ping += 1;} //in case of timeout we kick player
+if ping &gt; global.cl_timeout * 60
+{
+    //send a kick message to the fucker just in case
+    plr_send_kick(cl_id, "Kicked: You have timed out or were AFK too long.");
+    con_add(":: Client " + string(cl_name) + "[" + string(cl_id) + "] timed out.");
+    with global.sv_plr[cl_id] {instance_destroy();}      
+    global.sv_plr[cl_id] = noone;
+    
+    //send this to other clients
+    dll39_buffer_clear(0);
+    dll39_write_byte(4, 0);
+    dll39_write_byte(cl_id, 0);
+    with (o_pl) {dll39_message_send(cl_tcp, 0, 0, 0);}
+}
+
+if dead {exit;}
+plr_phys(kb_left, kb_rght, kb_jump);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">plr_init_phys();
+fail = 0;
+kb_left = 0;
+kb_rght = 0;
+kb_lkup = 0;
+kb_lkdn = 0;
+kb_jump = 0;
+kb_strf = 0;
+killer_id = 0;
+kill_type = 0;
+hp = 100;
+ap = 0;
+a1 = 50;
+a2 = 0;
+a3 = 0;
+aim = 1;
+b_dir = 0;
+ct = 0;
+a4 = 0;
+w = 1;
+hw[0] = 1;
+hw[1] = 1;
+for (i = 2; i &lt; 10; i += 1) {hw[i] = 0;}
+cd = 0; //weapon cooldown
+pt = 0; //pain sound cooldown
+frag = 0;
+dead = 0;
+ping = 0;
+drown = 0; //if we are drowning
+st_inv = 0;
+st_jet = 0;
+st_ber = 0;
+alarm[0] = 2;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -13,12 +13,29 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">acc = 0.25;
-deacc = 0.20;
-hsp = 4;
-vsp = 12;
-jsp = 5;
-image_speed = 0;
+        <argument kind="STRING">plr_init_phys();
+kb_left = 0;
+kb_rght = 0;
+kb_jump = 0;
+kb_lkup = 0;
+kb_lkdn = 0;
+kb_strf = 0;
+r_weapon = 1;
+dead = 0;
+sprite[0, 2] = 1;
+spr = 0;
+hp = 0;
+ap = 0;
+w = 0;
+a1 = 0;
+a2 = 0;
+a3 = 0;
+a4 = 0;
+frag = 0;
+pain = 0;
+attack = 0;
+w_rot = 0;
+col = c_white;
 </argument>
       </arguments>
     </action>

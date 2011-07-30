@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <room>
   <caption>Редактор карт для Doom 2D Multiplayer v0.6</caption>
-  <size height="1024" width="1024"/>
+  <size height="16000" width="16000"/>
   <grid>
     <isometric>false</isometric>
     <snap x="16" y="16"/>
@@ -15,7 +15,7 @@
     <backgroundDef>
       <visibleOnRoomStart>true</visibleOnRoomStart>
       <isForeground>true</isForeground>
-      <backgroundImage>bk_grid16</backgroundImage>
+      <backgroundImage>bk_current</backgroundImage>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
       <tileHorizontally>true</tileHorizontally>
@@ -24,8 +24,8 @@
     </backgroundDef>
     <backgroundDef>
       <visibleOnRoomStart>false</visibleOnRoomStart>
-      <isForeground>false</isForeground>
-      <backgroundImage/>
+      <isForeground>true</isForeground>
+      <backgroundImage>bk_grid8</backgroundImage>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
       <tileHorizontally>true</tileHorizontally>
@@ -149,7 +149,7 @@
       <object>o_ctrl</object>
       <position x="0" y="0"/>
       <creationCode/>
-      <locked>true</locked>
+      <locked>false</locked>
     </instance>
   </instances>
   <tiles/>

@@ -1,1 +1,1 @@
-API_Dialog_MessageBox(window_handle(), 'Редактор карт для Doom 2D Multiplayer v0.6. Накодено Простовиталиком на Game Maker 8 + MaxWinApi2 в 2010 году.', 'О программе', MB_OK);
+API_Dialog_MessageBox(window_handle(), 'Doom 2D MP Map Editor v0.6a (C) Primus, 2011', 'О программе', MB_OK);

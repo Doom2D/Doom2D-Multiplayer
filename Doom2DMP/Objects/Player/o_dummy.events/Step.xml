@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">wpn += 0.025;
+        <argument kind="STRING">image_index += 0.1;
+wpn += 0.025;
 </argument>
       </arguments>
     </action>

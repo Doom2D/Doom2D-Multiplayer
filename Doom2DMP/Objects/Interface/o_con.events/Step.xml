@@ -22,10 +22,13 @@
   }
   else 
   {
-    global.con = 1; 
+    saymode = 0;
     keyboard_string = '';
+    global.con = 1; 
   }
 }
+if keyboard_check_pressed(global.key_chat) &amp;&amp; room == rm_game &amp;&amp; !saymode &amp;&amp; !global.con {keyboard_string = ''; saymode = 1;}
+FMODUpdate();
 </argument>
       </arguments>
     </action>

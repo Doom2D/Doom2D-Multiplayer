@@ -3,10 +3,10 @@
   <resource name="s_meds" type="RESOURCE"/>
   <resource name="s_armor1" type="RESOURCE"/>
   <resource name="s_armor2" type="RESOURCE"/>
-  <resource name="s_weaps" type="RESOURCE"/>
   <resource name="s_bsphr" type="RESOURCE"/>
   <resource name="s_wsphr" type="RESOURCE"/>
   <resource name="s_inv" type="RESOURCE"/>
+  <resource name="s_weaps" type="RESOURCE"/>
   <resource name="s_ammo" type="RESOURCE"/>
   <resource name="s_jetpack" type="RESOURCE"/>
   <resource name="tex_none" type="RESOURCE"/>

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-  <resource name="o_host" type="RESOURCE"/>
+  <resource name="Net" type="GROUP"/>
+  <resource name="World" type="GROUP"/>
+  <resource name="Item" type="GROUP"/>
+  <resource name="Player" type="GROUP"/>
 </resources>

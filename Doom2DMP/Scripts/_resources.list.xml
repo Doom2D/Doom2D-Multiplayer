@@ -3,5 +3,6 @@
   <resource name="Game" type="GROUP"/>
   <resource name="System" type="GROUP"/>
   <resource name="Sound" type="GROUP"/>
+  <resource name="Net" type="GROUP"/>
   <resource name="Interface" type="GROUP"/>
 </resources>

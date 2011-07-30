@@ -45,16 +45,14 @@ switch argument0
   case ord('7'): _name = '7'; break;
   case ord('8'): _name = '8'; break;
   case ord('9'): _name = '9'; break;
-  case 34: _name = "'"; break;
-  case ord('.'): _name = '.'; break;
-  case ord(','): _name = ','; break;
-  case ord(';'): _name = ';'; break;
-  case ord('['): _name = '['; break;
-  case ord(']'): _name = ']'; break;
-  case ord('/'): _name = '/'; break;
-  case ord('\'): _name = '\'; break;
-  case ord('-'): _name = '-'; break;
-  case ord('+'): _name = '+'; break;
+  case 222: _name = "'"; break;
+  case 190: _name = '.'; break;
+  case 188: _name = ','; break;
+  case 59: _name = ';'; break;
+  case 219: _name = '['; break;
+  case 221: _name = ']'; break;
+  case 191: _name = '/'; break;
+  case 220: _name = '\'; break;
   case vk_insert: _name = 'Insert'; break;
   case vk_delete: _name = 'Home'; break;
   case vk_end: _name = 'End'; break;
@@ -74,6 +72,7 @@ switch argument0
   case vk_down: _name = 'Down'; break;
   case vk_left: _name = 'Left'; break;
   case vk_right: _name = 'Right'; break;
+  default: _name = 'Unknown';
 }
 return _name;
 

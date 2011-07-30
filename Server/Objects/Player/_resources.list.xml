@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="o_pl" type="RESOURCE"/>
+  <resource name="o_spawn" type="RESOURCE"/>
+  <resource name="o_bullet" type="RESOURCE"/>
+  <resource name="o_projectile" type="RESOURCE"/>
+  <resource name="o_explosion" type="RESOURCE"/>
+  <resource name="o_punch" type="RESOURCE"/>
+  <resource name="o_explosion2" type="RESOURCE"/>
+</resources>

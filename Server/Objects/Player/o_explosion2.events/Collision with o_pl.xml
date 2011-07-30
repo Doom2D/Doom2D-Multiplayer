@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="COLLISION" with="o_pl">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if !variable_local_exists('l_id') || other.pt &gt; 1 {exit;}
+if collision_line(x, y, other.x, other.y, o_solid, 0, 0) {exit;}
+if !global.mp_godmode &amp;&amp; !other.st_inv
+{
+if other.ap &gt; 0
+{
+    other.hp -= 75;
+    other.ap -= 150;
+}
+else
+{
+    other.hp -= 150;
+}
+if other.ap &lt; 0 {other.ap = 0;}
+other.kill_type = 7;
+other.killer_id = l_id;
+}
+if other.x &lt; x {other.hsp = -6;}
+if other.x &gt; x {other.hsp = 6;}   
+if other.y &gt; y {other.vsp = 6;} 
+if other.y &lt; y {other.vsp = -6;} 
+with (other)
+{
+    plr_send_stat();
+    plr_send_pain();
+    plr_send_speed();
+    plr_send_effect(1, x, y);
+    plr_send_effect(7, x, y);
+}
+
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

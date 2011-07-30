@@ -4,4 +4,7 @@
   <resource name="o_menu" type="RESOURCE"/>
   <resource name="o_auth" type="RESOURCE"/>
   <resource name="o_exit" type="RESOURCE"/>
+  <resource name="o_camera" type="RESOURCE"/>
+  <resource name="o_hud" type="RESOURCE"/>
+  <resource name="o_inter" type="RESOURCE"/>
 </resources>

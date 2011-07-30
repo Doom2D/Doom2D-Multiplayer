@@ -10,7 +10,7 @@
   <persistent>false</persistent>
   <creationCode/>
   <backgroundColor>000000</backgroundColor>
-  <drawBackgroundColor>true</drawBackgroundColor>
+  <drawBackgroundColor>false</drawBackgroundColor>
   <backgrounds>
     <backgroundDef>
       <visibleOnRoomStart>true</visibleOnRoomStart>
@@ -103,8 +103,8 @@
     </view>
     <view>
       <visibleOnRoomStart>false</visibleOnRoomStart>
-      <viewInRoom height="480" width="640" x="0" y="0"/>
-      <portOnScreen height="480" width="640" x="0" y="0"/>
+      <viewInRoom height="768" width="200" x="0" y="0"/>
+      <portOnScreen height="768" width="200" x="824" y="0"/>
       <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
     </view>
     <view>
@@ -144,7 +144,20 @@
       <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
     </view>
   </views>
-  <instances/>
+  <instances>
+    <instance>
+      <object>o_camera</object>
+      <position x="16" y="0"/>
+      <creationCode/>
+      <locked>true</locked>
+    </instance>
+    <instance>
+      <object>o_client</object>
+      <position x="0" y="0"/>
+      <creationCode/>
+      <locked>true</locked>
+    </instance>
+  </instances>
   <tiles/>
   <editorSettings remember="false"/>
 </room>

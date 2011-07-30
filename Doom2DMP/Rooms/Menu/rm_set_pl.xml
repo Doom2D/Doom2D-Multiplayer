@@ -19,8 +19,8 @@
       <backgroundImage>bkg_titlepic</backgroundImage>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
-      <tileHorizontally>true</tileHorizontally>
-      <tileVertically>true</tileVertically>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
       <stretch>false</stretch>
     </backgroundDef>
     <backgroundDef>
@@ -102,11 +102,11 @@
       <creationCode>menu_init(global.fnt_big, c_white, 4);
 str[0, 0] = 'Настройки игрока';
 str[1, 0] = 'Имя: ' + string(global.pl_name);
-str[1, 1] = 'con_parse("name " + get_string("Введите имя игрока", global.pl_name)); str[1, 0] = "Имя: " +  global.pl_name;';
-str[2, 0] = 'Цвет: ' + string(global.pl_color);
-str[2, 1] = 'global.pl_color = get_color(global.pl_color); str[2, 0] = "Цвет: " +  string(global.pl_color); with(o_dummy){instance_destroy();}; instance_create(0, 592, o_dummy);';
-str[3, 0] = 'Скин: ' + string(global.pl_skin);
-str[3, 1] = 'con_parse("skin " + get_string("Введите название папки со скином", global.pl_skin)); str[3, 0] = "Скин: " + global.pl_skin; with(o_dummy){instance_destroy();}; instance_create(0, 592, o_dummy);';
+str[1, 1] = 'con_parse("name " + get_string("Введите новое имя: ", global.pl_name)); str[1, 0] = "Имя: " +  global.pl_name;';
+str[2, 0] = 'Цвет';
+str[2, 1] = 'global.pl_color = get_color(global.pl_color); str[2, 0] = "Цвет"; with(o_dummy){instance_destroy();}; instance_create(0, 592, o_dummy);';
+str[3, 0] = 'Скин';
+str[3, 1] = 'con_parse("skin " + string_replace(string_replace(get_open_filename("INFO|INFO", "data\skins\doomer\INFO"), working_directory + "\data\skins\", ""), "\INFO", "")); with(o_dummy){instance_destroy();}; instance_create(0, 592, o_dummy);';
 str[4, 0] = 'Назад'
 str[4, 1] = 'room_goto(rm_set);'
 </creationCode>

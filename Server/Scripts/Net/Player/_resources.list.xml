@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="plr_send_pos" type="RESOURCE"/>
+  <resource name="plr_send_dead" type="RESOURCE"/>
+  <resource name="plr_send_stat" type="RESOURCE"/>
+  <resource name="plr_send_sprite" type="RESOURCE"/>
+  <resource name="plr_send_sound" type="RESOURCE"/>
+  <resource name="plr_send_effect" type="RESOURCE"/>
+  <resource name="plr_send_corpse" type="RESOURCE"/>
+  <resource name="plr_send_kick" type="RESOURCE"/>
+  <resource name="plr_send_projectile" type="RESOURCE"/>
+  <resource name="plr_send_speed" type="RESOURCE"/>
+  <resource name="plr_send_xplos" type="RESOURCE"/>
+  <resource name="plr_send_pain" type="RESOURCE"/>
+  <resource name="plr_send_gameover" type="RESOURCE"/>
+</resources>

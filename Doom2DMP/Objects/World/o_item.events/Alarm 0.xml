@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//select the item sprite, mate
+switch item
+{
+    case 1:
+    case 2:
+        sprite_index = s_item_aid;
+        image_index = item-1;
+        image_speed = 0;
+    break;
+    
+    case 3:
+        sprite_index = s_item_armor1;
+        image_speed = 0.1;
+    break;
+    
+    case 4:
+        sprite_index = s_item_armor2;
+        image_speed = 0.1;
+    break;
+    
+    case 5:
+        sprite_index = s_item_bsphr;
+        image_speed = 0.1;
+    break;
+    
+    case 6:
+        sprite_index = s_item_wsphr;
+        image_speed = 0.1;
+    break;
+    
+    case 7:
+        sprite_index = s_item_inv;
+        image_speed = 0.1;
+    break;
+    
+    case 8:
+        sprite_index = s_item_jet;
+        image_speed = 0;
+    break;
+    
+    case 9:
+        sprite_index = s_item_aid;
+        image_index = 2;
+        image_speed = 0;
+    break;
+    
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+        sprite_index = s_item_ammo;
+        image_speed = 0;
+        image_index = item - 10;
+    break;
+    
+    case 21:
+    case 22:
+    case 23:
+    case 24:
+    case 25:
+    case 26:
+    case 27:
+    case 28:
+        sprite_index = s_item_weaps;
+        image_speed = 0;
+        image_index = item - 21;
+    break;
+}
+
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

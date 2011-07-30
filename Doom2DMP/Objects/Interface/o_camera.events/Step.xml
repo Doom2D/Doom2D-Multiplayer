@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if !variable_global_exists('cl_inst'){exit;}
+if !instance_exists(global.cl_inst){exit;}
+if global.cl_inst.x &lt; -256 {exit;}
+
+//because of width and height shit need to manage views manually
+view_xview = global.cl_inst.x - 412;
+view_yview = global.cl_inst.y - 389;
+if view_xview &gt; global.map_w - 824 {view_xview = global.map_w - 824;}
+if view_yview &gt; global.map_h - 768 {view_yview = global.map_h - 768;}
+if view_xview &lt; 0 {view_xview = 0;}
+if view_yview &lt; 0 {view_yview = 0;}
+
+//sound shit
+FMODListenerSet3dPosition(1, global.cl_inst.x, global.cl_inst.y, 0);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

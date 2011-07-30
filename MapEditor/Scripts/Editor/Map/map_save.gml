@@ -5,6 +5,10 @@ file_text_write_string(file, global.map_name);
 file_text_writeln(file);
 file_text_write_string(file, global.map_desc);
 file_text_writeln(file);
+file_text_write_string(file, string(global.map_w));
+file_text_writeln(file);
+file_text_write_string(file, string(global.map_h));
+file_text_writeln(file);
 file_text_write_string(file, global.map_mus);
 file_text_writeln(file);
 file_text_write_string(file, global.map_bkg);
@@ -18,13 +22,13 @@ for (i = 1; i < global.tex_n; i += 1)
 }
 with par_obj
 {
-  file_text_write_string(file, string(o_id));
-  file_text_writeln(file);
-  file_text_write_string(file, string(t_id));
-  file_text_writeln(file);
-  file_text_write_string(file, string(x));
-  file_text_writeln(file);
-  file_text_write_string(file, string(y));
-  file_text_writeln(file);
+  file_text_write_string(other.file, string(o_id));
+  file_text_writeln(other.file);
+  file_text_write_string(other.file, string(t_id));
+  file_text_writeln(other.file);
+  file_text_write_string(other.file, string(x));
+  file_text_writeln(other.file);
+  file_text_write_string(other.file, string(y));
+  file_text_writeln(other.file);
 }
 file_text_close(file);

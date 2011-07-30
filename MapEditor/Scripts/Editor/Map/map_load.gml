@@ -1,5 +1,5 @@
 //load map
-f = get_open_filename('D2DMP Maps|*.dlv', 'data\maps\Unnamed.dlv');;
+f = get_open_filename('D2DMP Maps|*.dlv', 'data\maps\Unnamed.dlv');
 if !file_exists(f) {exit;}
 with par_obj {instance_destroy();}
 
@@ -10,11 +10,16 @@ for (i = 0; i < 1024; i += 1)
 }
 global.tex[0] = tex_none;
 global.tex_n = 1;
+ed_tools_reset();
 
 file = file_text_open_read(f);
 global.map_name = file_text_read_string(file);
 file_text_readln(file);
 global.map_desc = file_text_read_string(file);
+file_text_readln(file);
+global.map_w =  real(file_text_read_string(file));
+file_text_readln(file);
+global.map_h = real(file_text_read_string(file));
 file_text_readln(file);
 global.map_mus = file_text_read_string(file);
 file_text_readln(file);

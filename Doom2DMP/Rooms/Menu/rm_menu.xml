@@ -8,7 +8,8 @@
   </grid>
   <speed>60</speed>
   <persistent>false</persistent>
-  <creationCode>
+  <creationCode>mus_play(global.mus_menu);
+for (i = 3; i &lt; 22; i += 1) {snd_free(i);}
 </creationCode>
   <backgroundColor>C0C0C0</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>
@@ -19,8 +20,8 @@
       <backgroundImage>bkg_titlepic</backgroundImage>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
-      <tileHorizontally>true</tileHorizontally>
-      <tileVertically>true</tileVertically>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
       <stretch>false</stretch>
     </backgroundDef>
     <backgroundDef>
@@ -101,7 +102,7 @@
       <position x="400" y="368"/>
       <creationCode>menu_init(global.fnt_big, c_white, 4);
 str[1, 0] = 'Начать игру';
-str[1, 1] = 'show_message("LOL")';
+str[1, 1] = 'room_goto(rm_set_ip);';
 str[2, 0] = 'Настройки';
 str[2, 1] = 'room_goto(rm_set)';
 str[3, 0] = 'Авторы';

@@ -3,4 +3,6 @@
   <resource name="Interface" type="GROUP"/>
   <resource name="Player" type="GROUP"/>
   <resource name="World" type="GROUP"/>
+  <resource name="Net" type="GROUP"/>
+  <resource name="Effects" type="GROUP"/>
 </resources>

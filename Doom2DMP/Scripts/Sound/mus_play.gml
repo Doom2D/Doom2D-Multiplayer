@@ -1,4 +1,4 @@
 //loops music
 //arg0 - music
-FMODGroupStop(3);
-FMODSoundLoop(argument0);
+FMODInstanceStop(global._s_cur_mus);
+global._s_cur_mus = FMODSoundLoop(argument0);

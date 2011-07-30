@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//timelimit
+if global.sv_cycle_maps
+{
+    plr_send_gameover();
+    sleep(60);
+    with (o_pl) {plr_send_kick(cl_id, "Game over.");}
+    global.sv_map = global.map_list_next;
+    cfg_write('server.cfg');
+    sleep(60);
+    execute_program('d2dmp_sv.exe', -1, 0);
+    game_end();
+}
+else
+{
+    plr_send_gameover();
+    sleep(60);
+    with (o_pl) {plr_send_kick(cl_id, 'Server shutting down.');}
+    sleep(60);
+    game_end();
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

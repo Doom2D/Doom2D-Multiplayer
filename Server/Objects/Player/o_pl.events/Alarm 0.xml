@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//misc shit
+if st_jet || global.mp_flymode {plr_send_speed(); plr_send_effect(6, x, y);}
+bot_send_pos();
+alarm[0] = global.bot_tickrate;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -16,12 +16,12 @@
     <switchVideoMode>false</switchVideoMode>
   </windowing>
   <splashImage>
-    <showCustom>true</showCustom>
-    <partiallyTransparent>false</partiallyTransparent>
-    <alphaTransparency>255</alphaTransparency>
+    <showCustom>false</showCustom>
+    <partiallyTransparent>true</partiallyTransparent>
+    <alphaTransparency>0</alphaTransparency>
   </splashImage>
   <progressBar>
-    <mode>LOADBAR_DEFAULT</mode>
+    <mode>LOADBAR_NONE</mode>
     <scaleImage>true</scaleImage>
   </progressBar>
   <keys>
@@ -39,7 +39,7 @@
     <treatUninitializedAsZero>false</treatUninitializedAsZero>
   </errors>
   <gameInfo>
-    <gameId>603773938</gameId>
+    <gameId>133766699</gameId>
     <author/>
     <version>100</version>
     <information/>
@@ -51,7 +51,7 @@
     <product/>
     <copyright/>
     <description/>
-    <directPlayGuid>e0403240d8403240d0403240c8403240</directPlayGuid>
+    <directPlayGuid>cd1f7864352c86418a9a8c4eac6b1309</directPlayGuid>
   </gameInfo>
   <system>
     <processPriority>PRIORITY_NORMAL</processPriority>

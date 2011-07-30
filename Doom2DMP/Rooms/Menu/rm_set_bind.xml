@@ -19,8 +19,8 @@
       <backgroundImage>bkg_titlepic</backgroundImage>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
-      <tileHorizontally>true</tileHorizontally>
-      <tileVertically>true</tileVertically>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
       <stretch>false</stretch>
     </backgroundDef>
     <backgroundDef>
@@ -99,26 +99,37 @@
     <instance>
       <object>o_menu</object>
       <position x="400" y="368"/>
-      <creationCode>menu_init(global.fnt_big, c_white, 1);
-str[1, 0] = 'Назад'
-str[1, 1] = 'room_goto(rm_set);
+      <creationCode>menu_init(global.fnt_big, c_white, 9);
+str[1, 0] = 'Вверх: ' + key_name(global.key_up);
+str[1, 1] = 'key_bind2("+lookup"); str[1, 0] = "Вверх: " + key_name(global.key_up);';
+
+str[2, 0] = 'Вниз: ' + key_name(global.key_dn);
+str[2, 1] = "key_bind2('+lookdown'); str[2, 0] = 'Вниз: ' + key_name(global.key_dn);";
+
+str[3, 0] = 'Влево: ' + key_name(global.key_left);
+str[3, 1] = "key_bind2('+left'); str[3, 0] = 'Влево: ' + key_name(global.key_left);";
+
+str[4, 0] = 'Вправо: ' + key_name(global.key_right);
+str[4, 1] = "key_bind2('+right'); str[4, 0] = 'Вправо: ' + key_name(global.key_right);";
+
+str[5, 0] = 'Огонь: ' + key_name(global.key_atk);
+str[5, 1] = "key_bind2('+attack'); str[5, 0] = 'Огонь: ' + key_name(global.key_atk);";
+
+str[6, 0] = 'Прыжок: ' + key_name(global.key_jmp);
+str[6, 1] = "key_bind2('+jump'); str[6, 0] = 'Прыжок: ' + key_name(global.key_jmp);";
+
+str[7, 0] = 'Чат: ' + key_name(global.key_chat);
+str[7, 1] = "key_bind2('+chat'); str[7, 0] = 'Чат: ' + key_name(global.key_chat);";
+
+str[8, 0] = 'Сл. оружие: ' + key_name(global.key_chw);
+str[8, 1] = "key_bind2('+nextweapon'); str[8, 0] = 'Сл. оружие: ' + key_name(global.key_chw);";
+
+str[9, 0] = 'Назад'
+str[9, 1] = 'room_goto(rm_set);
 </creationCode>
       <locked>false</locked>
     </instance>
   </instances>
   <tiles/>
-  <editorSettings remember="true">
-    <size height="0" width="0"/>
-    <showGrid>false</showGrid>
-    <showObjects>false</showObjects>
-    <showTiles>false</showTiles>
-    <showBackgrounds>true</showBackgrounds>
-    <showForegrounds>false</showForegrounds>
-    <showViews>false</showViews>
-    <deleteUnderlyingObjects>false</deleteUnderlyingObjects>
-    <deleteUnderlyingTiles>false</deleteUnderlyingTiles>
-    <currentTab>0</currentTab>
-    <horizontalScrollPosition>-1</horizontalScrollPosition>
-    <verticalScrollPosition>0</verticalScrollPosition>
-  </editorSettings>
+  <editorSettings remember="false"/>
 </room>

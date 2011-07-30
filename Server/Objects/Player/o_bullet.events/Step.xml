@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="STEP" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">var hit_ground, hit_player, ID;
+hit_ground = 0;
+hit_player = 0;
+ID = -1;
+
+if (spd &gt; 0)
+{
+    repeat(spd/2)
+    {
+        
+        x += lengthdir_x(2, direction);
+        y += lengthdir_y(2, direction);
+        
+        if (instance_place(x,y,o_solid) &gt; 0)
+        { spd = 0; hit_ground = true; break; }
+        
+        ID = instance_place(x,y,o_pl);
+        if (ID &gt; 0) and !(a_i_id = ID)
+        { spd = 0; hit_player = true; break; }
+    }
+}
+
+if (hit_ground = true)
+{
+    plr_send_effect(2, x, y);
+}
+
+if (hit_player = true)
+{
+    if ID.cl_id == a_id {exit;}
+    if global.mp_godmode || ID.st_inv {exit;}
+    if ID.ap &lt; 1
+    {
+        ID.hp -= dmg;
+    }
+    else
+    {
+        ID.ap -= dmg;
+        ID.hp -= round(dmg/2);
+    }
+    if ID.ap &lt; 0 {ID.ap = 0;}
+    ID.killer_id = a_id;
+    ID.kill_type = k_t;
+    with (ID) {plr_send_stat(); plr_send_pain();}
+    plr_send_effect(1, x, y);
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

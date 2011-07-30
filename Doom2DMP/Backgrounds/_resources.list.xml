@@ -3,4 +3,5 @@
   <resource name="bkg_titlepic" type="RESOURCE"/>
   <resource name="bkg_console" type="RESOURCE"/>
   <resource name="bkg_inter" type="RESOURCE"/>
+  <resource name="tex_hud" type="RESOURCE"/>
 </resources>

@@ -16,11 +16,12 @@ global.map_name = 'Unnamed Map';
 global.map_desc = 'Temp Description';
 global.map_mus = 'data\music\AC.xm';
 global.map_bkg = 'data\textures\sky\D2DSKY1.png';
-room_set_width(rm_edit, 1024);
-room_set_height(rm_edit, 1024);
+global.map_w = 2048;
+global.map_h = 2048;
 
 //editor settings
 global.ed_g_sz = 16; //grid size
+background_assign(bk_current, bk_grid16);
 global.ed_g_vis = true; //is it visible
 global.ed_overdel = true; //delete overlaying objects
 spr = -1;

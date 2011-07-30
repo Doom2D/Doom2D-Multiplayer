@@ -16,7 +16,7 @@
     <switchVideoMode>false</switchVideoMode>
   </windowing>
   <splashImage>
-    <showCustom>true</showCustom>
+    <showCustom>false</showCustom>
     <partiallyTransparent>true</partiallyTransparent>
     <alphaTransparency>0</alphaTransparency>
   </splashImage>
@@ -51,7 +51,7 @@
     <product/>
     <copyright/>
     <description/>
-    <directPlayGuid>30363e7328363e7320363e7318363e73</directPlayGuid>
+    <directPlayGuid>11e5791e09d9b143a6b6fac4e7841318</directPlayGuid>
   </gameInfo>
   <system>
     <processPriority>PRIORITY_NORMAL</processPriority>

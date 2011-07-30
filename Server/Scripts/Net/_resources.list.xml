@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-  <resource name="39dll" type="GROUP"/>
   <resource name="Host" type="GROUP"/>
+  <resource name="Player" type="GROUP"/>
+  <resource name="Bot" type="GROUP"/>
+  <resource name="Misc" type="GROUP"/>
+  <resource name="Item" type="GROUP"/>
 </resources>

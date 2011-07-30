@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DESTROY" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">switch p_type
+{
+    case 1:
+    //rocket
+        e = instance_create(x, y, o_explosion);
+        e.l_id = l_id;
+        plr_send_xplos(l_id, 1, x, y);
+        plr_send_effect(4, x, y);
+    break;
+    case 2:
+    //plasma
+        plr_send_effect(5, x, y);
+    break;
+    case 3:
+    //bfg
+        e = instance_create(xprevious, yprevious, o_explosion2);
+        e.l_id = l_id;
+        plr_send_xplos(l_id, 2, x, y);
+        plr_send_sound(22, x, y);
+    break;
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

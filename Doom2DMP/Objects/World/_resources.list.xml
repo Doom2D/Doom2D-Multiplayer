@@ -5,4 +5,9 @@
   <resource name="o_frg" type="RESOURCE"/>
   <resource name="o_jthr" type="RESOURCE"/>
   <resource name="o_liq" type="RESOURCE"/>
+  <resource name="o_item" type="RESOURCE"/>
+  <resource name="o_lift_up" type="RESOURCE"/>
+  <resource name="o_lift_down" type="RESOURCE"/>
+  <resource name="o_lift_left" type="RESOURCE"/>
+  <resource name="o_lift_right" type="RESOURCE"/>
 </resources>

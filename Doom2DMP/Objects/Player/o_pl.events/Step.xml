@@ -13,20 +13,29 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if place_free(x, y+1)
+        <argument kind="STRING">if hsp &lt; 1.5 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn &amp;&amp; !pain &amp;&amp; !attack {spr = 2;}
+if hsp &gt; 1.5 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn &amp;&amp; !pain &amp;&amp; !attack {spr = 2;}
+if hsp &gt; -1.5 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn &amp;&amp; hsp &lt; 1.5 &amp;&amp; !pain &amp;&amp; !attack {spr = 1;}
+if kb_lkdn == 1 {spr = 4; if image_xscale == 1 {w_rot = 315;} else {w_rot = 45;}}
+if kb_lkup == 1 {spr = 3; if image_xscale == 1 {w_rot = 45;} else {w_rot = 315;}}
+if !kb_lkup &amp;&amp; !kb_lkdn {w_rot = 0;}
+if attack == 1
 {
-  gravity = 0.3;
+    if !kb_lkup &amp;&amp; !kb_lkdn {spr = 5;}
+    if kb_lkup {spr = 6;}
+    if kb_lkdn {spr = 7;}
 }
-else
-{
-  gravity = 0;
-}
-if hspeed != 0 {hspeed -= deacc*sign(hspeed);}
-if vspeed &gt; 12 {vspeed = 12;}
-if !place_free(x + hspeed, y){hspeed = 0;}
-image_index += hspeed/5;
+if pain = 1 {spr = 8;}
+image_index += 0.1 + hsp*sign(hsp)/100;
 
-//kb_check();
+if hp &lt; 1 &amp;&amp; dead == 0 {dead = 1;}
+if hp &gt;= 1 &amp;&amp; dead == 1 {dead = 0;}
+
+if dead {exit;}
+plr_phys(kb_left, kb_rght, kb_jump);
+
+
+
 </argument>
       </arguments>
     </action>

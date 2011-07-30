@@ -16,7 +16,8 @@
         <argument kind="STRING">skin = global.pl_skin;
 color = global.pl_color;
 spr = 1;
-image_speed = 0.1;
+image_speed = 0;
+r_weapon = 1;
 skin_load(skin);
 y = 560;
 x = 512;
