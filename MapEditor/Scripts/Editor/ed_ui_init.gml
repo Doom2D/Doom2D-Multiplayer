@@ -14,7 +14,6 @@ ui_mbar_m2 = API_Menu_CreatePopup();
 API_Menu_AddMenu(ui_mbar,ui_mbar_m2,"&Параметры");
 ui_mbar_m2e = API_Menu_AddString (ui_mbar_m2, "&Редактор");
 ui_mbar_m2m = API_Menu_AddString (ui_mbar_m2, "&Карта");
-ui_mbar_m2r = API_Menu_AddString (ui_mbar_m2, "&Рестарт инструментов");
 ui_mbar_m3 = API_Menu_CreatePopup();
 API_Menu_AddMenu(ui_mbar,ui_mbar_m3,"&Справка");
 ui_mbar_m3a = API_Menu_AddString (ui_mbar_m3, "&О программе");

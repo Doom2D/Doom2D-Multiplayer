@@ -30,5 +30,8 @@ if distance_to_object(target) < 1024 && target.object_index == o_pl
     if distance_to_object(target) > 256 && (w == 0 || w == 9) {plr_changewpn();}
     plr_shoot();
 }
+
+if kb_left == 1 {aim = -1;}
+if kb_rght == 1 {aim = 1;}
     
 

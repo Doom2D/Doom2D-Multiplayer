@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="CREATE" id="0">
+<event category="KEYPRESS" id="38">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,9 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">view_xview[1] = -2048;
-view_yview[1] = -2048;
-offset = 0;
+        <argument kind="STRING">if global.con
+{
+    keyboard_string = prev_cmd;
+}
 </argument>
       </arguments>
     </action>

@@ -8,7 +8,8 @@
   </grid>
   <speed>60</speed>
   <persistent>false</persistent>
-  <creationCode/>
+  <creationCode>
+</creationCode>
   <backgroundColor>C0C0C0</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>
   <backgrounds>
@@ -103,5 +104,18 @@
     </instance>
   </instances>
   <tiles/>
-  <editorSettings remember="false"/>
+  <editorSettings remember="true">
+    <size height="0" width="16777215"/>
+    <showGrid>false</showGrid>
+    <showObjects>false</showObjects>
+    <showTiles>false</showTiles>
+    <showBackgrounds>false</showBackgrounds>
+    <showForegrounds>false</showForegrounds>
+    <showViews>false</showViews>
+    <deleteUnderlyingObjects>false</deleteUnderlyingObjects>
+    <deleteUnderlyingTiles>false</deleteUnderlyingTiles>
+    <currentTab>-536870910</currentTab>
+    <horizontalScrollPosition>0</horizontalScrollPosition>
+    <verticalScrollPosition>-2147483648</verticalScrollPosition>
+  </editorSettings>
 </room>

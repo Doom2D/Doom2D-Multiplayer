@@ -13,8 +13,16 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">FMODSoundPlay(global.snd[1]);
-room_goto(rm_menu);
+        <argument kind="STRING">if !variable_local_exists('ingame')
+{
+    snd_play(0);
+    room_goto(rm_menu);
+}
+else
+{
+    snd_play(0);
+    instance_destroy();
+}
 </argument>
       </arguments>
     </action>

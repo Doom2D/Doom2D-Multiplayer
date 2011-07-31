@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">image_index += 0.1;
-wpn += 0.025;
+wpn += 0.005;
 </argument>
       </arguments>
     </action>

@@ -24,6 +24,8 @@ background_replace(bkg_titlepic, 'data/textures/gui/bkg_titlepic.png', 0, 0);
 background_replace(bkg_inter, 'data/textures/gui/bkg_inter.png', 0, 0);
 background_replace(bkg_console, 'data/textures/gui/bkg_console.png', 0, 0);
 background_replace(tex_hud, 'data/textures/gui/tx_hud.png', 0, 0);
+
+mus_play(global.mus_menu);
 </creationCode>
   <backgroundColor>000000</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>

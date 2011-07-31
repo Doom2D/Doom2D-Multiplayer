@@ -170,4 +170,17 @@ global.snd[22] = FMODSoundAdd('data\sounds\weapon\explos.wav', true);
 FMODSoundSetGroup(global.snd[22], 2);
 FMODSoundSet3dMinMaxDistance(global.snd[22], 0, 1024);
 break;
+
+case 23:
+//23 - Superchaingun
+global.snd[23] = FMODSoundAdd('data\sounds\weapon\scgun_fire.wav', true);
+FMODSoundSetGroup(global.snd[23], 2);
+FMODSoundSet3dMinMaxDistance(global.snd[23], 0, 1024);
+break;
+
+case 24:
+//24 - Chat
+global.snd[24] = FMODSoundAdd('data\sounds\menu\radio.wav');
+FMODSoundSetGroup(global.snd[24], 2);
+break;
 }

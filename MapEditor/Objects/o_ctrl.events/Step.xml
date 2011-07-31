@@ -18,14 +18,14 @@ cmd1 = API_Check_Command(1);
 switch (cmd1)
 {
   case ui_mbar_m1q:
-   if API_Dialog_MessageBox(window_handle(), 'Вы действительно уходите?', 'Вопрос жизни, Вселенной и всего такого', MB_YESNO) == 7 {exit;}
+   if API_Dialog_MessageBox(window_handle(), 'Серьезно?', 'Уже уходите?', MB_YESNO) == 7 {exit;}
    game_end();
   break;
   
   case ui_mbar_m1n:
-   if API_Dialog_MessageBox(window_handle(), 'Вы действительно хотите очистить карту?', 'Вопрос жизни, Вселенной и всего такого', MB_YESNO) == 7 {exit;}
+   if API_Dialog_MessageBox(window_handle(), 'Вы действительно хотите очистить карту?', 'Серьезный вопрос', MB_YESNO) == 7 {exit;}
    API_Free();
-   execute_program('d2dmp_ed.exe', 0, 0);
+   if file_exists('Editor.exe') {execute_program('Editor.exe', 0, 0);}
    game_end();
   break;
   
@@ -47,10 +47,6 @@ switch (cmd1)
   
   case ui_mbar_m2m:
     ed_map_settings();
-  break;
-  
-  case ui_mbar_m2r:
-    ed_tools_reset();
   break;
 }
 cmd2 = API_Check_Command(2);

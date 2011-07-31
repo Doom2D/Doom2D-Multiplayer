@@ -16,7 +16,7 @@
         <argument kind="STRING">con_draw();
 draw_set_font(global.fnt_sys);
 draw_rectangle_color(0, 464, 640, 480, c_dkgray, c_dkgray, c_dkgray, c_dkgray, 0);
-draw_text(4, 464, global.sv_name + '  MAP: ' + global.sv_map + '  CL: ' + string(instance_number(o_pl)) + '/' + string(global.sv_maxplayers) + '  ADR: ' + global.sv_ip +':25666  T: ' + string(round(alarm[0]/60)));
+draw_text(4, 464, global.sv_name + '  MAP: ' + global.sv_map + '  CL: ' + string(instance_number(o_pl)) + '/' + string(global.sv_maxplayers) + '  IP: ' + global.sv_ip +':25666  T: ' + string(round(alarm[0]/60)));
 draw_text(596, 464, 'FPS: ' + string(fps));
 draw_set_font(-1);
 </argument>

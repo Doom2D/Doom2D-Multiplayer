@@ -8,4 +8,5 @@ global.key_jmp = vk_shift;
 global.key_str = vk_alt;
 global.key_chat = ord('T');
 global.key_scr = vk_tab;
-global.key_chw = ord('Z');
+global.key_chw = ord('X');
+global.key_chw2 = ord('Z');

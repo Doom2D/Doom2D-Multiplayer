@@ -32,7 +32,7 @@ switch argument0
   case 'Z': _code = ord('Z'); break;
   case 'Ctrl': _code = vk_control; break;
   case 'Alt': _code = vk_alt; break;
-  case 'Space': _code = vk_space; break;
+  case 'Space': case 'Пробел': _code = vk_space; break;
   case 'Shift': _code = vk_shift; break;
   case 'Tab': _code = vk_tab; break;
   case '0': _code = ord('0'); break;
@@ -69,10 +69,11 @@ switch argument0
   case 'Num7': _code = vk_numpad7; break;
   case 'Num8': _code = vk_numpad8; break;
   case 'Num9': _code = vk_numpad9; break;
-  case 'Up': _code = vk_up; break;
-  case 'Down': _code = vk_down; break;
-  case 'Left': _code = vk_left; break;
-  case 'Right': _code = vk_right; break;
+  case 'Up': case 'Вверх': _code = vk_up; break;
+  case 'Down': case 'Вниз': _code = vk_down; break;
+  case 'Left': case 'Влево': _code = vk_left; break;
+  case 'Right': case 'Вправо': _code = vk_right; break;
+  case 'Enter': case 'Ввод': _code = vk_enter; break;
   default: _code = 1;
 }
 return _code;

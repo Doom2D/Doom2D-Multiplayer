@@ -8,8 +8,7 @@
   </grid>
   <speed>60</speed>
   <persistent>false</persistent>
-  <creationCode>mus_play(global.mus_menu);
-for (i = 3; i &lt; 22; i += 1) {snd_free(i);}
+  <creationCode>for (i = 3; i &lt; 32; i += 1) {snd_free(i);}
 </creationCode>
   <backgroundColor>C0C0C0</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>

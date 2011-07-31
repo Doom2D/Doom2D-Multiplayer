@@ -27,5 +27,6 @@ switch (command)
   case '+chat': global.key_chat = key; break;
   case '+scores': global.key_scr = key; break;
   case '+nextweapon': global.key_chw = key; break;
+  case '+prevweapon': global.key_chw2 = key; break;
 }
 //con_add('Команда ' + string(command) + ' теперь висит на клавише ' + string(argument0) + '.');

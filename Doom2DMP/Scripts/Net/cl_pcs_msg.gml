@@ -37,7 +37,7 @@ while 1
             msg_reason = dll39_read_string(0);
             con_add(":: NET: Disconnected - " + msg_reason);
             dll39_socket_close(global.cl_tcp);
-            FMODInstanceStop(global._s_cur_mus);
+            mus_play(global.mus_menu);
             room_goto(rm_menu);
         break;
         
@@ -66,6 +66,7 @@ while 1
             var _str;
             _str = dll39_read_string(0);
             con_add(_str);
+            snd_play(24);
         break;
         
         case 6:

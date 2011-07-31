@@ -1,14 +1,14 @@
 //parses entered command
 //argument0 = command string
 if string(argument0) == '' {exit;}
-cmd = string_explode(argument0, ' ', false);
+prev_cmd = argument0;
+cmd = string_explode(argument0, ' ', false); 
 if is_real(ds_list_find_value(cmd, 0)){exit;}
+con_add('> ' + ds_list_find_value(cmd, 0));
 if ds_list_find_value(cmd, 0) == 'help'
 {
   con_add('==Базовые команды===');
   con_add('help - выводит этот список');
-  con_add('cfg_exec CONF - загружает конфигурацию из файла data\cfg\CONF.cfg');
-  con_add('cfg_save CONF - сохраняет настройки в файл data\cfg\CONF.cfg');
   con_add('echo А - вывести текст А');
   con_add('exit/quit - убить сервер');
   con_add('======================');
@@ -72,7 +72,8 @@ if ds_list_find_value(cmd, 0) == 'sv_map'
     global.sv_map = ds_list_find_value(cmd, 1);
     cfg_write('server.cfg');
     sleep(60);
-    execute_program('d2dmp_sv.exe', -1, 0);
+    if file_exists("Server.exe") {execute_program('Server.exe', -1, 0);}
+    if file_exists("d2dmp_sv.exe") {execute_program('d2dmp_sv.exe', -1, 0);}
     game_end();
     exit;
   }

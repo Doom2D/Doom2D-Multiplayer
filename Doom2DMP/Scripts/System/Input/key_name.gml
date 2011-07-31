@@ -32,7 +32,7 @@ switch argument0
   case ord('Z'): _name = 'Z'; break;
   case vk_control: _name = 'Ctrl'; break;
   case vk_alt: _name = 'Alt'; break;
-  case vk_space: _name = 'Space'; break;
+  case vk_space: _name = 'Пробел'; break;
   case vk_shift: _name = 'Shift'; break;
   case vk_tab: _name = 'Tab'; break;
   case ord('0'): _name = '0'; break;
@@ -68,11 +68,12 @@ switch argument0
   case vk_numpad7: _name = 'Num7'; break;
   case vk_numpad8: _name = 'Num8'; break;
   case vk_numpad9: _name = 'Num9'; break;
-  case vk_up: _name = 'Up'; break;
-  case vk_down: _name = 'Down'; break;
-  case vk_left: _name = 'Left'; break;
-  case vk_right: _name = 'Right'; break;
-  default: _name = 'Unknown';
+  case vk_up: _name = 'Вверх'; break;
+  case vk_down: _name = 'Вниз'; break;
+  case vk_left: _name = 'Влево'; break;
+  case vk_right: _name = 'Вправо'; break;
+  case vk_enter: _name = 'Ввод'; break;
+  default: _name = '???';
 }
 return _name;
 

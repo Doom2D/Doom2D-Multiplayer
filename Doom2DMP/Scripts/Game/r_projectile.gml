@@ -7,5 +7,12 @@
 p = instance_create(argument3, argument4, o_projectile);
 p.l_id = argument0;
 p.image_single = argument1 - 1;
-p.p_spd = 7 + argument1;
+if argument1 == 1 || argument1 == 3
+{
+    p.p_spd = 6;
+}
+else
+{
+    p.p_spd = 8;
+}
 p.direction = argument2;

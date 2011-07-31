@@ -173,7 +173,7 @@ switch argument0
         //shotgun
         if a2 >= 100 && hw[2] == 1 {exit;}
         hw[2] = 1;
-        w = 2;
+        if w < 2 || w == 9 {w = 2;}
         a2 += 12;
         if a2 > 100 {a2 = 100;}
         plr_send_stat();
@@ -184,7 +184,7 @@ switch argument0
         //supershotgun
         if a2 >= 100 && hw[3] == 1 {exit;}
         hw[3] = 1;
-        w = 3;
+        if w < 3 || w == 9 {w = 3;}
         a2 += 12;
         if a2 > 100 {a2 = 100;}
         plr_send_stat();
@@ -195,7 +195,7 @@ switch argument0
         //chaingun
         if a1 >= 400 && hw[4] == 1 {exit;}
         hw[4] = 1;
-        w = 4;
+        if w < 4 || w == 9 {w = 4;}
         a1 += 50;
         if a1 > 400 {a1 = 400;}
         plr_send_stat();
@@ -206,7 +206,7 @@ switch argument0
         //chainsaw
         if hw[9] == 1 {exit;}
         hw[9] = 1;
-        w = 9;
+        if w < 9 {w = 9;}
         plr_send_stat();
         plr_send_sound(4, x, y);
         alarm[6] = 1;
@@ -216,7 +216,7 @@ switch argument0
         //rocketlauncher
         if a3 >= 50 && hw[5] == 1 {exit;}
         hw[5] = 1;
-        w = 5;
+        if w < 5 || w == 9 {w = 5;}
         a3 += 5;
         if a3 > 50 {a3 = 50;}
         plr_send_stat();
@@ -227,7 +227,7 @@ switch argument0
         //plasmagun
         if a4 >= 400 && hw[6] == 1 {exit;}
         hw[6] = 1;
-        w = 6;
+        if w < 6 {w = 6;}
         a4 += 40;
         if a4 > 400 {a4 = 400;}
         plr_send_stat();
@@ -238,7 +238,7 @@ switch argument0
         //bfg
         if a4 >= 400 && hw[7] == 1 {exit;}
         hw[7] = 1;
-        w = 7;
+        if w < 7 || w == 9 {w = 7;}
         a4 += 80;
         if a4 > 400 {a4 = 400;}
         plr_send_stat();
@@ -249,7 +249,7 @@ switch argument0
         //superchaingun
         if a2 >= 100 && hw[8] == 1 {exit;}
         hw[8] = 1;
-        w = 8;
+        if w < 8 || w == 9 {w = 8;}
         a2 += 100;
         if a2 > 100 {a2 = 100;}
         plr_send_stat();

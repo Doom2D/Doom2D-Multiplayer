@@ -17,7 +17,7 @@
 draw_set_valign(fa_middle);
 draw_set_font(global.fnt_small);
 draw_set_color(c_red);
-draw_text(512, 384, txt + '#(Y / N)');
+draw_text(view_xview + 512, view_yview + 384, txt + '#(Y / N)');
 draw_set_color(c_white);
 draw_set_font(-1);
 draw_set_valign(fa_top);

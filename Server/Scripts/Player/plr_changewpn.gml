@@ -1,15 +1,34 @@
 //this script changes weapon
-for (i = 0; i < 10; i += 1)
+if argument0 == 1
 {
-    if hw[i] && i > w
+    for (i = 0; i < 10; i += 1)
     {
-        w = i;
-        break;
+        if hw[i] && i > w
+        {
+            w = i;
+            break;
+        }
+        if i > 8
+        {
+            w = 0;
+            break;
+        }
     }
-    if i > 8
+}
+else
+{
+    for (i = 9; i > -1; i -= 1)
     {
-        w = 0;
-        break;
+        if hw[i] && i < w
+        {
+            w = i;
+            break;
+        }
+        if i < 0
+        {
+            w = 1;
+            break;
+        }
     }
 }
 if w == 9 {alarm[6] = 1;}

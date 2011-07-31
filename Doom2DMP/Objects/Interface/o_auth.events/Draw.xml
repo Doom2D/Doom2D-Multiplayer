@@ -20,7 +20,7 @@ draw_set_color(c_red);
 draw_text(512, 384, str);
 draw_set_color(c_white);
 draw_set_font(global.fnt_big);
-draw_text(512, 48, 'CREDITS');
+draw_text(512, 48, 'АВТОРЫ');
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
 </argument>

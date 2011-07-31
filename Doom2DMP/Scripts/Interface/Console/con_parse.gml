@@ -1,8 +1,10 @@
 //parses entered command
 //argument0 = command string
 if string(argument0) == '' {exit;}
+prev_cmd = argument0;
 cmd = string_explode(argument0, ' ', false);
 if is_real(ds_list_find_value(cmd, 0)){exit;}
+con_add('> ' + ds_list_find_value(cmd, 0));
 if ds_list_find_value(cmd, 0) == 'help'
 {
   con_add('==Базовые команды===');
@@ -109,6 +111,7 @@ if ds_list_find_value(cmd, 0) == 'bind'
 if ds_list_find_value(cmd, 0) == 'disconnect'
 {
   cl_disconnect();
+  mus_play(global.mus_menu);
   room_goto(rm_menu);
   exit;
 }
@@ -214,5 +217,11 @@ if ds_list_find_value(cmd, 0) == 'sv_rcon_pwd'
   con_add('sv_rcon_pwd = ' + string(global.sv_rcon_pwd));
   exit;
 } 
+if ds_list_find_value(cmd, 0) == 'cls'
+{
+    o_con.con_str = '';
+    o_con.msg_str = '';
+    exit;
+}
 
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)) + '. Введите help для списка команд.');

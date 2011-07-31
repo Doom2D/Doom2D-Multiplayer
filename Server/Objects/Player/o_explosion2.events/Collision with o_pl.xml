@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if !variable_local_exists('l_id') || other.pt &gt; 1 {exit;}
-if collision_line(x, y, other.x, other.y, o_solid, 0, 0) {exit;}
+if collision_line(x, y, other.x, other.y, o_solid, 0, 0) || l_id == other.cl_id {exit;}
 if !global.mp_godmode &amp;&amp; !other.st_inv
 {
 if other.ap &gt; 0

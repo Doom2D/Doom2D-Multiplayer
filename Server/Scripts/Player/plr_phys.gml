@@ -102,7 +102,8 @@ vsp=0
 
 //This last part simply checks if there is ground under the player.
 if place_meeting(x,y+1,o_solid){
-free=false;freemd=true}else{
+free=false;freemd=true}
+else{
 freemd=false
 col_jumpthrough = collision_rectangle(x - 16,y + 32,x + 16,y+36,o_jthr,0,1)
 if col_jumpthrough > 0 and vsp >= 0{

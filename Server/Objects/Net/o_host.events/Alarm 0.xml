@@ -22,7 +22,8 @@ if global.sv_cycle_maps
     global.sv_map = global.map_list_next;
     cfg_write('server.cfg');
     sleep(60);
-    execute_program('d2dmp_sv.exe', -1, 0);
+    if file_exists('Server.exe') {execute_program('Server.exe', -1, 0);}
+    if file_exists("d2dmp_sv.exe") {execute_program('d2dmp_sv.exe', -1, 0);}
     game_end();
 }
 else

@@ -117,9 +117,10 @@ while(1)
         
         case 7:
             //weapon change request
-            var ch_id;
+            var ch_id, ch_t;
             ch_id = dll39_read_byte(0);
-            with global.sv_plr[ch_id] {plr_changewpn();}
+            ch_t = dll39_read_byte(0);
+            with global.sv_plr[ch_id] {plr_changewpn(ch_t);}
         break;
     }
 }

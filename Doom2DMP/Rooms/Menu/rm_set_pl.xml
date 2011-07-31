@@ -114,7 +114,7 @@ str[4, 1] = 'room_goto(rm_set);'
     </instance>
     <instance>
       <object>o_dummy</object>
-      <position x="528" y="608"/>
+      <position x="512" y="608"/>
       <creationCode/>
       <locked>false</locked>
     </instance>

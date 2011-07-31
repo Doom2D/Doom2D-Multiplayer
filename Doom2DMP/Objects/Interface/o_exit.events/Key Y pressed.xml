@@ -13,9 +13,19 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">snd_play(2);
-sleep(3200);
-game_end();
+        <argument kind="STRING">if !variable_local_exists('ingame')
+{
+    snd_play(2);
+    sleep(3200);
+    game_end();
+}
+else
+{
+    snd_play(0);
+    cl_disconnect();
+    mus_play(global.mus_menu);
+    room_goto(rm_menu);
+}
 </argument>
       </arguments>
     </action>

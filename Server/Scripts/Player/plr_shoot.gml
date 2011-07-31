@@ -30,7 +30,6 @@ switch w
         b.kb = st_ber;
         b.alarm[0] = 2;
         plr_send_stat();
-        plr_send_sprite(cl_id, 1, 0);
         plr_send_sound(17, x, y);
         cd = 20;
     break;
@@ -58,7 +57,7 @@ switch w
             b.a_id = cl_id;
             b.a_i_id = id;
             b.dmg = 8;
-            b.direction = b_dir + random(8) - random(8);
+            b.direction = b_dir + random(10) - random(10);
             b.k_t = 2;
         }
         a2 -= 1;
@@ -76,7 +75,7 @@ switch w
             b.a_id = cl_id;
             b.a_i_id = id;
             b.dmg = 10;
-            b.direction = b_dir + random(16) - random(16);
+            b.direction = b_dir + random(20) - random(20);
             b.k_t = 3;
         }
         a2 -= 2;
@@ -107,7 +106,7 @@ switch w
         p.l_id = cl_id;
         p.direction = b_dir;
         p.p_type = 1;
-        p.p_spd = 8;
+        p.p_spd = 6;
         a3 -= 1;
         plr_send_stat();
         plr_send_sprite(cl_id, 1, 0);
@@ -124,7 +123,7 @@ switch w
             p.l_id = cl_id;
             p.direction = b_dir;
             p.p_type = 2;
-            p.p_spd = 9;
+            p.p_spd = 8;
             plr_send_projectile(cl_id, 2, b_dir, x, y);
             plr_send_sprite(cl_id, 1, 0);
         }
@@ -157,8 +156,7 @@ switch w
         //bfg
         if a4 < 40 {exit;}
         a4 -= 40;
-        alarm[5] = 50;
-        plr_send_sprite(cl_id, 1, 0);
+        alarm[5] = 50;     
         plr_send_stat();
         plr_send_sound(16, x, y);
         cd = 120;
@@ -166,16 +164,19 @@ switch w
     case 8:
         //superchaingun
         if a2 < 1 {exit;}
-        b = instance_create(x, y, o_bullet);
-        b.a_id = cl_id;
-        b.a_i_id = id;
-        b.dmg = 30;
-        b.direction = b_dir + random(3) - random(3);
-        b.k_t = 8;
+        repeat (2)
+        {
+            b = instance_create(x, y, o_bullet);
+            b.a_id = cl_id;
+            b.a_i_id = id;
+            b.dmg = 15;
+            b.direction = b_dir + random(5) - random(5);
+            b.k_t = 8;
+        }
         a2 -= 1;
         plr_send_stat();
         plr_send_sprite(cl_id, 1, 0);
-        plr_send_sound(17, x, y);
+        plr_send_sound(23, x, y);
         cd = 7;
     break;
     case 9:
@@ -188,7 +189,6 @@ switch w
         b.kb = st_ber;
         b.alarm[0] = 2;
         plr_send_stat();
-        plr_send_sprite(cl_id, 1, 0);
         if ct < 1 {plr_send_sound(18, x, y); ct = 100;}
         cd = 5;
     break;

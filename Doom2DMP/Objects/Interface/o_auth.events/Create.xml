@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">str = '';
+        <argument kind="STRING">global.map_mus = FMODSoundAdd('data\music\InterMus.xm');
+FMODSoundSetGroup(global.map_mus, 3);
+mus_play(global.map_mus);
+str = '';
 str += 'Doom 2D Multiplayer v0.6###';
 str += 'глава проекта и программер:#Prostovitalik##';
 str += 'художник и генератор идей:#Черный Думер##';

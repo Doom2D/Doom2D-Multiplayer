@@ -100,6 +100,7 @@
       <object>o_menu</object>
       <position x="400" y="368"/>
       <creationCode>menu_init(global.fnt_big, c_white, 5);
+cfg_write('game.cfg');
 str[0, 0] = 'НАСТРОЙКИ';
 str[1, 0] = 'Видео';
 str[1, 1] = 'room_goto(rm_set_gfx);';
