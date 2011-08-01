@@ -122,5 +122,15 @@ while(1)
             ch_t = dll39_read_byte(0);
             with global.sv_plr[ch_id] {plr_changewpn(ch_t);}
         break;
+
+        case 8:
+            //rcon request
+            var r_cmd, r_pwd;
+            if !global.sv_rcon {break;}
+            r_cmd = dll39_read_string(0);
+            r_pwd = dll39_read_string(0);
+            if r_pwd != global.sv_rcon_pwd {break;}
+            con_parse(r_cmd);
+        break;
     }
 }

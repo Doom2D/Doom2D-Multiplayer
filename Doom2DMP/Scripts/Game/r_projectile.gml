@@ -9,7 +9,7 @@ p.l_id = argument0;
 p.image_single = argument1 - 1;
 if argument1 == 1 || argument1 == 3
 {
-    p.p_spd = 6;
+    p.p_spd = 7;
 }
 else
 {

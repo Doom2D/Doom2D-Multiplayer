@@ -104,18 +104,5 @@
     </instance>
   </instances>
   <tiles/>
-  <editorSettings remember="true">
-    <size height="0" width="16777215"/>
-    <showGrid>false</showGrid>
-    <showObjects>false</showObjects>
-    <showTiles>false</showTiles>
-    <showBackgrounds>false</showBackgrounds>
-    <showForegrounds>false</showForegrounds>
-    <showViews>false</showViews>
-    <deleteUnderlyingObjects>false</deleteUnderlyingObjects>
-    <deleteUnderlyingTiles>false</deleteUnderlyingTiles>
-    <currentTab>-536870910</currentTab>
-    <horizontalScrollPosition>0</horizontalScrollPosition>
-    <verticalScrollPosition>-2147483648</verticalScrollPosition>
-  </editorSettings>
+  <editorSettings remember="false"/>
 </room>

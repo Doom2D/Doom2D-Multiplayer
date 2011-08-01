@@ -19,7 +19,7 @@
 }
 else
 {
-  msg_draw();
+  if room == rm_game {msg_draw();}
 }
 </argument>
       </arguments>

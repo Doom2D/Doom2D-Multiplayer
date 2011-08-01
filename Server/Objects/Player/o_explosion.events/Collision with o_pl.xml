@@ -13,11 +13,16 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if other.x &lt; x {other.hsp = -8;}
-if other.x &gt; x {other.hsp = 8;}   
-if other.y &gt; y {other.vsp = 8;} 
-if other.y &lt; y {other.vsp = -8;} 
+        <argument kind="STRING">if global.mp_knockback
+{
+    if other.x &lt; x {other.hsp = -8;}
+    if other.x &gt; x {other.hsp = 8;}   
+    if other.y &gt; y {other.vsp = 8;} 
+    if other.y &lt; y {other.vsp = -8;} 
+}
 if other.pt &gt; 0 {exit;}
+if !variable_local_exists('l_id') {exit;}
+if other.cl_id == l_id &amp;&amp; !global.mp_selfdamage {exit;}
 var dmg, dist;
 dist = distance_to_object(other);
 if !global.mp_godmode &amp;&amp; !other.st_inv {dmg = 96 - dist;} else {dmg = 0;}

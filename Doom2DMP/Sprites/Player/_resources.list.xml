@@ -2,4 +2,6 @@
 <resources>
   <resource name="s_pl_mask" type="RESOURCE"/>
   <resource name="s_wpns" type="RESOURCE"/>
+  <resource name="s_wpns_f" type="RESOURCE"/>
+  <resource name="s_bfg_hit" type="RESOURCE"/>
 </resources>

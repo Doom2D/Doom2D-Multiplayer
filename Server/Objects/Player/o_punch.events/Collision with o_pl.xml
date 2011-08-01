@@ -28,7 +28,7 @@ if other.ap &lt; 0 {other.ap = 0;}
 other.killer_id = p_id;
 other.kill_type = 13 + p_t;
 plr_send_effect(1, other.x, other.y);
-if kb
+if kb &amp;&amp; global.mp_knockback
 {
     if other.x &lt; x {other.hsp = -8; other.vsp = -6;}
     if other.x &gt; x {other.hsp = 8; other.vsp = -6;}   

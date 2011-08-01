@@ -9,8 +9,14 @@ if ds_list_find_value(cmd, 0) == 'help'
 {
   con_add('==Базовые команды===');
   con_add('help - выводит этот список');
+  con_add('clist - вывести список клиентов');
+  con_add('kick ID - кикнуть клиента из слота ID');
+  con_add('ban ID - внести IP клиента из слота ID в банлист');
+  con_add('ban_reload - перезагрузить банлист');
+  con_add('sv_map MAP - кикнуть всех клиентов и сменить карту на MAP');
+  con_add('say A - отослать клиентам сообщение A');
   con_add('echo А - вывести текст А');
-  con_add('exit/quit - убить сервер');
+  con_add('exit/quit - остановить сервер');
   con_add('======================');
   exit;
 }
@@ -21,17 +27,12 @@ if ds_list_find_value(cmd, 0) == 'exit' or ds_list_find_value(cmd, 0) == 'quit'
 }
 if ds_list_find_value(cmd, 0) == 'echo'
 {
-  if is_real(ds_list_find_value(cmd, 1))
-  {
-    con_add('Недопустимое значение аргумента.');
-    exit;
-  }
-  if ds_list_find_value(cmd, 1) == ''
-  {
-    con_add('Недопустимое значение аргумента.');
-    exit;
-  }
-  con_add(string(ds_list_find_value(cmd, 1)));
+  con_echo();
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'say'
+{
+  net_say();
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'clist'
@@ -42,19 +43,9 @@ if ds_list_find_value(cmd, 0) == 'clist'
   con_add('=====================');
   exit;
 }
-if ds_list_find_value(cmd, 0) == 'ban'
-{
-  con_add('Not implemented yet.');
-  exit;
-}
 if ds_list_find_value(cmd, 0) == 'bot_add'
 {
   bot_add();
-  exit;
-}
-if ds_list_find_value(cmd, 0) == 'fps'
-{
-  con_add(string(fps));
   exit;
 }
 if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name')
@@ -85,6 +76,26 @@ if ds_list_find_value(cmd, 0) == 'kick'
   if is_real(ds_list_find_value(cmd, 1)) || string_letters(ds_list_find_value(cmd, 1)) != '' {exit;}
   _id = real(ds_list_find_value(cmd, 1));
   plr_send_kick(_id, 'Kicked by console.');
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'ban'
+{
+  if is_real(ds_list_find_value(cmd, 1)) || string_letters(ds_list_find_value(cmd, 1)) != '' {exit;}
+  _id = real(ds_list_find_value(cmd, 1));
+  net_ban(_id);
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'ban_reload'
+{
+  ds_list_destroy(global.ban_list);
+  global.ban_list = -1;
+  list_load('data\cfg\ip_bans.txt', 'ban_list');
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'sv_rcon_pwd'
+{
+  if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_rcon_pwd); exit;}
+  global.sv_rcon_pwd = ds_list_find_value(cmd, 1);
   exit;
 }
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)));

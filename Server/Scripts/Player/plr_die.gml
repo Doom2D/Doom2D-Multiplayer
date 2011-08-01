@@ -1,6 +1,6 @@
 //kills a player
 //we drop some weapon
-if kill_type != 12 && w > 1
+if kill_type != 12 && w > 1 && global.mp_itemdrop
 {
     i = item_find_slot();
     o = instance_create(x - 32, y - 16, o_item);

@@ -1,7 +1,7 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '106';
+global.sys_bld = '107';
 global.sv_map = 'test_lift';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -27,6 +27,7 @@ global.mp_selfdamage = 1;
 global.mp_flymode = 0;
 global.mp_godmode = 0;
 global.mp_oldaim = 0;
+global.mp_itemdrop = 1;
 global.bot_names = 0;
 global.bot_chatter = 0;
 global.bot_tickrate = 2;
@@ -46,7 +47,7 @@ global.map_list_next = global.sv_map;
 //console
 con_init();
 con_add('================SERVER START================');
-con_add(':: Date: ' + string(current_day) + '.' + string(current_month) + '.' + string(current_year) + ', ' + string(current_hour) + ':' + string(current_minute));
+con_add(':: Date: ' + con_timestamp());
 //fonts
 fnt_load();
 //load config

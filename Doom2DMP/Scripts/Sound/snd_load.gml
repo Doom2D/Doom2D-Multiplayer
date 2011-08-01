@@ -183,4 +183,11 @@ case 24:
 global.snd[24] = FMODSoundAdd('data\sounds\menu\radio.wav');
 FMODSoundSetGroup(global.snd[24], 2);
 break;
+
+case 25:
+//25 - Plasma splash
+global.snd[25] = FMODSoundAdd('data\sounds\weapon\splash.wav', true);
+FMODSoundSetGroup(global.snd[25], 2);
+FMODSoundSet3dMinMaxDistance(global.snd[25], 0, 512);
+break;
 }

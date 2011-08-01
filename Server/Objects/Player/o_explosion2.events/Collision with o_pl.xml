@@ -30,10 +30,13 @@ if other.ap &lt; 0 {other.ap = 0;}
 other.kill_type = 7;
 other.killer_id = l_id;
 }
-if other.x &lt; x {other.hsp = -6;}
-if other.x &gt; x {other.hsp = 6;}   
-if other.y &gt; y {other.vsp = 6;} 
-if other.y &lt; y {other.vsp = -6;} 
+if global.mp_knockback
+{
+    if other.x &lt; x {other.hsp = -6;}
+    if other.x &gt; x {other.hsp = 6;}   
+    if other.y &gt; y {other.vsp = 6;} 
+    if other.y &lt; y {other.vsp = -6;} 
+}
 with (other)
 {
     plr_send_stat();

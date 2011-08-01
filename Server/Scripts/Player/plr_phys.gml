@@ -141,7 +141,7 @@ if place_meeting(x, y, o_jthr)
 
 if vsp > 10 {vsp = 10;}
 
-if place_meeting(x, y, o_lift_up) && vsp > -6 {vsp -= 0.5;}
+if place_meeting(x, y, o_lift_up) && vsp > -5 {vsp -= 0.5;}
 if place_meeting(x, y, o_lift_down) && vsp > 3 {vsp -= 0.5;}
 if place_meeting(x, y, o_lift_left) {free = false; if vsp < -1 {vsp += 1;} if vsp > 1 {vsp -= 1;}; if hsp > -8 {hsp -= 0.5;}}
 if place_meeting(x, y, o_lift_right) {free = false; if vsp < -1 {vsp += 1;} if vsp > 1 {vsp -= 1;}; if hsp < 8 {hsp += 0.5;}}

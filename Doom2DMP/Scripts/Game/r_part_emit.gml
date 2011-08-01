@@ -52,6 +52,6 @@ switch argument0
     case 7:
     //bfg splash
         s = instance_create(argument1, argument2, o_splash);
-        s.sprite_index = s_splash2;
+        s.sprite_index = s_bfg_hit;
     break;
 }

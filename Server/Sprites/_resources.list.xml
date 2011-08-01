@@ -4,5 +4,4 @@
   <resource name="Item" type="GROUP"/>
   <resource name="World" type="GROUP"/>
   <resource name="UI" type="GROUP"/>
-  <resource name="msk_punch" type="RESOURCE"/>
 </resources>

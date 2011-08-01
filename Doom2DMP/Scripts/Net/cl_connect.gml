@@ -20,6 +20,8 @@ for(i=0; i < 24000; i+=1)
     global.cl_itm[i] = noone;
 }
 
+con_parse('cls');
+
 //try to connect
 con_add(":: NET: Trying to connect to " + global.sv_ip + ":" + string(global.sv_port) + "...");
 screen_redraw();

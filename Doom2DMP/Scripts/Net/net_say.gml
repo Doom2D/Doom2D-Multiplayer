@@ -15,7 +15,7 @@ _str = global.pl_name + ': ';
 
 for (i = 1; i < c + 1; i += 1)
 {
-    _str += ds_list_find_value(cmd, i) + ' ';
+    if !is_real(ds_list_find_value(cmd, i)) {_str += string(ds_list_find_value(cmd, i)) + ' ';}
 }
 
 dll39_buffer_clear(0);

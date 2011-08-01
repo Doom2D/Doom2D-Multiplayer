@@ -3,8 +3,8 @@
   <origin x="22" y="22"/>
   <mask>
     <separate>false</separate>
-    <shape>PRECISE</shape>
-    <bounds alphaTolerance="0" mode="FULL"/>
+    <shape>RECTANGLE</shape>
+    <bounds alphaTolerance="0" mode="AUTO"/>
   </mask>
   <preload>true</preload>
   <smoothEdges>false</smoothEdges>

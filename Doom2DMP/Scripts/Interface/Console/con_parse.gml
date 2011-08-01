@@ -223,5 +223,10 @@ if ds_list_find_value(cmd, 0) == 'cls'
     o_con.msg_str = '';
     exit;
 }
+if ds_list_find_value(cmd, 0) == 'rcon'
+{
+    net_rcon();
+    exit;
+}
 
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)) + '. Введите help для списка команд.');

@@ -3,5 +3,6 @@
   <resource name="id_to_cl" type="RESOURCE"/>
   <resource name="net_my_ip" type="RESOURCE"/>
   <resource name="net_list_clients" type="RESOURCE"/>
-  <resource name="List" type="GROUP"/>
+  <resource name="net_ban" type="RESOURCE"/>
+  <resource name="net_say" type="RESOURCE"/>
 </resources>

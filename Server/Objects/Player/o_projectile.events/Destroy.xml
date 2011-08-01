@@ -24,14 +24,15 @@
     break;
     case 2:
     //plasma
-        plr_send_effect(5, x, y);
+        if !water {plr_send_effect(5, x, y);}
+        plr_send_sound(25, x, y);
     break;
     case 3:
     //bfg
         e = instance_create(xprevious, yprevious, o_explosion2);
         e.l_id = l_id;
-        plr_send_xplos(l_id, 2, x, y);
-        plr_send_sound(22, x, y);
+        if !water {plr_send_xplos(l_id, 2, x, y);
+        plr_send_sound(22, x, y);}
     break;
 }
 </argument>

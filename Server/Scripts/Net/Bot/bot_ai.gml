@@ -6,6 +6,7 @@ if !bot_check_ammo() {plr_changewpn();}
 if !instance_exists(target) {exit;} //if target does not exist, fuck the shit
 
 if random(10) < global.bot_randrate {exit;} else {kb_jump = 0;}
+if hw[2] || hw[3] || hw[4] || hw[5] ||  hw[6] ||  hw[7] || hw[8] && w < 2 {plr_changewpn(1);}     
 
 //basic obstacle avoiding
 if place_meeting(x + hsp + 30*sign(hsp), y, o_solid) || (!place_meeting(x + hsp + 30*sign(hsp), y + 128, o_solid) && !place_meeting(x + hsp + 30*sign(hsp), y + 4, o_solid)) {kb_jump = 1;} else {kb_jump = 0;}

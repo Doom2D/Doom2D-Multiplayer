@@ -25,7 +25,7 @@ switch (cmd1)
   case ui_mbar_m1n:
    if API_Dialog_MessageBox(window_handle(), 'Вы действительно хотите очистить карту?', 'Серьезный вопрос', MB_YESNO) == 7 {exit;}
    API_Free();
-   if file_exists('Editor.exe') {execute_program('Editor.exe', 0, 0);}
+   if file_exists('MapEditor.exe') {execute_program('MapEditor.exe', 0, 0);}
    game_end();
   break;
   

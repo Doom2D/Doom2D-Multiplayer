@@ -46,7 +46,7 @@ p = instance_create(x, y, o_projectile);
 p.l_id = cl_id;
 p.direction = b_dir;
 p.p_type = 3;
-p.p_spd = 6;
+p.p_spd = 7;
 plr_send_sprite(cl_id, 1, 0); 
 plr_send_projectile(cl_id, 3, b_dir, x, y);
 </argument>

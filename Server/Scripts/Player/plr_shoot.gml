@@ -106,7 +106,7 @@ switch w
         p.l_id = cl_id;
         p.direction = b_dir;
         p.p_type = 1;
-        p.p_spd = 6;
+        p.p_spd = 7;
         a3 -= 1;
         plr_send_stat();
         plr_send_sprite(cl_id, 1, 0);
