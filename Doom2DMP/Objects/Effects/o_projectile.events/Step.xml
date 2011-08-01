@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if !variable_local_exists('p_spd') {exit;}
-if place_meeting(x, y, o_liq) {speed = p_spd/2; if image_single &gt; 0 {instance_destroy();}} else {speed = p_spd;}
+if place_meeting(x, y, o_liq) {speed = 3; if image_single &gt; 0 {instance_destroy();}} else {speed = p_spd;}
 if x &lt; 0 || y &lt; 0 || x &gt; global.map_w || y &gt; global.map_h {instance_destroy();}
 if place_meeting(x, y, o_lift_up) {vspeed -= 0.5;}
 if place_meeting(x, y, o_lift_down) {vspeed += 0.5;}

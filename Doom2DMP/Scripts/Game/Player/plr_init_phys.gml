@@ -10,7 +10,7 @@ freemd = true;
 acc = 0.4;
 deacc = 0.2;
 
-maxhspd = 5;
+maxhspd = 4;
 maxvspd = 16;
 jspd = 6.1; //single jump height
 

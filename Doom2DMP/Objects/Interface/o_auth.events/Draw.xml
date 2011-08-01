@@ -14,14 +14,21 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
+draw_set_font(global.fnt_big);
+draw_set_color(c_white);
+draw_text(512, 32, 'АВТОРЫ');
 draw_set_font(global.fnt_small);
 draw_set_color(c_red);
-draw_text(512, 384, str);
+draw_text(512, 72, str[0]);
+draw_set_halign(fa_left);
+draw_text(200, 128, str[1]);
 draw_set_color(c_white);
-draw_set_font(global.fnt_big);
-draw_text(512, 48, 'АВТОРЫ');
-draw_set_valign(fa_top);
+draw_set_halign(fa_right);
+draw_text(1024-200, 128, str[2]);
+draw_set_halign(fa_center);
+draw_set_color(c_red);
+draw_set_font(global.fnt_small);
+draw_text(512, 680, str[3]);
 draw_set_halign(fa_left);
 </argument>
       </arguments>

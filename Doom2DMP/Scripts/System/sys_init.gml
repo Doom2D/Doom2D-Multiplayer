@@ -1,5 +1,5 @@
 global.sys_ver = '0.6';
-global.sys_bld = '107';
+global.sys_bld = '108';
 global.sys_log = 'client';
 _pth = 'data\logs\' + string(global.sys_log) + '.log';
 _log = file_text_open_write(_pth);
@@ -27,6 +27,8 @@ global.r_names = 1;
 global.r_gfx = 1;
 global.map_h = 1024;
 global.map_w = 1024;
+global.map_md5 = '';
+global.sv_map_md5 = '';
 global.inter_text[0] = '';
 global.inter_text[1] = '';
 global.inter_text[2] = '';

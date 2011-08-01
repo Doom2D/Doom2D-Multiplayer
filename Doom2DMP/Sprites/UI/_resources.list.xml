@@ -3,4 +3,5 @@
   <resource name="Fonts" type="GROUP"/>
   <resource name="s_marker" type="RESOURCE"/>
   <resource name="s_hud_weaps" type="RESOURCE"/>
+  <resource name="msg_button" type="RESOURCE"/>
 </resources>

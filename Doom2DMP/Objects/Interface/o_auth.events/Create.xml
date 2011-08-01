@@ -16,13 +16,26 @@
         <argument kind="STRING">global.map_mus = FMODSoundAdd('data\music\InterMus.xm');
 FMODSoundSetGroup(global.map_mus, 3);
 mus_play(global.map_mus);
-str = '';
-str += 'Doom 2D Multiplayer v0.6###';
-str += 'глава проекта и программер:#Prostovitalik##';
-str += 'художник и генератор идей:#Черный Думер##';
-str += 'некоторые скрипты:#Кто-то##';
-str += 'тестеры:#Jabberwock#Черный Думер#Dendroidon#Hero#IDDQD Community# и другие##';
-str += '###спасибо также:# Марку Овермарсу за Game Maker#ONL1NE за его Online Engine#Prikol Software за Doom 2D#Разработчикам D2DF за графику и другие вещи#';
+str[0] = 'Doom 2D Multiplayer#v. ' + global.sys_ver + ' Build ' + global.sys_bld;
+
+str[1] = '';
+str[1] += 'Программер: ';
+str[1] += '###Художник: ';
+str[1] += '###Мапперы: ';
+str[1] += '###';
+str[1] += '###Тестеры: ';
+str[1] += '######';
+str[1] += '###Особая благодарность:'
+
+str[2] = '';
+str[2] += 'PrimuS';
+str[2] += '###Черный Думер';
+str[2] += '###ar888#Черный Думер#PrimuS#Prikol Software';
+str[2] += '###Черный Думер#ar888#Jabberwock#Doom2D.org Community#IDDQD.ru Community#и др.';
+str[2] += '####ID Software#Prikol Software#Doom2D.org Community#kt0-t0#Jenner#39ster#hobbl#YoYo Games#ZURG#и др.';
+
+str[3] = 'Игра сделана на Game Maker 8.0 с использованием FMOD (GMFMOD) и WinApi.#Большая часть графики и звуков честно украдена у#ID Software, Prikol Software и разработчиков D2DF.#Все права на эти хорошие вещи принадлежат их владельцам.#2011';
+
 </argument>
       </arguments>
     </action>

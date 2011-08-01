@@ -76,6 +76,7 @@ dll39_write_byte(1, 0);
 dll39_write_byte(_id, 0);
 dll39_write_string(global.sv_name, 0);
 dll39_write_string(global.sv_map, 0);
+dll39_write_string(global.map_md5, 0);
 dll39_write_byte(global.sv_maxplayers, 0);
 dll39_message_send(cl_sock, 0, 0, 0);
 

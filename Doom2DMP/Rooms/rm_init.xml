@@ -20,10 +20,17 @@ if !file_exists('fmodex.dll')
 }
 
 //load backgrounds
-background_replace(bkg_titlepic, 'data/textures/gui/bkg_titlepic.png', 0, 0);
-background_replace(bkg_inter, 'data/textures/gui/bkg_inter.png', 0, 0);
-background_replace(bkg_console, 'data/textures/gui/bkg_console.png', 0, 0);
-background_replace(tex_hud, 'data/textures/gui/tx_hud.png', 0, 0);
+background_replace(bkg_titlepic, 'data/gui/bkg_titlepic.png', 0, 0);
+background_replace(bkg_inter, 'data/gui/bkg_inter.png', 0, 0);
+background_replace(bkg_console, 'data/gui/bkg_console.png', 0, 0);
+background_replace(tex_hud, 'data/gui/tx_hud.png', 0, 0);
+background_replace(bkg_msg, 'data/gui/tx_msg.png', 0, 0);
+sprite_replace(msg_button, 'data/gui/tx_msg_btn.png', 0, 0, 0, 0, 0,)
+
+//message bg
+message_background(bkg_msg);
+message_button(msg_button);
+message_input_color(c_black);
 
 mus_play(global.mus_menu);
 </creationCode>

@@ -1,7 +1,7 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '107';
+global.sys_bld = '108';
 global.sv_map = 'test_lift';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -43,6 +43,7 @@ global.map_list = -1;
 global.ban_list = -1;
 global.map_list_ind = -1;
 global.map_list_next = global.sv_map;
+global.map_md5 = '';
 
 //console
 con_init();

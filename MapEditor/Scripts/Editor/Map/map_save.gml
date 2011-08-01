@@ -1,5 +1,6 @@
 //saves current map
 f = get_save_filename('D2DMP Maps|*.dlv', 'data\maps\Unnamed.dlv');
+if is_real(f) || f == '' {exit;}
 file = file_text_open_write(f);
 file_text_write_string(file, global.map_name);
 file_text_writeln(file);

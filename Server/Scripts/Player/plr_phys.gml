@@ -123,7 +123,7 @@ if free=true {
 vsp += 0.22;
 }
 
-if !free {hsp = max(0,abs(hsp)-deacc)*sign(hsp)}
+if !free {hsp = max(0,abs(hsp)-deacc)*sign(hsp)} else {hsp = max(0,abs(hsp)-deacc/4)*sign(hsp)}
 //////
 if place_meeting(x, y - 15, o_water) || place_meeting(x, y - 15, o_acid)
 {

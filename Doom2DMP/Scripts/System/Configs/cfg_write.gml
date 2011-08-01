@@ -32,6 +32,8 @@ file_text_write_string(cfg, 'r_massacre ' + string(global.r_massacre));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'r_names ' + string(global.r_names));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'r_window ' + string(1 - window_get_fullscreen()));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 's_preload ' + string(global.s_preload));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 's_vol_sound ' + string(round(FMODGroupGetVolume(2)*100)));

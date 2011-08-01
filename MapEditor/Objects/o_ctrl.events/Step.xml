@@ -82,6 +82,10 @@ if cmd3 != 0
             API_Window_Destroy(ui_win2);
             API_Control_Destroy(ui_win2);
         break;
+
+        case ui_win2_cb1:
+            global.ed_outline = API_Button_GetCheck(ui_win2_cb1);
+        break;
     }
 }
 cmd4 = API_Check_Command(4);
@@ -98,7 +102,7 @@ if cmd4 != 0
         break;
         
         case ui_win3_b2:
-            _tmp = get_open_filename('Images |*.tga; *.png; *.jpg; *.gif', 'data\textures\sky\D2DSKY1.png');
+            _tmp = get_open_filename('Images |*.tga; *.png; *.jpg; *.gif', 'data\sky\D2DSKY1.png');
             if !file_exists(_tmp) {exit;}
             _tmp = string_replace(_tmp, working_directory + '\', '');
             global.map_bkg = _tmp;

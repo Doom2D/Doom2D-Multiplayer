@@ -20,7 +20,7 @@ ui_mbar_m3a = API_Menu_AddString (ui_mbar_m3, "&О программе");
 API_Menu_Set(window_handle(), ui_mbar);
 
 //toolbox
-ui_win1 = API_Window_Create(window_handle(), window_get_x() + 200, window_get_y() + 44, 196, 128, WS_OVERLAPPED|WS_CAPTION, 0);
+ui_win1 = API_Window_Create(window_handle(), window_get_x(), window_get_y(), 196, 128, WS_OVERLAPPED|WS_CAPTION, 0);
 API_Check_Set (2, ui_win1);
 
 API_Window_SetText(ui_win1, 'Инструменты');

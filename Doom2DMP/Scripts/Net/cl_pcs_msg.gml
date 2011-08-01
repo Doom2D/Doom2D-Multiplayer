@@ -24,9 +24,22 @@ while 1
             con_add(':: NET: Got accepted in slot ' + string(global.pl_id) + '.');
             global.sv_name = dll39_read_string(0);
             global.sv_map = dll39_read_string(0);
+            global.sv_map_md5 = dll39_read_string(0);
             global.sv_maxplayers = dll39_read_byte(0);
-            con_add('Welcome to ' + global.sv_name + ' on ' + global.sv_map + '!');
             map_load(global.sv_map);
+            con_add(':: MAP: Loaded map ' + global.sv_map);
+            con_add(':: MAP: Client MD5: ' + global.map_md5);
+            con_add(':: MAP: Server MD5: ' + global.sv_map_md5);
+            if global.map_md5 != global.sv_map_md5
+            {
+                con_add(':: MAP: MD5s does not match. Exiting...');
+                cl_disconnect();
+                mus_play(global.mus_menu);
+                room_goto(rm_menu);
+                exit;
+            }
+            con_add(':: MAP: MD5s match. OK');
+            con_add('Welcome to ' + global.sv_name + ' on ' + global.sv_map + '!');
             instance_create(0, 0, o_hud);
             alarm[0] = 5;
         break;
@@ -238,7 +251,7 @@ while 1
             global.cl_plr[spr_id].attack = spr_attack;
             global.cl_plr[spr_id].pain = spr_pain;
             global.cl_plr[spr_id].alarm[0] = 32;
-            global.cl_plr[spr_id].alarm[1] = 16;
+            global.cl_plr[spr_id].alarm[1] = 10;
         break;
         
         case 15:
