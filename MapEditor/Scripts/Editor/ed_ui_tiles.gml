@@ -29,7 +29,7 @@ API_Combobox_AddString(ui_tl_cb, 'Рюкзак');
 API_Combobox_AddString(ui_tl_cb, 'Обойма');
 API_Combobox_AddString(ui_tl_cb, 'Коробка патронов');
 API_Combobox_AddString(ui_tl_cb, '4 гильзы');
-API_Combobox_AddString(ui_tl_cb, '24 гильзы'); //24
+API_Combobox_AddString(ui_tl_cb, '12 гильз'); //24
 API_Combobox_AddString(ui_tl_cb, '1 граната');
 API_Combobox_AddString(ui_tl_cb, '10 гранат');
 API_Combobox_AddString(ui_tl_cb, '1 ракета');

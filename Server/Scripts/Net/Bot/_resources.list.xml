@@ -6,4 +6,6 @@
   <resource name="instance_nearest_nth" type="RESOURCE"/>
   <resource name="instance_find_health" type="RESOURCE"/>
   <resource name="bot_check_ammo" type="RESOURCE"/>
+  <resource name="bot_select_name" type="RESOURCE"/>
+  <resource name="bot_chat" type="RESOURCE"/>
 </resources>

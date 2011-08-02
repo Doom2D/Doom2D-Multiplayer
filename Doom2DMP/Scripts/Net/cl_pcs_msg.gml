@@ -203,7 +203,7 @@ while 1
         
         case 10:
             //item create
-            var _id, it, xx, yy, o;
+            var _id, it, xx, yy, o, dr;
             _id = dll39_read_short(0);
             _it = dll39_read_byte(0);
             xx = dll39_read_short(0);

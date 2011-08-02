@@ -8,7 +8,7 @@
   </grid>
   <speed>60</speed>
   <persistent>false</persistent>
-  <creationCode>for (i = 3; i &lt; 32; i += 1) {snd_free(i);}
+  <creationCode>for (i = 3; i &lt; 26; i += 1) {snd_free(i);}
 </creationCode>
   <backgroundColor>C0C0C0</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>

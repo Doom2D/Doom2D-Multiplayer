@@ -19,7 +19,7 @@ if collision_line(x, y, target.x, target.y, o_solid, 0, 1) {kb_lkup = 0; kb_lkdn
 //if he is in sight, run to him
 if target.x < x - 2 {kb_left = 1; kb_rght = 0;}
 if target.x > x + 2 {kb_left = 0; kb_rght = 1;}
-if target.y < y - 16 {kb_jump = 1;}
+if target.y < y - 16 {kb_jump = 1;} else {kb_jump = 0;}
 
 //and kill him
 if distance_to_object(target) < 1024 && target.object_index == o_pl

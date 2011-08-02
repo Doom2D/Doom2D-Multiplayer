@@ -13,10 +13,10 @@ if argument1 == 1
 }
 if argument1 == 2
 {
-    p.p_spd = 8.5;
+    p.p_spd = 8;
 }
 if argument1 == 3
 {
-    p.p_spd = 10;
+    p.p_spd = 9;
 }
 p.direction = argument2;

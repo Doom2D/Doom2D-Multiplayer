@@ -16,7 +16,7 @@ if ds_list_find_value(cmd, 0) == 'help'
   con_add('sv_map MAP - кикнуть всех клиентов и сменить карту на MAP');
   con_add('say A - отослать клиентам сообщение A');
   con_add('echo А - вывести текст А');
-  con_add('exit/quit - остановить сервер');
+  con_add('exit/quit - выключить сервер');
   con_add('======================');
   exit;
 }

@@ -42,9 +42,10 @@ frag = 0;
 dead = 0;
 ping = 0;
 drown = 0; //if we are drowning
-st_inv = 0;
-st_jet = 0;
-st_ber = 0;
+st_inv = 0; //invulnerability
+st_jet = 0; //jetpack
+st_ber = 0; //berserk
+st_bpk = 0; //backpack
 alarm[0] = 2;
 </argument>
       </arguments>

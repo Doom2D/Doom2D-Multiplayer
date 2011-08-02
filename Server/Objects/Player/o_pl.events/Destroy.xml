@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">//DED
+        <argument kind="STRING">//remove nick from taken nick list
+ds_list_delete(global.name_taken, list_get_ind('name_taken', cl_name));
+
+//DED
 dll39_socket_close(cl_tcp);
 </argument>
       </arguments>

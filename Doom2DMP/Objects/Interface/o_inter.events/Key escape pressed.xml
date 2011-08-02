@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">mus_play(global.mus_menu);
+        <argument kind="STRING">snd_play(26);
+mus_play(global.mus_menu);
 room_goto(rm_menu);
 </argument>
       </arguments>

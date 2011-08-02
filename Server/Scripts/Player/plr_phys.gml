@@ -17,7 +17,7 @@ if argument1 && !argument0
 }
 if argument2 && (!free || global.mp_flymode || st_jet)
 {
-    if !place_meeting(x, y - 32, o_water) && !place_meeting(x, y - 32, o_acid)
+    if !place_meeting(x, y - 32, o_water) && !place_meeting(x, y - 32, o_acid) && !st_jet
     {
         vsp =- jspd;
     }
@@ -139,7 +139,7 @@ if place_meeting(x, y, o_jthr)
     free = false;
 }
 
-if vsp > 10 {vsp = 10;}
+if vsp > 12 {vsp = 12;}
 
 if place_meeting(x, y, o_lift_up) && vsp > -5 {vsp -= 0.5;}
 if place_meeting(x, y, o_lift_down) && vsp > 3 {vsp -= 0.5;}

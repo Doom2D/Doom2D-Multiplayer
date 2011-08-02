@@ -1,3 +1,3 @@
 //execs selected menu string's script
-FMODSoundPlay(global.snd[1]);
+if sel != menu_n {snd_play(1);} else {snd_play(26);}
 execute_string(string(str[sel, 1]));

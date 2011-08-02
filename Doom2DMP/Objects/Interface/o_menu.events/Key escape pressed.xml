@@ -15,6 +15,7 @@
       <arguments>
         <argument kind="STRING">if room != rm_menu
 {
+    snd_play(26);
     room_goto(rm_menu);
 }
 </argument>

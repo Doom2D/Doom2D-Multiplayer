@@ -21,7 +21,7 @@
 }
 else
 {
-    snd_play(0);
+    snd_play(26);
     cl_disconnect();
     mus_play(global.mus_menu);
     room_goto(rm_menu);

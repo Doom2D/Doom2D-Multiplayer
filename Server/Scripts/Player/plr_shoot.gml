@@ -123,7 +123,7 @@ switch w
             p.l_id = cl_id;
             p.direction = b_dir;
             p.p_type = 2;
-            p.p_spd = 8.5;
+            p.p_spd = 8;
             plr_send_projectile(cl_id, 2, b_dir, x, y);
             plr_send_sprite(cl_id, 1, 0);
         }

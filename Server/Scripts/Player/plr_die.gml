@@ -15,7 +15,16 @@ plr_send_stat();
 alarm[1] = global.mp_respawn*60; 
 x = -512; 
 y = -512; 
-plr_send_pos(); 
+plr_send_pos();    
 alarm[2] = 1800;
 drown = 0; 
 dead = 1;
+
+if !instance_exists(id_to_cl(killer_id)) || killer_id <= 0 || !global.bot_chatter {exit;}
+with (id_to_cl(killer_id))
+{
+    if variable_local_exists('cl_is_bot')
+    {
+    bot_chat();
+    }
+}

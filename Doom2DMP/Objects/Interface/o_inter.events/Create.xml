@@ -16,6 +16,7 @@
         <argument kind="STRING">global.map_mus = FMODSoundAdd('data\music\InterMus.xm');
 FMODSoundSetGroup(global.map_mus, 3);
 mus_play(global.map_mus);
+snd_play(26);
 </argument>
       </arguments>
     </action>

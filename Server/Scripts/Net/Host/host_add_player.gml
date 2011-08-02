@@ -45,5 +45,8 @@ with cl_inst {plr_send_pos();}
 //and his stats
 with cl_inst {plr_send_stat();}
 
+//add his nick to taken nick list
+list_add('name_taken', argument2);
+
 //and return his instance
 return cl_inst;

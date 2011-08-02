@@ -23,9 +23,9 @@ draw_set_color(c_red);
 draw_text(512, 64, global.inter_text[2]);
 draw_set_color(c_white);
 draw_set_halign(fa_left);
-draw_text(256, 128, "ИМЯ: #" + global.inter_text[0]);
+draw_text(256, 128, "N:  ИМЯ: ##" + global.inter_text[0]);
 draw_set_halign(fa_right);
-draw_text(1024 - 256, 128, "ФРАГИ: #" + global.inter_text[1]);
+draw_text(1024 - 256, 128, "ФРАГИ: ##" + global.inter_text[1]);
 draw_set_halign(fa_left);
 
 </argument>

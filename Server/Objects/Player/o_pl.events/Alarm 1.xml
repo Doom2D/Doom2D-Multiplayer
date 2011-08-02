@@ -25,6 +25,7 @@ w = 1;
 st_inv = 0;
 st_jet = 0;
 st_ber = 0;
+st_bpk = 0;
 hw[0] = 1;
 hw[1] = 1;
 hsp = 0;

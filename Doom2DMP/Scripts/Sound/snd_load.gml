@@ -190,4 +190,10 @@ global.snd[25] = FMODSoundAdd('data\sounds\weapon\splash.wav', true);
 FMODSoundSetGroup(global.snd[25], 2);
 FMODSoundSet3dMinMaxDistance(global.snd[25], 0, 512);
 break;
+
+case 26:
+//26 - Quit
+global.snd[26] = FMODSoundAdd('data\sounds\menu\close.wav');
+FMODSoundSetGroup(global.snd[26], 2);
+break;
 }
