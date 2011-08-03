@@ -3,7 +3,7 @@
   <caption/>
   <size height="768" width="1024"/>
   <grid>
-    <isometric>false</isometric>
+    <isometric>true</isometric>
     <snap x="16" y="16"/>
   </grid>
   <speed>60</speed>

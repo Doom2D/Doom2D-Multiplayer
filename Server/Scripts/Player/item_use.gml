@@ -74,10 +74,10 @@ switch argument0
     break;
     case 10:
         //backpack
-        a1 += 50; if a1 > 400 {a1 = 400;}
-        a2 += 12; if a2 > 100 {a2 = 100;}
-        a3 += 5; if a3 > 100 {a3 = 100;}
-        a4 += 80; if a4 > 600 {a4 = 600;}
+        a1 += 10; if a1 > 400 {a1 = 400;}
+        a2 += 4; if a2 > 100 {a2 = 100;}
+        a3 += 1; if a3 > 100 {a3 = 100;}
+        a4 += 40; if a4 > 600 {a4 = 600;}
         st_bpk = 1;
         plr_send_stat();
         plr_send_sound(4, x, y);
@@ -175,7 +175,7 @@ switch argument0
         //shotgun
         if a2 >= 50 + 50*st_bpk && hw[2] == 1 {exit;}
         hw[2] = 1;
-        a2 += 12;
+        a2 += 4;
         if a2 > 50 + 50*st_bpk {a2 = 50 + 50*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
@@ -185,7 +185,7 @@ switch argument0
         //supershotgun
         if a2 >= 50 + 50*st_bpk && hw[3] == 1 {exit;}
         hw[3] = 1;
-        a2 += 12;
+        a2 += 4;
         if a2 > 50 + 50*st_bpk {a2 = 50 + 50*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
@@ -214,7 +214,7 @@ switch argument0
         //rocketlauncher
         if a3 >= 50 + 50*st_bpk && hw[5] == 1 {exit;}
         hw[5] = 1;
-        a3 += 5;
+        a3 += 2;
         if a3 > 50 + 50*st_bpk {a3 = 50 + 50*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
@@ -234,7 +234,7 @@ switch argument0
         //bfg
         if a4 >= 300 + 300*st_bpk && hw[7] == 1 {exit;}
         hw[7] = 1;
-        a4 += 80;
+        a4 += 40;
         if a4 > 300 + 300*st_bpk {a4 = 300 + 300*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
@@ -244,7 +244,7 @@ switch argument0
         //superchaingun
         if a2 >= 50 + 50*st_bpk && hw[8] == 1 {exit;}
         hw[8] = 1;
-        a2 += 50;
+        a2 += 25;
         if a2 > 50 + 50*st_bpk {a2 = 50 + 50*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
