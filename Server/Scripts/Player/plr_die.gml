@@ -10,11 +10,21 @@ if kill_type != 12 && w > 1 && global.mp_itemdrop
     global.sv_itm[i] = o;
     item_send_create(i, o.item, x - 32, y - 16);
 }
+if kill_type != 12 && st_bpk && global.mp_itemdrop
+{
+    i = item_find_slot();
+    o = instance_create(x - 32, y - 16, o_item);
+    o.item_id = i;
+    o.item = 10;
+    o.drop = 1;
+    global.sv_itm[i] = o;
+    item_send_create(i, o.item, x - 32, y - 16);
+}
 plr_send_dead(killer_id, cl_id, kill_type); 
 plr_send_stat(); 
 alarm[1] = global.mp_respawn*60; 
-x = -512; 
-y = -512; 
+x = -9000; 
+y = -9000; 
 plr_send_pos();    
 alarm[2] = 1800;
 drown = 0; 
@@ -25,6 +35,6 @@ with (id_to_cl(killer_id))
 {
     if variable_local_exists('cl_is_bot')
     {
-    bot_chat();
+        bot_chat();
     }
 }

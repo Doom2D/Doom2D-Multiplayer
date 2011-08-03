@@ -102,12 +102,20 @@
       <creationCode>menu_init(global.fnt_big, c_white, 4);
 str[1, 0] = 'Начать игру';
 str[1, 1] = 'room_goto(rm_set_ip);';
+str[1, 2] = '';
+str[1, 3] = '';
 str[2, 0] = 'Настройки';
 str[2, 1] = 'room_goto(rm_set)';
+str[2, 2] = '';
+str[2, 3] = '';
 str[3, 0] = 'Авторы';
 str[3, 1] = 'room_goto(rm_credits)';
+str[3, 2] = '';
+str[3, 3] = '';
 str[4, 0] = 'Выход';
 str[4, 1] = 'room_goto(rm_exit);';
+str[4, 2] = '';
+str[4, 3] = '';
 </creationCode>
       <locked>false</locked>
     </instance>

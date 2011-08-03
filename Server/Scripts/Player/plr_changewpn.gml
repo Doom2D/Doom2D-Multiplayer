@@ -17,16 +17,17 @@ if argument0 == 1
 }
 else
 {
-    for (i = 9; i > -1; i -= 1)
+    for (i = 9; i > -2; i -= 1)
     {
+        if i < 0
+        {
+            w = 10;
+            plr_changewpn(2);
+            break;
+        }
         if hw[i] && i < w
         {
             w = i;
-            break;
-        }
-        if i < 0
-        {
-            w = 1;
             break;
         }
     }

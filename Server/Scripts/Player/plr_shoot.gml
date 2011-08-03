@@ -26,7 +26,7 @@ switch w
         b.p_id = cl_id;
         b.p_t = 0;
         b.image_angle = b_dir;
-        b.dmg = 9 + st_ber * 11;
+        b.dmg = 10 + st_ber * 20;
         b.kb = st_ber;
         b.alarm[0] = 2;
         plr_send_stat();
@@ -39,7 +39,7 @@ switch w
         b = instance_create(x, y, o_bullet);
         b.a_id = cl_id;
         b.a_i_id = id;
-        b.direction = b_dir;
+        b.direction = b_dir + random(3) - random(3);
         b.dmg = 9;
         b.k_t = 1;
         a1 -= 1;
@@ -90,7 +90,7 @@ switch w
         b = instance_create(x, y, o_bullet);
         b.a_id = cl_id;
         b.a_i_id = id;
-        b.direction = b_dir + random(3) - random(3);
+        b.direction = b_dir + random(4) - random(4);
         b.dmg = 6;
         b.k_t  = 4;
         a1 -= 1;
@@ -123,7 +123,7 @@ switch w
             p.l_id = cl_id;
             p.direction = b_dir;
             p.p_type = 2;
-            p.p_spd = 8;
+            p.p_spd = 9;
             plr_send_projectile(cl_id, 2, b_dir, x, y);
             plr_send_sprite(cl_id, 1, 0);
         }
@@ -185,8 +185,8 @@ switch w
         b.p_id = cl_id;
         b.p_t = 1;
         b.image_angle = b_dir;
-        b.dmg = 12 + st_ber * 8;
-        b.kb = st_ber;
+        b.dmg = 16;
+        b.kb = 0;
         b.alarm[0] = 2;
         plr_send_stat();
         if ct < 1 {plr_send_sound(18, x, y); ct = 100;}

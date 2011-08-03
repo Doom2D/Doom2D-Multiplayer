@@ -12,7 +12,7 @@ else
 {
     _name = bot_select_name();
 }
-_skin = choose("doomer", "mario", "ssman", "ewj");
+_skin = choose("doomer", "mario", "ssman");
 _color = make_color_rgb(round(random(255)), round(random(255)), round(random(255)));
 
 _bot = host_add_player(_id, -1, _name, _skin, _color, true);

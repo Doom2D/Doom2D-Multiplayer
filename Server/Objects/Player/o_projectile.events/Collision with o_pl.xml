@@ -32,7 +32,14 @@ if !other.st_inv &amp;&amp; !global.mp_godmode
 if other.ap &lt; 0 {other.ap = 0;}
 other.killer_id = l_id;
 other.kill_type = 6;
-with (other) {plr_send_stat(); plr_send_pain();}
+if global.mp_knockback
+{
+    if other.x &lt; x {other.hsp -= 1;}
+    if other.x &gt; x {other.hsp += 1;}   
+    if other.y &gt; y + 8 {other.vsp += 1;} 
+    if other.y &lt; y - 8 {other.vsp -= 1;} 
+}
+with (other) {plr_send_stat(); plr_send_pain(); plr_send_speed();}
 plr_send_effect(1, other.x, other.y);
 instance_destroy();
 //instance_create(x, y, o_explosion);

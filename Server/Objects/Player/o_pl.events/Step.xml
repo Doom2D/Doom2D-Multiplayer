@@ -31,8 +31,8 @@ ct -= 1;
 if hp &lt; 1 &amp;&amp; dead == 0 {plr_die();}
 if hp &gt;= 1 &amp;&amp; dead == 1 {dead = 0;}
 
-if place_meeting(x, y - 32, o_water) &amp;&amp; drown == 0  &amp;&amp; alarm[2] &lt; 1 {alarm[2] = 1800;}
-if !place_meeting(x, y - 32, o_water) &amp;&amp; drown == 1 {drown = 0;}
+if place_meeting(x, y - 15, o_water) &amp;&amp; drown == 0  &amp;&amp; alarm[2] &lt; 1 {alarm[2] = 1800;}
+if !place_meeting(x, y - 15, o_water) &amp;&amp; drown == 1 {drown = 0;}
 
 if drown &amp;&amp; pt &lt; 0 
 {

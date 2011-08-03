@@ -4,7 +4,7 @@ if string(argument0) == '' {exit;}
 prev_cmd = argument0;
 cmd = string_explode(argument0, ' ', false); 
 if is_real(ds_list_find_value(cmd, 0)){exit;}
-con_add('> ' + ds_list_find_value(cmd, 0));
+con_add('> ' + argument0);
 if ds_list_find_value(cmd, 0) == 'help'
 {
   con_add('==Базовые команды===');
@@ -14,8 +14,8 @@ if ds_list_find_value(cmd, 0) == 'help'
   con_add('ban ID - внести IP клиента из слота ID в банлист');
   con_add('ban_reload - перезагрузить банлист');
   con_add('sv_map MAP - кикнуть всех клиентов и сменить карту на MAP');
-  con_add('say A - отослать клиентам сообщение A');
-  con_add('echo А - вывести текст А');
+  con_add('say STR - отослать клиентам сообщение STR');
+  con_add('echo STR - вывести текст STR');
   con_add('exit/quit - выключить сервер');
   con_add('======================');
   exit;
@@ -59,7 +59,10 @@ if ds_list_find_value(cmd, 0) == 'sv_map'
   if !file_exists('data\maps\' + ds_list_find_value(cmd, 1) + '.dlv') {exit;}
   if global.map_w != 0 
   {
-    with (o_pl) {plr_send_kick(cl_id, 'Server is changing map.');}
+    old = global.sv_cycle_maps;
+    global.sv_cycle_maps = 1;
+    with (o_pl) {plr_send_gameover();}
+    global.sv_cycle_maps = old;
     global.sv_map = ds_list_find_value(cmd, 1);
     cfg_write('server.cfg');
     sleep(60);

@@ -56,7 +56,14 @@ if (hit_player = true)
     if ID.ap &lt; 0 {ID.ap = 0;}
     ID.killer_id = a_id;
     ID.kill_type = k_t;
-    with (ID) {plr_send_stat(); plr_send_pain();}
+    if global.mp_knockback
+    {
+        if ID.x &lt; x {ID.hsp -= 1;}
+        if ID.x &gt; x {ID.hsp += 1;}   
+        if ID.y &gt; y + 8 {ID.vsp += 1;} 
+        if ID.y &lt; y - 8 {ID.vsp -= 1;} 
+    }
+    with (ID) {plr_send_stat(); plr_send_pain(); plr_send_speed();}
     plr_send_effect(1, x, y);
 }
 </argument>

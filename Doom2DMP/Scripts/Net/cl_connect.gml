@@ -32,6 +32,7 @@ if !dll39_tcp_connected(global.cl_tcp)
     //did not connect
     con_add(':: NET ERROR: Could not connect to ' + string(global.sv_ip) + ':' + string(global.sv_port)); 
     dll39_socket_close(global.cl_tcp);
+    mus_play(global.mus_menu);
     room_goto(rm_menu);
 }
 else

@@ -8,7 +8,7 @@ if is_real(ds_list_find_value(cmd, 2)) || string_letters(ds_list_find_value(cmd,
   con_add(string(global.pl_color));
   exit;
 } 
-if is_real(ds_list_find_value(cmd, 3)) || string_letters(ds_list_find_value(cmd, 3)) != ''
+if is_real(ds_list_find_value(cmd, 3)) || room == rm_game || string_letters(ds_list_find_value(cmd, 3)) != ''
 {
   con_add(string(global.pl_color));
   exit;

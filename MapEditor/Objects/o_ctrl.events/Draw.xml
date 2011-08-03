@@ -16,7 +16,7 @@
         <argument kind="STRING">ed_spr_select();
 if sprite_exists(spr)
 {
-  draw_sprite_ext(spr, im, floor(mouse_x/global.ed_g_sz)*global.ed_g_sz, floor(mouse_y/global.ed_g_sz)*global.ed_g_sz, 1, 1, 0, c_white, 0.5);
+  draw_sprite_ext(spr, im, floor(mouse_x/global.ed_g_sz)*global.ed_g_sz, floor(mouse_y/global.ed_g_sz)*global.ed_g_sz, 1, 1, 0, c_white, 0.7);
 }
 draw_set_color(c_white);
 draw_set_alpha(0.75);

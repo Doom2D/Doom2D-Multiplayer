@@ -18,8 +18,9 @@ if place_meeting(x, y, o_water) || place_meeting(x, y, o_acid) {speed = 2.35; if
 if x &lt; 0 || y &lt; 0 || x &gt; global.map_w || y &gt; global.map_h {instance_destroy();}
 if place_meeting(x, y, o_lift_up) {vspeed -= 0.5;}
 if place_meeting(x, y, o_lift_down) {vspeed += 0.5;}
-if place_meeting(x, y, o_lift_left) {hspeed -= 1;}
-if place_meeting(x, y, o_lift_right) {hspeed += 1;}
+if place_meeting(x, y, o_lift_left) {hspeed -= 1; if direction == 0  {speed -= 1;}; if direction == 180  {speed += 1;}}
+if place_meeting(x, y, o_lift_right) {hspeed -= 1; if direction == 0  {speed += 1;}; if direction == 180  {speed -= 1;}}
+if p_type == 1 {image_angle = direction;}
 </argument>
       </arguments>
     </action>

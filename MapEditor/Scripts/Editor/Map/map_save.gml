@@ -1,5 +1,9 @@
 //saves current map
 f = get_save_filename('D2DMP Maps|*.dlv', 'data\maps\Unnamed.dlv');
+if file_exists(f)
+{
+    if API_Dialog_MessageBox(window_handle(), 'Файл ' + f + ' уже  существует. Перезаписать?', 'Серьезный вопрос', MB_YESNO) == 7 {exit;}
+}
 if is_real(f) || f == '' {exit;}
 file = file_text_open_write(f);
 file_text_write_string(file, global.map_name);

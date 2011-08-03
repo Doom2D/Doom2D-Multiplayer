@@ -280,7 +280,7 @@ while 1
         
         case 19:
             //game over
-            r_inter();
+            r_inter(dll39_read_byte(0));
             cl_disconnect();
             room_goto(rm_inter);
         break;

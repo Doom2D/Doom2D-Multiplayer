@@ -136,6 +136,17 @@ str[4, 1] = 'if global.r_names {global.r_names = 0; str[4, 0] = "Имена: Н�
 
 str[5, 0] = 'Назад';
 str[5, 1] = 'room_goto(rm_set);';
+
+str[1, 2] = '';
+str[1, 3] = '';
+str[2, 2] = '';
+str[2, 3] = '';
+str[3, 2] = '';
+str[3, 3] = '';
+str[4, 2] = '';
+str[4, 3] = '';
+str[5, 2] = '';
+str[5, 3] = '';
 </creationCode>
       <locked>false</locked>
     </instance>

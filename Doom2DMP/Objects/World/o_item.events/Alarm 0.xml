@@ -25,27 +25,27 @@ switch item
     
     case 3:
         sprite_index = s_item_armor1;
-        image_speed = 0.1;
+        image_speed = 0.05;
     break;
     
     case 4:
         sprite_index = s_item_armor2;
-        image_speed = 0.1;
+        image_speed = 0.05;
     break;
     
     case 5:
         sprite_index = s_item_bsphr;
-        image_speed = 0.1;
+        image_speed = 0.05;
     break;
     
     case 6:
         sprite_index = s_item_wsphr;
-        image_speed = 0.1;
+        image_speed = 0.05;
     break;
     
     case 7:
         sprite_index = s_item_inv;
-        image_speed = 0.1;
+        image_speed = 0.05;
     break;
     
     case 8:

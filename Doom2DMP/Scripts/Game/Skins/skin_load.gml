@@ -35,6 +35,18 @@ file_text_readln(info);
 sprites[7, 2] = file_text_read_real(info);
 file_text_readln(info);
 sprites[8, 2] = file_text_read_real(info);
+file_text_readln(info);
+r_xoff[1] = file_text_read_real(info);
+file_text_readln(info);
+r_yoff[1] = file_text_read_real(info);
+file_text_readln(info);
+r_xoff[2] = file_text_read_real(info);
+file_text_readln(info);
+r_yoff[2] = file_text_read_real(info);
+file_text_readln(info);
+r_xoff[3] = file_text_read_real(info);
+file_text_readln(info);
+r_yoff[3] = file_text_read_real(info);
 file_text_close(info);
 
 //walk spr

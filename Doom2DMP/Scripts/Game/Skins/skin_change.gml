@@ -3,7 +3,7 @@ if is_real(ds_list_find_value(cmd, 1))
   con_add(string(global.pl_skin));
   exit;
 }
-if ds_list_find_value(cmd, 1) == ''
+if ds_list_find_value(cmd, 1) == '' || room == rm_game
 {
   con_add(string(global.pl_skin));
   exit;

@@ -30,7 +30,7 @@ if argument0 != argument1 && argument0 != 0
     {
         o_host.alarm[0] = 1;
     }
-    }
+}
 with (global.sv_plr[argument0]) {plr_send_stat();}
 
 global.sv_plr[argument1].hp = 0;

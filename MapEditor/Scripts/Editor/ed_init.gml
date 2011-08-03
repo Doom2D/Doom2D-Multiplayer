@@ -24,7 +24,7 @@ global.ed_g_sz = 16; //grid size
 background_assign(bk_current, bk_grid16);
 global.ed_g_vis = true; //is it visible
 global.ed_overdel = true; //delete overlaying objects
-global.ed_outline = true; //outline the objects
+global.ed_outline = false; //outline the objects
 spr = -1;
 tx = 0;
 im = 0;

@@ -23,6 +23,7 @@ else
     ap -= other.dmg;
     hp -= round(other.dmg/2);
 }
+if ap &lt; 0 {ap = 0;}
 killer_id = 0;
 kill_type = 10;
 plr_send_stat();

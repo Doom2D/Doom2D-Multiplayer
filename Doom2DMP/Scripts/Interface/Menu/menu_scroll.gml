@@ -5,7 +5,7 @@ if argument0 = 1
 {
   if sel < menu_n
   {
-    str[sel, 2] = false;
+    str[sel, 4] = false;
     sel += 1;
   }
   else
@@ -17,7 +17,7 @@ if argument0 = -1
 {
   if sel > 1
   {
-    str[sel, 2] = false;
+    str[sel, 4] = false;
     sel -= 1;
   }
   else

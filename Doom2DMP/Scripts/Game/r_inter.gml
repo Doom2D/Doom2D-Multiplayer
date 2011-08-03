@@ -41,3 +41,5 @@ for (i = 1; i <= frg[0, 0]; i+=1)
     global.inter_text[0] += string(i) + '. ' + frg[order[i], 1] + ": #";
     global.inter_text[1] += string(frg[order[i], 2]) + '#';
 }
+
+if argument0 {global._inter_reconnect = true;} else {global._inter_reconnect = false;}

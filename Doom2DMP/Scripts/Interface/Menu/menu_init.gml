@@ -8,10 +8,10 @@ sel = 1;
 menu_n = argument2;
 menu_sc = argument1;
 menu_f = argument0;
-str[1, 2] = true;
+str[1, 4] = true;
 for (i = 2; i < menu_n; i += 1)
 {
-  str[i, 2] = false;
+  str[i, 4] = false;
 }
 
 

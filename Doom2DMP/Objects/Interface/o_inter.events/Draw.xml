@@ -28,6 +28,10 @@ draw_set_halign(fa_right);
 draw_text(1024 - 256, 128, "ФРАГИ: ##" + global.inter_text[1]);
 draw_set_halign(fa_left);
 
+if global._inter_reconnect
+{
+    draw_text(8, 750, 'Переподключение через ' + string(alarm[0]/60) + ' сек.');
+}
 </argument>
       </arguments>
     </action>

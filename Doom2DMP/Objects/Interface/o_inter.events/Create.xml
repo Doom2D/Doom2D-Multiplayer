@@ -17,6 +17,7 @@
 FMODSoundSetGroup(global.map_mus, 3);
 mus_play(global.map_mus);
 snd_play(26);
+if global._inter_reconnect {alarm[0] = 60*20;}
 </argument>
       </arguments>
     </action>

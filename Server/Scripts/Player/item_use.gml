@@ -40,7 +40,8 @@ switch argument0
     case 5:
         //soulsphere
         if hp >= 200 {exit;}
-        if hp < 200 {hp = 200;}
+        hp += 100;
+        if hp > 200 {hp = 200;}
         plr_send_stat();
         plr_send_sound(5, x, y);
         with (other) {instance_destroy();}
@@ -48,7 +49,7 @@ switch argument0
     case 6:
         //megasphere
         if hp >= 200 && ap >= 200 {exit;}
-        if hp < 200 {hp = 200;}
+        if hp < 200 && !st_inv {hp = 200;}
         ap = 200;
         plr_send_stat();
         plr_send_sound(5, x, y);
@@ -122,7 +123,7 @@ switch argument0
     case 14:
         //box of shells
         if a2 >= 50 + 50*st_bpk {exit;}
-        a2 += 12;
+        a2 += 25;
         if a2 > 50 + 50*st_bpk {a2 = 50 + 50*st_bpk;}
         plr_send_stat();
         plr_send_sound(3, x, y);

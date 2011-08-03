@@ -15,9 +15,9 @@ if argument1 && !argument0
     if hsp < maxhspd {hsp += acc;}
     //if !kb_strf {aim = 1;}
 }
-if argument2 && (!free || global.mp_flymode || st_jet)
+if argument2 && !free && !global.mp_flymode && !st_jet
 {
-    if !place_meeting(x, y - 32, o_water) && !place_meeting(x, y - 32, o_acid) && !st_jet
+    if !place_meeting(x, y - 32, o_water) && !place_meeting(x, y - 32, o_acid)
     {
         vsp =- jspd;
     }
@@ -25,6 +25,10 @@ if argument2 && (!free || global.mp_flymode || st_jet)
     {
         vsp = -2;
     }
+}
+if argument2 && st_jet
+{
+    vsp = -4;
 }
 //this piece of code is responsive for physics and is taken full from jenner's platform physics engine with minor changes
 //all shit reserved
@@ -128,6 +132,7 @@ if !free {hsp = max(0,abs(hsp)-deacc)*sign(hsp)} else {hsp = max(0,abs(hsp)-deac
 if place_meeting(x, y - 15, o_water) || place_meeting(x, y - 15, o_acid)
 {
     free = false;
+    if st_jet {st_jet = 0;}
     if vsp > 2 {vsp = 2;}
     if vsp < -2 {vsp = -2;}
     if hsp > 2 {hsp = 2;}
@@ -139,7 +144,7 @@ if place_meeting(x, y, o_jthr)
     free = false;
 }
 
-if vsp > 12 {vsp = 12;}
+if vsp > 13 - st_jet*8 {vsp = 13 - st_jet*8;}
 
 if place_meeting(x, y, o_lift_up) && vsp > -5 {vsp -= 0.5;}
 if place_meeting(x, y, o_lift_down) && vsp > 3 {vsp -= 0.5;}

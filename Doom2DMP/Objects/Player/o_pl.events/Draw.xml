@@ -18,8 +18,8 @@ if !variable_local_exists('cl_color') {exit;}
 if !variable_global_exists('cl_inst') {exit;}
 if dead {exit;}
 if !pain &amp;&amp; r_weapon 
-{
-    if !attack {draw_sprite_ext(s_wpns, w, x, y, image_xscale, image_yscale, w_rot, c_white, 1);} else {draw_sprite_ext(s_wpns_f, w, x, y, image_xscale, image_yscale, w_rot, c_white, 1);}
+{ 
+    if !attack {draw_sprite_ext(s_wpns, w, x + r_xoff[r_off]*image_xscale, y + r_yoff[r_off], image_xscale, image_yscale, w_rot, c_white, 1);} else {draw_sprite_ext(s_wpns_f, w, x + r_xoff[r_off]*image_xscale, y + r_yoff[r_off], image_xscale, image_yscale, w_rot, c_white, 1);}
 }
 if hp == 250 &amp;&amp; image_alpha == 1 {image_alpha = 0.25;}
 if hp &lt; 250 &amp;&amp; image_alpha == 0.25 {image_alpha = 1;}

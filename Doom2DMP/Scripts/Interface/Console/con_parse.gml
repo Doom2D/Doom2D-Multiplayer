@@ -4,7 +4,7 @@ if string(argument0) == '' {exit;}
 prev_cmd = argument0;
 cmd = string_explode(argument0, ' ', false);
 if is_real(ds_list_find_value(cmd, 0)){exit;}
-con_add('> ' + ds_list_find_value(cmd, 0));
+con_add('> ' + argument0);
 if ds_list_find_value(cmd, 0) == 'help'
 {
   con_add('==Базовые команды===');
@@ -30,12 +30,12 @@ if ds_list_find_value(cmd, 0) == 'name'
     con_add(string(global.pl_name));
     exit;
   } 
-  if ds_list_find_value(cmd, 1) == ''
+  if ds_list_find_value(cmd, 1) == '' || room == rm_game
   {
     con_add(string(global.pl_name));
     exit;
   } 
-  global.pl_name = ds_list_find_value(cmd, 1);
+  global.pl_name = string_delete(ds_list_find_value(cmd, 1), 17, string_length(ds_list_find_value(cmd, 1)));;
   exit;
 }
 if ds_list_find_value(cmd, 0) == 's_vol_sound'

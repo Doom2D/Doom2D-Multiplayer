@@ -109,6 +109,17 @@ str[3, 0] = 'Скин';
 str[3, 1] = 'con_parse("skin " + string_replace(string_replace(get_open_filename("INFO|INFO", "data\skins\doomer\INFO"), working_directory + "\data\skins\", ""), "\INFO", "")); with(o_dummy){instance_destroy();}; instance_create(0, 592, o_dummy);';
 str[4, 0] = 'Назад'
 str[4, 1] = 'room_goto(rm_set);'
+
+str[1, 2] = '';
+str[1, 3] = '';
+str[2, 2] = '';
+str[2, 3] = '';
+str[3, 2] = '';
+str[3, 3] = '';
+str[4, 2] = '';
+str[4, 3] = '';
+str[5, 2] = '';
+str[5, 3] = '';
 </creationCode>
       <locked>false</locked>
     </instance>
