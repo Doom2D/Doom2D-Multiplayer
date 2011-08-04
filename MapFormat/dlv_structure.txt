@@ -13,7 +13,7 @@ data\textures\WALL100.tga - текстура 5
 data\textures\STD_9.tga - текстура 6
 data\textures\STD_4_4.tga - текстура 7
 data\textures\WATER_0.png - текстура 8
-2 - тип тайла (см.аттач)
+2 - тип тайла
 4 - номер текстуры + 1
 240 - х
 576 - у

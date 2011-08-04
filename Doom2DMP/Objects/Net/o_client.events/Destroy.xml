@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">con_add("wut");
+        <argument kind="STRING">con_add(":: NET: FATAL ERROR: Client processing stopped. Check your cl_pcs_msgs() code.");
 </argument>
       </arguments>
     </action>

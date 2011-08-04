@@ -20,16 +20,16 @@ _cl_bld = dll39_read_string(0);
 _cl_pwd = dll39_read_string(0);
 _ip = dll39_lastin_ip();
 
-con_add(":: Client " + string(_name) + " is trying to connect from " + string(_ip) + ". Trying to accept...");
+con_add(":: NET: Клиент " + string(_name) + " запрашивает соединение с IP " + string(_ip) + ". Обработка...");
 
 if !(_cl_ver == global.sys_ver && _cl_bld == global.sys_bld)
 {
     //kick the fucker if version mismatch
     dll39_buffer_clear(0);
     dll39_write_byte(2, 0);
-    dll39_write_string('Connection refused: Version mismatch.', 0);
+    dll39_write_string('В соединении отказано: Версии клиента и сервера не совпадают.', 0);
     dll39_message_send(cl_sock, 0, 0, 0);
-    con_add(":: Connection refused: Version mismatch.");
+    con_add(":: NET: В соединении отказано: Версии клиента и сервера не совпадают.");
     exit;
 }
 
@@ -38,9 +38,9 @@ if global.sv_use_pwd && _cl_pwd != global.sv_password
     //or password mismatch
     dll39_buffer_clear(0);
     dll39_write_byte(2, 0);
-    dll39_write_string('Connection refused: Wrong password.', 0);
+    dll39_write_string('В соединении отказано: Неверный пароль.', 0);
     dll39_message_send(cl_sock, 0, 0, 0);
-    con_add(":: Connection refused: Wrong password.");
+    con_add(":: NET: В соединении отказано: Неверный пароль.");
     exit;
 }
 
@@ -50,9 +50,9 @@ if global.sv_ipbans
     {
         dll39_buffer_clear(0);
         dll39_write_byte(2, 0);
-        dll39_write_string('Connection refused: Your IP is banned.', 0);
+        dll39_write_string('В соединении отказано: Вы забанены на этом сервере.', 0);
         dll39_message_send(cl_sock, 0, 0, 0);
-        con_add(":: Connection refused: This IP is in the banlist.");
+        con_add(":: NET: В соединении отказано: Этот IP есть в банлисте.");
         exit;
     }
 }
@@ -62,7 +62,7 @@ if instance_number(o_pl) == global.sv_maxplayers
     //or server is full
     dll39_buffer_clear(0);
     dll39_write_byte(2, 0);
-    dll39_write_string('Connection refused: Server is full.', 0);
+    dll39_write_string('В соединении отказано: Сервер полон.', 0);
     dll39_message_send(cl_sock, 0, 0, 0);
     exit;
 }
@@ -78,6 +78,7 @@ dll39_write_string(global.sv_name, 0);
 dll39_write_string(global.sv_map, 0);
 dll39_write_string(global.map_md5, 0);
 dll39_write_byte(global.sv_maxplayers, 0);
+dll39_write_string(global.sv_welcome, 0);
 dll39_message_send(cl_sock, 0, 0, 0);
 
 _cl = host_add_player(_id, cl_sock, _name, _skin, _color, false);
@@ -114,6 +115,6 @@ with(o_item)
 dll39_set_sync(cl_sock, 1);
 
 //message
-con_add(':: Client ' + string(_name) + ' accepted in slot ' + string(_cl.cl_id) + '.');
+con_add(':: NET: Клиент ' + string(_name) + ' принят в слот ' + string(_cl.cl_id) + '.');
 
 

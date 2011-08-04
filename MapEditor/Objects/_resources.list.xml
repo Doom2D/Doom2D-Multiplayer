@@ -10,4 +10,5 @@
   <resource name="o_item" type="RESOURCE"/>
   <resource name="o_spawn" type="RESOURCE"/>
   <resource name="par_obj" type="RESOURCE"/>
+  <resource name="o_cam" type="RESOURCE"/>
 </resources>

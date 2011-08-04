@@ -19,8 +19,9 @@ while(1)
             var c_id;
             //con_add("DEBUG: Received disconnect message");
             c_id = dll39_read_byte(0);
+            if !instance_exists(global.sv_plr[c_id]) {break;}
             
-            con_add(":: Client " + string(global.sv_plr[c_id].cl_name) + "[" + string(c_id) + "] left.");
+            con_add(":: NET: Клиент " + string(global.sv_plr[c_id].cl_name) + "[" + string(c_id) + "] вышел.");
             with global.sv_plr[c_id] {instance_destroy();}      
             global.sv_plr[c_id] = noone;
             
@@ -61,6 +62,7 @@ while(1)
             //controls update
             var c_id;
             c_id = dll39_read_byte(0);
+            if !instance_exists(global.sv_plr[c_id]) {break;}
             new_left = dll39_read_byte(0);
             new_right = dll39_read_byte(0);
             global.sv_plr[c_id].kb_jump = dll39_read_byte(0);
@@ -112,6 +114,7 @@ while(1)
             //someone attacks
             var attacker_id;
             attacker_id = dll39_read_byte(0);
+            if !instance_exists(global.sv_plr[attacker_id]) {break;}
             with global.sv_plr[attacker_id] {plr_shoot();}
         break;
         
@@ -119,6 +122,7 @@ while(1)
             //weapon change request
             var ch_id, ch_t;
             ch_id = dll39_read_byte(0);
+            if !instance_exists(global.sv_plr[ch_id]) {break;}
             ch_t = dll39_read_byte(0);
             with global.sv_plr[ch_id] {plr_changewpn(ch_t);}
         break;
@@ -132,5 +136,8 @@ while(1)
             if r_pwd != global.sv_rcon_pwd {break;}
             con_parse(r_cmd);
         break;
+        
+        default:
+            con_add(":: NET: Мусорный пакет.");
     }
 }

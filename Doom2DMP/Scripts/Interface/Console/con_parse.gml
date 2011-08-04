@@ -35,7 +35,7 @@ if ds_list_find_value(cmd, 0) == 'name'
     con_add(string(global.pl_name));
     exit;
   } 
-  global.pl_name = string_delete(ds_list_find_value(cmd, 1), 17, string_length(ds_list_find_value(cmd, 1)));;
+  global.pl_name = string_delete(ds_list_find_value(cmd, 1), 17, string_length(ds_list_find_value(cmd, 1)));
   exit;
 }
 if ds_list_find_value(cmd, 0) == 's_vol_sound'
@@ -197,7 +197,7 @@ if ds_list_find_value(cmd, 0) == 'sv_password'
     con_add(string(global.sv_password));
     exit;
   } 
-  global.sv_password = ds_list_find_value(cmd, 1);
+  global.sv_password = string_delete(ds_list_find_value(cmd, 1), 9, string_length(ds_list_find_value(cmd, 1)));
   con_add('sv_password = ' + string(global.sv_password));
   exit;
 }    
@@ -213,7 +213,7 @@ if ds_list_find_value(cmd, 0) == 'sv_rcon_pwd'
     con_add(string(global.sv_rcon_pwd));
     exit;
   } 
-  global.sv_rcon_pwd = ds_list_find_value(cmd, 1);
+  global.sv_rcon_pwd = string_delete(ds_list_find_value(cmd, 1), 9, string_length(ds_list_find_value(cmd, 1)))
   con_add('sv_rcon_pwd = ' + string(global.sv_rcon_pwd));
   exit;
 } 

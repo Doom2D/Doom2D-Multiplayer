@@ -2,6 +2,6 @@
 <resources>
   <resource name="rm_init" type="RESOURCE"/>
   <resource name="rm_game" type="RESOURCE"/>
-  <resource name="Menu" type="GROUP"/>
   <resource name="rm_inter" type="RESOURCE"/>
+  <resource name="Menu" type="GROUP"/>
 </resources>

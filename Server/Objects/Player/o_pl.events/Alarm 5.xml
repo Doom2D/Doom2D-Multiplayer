@@ -15,10 +15,10 @@
       <arguments>
         <argument kind="STRING">//bfg projectile
 if w != 7 || dead {exit;}
-if place_meeting(x, y - 15, o_water) || place_meeting(x, y - 15, o_acid)
+if (place_meeting(x, y - 15, o_water) || place_meeting(x, y - 15, o_acid)) &amp;&amp; !st_inv &amp;&amp; !global.mp_godmode
 {  
     hp = -50;
-    if pt &lt; 1 {plr_send_sound(7, x, y); plr_send_sprite(cl_id, 0, 1); pt = 32;}
+    if pt &lt; 1 {plr_send_sound(8, x, y); plr_send_sprite(cl_id, 0, 1); pt = 32;}
     killer_id = cl_id;
     kill_type = 7;
     plr_send_effect(1, x, y);

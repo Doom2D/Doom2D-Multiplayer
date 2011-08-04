@@ -12,7 +12,7 @@ key = key_code(argument0);
 command = argument1;
 if key == -1
 {
-  con_add(':: ERROR: Нельзя забиндить клавишу ' + string(argument0) + '!');
+  con_add(':: INPUT: ERROR: Нельзя забиндить клавишу ' + string(argument0) + '!');
   exit;
 } 
 switch (command)

@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">draw_sprite(sprite_index, image_index, x, y);
 if !global.ed_outline {exit;}
-draw_rectangle_color(x, y, x + sprite_width, y + sprite_height, c_white, c_white, c_white, c_white, 1);
+draw_rectangle_color(x, y, x + sprite_width-1, y + sprite_height-1, c_white, c_white, c_white, c_white, 1);
 </argument>
       </arguments>
     </action>

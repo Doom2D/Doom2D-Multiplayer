@@ -6,5 +6,4 @@
   <resource name="List" type="GROUP"/>
   <resource name="sys_init" type="RESOURCE"/>
   <resource name="sys_exit" type="RESOURCE"/>
-  <resource name="tex_init" type="RESOURCE"/>
 </resources>

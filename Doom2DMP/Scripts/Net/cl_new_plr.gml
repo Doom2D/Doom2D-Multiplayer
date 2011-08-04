@@ -6,6 +6,7 @@
 
 var _inst;
 _inst = instance_create(0, 0, o_pl);
+_inst.cl_name = 'unknown';
 _inst.cl_id = argument0;
 _inst.cl_name = argument1;
 _inst.cl_skin = argument2;
@@ -17,6 +18,6 @@ with (_inst) {skin_load(cl_skin);}
 
 global.cl_plr[argument0] = _inst;
 
-con_add("Player " + argument1 + " joined.");
+con_add("Игрок " + argument1 + " вошел.");
 
 

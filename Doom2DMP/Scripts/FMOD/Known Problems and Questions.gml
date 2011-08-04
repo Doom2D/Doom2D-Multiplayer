@@ -1,4 +1,3 @@
-/*
 var t;
 t = "
 Question-In the demo, something is off with to police siren, it clips out or something
@@ -153,4 +152,3 @@ Cause(Weird Noises)-You set the stream option in SoundAdd on an mp3... you shoul
 Cause(Not Playing)-You initialised the system to play web music.
 
 "
-*/

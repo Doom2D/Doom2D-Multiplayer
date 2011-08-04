@@ -16,7 +16,7 @@
     <switchVideoMode>false</switchVideoMode>
   </windowing>
   <splashImage>
-    <showCustom>false</showCustom>
+    <showCustom>true</showCustom>
     <partiallyTransparent>true</partiallyTransparent>
     <alphaTransparency>0</alphaTransparency>
   </splashImage>
@@ -25,9 +25,9 @@
     <scaleImage>true</scaleImage>
   </progressBar>
   <keys>
-    <letF1ShowGameInfo>true</letF1ShowGameInfo>
-    <letF4SwitchFullscreen>true</letF4SwitchFullscreen>
-    <letF5SaveF6Load>true</letF5SaveF6Load>
+    <letF1ShowGameInfo>false</letF1ShowGameInfo>
+    <letF4SwitchFullscreen>false</letF4SwitchFullscreen>
+    <letF5SaveF6Load>false</letF5SaveF6Load>
     <letF9Screenshot>true</letF9Screenshot>
     <letEscEndGame>true</letEscEndGame>
     <treatCloseAsEscape>true</treatCloseAsEscape>

@@ -6,6 +6,7 @@
 //Example call
 //When the game starts
 //LoadFMOD();
+if !file_exists('GMFMODSimple.dll') show_message("File not found: GMFMODSimple.dll#In directory: " + working_directory);
 
 var WTF;
 WTF = false;
@@ -70,7 +71,7 @@ if(WTF) show_message("Defined: FMODUpdate")
 global.dll_FMODSoundFree=external_define("GMFMODSimple.dll","FMODSoundFree",dll_stdcall,ty_real,1,ty_real);
 if(WTF) show_message("Defined: FMODSoundFree")
 //export double FMODGroupStop(double group)
-global.dll_FMODGroupStop=external_define("GMFMODSimple.dll","FMODGroupStop",dll_stdcall,ty_real,2,ty_real,ty_real);
+global.dll_FMODGroupStop=external_define("GMFMODSimple.dll","FMODGroupStop",dll_stdcall,ty_real,1,ty_real);
 if(WTF) show_message("Defined: FMODGroupStop")
 //export double FMODAllStop()
 global.dll_FMODAllStop=external_define("GMFMODSimple.dll","FMODAllStop",dll_stdcall,ty_real,0);

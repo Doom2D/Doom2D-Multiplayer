@@ -7,6 +7,8 @@
   <resource name="string_explode" type="RESOURCE"/>
   <resource name="con_parse_cvar" type="RESOURCE"/>
   <resource name="con_cvar_restore" type="RESOURCE"/>
+  <resource name="con_sv_name" type="RESOURCE"/>
+  <resource name="con_sv_welcome" type="RESOURCE"/>
   <resource name="con_timestamp" type="RESOURCE"/>
   <resource name="con_echo" type="RESOURCE"/>
 </resources>

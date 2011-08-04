@@ -3,11 +3,11 @@ LoadFMOD();
 fmod = FMODinit(256);
 if fmod == 1
 {
-  con_add(':: GMFMOD FMOD Successfully initialized.');
+  con_add(':: SOUND: GMFMOD FMOD Successfully initialized.');
 }
 else
 {
-  con_add(':: ERROR: Could not init FMOD. Sound off.');
+  con_add(':: SOUND: ERROR: Could not init FMOD. Sound off.');
   //sys_exit();
 }
 //init sound array

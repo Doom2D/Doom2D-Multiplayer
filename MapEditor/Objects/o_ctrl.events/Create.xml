@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">ed_init(); //loads dlls and other shit
 ed_ui_init();
-
+instance_create(x, y, o_cam);
 </argument>
       </arguments>
     </action>

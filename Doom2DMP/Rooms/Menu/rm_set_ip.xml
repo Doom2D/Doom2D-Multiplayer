@@ -3,7 +3,7 @@
   <caption/>
   <size height="768" width="1024"/>
   <grid>
-    <isometric>true</isometric>
+    <isometric>false</isometric>
     <snap x="16" y="16"/>
   </grid>
   <speed>60</speed>
@@ -104,7 +104,7 @@ str[0, 0] = 'Настройки игрока';
 str[1, 0] = 'IP: ' + string(global.sv_ip);
 str[1, 1] = 'global.sv_ip = get_string("Введите IP: ", global.sv_ip); str[1, 0] = "IP: " + string(global.sv_ip);';
 str[2, 0] = 'Пароль: ' + string(global.sv_password);
-str[2, 1] = 'global.sv_password = get_string("Введите пароль (нужен не всегда): ", global.sv_password); str[2, 0] = "Пароль: " + string(global.sv_password);';
+str[2, 1] = 'global.sv_password = get_string("Введите пароль: ", global.sv_password); global.sv_password = string_delete(global.sv_password, 9, string_length(global.sv_password)); str[2, 0] = "Пароль: " + string(global.sv_password);';
 str[3, 0] = 'Поехали!'
 str[3, 1] = 'room_goto(rm_game);'
 str[4, 0] = 'Назад'

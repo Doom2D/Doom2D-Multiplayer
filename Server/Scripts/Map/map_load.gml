@@ -21,10 +21,10 @@ for (i = 0; i < 1024; i += 1)
 }
 global.tex[0] = tex_none;
 global.tex_n = 1;
-con_add(":: MAP: TEXTURE: Creating texture array...");
+con_add(":: MAP: TEXTURE: Создан массив под текстуры.");
 
 file = file_text_open_read(f);
-con_add(":: MAP: Reading map info...");
+con_add(":: MAP: Читаем информацию о карте...");
 global.map_name = file_text_read_string(file);
 file_text_readln(file);
 global.map_desc = file_text_read_string(file);
@@ -35,13 +35,13 @@ file_text_readln(file);
 global.map_h = file_text_read_real(file);
 _md5_str += string(global.map_h);
 file_text_readln(file);
-con_add(":: MAP: Width: " + string(global.map_w) + ", height: " + string(global.map_h));
+con_add(":: MAP: Ширина: " + string(global.map_w) + ", высота: " + string(global.map_h));
 file_text_readln(file);
 file_text_readln(file);
 tx_n = real(file_text_read_string(file));
 _md5_str += string(tx_n);
 file_text_readln(file);
-con_add(":: MAP: Read map info.");
+con_add(":: MAP: Информация прочитана.");
 for (i = 1; i < tx_n; i += 1)
 {
   map_tex_load(file_text_read_string(file));
@@ -71,14 +71,14 @@ global.map_md5 = _md5;
 _md5_str = '';
 _md5 = '';
 
-con_add(":: MAP: Created: ");
-con_add(string(instance_number(o_solid)) + " wall tiles, "); 
-con_add(string(instance_number(o_bkg)) + " background tiles, ");
-con_add(string(instance_number(o_frg)) + " foreground tiles, ");
-con_add(string(instance_number(o_water) + instance_number(o_acid)) + " liquid tiles, ");
-con_add(string(instance_number(o_jthr)) + " jumpthrough tiles, ");
-con_add(string(instance_number(o_lift_up) + instance_number(o_lift_down) + instance_number(o_lift_left) + instance_number(o_lift_right)) + " lifts, ");
-con_add(string(instance_number(o_spawn)) +  " spawnpoints.");
+con_add(":: MAP: Создано: ");
+con_add(string(instance_number(o_solid)) + " тайлов-стен, "); 
+con_add(string(instance_number(o_bkg)) + " фоновых тайлов, ");
+con_add(string(instance_number(o_frg)) + " тайлов переднего плана, ");
+con_add(string(instance_number(o_water) + instance_number(o_acid)) + " тайлов жидкости, ");
+con_add(string(instance_number(o_jthr)) + " тайлов-ступеней, ");
+con_add(string(instance_number(o_lift_up) + instance_number(o_lift_down) + instance_number(o_lift_left) + instance_number(o_lift_right)) + " тайлов-лифтов, ");
+con_add(string(instance_number(o_spawn)) +  " точек респауна.");
 con_add(":: MAP: MD5: " + string(global.map_md5));
-con_add(":: MAP: Done loading.");
+con_add(":: MAP: Карта загружена.");
 con_add("==== MAP  LOAD  END ====");

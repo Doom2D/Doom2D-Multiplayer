@@ -3,8 +3,8 @@ for (a = 1; a < list_get_len('name_list'); a += 1)
 {
     if list_get_ind('name_taken', list_get_val('name_list', i)) < 0
     {
-        return list_get_val('name_list', i);
+        if !is_real(list_get_val('name_list', i)) {return list_get_val('name_list', i);}
         break;
     }
 }
-return 'default';
+return 'BOT ' + string(argument0);

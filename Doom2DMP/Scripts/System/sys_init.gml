@@ -1,5 +1,5 @@
 global.sys_ver = '0.6';
-global.sys_bld = '110';
+global.sys_bld = '111';
 global.sys_log = 'client';
 _pth = 'data\logs\' + string(global.sys_log) + '.log';
 _log = file_text_open_write(_pth);
@@ -8,16 +8,16 @@ con_init();
 msg_init();
 key_init();
 con_add('================GAME START================');
-con_add(':: Date: ' + con_timestamp()) ;
+con_add(':: SYSTEM: Date: ' + con_timestamp()) ;
 if file_exists('GMFMODSimple.dll'){snd_init();}
 fnt_load();
-con_add(':: Everything looks OK.');
+con_add(':: SYSTEM: Everything looks OK.');
 con_add('==========================================');
 con_add('Doom 2D Multiplayer v'+string(global.sys_ver)+' build '+string(global.sys_bld) + ' started.');
 con_add('==========================================');
 msg_str = '';
-global.pl_name = 'Unnamed';
-global.pl_color = make_color_rgb(32, 255, 32);
+global.pl_name = 'Player';
+global.pl_color = make_color_rgb(64, 255, 64);
 global.pl_skin = 'doomer';
 global.sv_password = '';
 global.sv_rcon_pwd = '';

@@ -12,19 +12,19 @@ for(i=0; i < 24000; i+=1)
 
 //init server shit
 //determine ip
-con_add(':: Пытаемся определить внешний IP...');
+con_add(':: NET: Пытаемся определить внешний IP...');
 global.sv_ip = net_my_ip();
 con_add(':: IP: ' + global.sv_ip);
 //open tcp socket
 sv_tcp = dll39_tcp_listen(25666, 16, 1);
 if (sv_tcp)
 {
-  con_add(":: Открыт TCP-сокет на " + string(global.sv_ip) + ':' + string(global.sv_port));
+  con_add(":: NET: Открыт TCP-сокет на " + string(global.sv_ip) + ':' + string(global.sv_port));
 }
 else
 {
   dll39_socket_close(sv_tcp);
-  con_add(":: FATAL ERROR: Не могу открыть TCP-сокет на  " + string(global.sv_ip) + ':' + string(global.sv_port) + '!');
+  con_add(":: NET: FATAL ERROR: Не могу открыть TCP-сокет на  " + string(global.sv_ip) + ':' + string(global.sv_port) + '!');
   game_end();
   exit;
 }
@@ -33,15 +33,15 @@ else
 sv_udp = dll39_udp_connect(25667, 1);
 if (sv_udp)
 {
-  con_add(":: Открыт UDP-сокет на " + string(global.sv_ip) + ':' + string(global.sv_port2));
+  con_add(":: NET: Открыт UDP-сокет на " + string(global.sv_ip) + ':' + string(global.sv_port2));
 }
 else
 {
   dll39_socket_close(sv_udp);
-  con_add(":: FATAL ERROR: Не могу открыть UDP-сокет на  " + string(global.sv_ip) + ':' + string(global.sv_port2) + '!');
+  con_add(":: NET: FATAL ERROR: Не могу открыть UDP-сокет на  " + string(global.sv_ip) + ':' + string(global.sv_port2) + '!');
   game_end();
   exit;
 }
 map_load(global.sv_map);
-con_add(':: Сервер включен.');
+con_add(':: NET: Сервер включен.');
 //that's all, folks

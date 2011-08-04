@@ -1,7 +1,7 @@
 //writes current configuration to some config in argument0
 file = 'data\cfg\'+string(argument0);
 cfg = file_text_open_write(file);
-con_add(':: Сохраняем конфиг ' + string(file) + '...');
+con_add(':: SYSTEM: Сохранение конфигурации в файл ' + string(file) + '...');
 file_text_write_string(cfg, 'name ' + global.pl_name);
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'color ' + string(color_get_red(global.pl_color)) + ' ' + string(color_get_green(global.pl_color)) + ' ' + string(color_get_blue(global.pl_color)));
@@ -41,5 +41,5 @@ file_text_writeln(cfg);
 file_text_write_string(cfg, 's_vol_music ' + string(round(FMODGroupGetVolume(3)*100)));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'echo Добро пожаловать в Doom 2D Multiplayer v0.6!');
-con_add(':: Сохранен конфиг ' + string(file) + '.');
+con_add(':: SYSTEM: Конфигурация сохранена в файл ' + string(file) + '.');
 file_text_close(cfg);

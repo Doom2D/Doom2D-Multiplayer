@@ -7,7 +7,7 @@ if !file_exists(file)
   exit;
 }
 cfg = file_text_open_read(file);
-con_add(':: Грузим конфиг ' + string(file) + '...');
+con_add(':: SYSTEM: Загрузка конфигурации из файла ' + string(file) + '...');
 while !file_text_eof(cfg)
 {
   cfg_str = file_text_read_string(cfg);
@@ -15,4 +15,4 @@ while !file_text_eof(cfg)
   file_text_readln(cfg);
 }
 file_text_close(cfg);
-con_add(':: Загружен конфиг ' + string(file) + '.');
+con_add(':: SYSTEM: Загружен файл конфигурации ' + string(file) + '.');

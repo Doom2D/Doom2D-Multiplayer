@@ -8,7 +8,7 @@ f = 'data\maps\' + argument0 + '.dlv';
 
 if !file_exists(f) 
 {
-    con_add(":: MAP ERROR: Карты " + f + " не существует.");
+    con_add(":: MAP: ERROR: Карты " + f + " не существует.");
     cl_disconnect();
     exit;
 }
@@ -72,7 +72,5 @@ _md5 = dll39_md5_string(_md5_str);
 global.map_md5 = _md5;
 _md5_str = '';
 _md5 = '';
-
-
 
 mus_play(global.map_mus);

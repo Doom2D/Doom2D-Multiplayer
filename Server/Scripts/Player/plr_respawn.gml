@@ -33,7 +33,7 @@ drown = 0;
 
 for (i = 2; i < 10; i += 1) {hw[i] = 0;}
 
-plr_send_effect(5, x, y);
+plr_send_effect(7, x, y);
 plr_send_sound(9, x, y);
 plr_send_pos();
 plr_send_stat();

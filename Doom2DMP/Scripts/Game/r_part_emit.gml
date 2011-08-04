@@ -50,8 +50,8 @@ switch argument0
         instance_create(argument1, argument2, o_smoke);
     break;
     case 7:
-    //bfg splash
+    //respawn splash
         s = instance_create(argument1, argument2, o_splash);
-        s.sprite_index = s_bfg_hit;
-    break;
+        s.sprite_index = s_respawn;
+    break;       
 }

@@ -1,12 +1,13 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '110';
+global.sys_bld = '111';
 global.sv_map = 'test_lift';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
 global.sv_ip = mplay_ipaddress();
 global.sv_name = 'D2DMP 0.6 Server';
+global.sv_welcome = 'Добро пожаловать.';
 global.sv_maxplayers = 10;
 global.sv_use_pwd = 0;
 global.sv_password = 'pwd';

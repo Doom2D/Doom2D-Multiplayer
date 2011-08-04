@@ -17,7 +17,13 @@
 if !instance_exists(global.cl_inst){exit;}
 draw_set_font(global.fnt_sys);
 draw_background(tex_hud, view_xview + 824, view_yview);
-draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Map: " + global.sv_map + "###" + net_list_clients());
+net_list_clients();
+draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Карта: " + global.map_name);
+draw_text(view_xview + 832, view_yview + 208, str[1]);
+draw_text(view_xview + 872, view_yview + 208, str[2]);
+draw_set_halign(fa_right);
+draw_text(view_xview + 1000, view_yview + 208, str[3]);
+draw_set_halign(fa_left);
 draw_text(view_xview + 832, view_yview + 730, "Ping: " + string(global.cl_last_ping) + "#FPS: " + string(fps));
 
 draw_set_font(global.fnt_big);

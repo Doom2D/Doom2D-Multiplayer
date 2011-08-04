@@ -16,7 +16,7 @@
     <switchVideoMode>false</switchVideoMode>
   </windowing>
   <splashImage>
-    <showCustom>false</showCustom>
+    <showCustom>true</showCustom>
     <partiallyTransparent>true</partiallyTransparent>
     <alphaTransparency>0</alphaTransparency>
   </splashImage>

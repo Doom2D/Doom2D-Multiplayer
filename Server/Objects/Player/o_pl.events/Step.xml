@@ -50,14 +50,14 @@ if ping &gt; global.cl_timeout * 60
     //send a kick message to the fucker just in case
     plr_send_kick(cl_id, "Kicked: You have timed out or were AFK too long.");
     con_add(":: Client " + string(cl_name) + "[" + string(cl_id) + "] timed out.");
-    with global.sv_plr[cl_id] {instance_destroy();}      
-    global.sv_plr[cl_id] = noone;
     
     //send this to other clients
     dll39_buffer_clear(0);
     dll39_write_byte(4, 0);
     dll39_write_byte(cl_id, 0);
     with (o_pl) {dll39_message_send(cl_tcp, 0, 0, 0);}
+    global.sv_plr[cl_id] = noone;
+    instance_destroy();      
 }
 
 if dead {exit;}

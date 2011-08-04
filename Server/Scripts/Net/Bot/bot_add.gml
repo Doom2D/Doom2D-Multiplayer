@@ -10,7 +10,7 @@ if !global.bot_names
 }
 else
 {
-    _name = bot_select_name();
+    _name = bot_select_name(_id);
 }
 _skin = choose("doomer", "mario", "ssman");
 _color = make_color_rgb(round(random(255)), round(random(255)), round(random(255)));

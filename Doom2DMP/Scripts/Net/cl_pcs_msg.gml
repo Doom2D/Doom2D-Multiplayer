@@ -21,25 +21,27 @@ while 1
         case 1:
             //receive mah id and server info
             global.pl_id = dll39_read_byte(0);
-            con_add(':: NET: Got accepted in slot ' + string(global.pl_id) + '.');
+            con_add(':: NET: Получен ID: ' + string(global.pl_id) + '.');
             global.sv_name = dll39_read_string(0);
             global.sv_map = dll39_read_string(0);
             global.sv_map_md5 = dll39_read_string(0);
             global.sv_maxplayers = dll39_read_byte(0);
+            _welcome = '';
+            _welcome = dll39_read_string(0);
+            con_add(':: NET: Получена информация о сервере.');
             map_load(global.sv_map);
-            con_add(':: MAP: Loaded map ' + global.sv_map);
-            con_add(':: MAP: Client MD5: ' + global.map_md5);
-            con_add(':: MAP: Server MD5: ' + global.sv_map_md5);
+            con_add(':: MAP: Загружена карта ' + global.sv_map);
+            con_add(':: MAP: MD5 карты клиента: ' + global.map_md5);
+            con_add(':: MAP: MD5 карты сервера: ' + global.sv_map_md5);
             if global.map_md5 != global.sv_map_md5
             {
-                con_add(':: MAP: MD5s does not match. Exiting...');
+                con_add(':: MAP: ERROR: MD5 не сходятся.');
                 cl_disconnect();
                 mus_play(global.mus_menu);
                 room_goto(rm_menu);
                 exit;
             }
-            con_add(':: MAP: MD5s match. OK');
-            con_add('Welcome to ' + global.sv_name + ' on ' + global.sv_map + '!');
+            con_add(_welcome);
             instance_create(0, 0, o_hud);
             alarm[0] = 5;
         break;
@@ -48,7 +50,7 @@ while 1
             //got kicked
             var msg_reason;
             msg_reason = dll39_read_string(0);
-            con_add(":: NET: Disconnected - " + msg_reason);
+            con_add(":: NET: Вас кикнули: " + msg_reason);
             dll39_socket_close(global.cl_tcp);
             mus_play(global.mus_menu);
             room_goto(rm_menu);
@@ -68,10 +70,11 @@ while 1
             //player left
             var _id;
             _id = dll39_read_byte(0);
-            
-            con_add("Player " + string(global.cl_plr[_id].cl_name) + " left.");
-            with global.cl_plr[_id] {instance_destroy();}
-            global.cl_plr[_id] = -1;
+            if _id < 1 {break;}
+            if !instance_exists(global.cl_plr[_id]) {break;}
+            con_add('Игрок ' + global.cl_plr[_id].cl_name + ' вышел.');
+            if global.cl_plr[_id].object_index != o_client {with global.cl_plr[_id] {instance_destroy();}}
+            global.cl_plr[_id] = noone;
         break;
         
         case 5:
@@ -98,6 +101,7 @@ while 1
             //received position update
             var _id;
             _id = dll39_read_byte(0);
+            if !instance_exists(global.cl_plr[_id]) {break;}
             new_left = dll39_read_byte(0);
             new_right = dll39_read_byte(0);
             if new_left == 1 && new_right == 1
@@ -191,6 +195,7 @@ while 1
             //stats update
             var _id;
             _id = dll39_read_byte(0);
+            if !instance_exists(global.cl_plr[_id]) {break;}
             global.cl_plr[_id].hp = dll39_read_byte(0);
             global.cl_plr[_id].ap = dll39_read_byte(0);
             global.cl_plr[_id].a1 = dll39_read_short(0);
@@ -219,6 +224,7 @@ while 1
             //item destroy
             var d_id;
             d_id = dll39_read_short(0);
+            if !instance_exists(global.cl_itm[d_id]) {break;}
             with global.cl_itm[d_id] {instance_destroy();}
             global.cl_itm[d_id] = noone;
             //con_add("Destroyed item");
@@ -246,6 +252,7 @@ while 1
             //sprite change
             var spr_id, spr_attack, spr_pain;
             spr_id = dll39_read_byte(0);
+            if !instance_exists(global.cl_plr[spr_id]) {break;}
             spr_attack = dll39_read_byte(0);
             spr_pain = dll39_read_byte(0);
             global.cl_plr[spr_id].attack = spr_attack;
@@ -268,6 +275,7 @@ while 1
             //speed
             var s_id, s_inst;
             s_id = dll39_read_byte(0);
+            if !instance_exists(global.cl_plr[s_id]) {break;}
             s_inst = id_to_cl(s_id);
             s_inst.hsp = dll39_read_short(0);
             s_inst.vsp = dll39_read_short(0);
@@ -284,5 +292,8 @@ while 1
             cl_disconnect();
             room_goto(rm_inter);
         break;
+        
+        default:
+            con_add(":: NET: DEBUG: Мусорный пакет.");
     }
 }           
