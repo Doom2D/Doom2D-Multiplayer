@@ -10,6 +10,8 @@ file_text_write_string(cfg, 'sv_welcome ' + string(global.sv_welcome));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_maxplayers ' + string(global.sv_maxplayers));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_clalert ' + string(global.sv_clalert));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_use_pwd ' + string(global.sv_use_pwd));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_password ' + string(global.sv_password));

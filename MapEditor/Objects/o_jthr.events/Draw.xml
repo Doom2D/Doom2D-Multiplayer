@@ -13,8 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">draw_sprite(sprite_index, image_index, x, y);
-if !global.ed_outline {exit;}
+        <argument kind="STRING">if sprite_index == tex_none &amp;&amp; keyboard_check(ord('E')) {exit;}
+draw_sprite(sprite_index, image_index, x, y);
+if !global.ed_outline &amp;&amp; sprite_index != tex_none {exit;}
 draw_rectangle_color(x, y, x + sprite_width-1, y + sprite_height-1, c_orange, c_orange, c_orange, c_orange, 1);
 </argument>
       </arguments>

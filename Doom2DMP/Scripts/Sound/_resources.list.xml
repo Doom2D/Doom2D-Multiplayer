@@ -6,4 +6,5 @@
   <resource name="snd_play" type="RESOURCE"/>
   <resource name="snd_play_pos" type="RESOURCE"/>
   <resource name="mus_play" type="RESOURCE"/>
+  <resource name="FMOD" type="GROUP"/>
 </resources>

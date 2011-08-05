@@ -25,6 +25,8 @@ background_assign(bk_current, bk_grid16);
 global.ed_g_vis = true; //is it visible
 global.ed_overdel = true; //delete overlaying objects
 global.ed_outline = false; //outline the objects
+x_off = 0;
+y_off = 0;
 spr = -1;
 tx = 0;
 im = 0;

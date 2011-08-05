@@ -1,7 +1,7 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '111';
+global.sys_bld = '112';
 global.sv_map = 'test_lift';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -34,6 +34,7 @@ global.bot_chatter = 0;
 global.bot_tickrate = 2;
 global.bot_randrate = 4;
 global.bot_cowardly = 1;
+global.sv_clalert = 1;
 global.sys_log = 'server';
 global.map_w = 0;
 global.map_h = 0; //need these two because shitty game maker cant change the w and h of the room on the fly

@@ -1,4 +1,5 @@
 //writes current configuration to some config in argument0
+if global.sys_error {exit;}
 file = 'data\cfg\'+string(argument0);
 cfg = file_text_open_write(file);
 con_add(':: SYSTEM: Сохранение конфигурации в файл ' + string(file) + '...');

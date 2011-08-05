@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">global.cl_ping = 1;
+        <argument kind="STRING">global.cl_last_ping = global.cl_ping_delay/0.06;
 alarm[1] = 16;
 </argument>
       </arguments>

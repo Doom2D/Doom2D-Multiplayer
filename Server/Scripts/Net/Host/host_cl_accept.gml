@@ -1,5 +1,7 @@
 //dis script accepts clients
 //start accepting connections
+if global.map_w < 1 {exit;}
+
 var cl_sock;
 cl_sock = dll39_tcp_accept(sv_tcp, 1);
 if cl_sock < 0 {exit;}
@@ -117,4 +119,6 @@ dll39_set_sync(cl_sock, 1);
 //message
 con_add(':: NET: Клиент ' + string(_name) + ' принят в слот ' + string(_cl.cl_id) + '.');
 
+//sound
+if global.sv_clalert {sound_play(s_new_client);}
 

@@ -1,5 +1,6 @@
 //kills a player
 //we drop some weapon
+if w == 0 || w == 1 {plr_changewpn(1);}
 if kill_type != 12 && w > 1 && global.mp_itemdrop
 {
     i = item_find_slot();

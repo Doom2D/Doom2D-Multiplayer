@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">sys_init(); //inits all engine shit
+if global.sys_error {exit;}
 cfg_load('game.cfg');
 if global.s_preload
 {

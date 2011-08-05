@@ -5,5 +5,4 @@
   <resource name="Sound" type="GROUP"/>
   <resource name="Net" type="GROUP"/>
   <resource name="Interface" type="GROUP"/>
-  <resource name="FMOD" type="GROUP"/>
 </resources>

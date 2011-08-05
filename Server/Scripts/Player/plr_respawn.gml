@@ -5,6 +5,7 @@ number = round(random(instance_number(o_spawn)));
 spawn = instance_nearest_nth(0, 0, o_spawn, number);
 
 if !instance_exists(spawn) {spawn = instance_nearest(0, 0, o_spawn);}
+if !instance_exists(spawn) {exit;}
 x = spawn.x + 17;
 y = spawn.y + 26;
 

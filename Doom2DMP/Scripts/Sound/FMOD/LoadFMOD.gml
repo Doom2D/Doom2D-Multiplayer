@@ -6,8 +6,7 @@
 //Example call
 //When the game starts
 //LoadFMOD();
-if !file_exists('GMFMODSimple.dll') show_message("File not found: GMFMODSimple.dll#In directory: " + working_directory);
-
+if !file_exists('fmodex.dll') {exit;}
 var WTF;
 WTF = false;
 //export double FMODfree(void)
@@ -587,5 +586,3 @@ if(WTF) show_message("Defined: FMODInstanceSet3DPanLevel")
 //export double FMODInstanceGet3DPanLevel(double instance)
 global.dll_FMODInstanceGet3DPanLevel=external_define("GMFMODSimple.dll","FMODInstanceGet3DPanLevel",dll_stdcall,ty_real,1,ty_real);
 if(WTF) show_message("Defined: FMODInstanceGet3DPanLevel")
-
-

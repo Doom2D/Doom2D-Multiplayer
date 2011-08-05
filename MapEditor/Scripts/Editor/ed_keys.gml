@@ -1,4 +1,8 @@
 //view control
+if keyboard_check(ord('W')) && global.ed_g_sz == 1 {y_off -= 0.1; exit;}
+if keyboard_check(ord('S')) && global.ed_g_sz == 1 {y_off += 0.1; exit;}
+if keyboard_check(ord('A')) && global.ed_g_sz == 1 {x_off -= 0.1; exit;}
+if keyboard_check(ord('D')) && global.ed_g_sz == 1 {x_off += 0.1; exit;}
 if keyboard_check(ord('W')) or keyboard_check(vk_up) or keyboard_check(vk_numpad8)
 {
   if view_yview < 2 {exit;}

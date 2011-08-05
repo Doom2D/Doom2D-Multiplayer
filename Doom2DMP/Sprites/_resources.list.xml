@@ -5,4 +5,5 @@
   <resource name="Player" type="GROUP"/>
   <resource name="UI" type="GROUP"/>
   <resource name="World" type="GROUP"/>
+  <resource name="sprite39" type="RESOURCE"/>
 </resources>

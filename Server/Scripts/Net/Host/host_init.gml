@@ -44,4 +44,5 @@ else
 }
 map_load(global.sv_map);
 con_add(':: NET: Сервер включен.');
+cfg_load('autoexec.cfg');
 //that's all, folks

@@ -16,8 +16,10 @@
         <argument kind="STRING">if keyboard_check(vk_shift) {exit;}
 var sl;
 sl = API_Combobox_GetSel(ui_tl_cb);
-xx = floor(mouse_x/global.ed_g_sz)*global.ed_g_sz;
-yy = floor(mouse_y/global.ed_g_sz)*global.ed_g_sz;
+xx = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off);
+yy = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off);
+x_off = 0;
+y_off = 0;
 switch sl
 {
   case 0:

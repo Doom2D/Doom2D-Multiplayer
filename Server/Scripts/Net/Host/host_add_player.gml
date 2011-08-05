@@ -9,7 +9,7 @@
 
 var cl_inst;
 //create new client
-cl_inst = instance_create(instance_nearest(0, 0, o_spawn).x, instance_nearest(0, 0, o_spawn).y, o_pl);
+cl_inst = instance_create(0, 0, o_pl);
 if argument5
 {
     cl_inst.cl_is_bot = true;

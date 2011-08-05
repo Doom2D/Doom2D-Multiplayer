@@ -8,18 +8,7 @@
   </grid>
   <speed>60</speed>
   <persistent>false</persistent>
-  <creationCode>if !file_exists('GMFMODSimple.dll') 
-{
-  con_add(global.sys_log, ':: ERROR: Could not init FMOD. Reason: GMFMODSimple.dll not found in ' + string(working_directory) + '. Aborting...'); 
-  sys_exit();
-}
-if !file_exists('fmodex.dll') 
-{
-  con_add(global.sys_log, ':: ERROR: Could not init FMOD. Reason: fmodex.dll not found in ' + string(working_directory) + '. Aborting...'); 
-  sys_exit();
-}
-
-//load backgrounds
+  <creationCode>//load backgrounds
 background_replace(bkg_titlepic, 'data/gui/bkg_titlepic.png', 0, 0);
 background_replace(bkg_inter, 'data/gui/bkg_inter.png', 0, 0);
 background_replace(bkg_console, 'data/gui/bkg_console.png', 0, 0);
@@ -34,8 +23,6 @@ message_input_color(make_color_rgb(50, 40, 10));
 message_text_font(-1, 8, c_white, 1);
 message_button_font(-1, 8, c_white, 1);
 message_input_font(-1, 8, c_white, 1);
-
-mus_play(global.mus_menu);
 </creationCode>
   <backgroundColor>000000</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>

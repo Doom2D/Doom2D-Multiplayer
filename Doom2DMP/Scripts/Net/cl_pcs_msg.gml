@@ -6,13 +6,7 @@ while 1
     //receive shit
     msg_size = dll39_message_receive(global.cl_tcp, 0, 0);
     if msg_size < 0 break; //got nothing
-    
-    if global.cl_ping == 1
-    {
-        global.cl_ping = 0;
-        global.cl_last_ping = global.cl_ping_delay/0.06;
-        global.cl_ping_delay = 0;
-    }
+    global.cl_ping_delay = 0;
     
     msg_id = dll39_read_byte(0); //got message id
     
@@ -294,6 +288,9 @@ while 1
         break;
         
         default:
-            con_add(":: NET: DEBUG: Мусорный пакет.");
+            con_add(":: NET: DEBUG: Мусорный пакет (ID " + string(msg_id) + "). Возможно, сервер вылетел.");
+            cl_disconnect();
+            mus_play(global.mus_menu);
+            room_goto(rm_menu);
     }
 }           

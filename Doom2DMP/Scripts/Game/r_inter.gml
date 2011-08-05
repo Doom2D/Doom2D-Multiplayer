@@ -11,7 +11,7 @@ global.inter_text[0] = '';
 global.inter_text[1] = '';
 global.inter_text[2] = '';
 
-global.inter_text[2] = 'Сервер: ' + global.sv_name + '#Карта: ' + global.sv_map + '#';
+global.inter_text[2] = 'Сервер: ' + global.sv_name + '#Карта: ' + global.map_name + '#(' + global.map_desc + ')#';
 
 with o_pl
 {
@@ -20,7 +20,7 @@ with o_pl
     frg[0, 0] += 1;
 }
 
-for (i =1; i<=global.sv_maxplayers;i+=1) {order[i] = i}   // initialize a new array to store the sort order
+for (i =0; i<=32;i+=1) {order[i] = i}   // initialize a new array to store the sort order
 
 for (rep1 = 1; rep1 <= frg[0, 0]; rep1 +=1)
         {

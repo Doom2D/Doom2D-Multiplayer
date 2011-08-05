@@ -10,14 +10,35 @@ if !file_exists(f)
 {
     con_add(":: MAP: ERROR: Карты " + f + " не существует.");
     cl_disconnect();
+    mus_play(global.mus_menu);
+    room_goto(rm_menu);
     exit;
 }
 
+//free the shit for less lags
 for (i = 0; i < 1024; i += 1)
 {
+  if sprite_exists(global.tex[i]) && global.tex[i] != -1
+  {
+    sprite_delete(global.tex[i]);
+  }
   global.tex[i] = -1;
   global.tex_nm[i] = -1;
 }
+
+//and this shit
+if global.map_bkg != bkg_inter
+{
+    if background_exists(global.map_bkg) {background_delete(global.map_bkg);}
+    global.map_bkg = bkg_inter;
+}
+
+//and this shit
+if global.map_mus != -1
+{
+    FMODSoundFree(global.map_mus);
+}
+
 global.tex[0] = tex_none;
 global.tex_n = 1;
 

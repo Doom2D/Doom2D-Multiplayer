@@ -136,8 +136,5 @@ while(1)
             if r_pwd != global.sv_rcon_pwd {break;}
             con_parse(r_cmd);
         break;
-        
-        default:
-            con_add(":: NET: Мусорный пакет.");
     }
 }

@@ -118,8 +118,7 @@ if cmd4 != 0
             API_Control_Destroy(ui_win3);
         break;
     }
-}
-            
+} 
             
 </argument>
       </arguments>
