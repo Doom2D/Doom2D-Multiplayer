@@ -3,7 +3,7 @@ switch argument0
 {
 case 99:
 //Menu music
-global.mus_menu = FMODSoundAdd('data\music\Menu.xm');
+global.mus_menu = FMODSoundAdd('data\gui\music\menu.xm');
 FMODSoundSetGroup(global.mus_menu, 3);
 break;
 

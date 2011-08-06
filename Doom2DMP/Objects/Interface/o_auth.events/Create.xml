@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">global.map_mus = FMODSoundAdd('data\music\InterMus.xm');
+        <argument kind="STRING">global.map_mus = FMODSoundAdd('data\gui\music\scores.xm');
 FMODSoundSetGroup(global.map_mus, 3);
 mus_play(global.map_mus);
 str[0] = 'Doom 2D Multiplayer#v. ' + global.sys_ver + ' Build ' + global.sys_bld;

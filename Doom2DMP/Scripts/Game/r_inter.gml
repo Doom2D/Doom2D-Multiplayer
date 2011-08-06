@@ -5,18 +5,20 @@ for (i = 1; i <= 32; i += 1)
 {
     frg[i, 1] = '';
     frg[i, 2] = -1;
+    frg[i, 3] = -1;
 }
 
 global.inter_text[0] = '';
 global.inter_text[1] = '';
 global.inter_text[2] = '';
 
-global.inter_text[2] = 'Сервер: ' + global.sv_name + '#Карта: ' + global.map_name + '#(' + global.map_desc + ')#';
+global.inter_text[2] = 'Сервер: ' + global.sv_name + '#Карта: ' + global.sv_map + ' - ' + global.map_name + '#(' + global.map_desc + ')#';
 
 with o_pl
 {
     frg[frg[0, 0], 1] = cl_name;
     frg[frg[0, 0], 2] = frag;
+    frg[frg[0, 0], 3] = cl_id;
     frg[0, 0] += 1;
 }
 
@@ -40,11 +42,13 @@ for (rep1 = 1; rep1 <= frg[0, 0]; rep1 +=1)
                 break
                 }
         };
+        
+        if !variable_global_exists('pl_id') {exit;}
 
 for (i = 1; i <= frg[0, 0]; i+=1) 
 {
     if frg[order[i], 2] >= 0 {
-    global.inter_text[0] += string(i) + '. ' + frg[order[i], 1] + ": #";
+    if frg[order[i], 3] == global.pl_id {global.inter_text[0] += string(i) + '. [' + frg[order[i], 1] + "]: #";} else {global.inter_text[0] += string(i) + '. ' + frg[order[i], 1] + ": #";}
     global.inter_text[1] += string(frg[order[i], 2]) + '#';}
 }
 

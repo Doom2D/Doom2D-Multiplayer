@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">alarm[0] = 5;
+        <argument kind="STRING">alarm[0] = 1;
 </argument>
       </arguments>
     </action>

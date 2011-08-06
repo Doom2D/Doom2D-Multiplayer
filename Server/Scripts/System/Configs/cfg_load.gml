@@ -15,4 +15,4 @@ while !file_text_eof(cfg)
   file_text_readln(cfg);
 }
 file_text_close(cfg);
-con_add(':: SYSTEM: Загружен файл конфигурации ' + string(file) + '.');
+con_add(':: SYSTEM: Загружена конфигурация из файла ' + string(file) + '.');

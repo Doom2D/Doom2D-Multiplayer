@@ -1,5 +1,5 @@
 global.sys_ver = '0.6';
-global.sys_bld = '112';
+global.sys_bld = '113';
 global.sys_log = 'client';
 global.sys_error = false;
 _pth = 'data\logs\' + string(global.sys_log) + '.log';
@@ -40,7 +40,7 @@ for (i = 0; i < 1024; i += 1)
 //init sound and font shit
 snd_init();
 fnt_load();
-con_add(':: SYSTEM: Everything looks okay.');
+con_add(':: SYSTEM: Done without errors.');
 con_add('==========================================');
 con_add('Doom 2D Multiplayer v'+string(global.sys_ver)+' build '+string(global.sys_bld) + ' started.');
 con_add('==========================================');

@@ -21,7 +21,7 @@ ui_win3_t1 = API_Static_Create(ui_win3, 4, 8, 96, 16, 0, 0);
 API_Control_SetText(ui_win3_t1, string_replace(global.map_mus, "data\music\", ""));
 
 ui_win3_t2 = API_Static_Create(ui_win3, 4, 32, 96, 16, 0, 0);
-API_Control_SetText(ui_win3_t2, string_replace(global.map_bkg, "data\textures\sky\", ""));
+API_Control_SetText(ui_win3_t2, string_replace(global.map_bkg, "data\sky\", ""));
 
 ui_win3_t3 = API_Static_Create(ui_win3, 4, 58, 96, 16, 0, 0);
 API_Control_SetText(ui_win3_t3, "Ширина:" );

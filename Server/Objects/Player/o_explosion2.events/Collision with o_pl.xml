@@ -13,23 +13,29 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if !variable_local_exists('l_id') || other.pt &gt; 1 {exit;}
+        <argument kind="STRING">if !variable_local_exists('l_id') {exit;}
+
+if other.dead {exit;}
+if distance_to_object(other) &gt; 300 {exit;}
 if collision_line(x, y, other.x, other.y, o_solid, 0, 0) || l_id == other.cl_id {exit;}
+if distance_to_point(other.x, other.y) &lt; 96 {dmg = 150;} else {dmg = 100;}
+
 if !global.mp_godmode &amp;&amp; !other.st_inv
 {
 if other.ap &gt; 0
 {
-    other.hp -= 75;
-    other.ap -= 150;
+    other.hp -= dmg/2;
+    other.ap -= dmg;
 }
 else
 {
-    other.hp -= 150;
+    other.hp -= dmg;
 }
 if other.ap &lt; 0 {other.ap = 0;}
 other.kill_type = 7;
 other.killer_id = l_id;
 }
+
 if global.mp_knockback
 {
     if other.x &lt; x {other.hsp = -6;}
@@ -37,15 +43,15 @@ if global.mp_knockback
     if other.y &gt; y {other.vsp = 6;} 
     if other.y &lt; y {other.vsp = -6;} 
 }
-with (other)
-{
-    plr_send_stat();
-    plr_send_pain();
-    plr_send_speed();
-    plr_send_effect(1, x, y);
-    plr_send_effect(7, x, y);
-}
 
+with(other)
+{
+  plr_send_stat();
+  plr_send_pain();
+  plr_send_speed();
+  plr_send_effect(1, x, y);
+  plr_send_effect(7, x, y);
+}
 </argument>
       </arguments>
     </action>

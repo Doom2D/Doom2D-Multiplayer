@@ -15,16 +15,6 @@
       <arguments>
         <argument kind="STRING">//bfg projectile
 if w != 7 || dead {exit;}
-if (place_meeting(x, y - 15, o_water) || place_meeting(x, y - 15, o_acid)) &amp;&amp; !st_inv &amp;&amp; !global.mp_godmode
-{  
-    hp = -50;
-    if pt &lt; 1 {plr_send_sound(8, x, y); plr_send_sprite(cl_id, 0, 1); pt = 32;}
-    killer_id = cl_id;
-    kill_type = 7;
-    plr_send_effect(1, x, y);
-    plr_send_stat();
-    exit;
-}
     
 if aim == 1 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn {b_dir = 0;}
 if aim == -1 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn {b_dir = 180;}
@@ -47,6 +37,18 @@ p.l_id = cl_id;
 p.direction = b_dir;
 p.p_type = 3;
 p.p_spd = 10;
+
+if (place_meeting(x, y - 15, o_water) || place_meeting(x, y - 15, o_acid)) &amp;&amp; !st_inv &amp;&amp; !global.mp_godmode
+{  
+    hp = -50;
+    if pt &lt; 1 {plr_send_sound(8, x, y); plr_send_sprite(cl_id, 0, 1); pt = 32;}
+    killer_id = cl_id;
+    kill_type = 7;
+    plr_send_effect(1, x, y);
+    plr_send_stat();
+    exit;
+}
+
 plr_send_sprite(cl_id, 1, 0); 
 plr_send_projectile(cl_id, 3, b_dir, x, y);
 </argument>

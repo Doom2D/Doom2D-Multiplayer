@@ -106,7 +106,7 @@ if cmd4 != 0
             if !file_exists(_tmp) {exit;}
             _tmp = string_replace(_tmp, working_directory + '\', '');
             global.map_bkg = _tmp;
-            API_Control_SetText(ui_win3_t2, string_replace(global.map_bkg, "data\textures\sky\", "")); 
+            API_Control_SetText(ui_win3_t2, string_replace(global.map_bkg, "data\sky\", "")); 
         break;
         
         case ui_win3_b3:

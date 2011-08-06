@@ -8,7 +8,7 @@ for (i = 1; i <= 16; i += 1)
     if !instance_exists(global.cl_plr[i]) {continue;}
     with global.cl_plr[i] {if !variable_local_exists('cl_name') {continue;}}
     str[1] += string(i) + "#";
-    str[2] += global.cl_plr[i].cl_name + "#";
+    if i == global.pl_id {str[2] += '[' + global.cl_plr[i].cl_name + "]#";} else {str[2] += global.cl_plr[i].cl_name + "#";}
     str[3] += string(global.cl_plr[i].frag) + "#";
 }
 //return str[argument0];

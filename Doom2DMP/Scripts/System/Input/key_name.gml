@@ -72,7 +72,7 @@ switch argument0
   case vk_down: _name = 'Вниз'; break;
   case vk_left: _name = 'Влево'; break;
   case vk_right: _name = 'Вправо'; break;
-  case vk_enter: _name = 'Ввод'; break;
+  case vk_enter: _name = 'Enter'; break;
   default: _name = '???';
 }
 return _name;

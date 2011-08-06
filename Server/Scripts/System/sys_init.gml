@@ -1,8 +1,8 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '112';
-global.sv_map = 'test_lift';
+global.sys_bld = '113';
+global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
 global.sv_ip = mplay_ipaddress();

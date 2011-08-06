@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">//how about we drown
-if drown == 0 &amp;&amp; place_meeting(x, y - 15, o_water) &amp;&amp; !st_inv {drown = 1;}
+if drown == 0 &amp;&amp; position_meeting(x, y - 15, o_water) &amp;&amp; !st_inv {drown = 1;}
 
 </argument>
       </arguments>
