@@ -47,6 +47,10 @@ file_text_readln(info);
 r_xoff[3] = file_text_read_real(info);
 file_text_readln(info);
 r_yoff[3] = file_text_read_real(info);
+file_text_readln(info);
+r_xoff[4] = file_text_read_real(info);
+file_text_readln(info);
+r_yoff[4] = file_text_read_real(info);
 file_text_close(info);
 
 //walk spr

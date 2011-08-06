@@ -34,9 +34,10 @@ if hp &gt;= 1 &amp;&amp; dead == 1 {dead = 0;}
 if dead {exit;}
 plr_phys(kb_left, kb_rght, kb_jump);
 
-if spr == 1 || spr == 2 || spr == 5 {r_off = 1;}
-if spr == 3 || spr == 6 {r_off = 2;}
-if spr == 4 || spr == 7 {r_off = 3;}
+if spr == 1 || spr == 5 {r_off = 1;}
+if spr == 2 {r_off = 2;}
+if spr == 3 || spr == 6 {r_off = 3;}
+if spr == 4 || spr == 7 {r_off = 4;}
 
 
 </argument>
