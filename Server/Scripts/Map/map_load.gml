@@ -76,8 +76,6 @@ _md5 = '';
 
 con_add(":: MAP: Создано: ");
 con_add(string(instance_number(o_solid)) + " тайлов-стен, "); 
-con_add(string(instance_number(o_bkg)) + " фоновых тайлов, ");
-con_add(string(instance_number(o_frg)) + " тайлов переднего плана, ");
 con_add(string(instance_number(o_water) + instance_number(o_acid)) + " тайлов жидкости, ");
 con_add(string(instance_number(o_jthr)) + " тайлов-ступеней, ");
 con_add(string(instance_number(o_lift_up) + instance_number(o_lift_down) + instance_number(o_lift_left) + instance_number(o_lift_right)) + " тайлов-лифтов, ");

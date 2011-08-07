@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if pt &gt; 0 || st_inv {exit;}
+        <argument kind="STRING">if pt &gt; 0 || st_inv || global.mp_godmode {exit;}
 if ap &lt; 1
 {
     hp -= other.dmg;

@@ -27,18 +27,10 @@ switch sl
    o.image_single = 0;
   break;
   case 2:
-   o = instance_create(xx, yy, o_bkg);
-   o.o_id = sl;
-   o.t_id = tx;
-   o.sprite_index = global.tex[tx];
-   o.image_single = 0;
+   //we need no backgrounds
   break;
   case 3:
-   o = instance_create(xx, yy, o_frg);
-   o.o_id = sl;
-   o.t_id = tx;
-   o.sprite_index = global.tex[tx];
-   o.image_single = 0;
+   //or foregrounds
   break;
   case 4:
    if place_meeting(xx, yy, o_water) {exit;}

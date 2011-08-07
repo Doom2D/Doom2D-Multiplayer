@@ -19,6 +19,7 @@
     if other.x &gt; x {other.hsp = 8;}   
     if other.y &gt; y {other.vsp = 8;} 
     if other.y &lt; y {other.vsp = -8;} 
+    with (other) {plr_send_speed();}
 }
 if other.pt &gt; 0 {exit;}
 if !variable_local_exists('l_id') {exit;}
@@ -40,7 +41,7 @@ if other.ap &lt; 0 {other.ap = 0;}
 other.killer_id = l_id;
 other.kill_type = 5;
 plr_send_effect(1, other.x, other.y);
-with (other) {plr_send_stat(); plr_send_speed(); plr_send_pain();}
+with (other) {plr_send_stat(); plr_send_pain();}
 
 </argument>
       </arguments>
