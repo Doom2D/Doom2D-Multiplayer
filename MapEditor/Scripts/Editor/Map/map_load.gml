@@ -2,6 +2,7 @@
 f = get_open_filename('D2DMP Maps|*.dlv', 'data\maps\Unnamed.dlv');
 if !file_exists(f) {exit;}
 with par_obj {instance_destroy();}
+global.map_loaded = false;
 
 for (i = 0; i < 1024; i += 1)
 {
@@ -45,3 +46,4 @@ while !file_text_eof(file)
   map_obj_create(o_id, t_id, o_x, o_y);
 }
 file_text_close(file);
+alarm[0] = 5;

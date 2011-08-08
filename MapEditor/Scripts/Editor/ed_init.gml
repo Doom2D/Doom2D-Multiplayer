@@ -16,6 +16,7 @@ global.map_name = 'Unnamed Map';
 global.map_desc = 'Temp Description';
 global.map_mus = 'data\music\AC.xm';
 global.map_bkg = 'data\sky\D2DSKY1.png';
+global.map_loaded = false;
 global.map_w = 2048;
 global.map_h = 2048;
 

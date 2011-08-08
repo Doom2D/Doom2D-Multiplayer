@@ -86,7 +86,7 @@ switch argument0
     case 9:
         //berserk
         if st_ber && hp >= 100 {exit;}
-        hp = 100;
+        if !st_inv {hp = 100;}
         st_ber = 1;
         w = 0;
         plr_send_stat();

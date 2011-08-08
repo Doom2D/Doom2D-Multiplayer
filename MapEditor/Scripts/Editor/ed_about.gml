@@ -1,1 +1,1 @@
-API_Dialog_MessageBox(window_handle(), 'Doom 2D Mlutiplayer Map Editor v0.6 (C) Prostovitalik, 2011', 'О программе', MB_OK);
+API_Dialog_MessageBox(window_handle(), 'Doom 2D Multiplayer Map Editor v0.6 (C) Primus, 2011', 'О программе', MB_OK);
