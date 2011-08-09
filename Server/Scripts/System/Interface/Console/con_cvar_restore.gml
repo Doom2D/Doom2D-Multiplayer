@@ -6,6 +6,7 @@ if global.sv_rcon > 1 {global.sv_rcon = 1;}
 if global.sv_ipbans > 1 {global.sv_ipbans = 1;}
 if global.sv_cycle_maps > 1 {global.sv_cycle_maps = 1;}
 if global.sv_clalert > 1 {global.sv_clalert = 1;}
+if global.sv_cheats > 1 {global.sv_cheats = 1;}
 if global.cl_timeout > 3600 {global.cl_timeout = 3600;}
 if global.mp_fraglimit > 250 {global.mp_fraglimit = 250;}
 if global.mp_timelimit > 10000 {global.mp_timelimit = 10000;}

@@ -30,7 +30,9 @@ hw[1] = 1;
 hsp = 0;
 vsp = 0;
 
-drown = 0;
+pt = 0;
+cd = 0;
+dt = 0;
 
 for (i = 2; i < 10; i += 1) {hw[i] = 0;}
 

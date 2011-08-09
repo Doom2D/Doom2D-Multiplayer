@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="net_cheat" type="RESOURCE"/>
   <resource name="cl_connect" type="RESOURCE"/>
   <resource name="cl_pcs_msg" type="RESOURCE"/>
   <resource name="cl_new_plr" type="RESOURCE"/>
@@ -12,5 +13,4 @@
   <resource name="net_list_clients" type="RESOURCE"/>
   <resource name="id_to_cl" type="RESOURCE"/>
   <resource name="change_weapon" type="RESOURCE"/>
-  <resource name="net_cheat" type="RESOURCE"/>
 </resources>

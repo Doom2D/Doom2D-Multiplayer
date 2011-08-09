@@ -26,6 +26,8 @@ file_text_write_string(cfg, 'sv_ipbans ' + string(global.sv_ipbans));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_cycle_maps ' + string(global.sv_cycle_maps));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_cheats ' + string(global.sv_cheats));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'cl_timeout ' + string(global.cl_timeout));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_fraglimit ' + string(global.mp_fraglimit));

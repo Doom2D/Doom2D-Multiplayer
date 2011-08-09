@@ -18,7 +18,7 @@ if !variable_local_exists('w'){w = sprite_width; h = sprite_height;}
 if collision_rectangle(x, y, w, h, object_index, true, true) &lt; 0 {exit;}
 inst = collision_rectangle(x, y, bbox_right, bbox_bottom, object_index, false, true);
 if !instance_exists(inst) {exit;}
-if keyboard_check(ord('Q')) || !global.map_loaded {exit;}
+if keyboard_check(ord('Q')){exit;}
 if inst.object_index = object_index {with (inst) {instance_destroy();}}
 </argument>
       </arguments>

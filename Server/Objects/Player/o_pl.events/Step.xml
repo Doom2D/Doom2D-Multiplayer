@@ -31,10 +31,10 @@ ct -= 1;
 if hp &lt; 1 &amp;&amp; dead == 0 {plr_die();}
 if hp &gt;= 1 &amp;&amp; dead == 1 {dead = 0;}
 
-if position_meeting(x, y - 15, o_water) &amp;&amp; drown == 0  &amp;&amp; alarm[2] &lt; 1 {alarm[2] = 1800;}
-if !position_meeting(x, y - 15, o_water) &amp;&amp; drown == 1 {drown = 0;}
+if position_meeting(x, y - 15, o_water) &amp;&amp; dt &lt; 1800 {dt += 1;}
+if !position_meeting(x, y - 15, o_water) &amp;&amp; dt &gt; 0 {dt = 0;}
 
-if drown &amp;&amp; pt &lt; 0 &amp;&amp; !st_inv &amp;&amp; !global.mp_godmode
+if dt &gt;= 1800 &amp;&amp; pt &lt; 0 &amp;&amp; !st_inv &amp;&amp; !global.mp_godmode
 {
     hp -= 5;
     killer_id = 0;

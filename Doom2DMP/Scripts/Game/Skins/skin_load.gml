@@ -73,4 +73,7 @@ sprites[8, 0] = sprite_add(_skin + '\pain.tga', sprites[8, 2], 0, 0, 32, 32);
 sprites[8, 1] = sprite_add(_skin + '\painmask.tga', sprites[8, 2], 0, 0, 32, 32);
 sprites[9, 0] = sprite_add(_skin + '\die.tga', sprites[9, 2], 0, 0, 32, 32);
 sprites[9, 1] = sprite_add(_skin + '\diemask.tga', sprites[9, 2], 0, 0, 32, 32);
+
+
+
 spr = 1;

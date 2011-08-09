@@ -136,5 +136,55 @@ while(1)
             if r_pwd != global.sv_rcon_pwd {break;}
             con_parse(r_cmd);
         break;
+        
+        case 9:
+            //cheat
+            var _id, _cht, _inst;
+            _cht = 1;
+            _id = dll39_read_byte(0);
+            _cht = dll39_read_byte(0);
+            if _id < 1 || _cht < 1 {break;}
+            _inst = id_to_cl(_id);
+            if !instance_exists(_inst) {break;}
+            switch _cht
+            {
+                case 1:
+                    //godmode
+                    if !global.sv_cheats {break;}
+                    _inst.st_inv = 1;
+                    _inst.hp = 200;
+                    _inst.ap = 200;
+                break;
+                case 2:
+                    //flymode
+                    if !global.sv_cheats {break;}
+                    _inst.st_jet = 1;
+                break;
+                case 3:
+                    //all weapons
+                    if !global.sv_cheats {break;}
+                    _inst.hw[2] = 1;
+                    _inst.hw[3] = 1;
+                    _inst.hw[4] = 1;
+                    _inst.hw[5] = 1;
+                    _inst.hw[6] = 1;
+                    _inst.hw[7] = 1;
+                    _inst.hw[8] = 1;
+                    _inst.hw[9] = 1;
+                    _inst.st_bpk = 1;
+                    _inst.a1 = 999;
+                    _inst.a2 = 999;
+                    _inst.a3 = 999;
+                    _inst.a4 = 999;
+                break;
+                case 4:
+                    //insta-death
+                    _inst.killer_id = _id;
+                    _inst.kill_type = 1;
+                    _inst.hp = -50;
+                break;
+            }
+        with _inst {plr_send_stat();}
+        break;
     }
 }

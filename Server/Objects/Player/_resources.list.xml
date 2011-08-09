@@ -6,5 +6,4 @@
   <resource name="o_projectile" type="RESOURCE"/>
   <resource name="o_explosion" type="RESOURCE"/>
   <resource name="o_punch" type="RESOURCE"/>
-  <resource name="o_explosion2" type="RESOURCE"/>
 </resources>

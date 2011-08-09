@@ -62,6 +62,7 @@ switch sl
    o.image_single = 0;
   break;
   case 7:
+   if place_meeting(xx, yy, o_lift) {exit;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -69,6 +70,7 @@ switch sl
    o.image_single = 0;
   break;
   case 8:
+   if place_meeting(xx, yy, o_lift) {exit;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -76,6 +78,7 @@ switch sl
    o.image_single = 1;
   break;
   case 9:
+   if place_meeting(xx, yy, o_lift) {exit;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -83,6 +86,7 @@ switch sl
    o.image_single = 2;
   break;
   case 10:
+   if place_meeting(xx, yy, o_lift) {exit;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;

@@ -29,8 +29,7 @@
     break;
     case 3:
     //bfg
-        e = instance_create(x + lengthdir_x(48, direction + 180), y + lengthdir_y(48, direction + 180), o_explosion2);
-        e.l_id = l_id;
+        bfg_hit();
         if !water {plr_send_xplos(l_id, 2, x, y);
         plr_send_sound(22, x, y);}
     break;

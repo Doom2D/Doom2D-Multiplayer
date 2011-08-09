@@ -228,10 +228,24 @@ if ds_list_find_value(cmd, 0) == 'rcon'
     net_rcon();
     exit;
 }
-/*if ds_list_find_value(cmd, 0) == 'UFEKTD'
+if ds_list_find_value(cmd, 0) == 'ГОРЕЦ'
 {
-    net_cheat();
+    net_cheat(1);
     exit;
-}*/
-
+}
+if ds_list_find_value(cmd, 0) == 'БЕЛЫЙОРЕЛ'
+{
+    net_cheat(2);
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'RAMBO'
+{
+    net_cheat(3);
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'IDDQD' || ds_list_find_value(cmd, 0) == 'kill'
+{
+    net_cheat(4);
+    exit;
+}
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)) + '. Введите help для списка команд.');

@@ -38,10 +38,10 @@ hw[1] = 1;
 for (i = 2; i &lt; 10; i += 1) {hw[i] = 0;}
 cd = 0; //weapon cooldown
 pt = 0; //pain sound cooldown
+dt = 0; //drown time
 frag = 0;
 dead = 0;
 ping = 0;
-drown = 0; //if we are drowning
 st_inv = 0; //invulnerability
 st_jet = 0; //jetpack
 st_ber = 0; //berserk

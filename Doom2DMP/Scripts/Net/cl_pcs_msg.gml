@@ -131,12 +131,15 @@ while 1
             var killer_id, victim_id, killer_name, victim_name, kill_type;
             killer_id = dll39_read_byte(0);
             victim_id = dll39_read_byte(0);
+            if killer_id < 0 || victim_id < 0 {exit;}
             kill_type = dll39_read_byte(0);
             victim_name = 'def_victim';
             killer_name = 'def_killer';
-            if !killer_id == 0 {killer_name = global.cl_plr[killer_id].cl_name;}
+            if killer_id > 0 && !instance_exists(global.cl_plr[killer_id]) {break;}
+            if !instance_exists(global.cl_plr[victim_id]) {break;}
+            if killer_id != 0 {killer_name = global.cl_plr[killer_id].cl_name;}
             victim_name = global.cl_plr[victim_id].cl_name;
-            if killer_id == victim_id {con_add(killer_name + " прощается с жестоким миром."); exit;}
+            if killer_id == victim_id {con_add(killer_name + " прощается с жестоким миром."); break;}
             
             switch kill_type
             {
