@@ -122,7 +122,12 @@ if ds_list_find_value(cmd, 0) == 'bind_info'
 }
 if ds_list_find_value(cmd, 0) == 'r_massacre'
 {
-    if is_real(ds_list_find_value(cmd, 1)) || ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
+    if is_real(ds_list_find_value(cmd, 1))
+    {
+        con_add('Недопустимое значение аргумента.');
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
     {
         con_add('Недопустимое значение аргумента.');
         exit;
@@ -134,7 +139,12 @@ if ds_list_find_value(cmd, 0) == 'r_massacre'
 }
 if ds_list_find_value(cmd, 0) == 'r_gfx'
 {
-    if is_real(ds_list_find_value(cmd, 1)) || ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
+    if is_real(ds_list_find_value(cmd, 1))
+    {
+        con_add('Недопустимое значение аргумента.');
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
     {
         con_add('Недопустимое значение аргумента.');
         exit;
@@ -146,7 +156,12 @@ if ds_list_find_value(cmd, 0) == 'r_gfx'
 }
 if ds_list_find_value(cmd, 0) == 'r_names'
 {
-    if is_real(ds_list_find_value(cmd, 1)) || ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
+    if is_real(ds_list_find_value(cmd, 1))
+    {
+        con_add('Недопустимое значение аргумента.');
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
     {
         con_add('Недопустимое значение аргумента.');
         exit;

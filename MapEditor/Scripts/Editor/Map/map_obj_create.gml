@@ -11,58 +11,55 @@ yy = argument3;
 switch sl
 {
   case 0:
-   if place_meeting(xx, yy, o_solid) {exit;}
    o = instance_create(xx, yy, o_solid);
    o.o_id = sl;
    o.t_id = tx;
    o.sprite_index = global.tex[tx];
-   o.image_single = 0;
+   o.image_speed = 0.1;
   break;
   case 1:
-   if place_meeting(xx, yy, o_jthr) {exit;}
    o = instance_create(xx, yy, o_jthr);
    o.o_id = sl;
    o.t_id = tx;
    o.sprite_index = global.tex[tx];
-   o.image_single = 0;
+   o.image_speed = 0.1;
   break;
   case 2:
    o = instance_create(xx, yy, o_bkg);
    o.o_id = sl;
    o.t_id = tx;
    o.sprite_index = global.tex[tx];
-   o.image_single = 0;
+   o.image_speed = 0.1;
   break;
   case 3:
    o = instance_create(xx, yy, o_frg);
    o.o_id = sl;
    o.t_id = tx;
    o.sprite_index = global.tex[tx];
-   o.image_single = 0;
+   o.image_speed = 0.1;
   break;
   case 4:
    o = instance_create(xx, yy, o_liquid);
    o.o_id = sl;
    o.t_id = tx;
    o.sprite_index = global.tex[tx];
-   o.image_single = 0;
+   o.image_speed = 0.1;
   break;
   case 5:
    o = instance_create(xx, yy, o_liquid);
    o.o_id = sl;
    o.t_id = tx;
    o.sprite_index = global.tex[tx];
-   o.image_single = 0;
+   o.image_speed = 0.1;
   break;
   case 6:
    o = instance_create(xx, yy, o_liquid);
    o.o_id = sl;
    o.t_id = tx;
    o.sprite_index = global.tex[tx];
-   o.image_single = 0;
+   o.image_speed = 0.1;
   break;
   case 7:
-   if place_meeting(xx, yy, o_lift) {exit;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -70,7 +67,6 @@ switch sl
    o.image_single = 0;
   break;
   case 8:
-   if place_meeting(xx, yy, o_lift) {exit;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -78,7 +74,6 @@ switch sl
    o.image_single = 1;
   break;
   case 9:
-   if place_meeting(xx, yy, o_lift) {exit;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -86,7 +81,6 @@ switch sl
    o.image_single = 2;
   break;
   case 10:
-   if place_meeting(xx, yy, o_lift) {exit;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -190,7 +184,6 @@ switch sl
    o.image_single = sl-31;
   break;
   case 39:
-   if place_meeting(xx, yy, o_spawn) {exit;}
    o = instance_create(xx, yy, o_spawn);
    o.o_id = sl;
    o.t_id = tx;

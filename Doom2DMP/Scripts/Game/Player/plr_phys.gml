@@ -17,13 +17,13 @@ if argument1 && !argument0
 }
 if argument2 && !free
 {
-    if !place_meeting(x, y - 32, o_liq)
+    if !place_meeting(x, y + 1, o_liq)
     {
         vsp =- jspd;
     }
     else
     {
-        vsp = -2;
+        vsp = -2.75;
     }
 }
 

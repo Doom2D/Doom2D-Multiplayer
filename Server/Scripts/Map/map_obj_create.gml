@@ -11,7 +11,6 @@ yy = argument3;
 switch sl
 {
   case 0:
-   if place_meeting(xx, yy, o_solid) {exit;}
    o = instance_create(xx, yy, o_solid);
    o.o_id = sl;
    o.t_id = tx;
@@ -19,7 +18,6 @@ switch sl
    o.image_single = 0;
   break;
   case 1:
-   if place_meeting(xx, yy, o_jthr) {exit;}
    o = instance_create(xx, yy, o_jthr);
    o.o_id = sl;
    o.t_id = tx;
@@ -33,7 +31,6 @@ switch sl
    //or foregrounds
   break;
   case 4:
-   if place_meeting(xx, yy, o_water) {exit;}
    o = instance_create(xx, yy, o_water);
    o.o_id = sl;
    o.t_id = tx;
@@ -41,7 +38,6 @@ switch sl
    o.image_single = 0;
   break;
   case 5:
-   if place_meeting(xx, yy, o_acid) {exit;}
    o = instance_create(xx, yy, o_acid);
    o.o_id = sl;
    o.t_id = tx;
@@ -50,7 +46,6 @@ switch sl
    o.dmg = 5;
   break;
   case 6:
-   if place_meeting(xx, yy, o_acid) {exit;}
    o = instance_create(xx, yy, o_acid);
    o.o_id = sl;
    o.t_id = tx;
@@ -59,7 +54,6 @@ switch sl
    o.dmg = 10;
   break;
   case 7:
-  if place_meeting(xx, yy, o_lift_up) {exit;}
    o = instance_create(xx, yy, o_lift_up);
    o.o_id = sl;
    o.t_id = tx;
@@ -67,7 +61,6 @@ switch sl
    o.image_single = 0;
   break;
   case 8:
-  if place_meeting(xx, yy, o_lift_down) {exit;}
    o = instance_create(xx, yy, o_lift_down);
    o.o_id = sl;
    o.t_id = tx;
@@ -75,7 +68,6 @@ switch sl
    o.image_single = 1;
   break;
   case 9:
-  if place_meeting(xx, yy, o_lift_left) {exit;}
    o = instance_create(xx, yy, o_lift_left);
    o.o_id = sl;
    o.t_id = tx;
@@ -83,7 +75,6 @@ switch sl
    o.image_single = 2;
   break;
   case 10:
-  if place_meeting(xx, yy, o_lift_right) {exit;}
    o = instance_create(xx, yy, o_lift_right);
    o.o_id = sl;
    o.t_id = tx;

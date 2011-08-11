@@ -1,7 +1,7 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '115';
+global.sys_bld = '116';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -54,7 +54,8 @@ global.map_md5 = '';
 //console
 con_init();
 con_add('================SERVER START================');
-con_add(':: Date: ' + con_timestamp());
+con_add(':: SYSTEM: Date: ' + con_timestamp());
+con_add(':: SYSTEM: Server version: ' + global.sys_ver + ' build ' + global.sys_bld + '.');
 //fonts
 fnt_load();
 //load config

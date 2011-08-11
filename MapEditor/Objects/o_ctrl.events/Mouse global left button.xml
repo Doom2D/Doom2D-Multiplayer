@@ -23,7 +23,7 @@ y_off = 0;
 switch sl
 {
   case 0:
-   if place_meeting(xx, yy, o_solid) {exit;}
+   if position_meeting(xx, yy, o_solid) {break;}
    o = instance_create(xx, yy, o_solid);
    o.o_id = sl;
    o.t_id = tx;
@@ -31,7 +31,7 @@ switch sl
    o.image_single = 0;
   break;
   case 1:
-   if place_meeting(xx, yy, o_jthr) {exit;}
+   if position_meeting(xx, yy, o_jthr) {break;}
    o = instance_create(xx, yy, o_jthr);
    o.o_id = sl;
    o.t_id = tx;
@@ -39,7 +39,7 @@ switch sl
    o.image_single = 0;
   break;
   case 2:
-   if place_meeting(xx, yy, o_bkg) {exit;}
+  if position_meeting(xx, yy, o_bkg) {break;}
    o = instance_create(xx, yy, o_bkg);
    o.o_id = sl;
    o.t_id = tx;
@@ -47,7 +47,7 @@ switch sl
    o.image_single = 0;
   break;
   case 3:
-   if place_meeting(xx, yy, o_frg) {exit;}
+   if position_meeting(xx, yy, o_frg) {break;}
    o = instance_create(xx, yy, o_frg);
    o.o_id = sl;
    o.t_id = tx;
@@ -55,7 +55,7 @@ switch sl
    o.image_single = 0;
   break;
   case 4:
-   if place_meeting(xx, yy, o_liquid) {exit;}
+   if position_meeting(xx, yy, o_liquid) {break;}
    o = instance_create(xx, yy, o_liquid);
    o.o_id = sl;
    o.t_id = tx;
@@ -63,7 +63,7 @@ switch sl
    o.image_single = 0;
   break;
   case 5:
-   if place_meeting(xx, yy, o_liquid) {exit;}
+   if position_meeting(xx, yy, o_liquid) {break;}
    o = instance_create(xx, yy, o_liquid);
    o.o_id = sl;
    o.t_id = tx;
@@ -71,7 +71,7 @@ switch sl
    o.image_single = 0;
   break;
   case 6:
-   if place_meeting(xx, yy, o_liquid) {exit;}
+   if position_meeting(xx, yy, o_liquid) {break;}
    o = instance_create(xx, yy, o_liquid);
    o.o_id = sl;
    o.t_id = tx;
@@ -79,7 +79,7 @@ switch sl
    o.image_single = 0;
   break;
   case 7:
-   if place_meeting(xx, yy, o_lift) {exit;}
+   if position_meeting(xx, yy, o_lift) {break;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -87,7 +87,7 @@ switch sl
    o.image_single = 0;
   break;
   case 8:
-   if place_meeting(xx, yy, o_lift) {exit;}
+   if position_meeting(xx, yy, o_lift) {break;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -95,7 +95,7 @@ switch sl
    o.image_single = 1;
   break;
   case 9:
-   if place_meeting(xx, yy, o_lift) {exit;}
+   if position_meeting(xx, yy, o_lift) {break;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -103,7 +103,7 @@ switch sl
    o.image_single = 2;
   break;
   case 10:
-   if place_meeting(xx, yy, o_lift) {exit;}
+   if position_meeting(xx, yy, o_lift) {break;}
    o = instance_create(xx, yy, o_lift);
    o.o_id = sl;
    o.t_id = tx;
@@ -111,7 +111,7 @@ switch sl
    o.image_single = 3;
   break;
   case 11:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -119,7 +119,7 @@ switch sl
    o.image_single = 0;
   break;
   case 12:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -127,7 +127,7 @@ switch sl
    o.image_single = 1;
   break;
   case 13:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -135,7 +135,7 @@ switch sl
    o.image_single = 0;
   break;
   case 14:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -143,7 +143,7 @@ switch sl
    o.image_single = 0;
   break;
   case 15:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -151,7 +151,7 @@ switch sl
    o.image_single = 0;
   break;
   case 16:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -159,7 +159,7 @@ switch sl
    o.image_single = 0;
   break;
   case 17:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -167,7 +167,7 @@ switch sl
    o.image_single = 0;
   break;
   case 18:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -175,7 +175,7 @@ switch sl
    o.image_single = 0;
   break;
   case 19:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -194,7 +194,7 @@ switch sl
   case 28:
   case 29:
   case 30:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -210,7 +210,7 @@ switch sl
   case 36:
   case 37:
   case 38:
-   if place_meeting(xx, yy, o_item) {exit;}
+   if position_meeting(xx, yy, o_item) {break;}
    o = instance_create(xx, yy, o_item);
    o.o_id = sl;
    o.t_id = tx;
@@ -218,7 +218,7 @@ switch sl
    o.image_single = sl-31;
   break;
   case 39:
-   if place_meeting(xx, yy, o_spawn) {exit;}
+   if position_meeting(xx, yy, o_spawn) {break;}
    o = instance_create(xx, yy, o_spawn);
    o.o_id = sl;
    o.t_id = tx;
