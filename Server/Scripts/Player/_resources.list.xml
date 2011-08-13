@@ -8,4 +8,5 @@
   <resource name="plr_shoot" type="RESOURCE"/>
   <resource name="plr_die" type="RESOURCE"/>
   <resource name="bfg_hit" type="RESOURCE"/>
+  <resource name="plr_drop_item" type="RESOURCE"/>
 </resources>

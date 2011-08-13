@@ -8,5 +8,10 @@ if variable_local_exists('sv_tcp') {dll39_socket_close(sv_tcp);}
 if variable_local_exists('sv_udp') {dll39_socket_close(sv_udp);}
 con_add(':: NET: Закрыт TCP-сокет на ' + string(global.sv_ip) + ':' + string(global.sv_port));
 
+if !global.sv_lan
+{
+    net_slist_del();
+}
+
 //that's all, folks
 con_add(':: NET: Сервер выключен.');

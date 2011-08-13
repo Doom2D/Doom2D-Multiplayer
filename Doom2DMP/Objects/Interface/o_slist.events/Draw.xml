@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">draw_set_font(global.fnt_big);
+draw_set_color(c_white);
+draw_set_halign(fa_center);
+draw_text(512, 32, 'Серверлист');
+draw_set_font(global.fnt_small);
+draw_set_color(c_red);
+draw_text(512, 72, '[ПРОБЕЛ], чтобы обновить список.#[ESC] для выхода.');
+draw_set_halign(fa_left);
+draw_text(100, 128, 'ИМЯ:##' + string(str1));
+draw_set_halign(fa_right);
+draw_text(1024 - 100, 128, 'КАРТА:##' + string(str2));
+draw_set_halign(fa_left);
+if ds_list_size(global.slist) &gt; 0 {draw_text(84 - 16, 128 + 16*select, '##&gt;');}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

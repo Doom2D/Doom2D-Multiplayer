@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="MOUSE" id="1">
+<event category="KEYPRESS" id="13">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if visible {instance_destroy();}
+        <argument kind="STRING">snd_play(1);
+global.sv_ip = server[select, 3];
+room_goto(rm_game);
 </argument>
       </arguments>
     </action>

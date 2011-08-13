@@ -58,7 +58,7 @@ if ds_list_find_value(cmd, 0) == 'bot_add'
   bot_add();
   exit;
 }
-if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome')
+if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist')
 {
   con_parse_cvar(ds_list_find_value(cmd, 0), ds_list_find_value(cmd, 1));
   exit;
@@ -108,13 +108,19 @@ if ds_list_find_value(cmd, 0) == 'ban_reload'
 if ds_list_find_value(cmd, 0) == 'sv_rcon_pwd'
 {
   if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_rcon_pwd); exit;}
-  global.sv_rcon_pwd = string_delete(ds_list_find_value(cmd, 1), 9, string_length(ds_list_find_value(cmd, 1)))
+  global.sv_rcon_pwd = string_delete(ds_list_find_value(cmd, 1), 9, string_length(ds_list_find_value(cmd, 1)));
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'sv_password'
 {
   if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_password); exit;}
-  global.sv_password = string_delete(ds_list_find_value(cmd, 1), 9, string_length(ds_list_find_value(cmd, 1)))
+  global.sv_password = string_delete(ds_list_find_value(cmd, 1), 9, string_length(ds_list_find_value(cmd, 1)));
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'sv_slist'
+{
+  if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_slist); exit;}
+  global.sv_slist = ds_list_find_value(cmd, 1);
   exit;
 }
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)));

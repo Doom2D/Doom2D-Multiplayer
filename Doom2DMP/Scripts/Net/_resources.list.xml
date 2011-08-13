@@ -13,4 +13,5 @@
   <resource name="net_list_clients" type="RESOURCE"/>
   <resource name="id_to_cl" type="RESOURCE"/>
   <resource name="change_weapon" type="RESOURCE"/>
+  <resource name="slist" type="GROUP"/>
 </resources>

@@ -151,6 +151,17 @@ if ds_list_find_value(cmd, 0) == 'r_gfx'
     }
     global.r_gfx = real(ds_list_find_value(cmd, 1));
     if global.r_gfx > 1 || global.r_gfx < 0 {global.r_gfx = 1;}
+    if room == rm_game
+    {
+        if global.r_gfx
+        {
+            instance_activate_object(o_bkg);
+        }
+        else
+        {
+            instance_deactivate_object(o_bkg);
+        }
+    }
     con_add('r_gfx = ' + string(global.r_gfx));
     exit;
 }
@@ -262,5 +273,21 @@ if ds_list_find_value(cmd, 0) == 'IDDQD' || ds_list_find_value(cmd, 0) == 'kill'
 {
     net_cheat(4);
     exit;
+}
+if ds_list_find_value(cmd, 0) == 'cl_slist'
+{
+  if is_real(ds_list_find_value(cmd, 1))
+  {
+    con_add(string(global.cl_slist));
+    exit;
+  } 
+  if ds_list_find_value(cmd, 1) == ''
+  {
+    con_add(string(global.cl_slist));
+    exit;
+  } 
+  global.cl_slist = ds_list_find_value(cmd, 1);
+  con_add('cl_slist = ' + string(global.cl_slist));
+  exit;
 }
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)) + '. Введите help для списка команд.');

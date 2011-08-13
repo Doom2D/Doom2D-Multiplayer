@@ -1,5 +1,5 @@
 //creates a corpse of a player with id arg0 at arg1, arg2
-if global.r_massacre < 2 {exit;}
+if global.r_massacre < 2 || !global.r_gfx {exit;}
 var corpse, victim;
 victim = id_to_cl(argument0);
 if !instance_exists(victim) {exit;}

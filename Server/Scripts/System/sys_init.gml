@@ -1,7 +1,7 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '116';
+global.sys_bld = '117';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -17,6 +17,8 @@ global.sv_rcon_pwd = 'pwd';
 global.sv_ipbans = 1;
 global.sv_cycle_maps = 1;
 global.sv_cheats = 0;
+global.sv_slist_time = 60;
+global.sv_slist = 'd2dmp.fd0.ru';
 global.cl_timeout = 45;
 global.mp_fraglimit = 96;
 global.mp_timelimit = 3600;

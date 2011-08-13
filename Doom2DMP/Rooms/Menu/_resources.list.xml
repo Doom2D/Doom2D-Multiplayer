@@ -7,6 +7,7 @@
   <resource name="rm_set_gfx" type="RESOURCE"/>
   <resource name="rm_set_pl" type="RESOURCE"/>
   <resource name="rm_set_ip" type="RESOURCE"/>
+  <resource name="rm_set_slist" type="RESOURCE"/>
   <resource name="rm_exit" type="RESOURCE"/>
   <resource name="rm_credits" type="RESOURCE"/>
 </resources>

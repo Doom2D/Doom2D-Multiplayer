@@ -95,3 +95,4 @@ _md5_str = '';
 _md5 = '';
 
 mus_play(global.map_mus);
+if !global.r_gfx {instance_deactivate_object(o_bkg);}

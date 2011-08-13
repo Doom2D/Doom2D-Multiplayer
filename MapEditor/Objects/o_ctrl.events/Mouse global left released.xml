@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="MOUSE" id="50">
+<event category="MOUSE" id="56">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -15,6 +15,39 @@
       <arguments>
         <argument kind="STRING">x2 = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz);
 y2 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz);
+
+var sl, obj;
+sl = API_Combobox_GetSel(ui_tl_cb);
+if sl &gt;= 11 {exit;}
+switch sl
+{
+    case 0:
+        obj = o_solid;
+    break;
+    case 1:
+        obj = o_jthr;
+    break;
+    case 2:
+        obj = o_bkg;
+    break;
+    case 3:
+        obj = o_frg;
+    break;
+    case 4:
+    case 5:
+    case 6:
+        obj = o_liquid;
+    break;
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+        obj = o_lift;
+    break;
+}
+
+ed_create_panel(x1, y1, x2, y2, obj, tx, sl);
+
 </argument>
       </arguments>
     </action>

@@ -8,24 +8,31 @@ switch sl
 {
   case 0:
    spr = global.tex[tx];
+   col = c_white;
   break;
   case 1:
    spr = global.tex[tx];
+   col = c_orange; 
   break;
   case 2:
    spr = global.tex[tx];
+   col = c_maroon;
   break;
   case 3:
    spr = global.tex[tx];
+   col = c_purple;
   break;
   case 4:
    spr = global.tex[tx];
+   col = c_green;
   break;
   case 5:
    spr = global.tex[tx];
+   col = c_green;
   break;
   case 6:
    spr = global.tex[tx];
+   col = c_green;
   break;
   case 7:
    spr = s_lifts;
@@ -111,3 +118,6 @@ switch sl
    im = sl;
   break;
 }
+
+th = sprite_get_height(spr);
+tw = sprite_get_width(spr);

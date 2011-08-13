@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="net_slist_get" type="RESOURCE"/>
+  <resource name="r_slist_fetch" type="RESOURCE"/>
+  <resource name="r_slist_init" type="RESOURCE"/>
+</resources>

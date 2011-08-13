@@ -13,4 +13,6 @@
   <resource name="ed_settings" type="RESOURCE"/>
   <resource name="ed_map_settings" type="RESOURCE"/>
   <resource name="ed_tools_reset" type="RESOURCE"/>
+  <resource name="ed_create_panel" type="RESOURCE"/>
+  <resource name="ed_draw_panel" type="RESOURCE"/>
 </resources>

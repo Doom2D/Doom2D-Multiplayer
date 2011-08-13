@@ -41,6 +41,8 @@ file_text_write_string(cfg, 's_vol_sound ' + string(round(FMODGroupGetVolume(2)*
 file_text_writeln(cfg);
 file_text_write_string(cfg, 's_vol_music ' + string(round(FMODGroupGetVolume(3)*100)));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'cl_slist ' + string(global.cl_slist));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'echo Добро пожаловать в Doom 2D Multiplayer v0.6!');
 con_add(':: SYSTEM: Конфигурация сохранена в файл ' + string(file) + '.');
 file_text_close(cfg);

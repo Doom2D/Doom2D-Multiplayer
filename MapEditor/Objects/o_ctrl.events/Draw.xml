@@ -14,11 +14,15 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">ed_spr_select();
-if sprite_exists(spr)
-{
-  draw_sprite_ext(spr, im, floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off, floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off, 1, 1, 0, c_white, 0.7);
-}
 draw_set_color(c_white);
+if mouse_check_button(mb_left) &amp;&amp; API_Combobox_GetSel(ui_tl_cb) &lt; 11
+{
+  ed_draw_panel();
+}
+else
+{
+  draw_sprite(spr, im, round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off), round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off));
+}
 draw_set_alpha(0.75);
 draw_text(mouse_x + 16, mouse_y, string(round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off)) + "#" + string(round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off)));
 draw_set_alpha(1);
