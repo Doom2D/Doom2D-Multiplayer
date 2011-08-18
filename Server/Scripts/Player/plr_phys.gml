@@ -17,7 +17,7 @@ if argument1 && !argument0
 }
 if argument2 && !free && !global.mp_flymode && !st_jet
 {
-    if !position_meeting(x, y + 15, o_water) && !position_meeting(x, y + 15, o_acid)
+    if !collision_rectangle(x - 8, y, x + 8, y + 16, o_water, 0, 0) && !collision_rectangle(x - 8, y, x + 8, y + 16, o_acid, 0, 0)
     {
         vsp =- jspd;
     }
@@ -26,7 +26,7 @@ if argument2 && !free && !global.mp_flymode && !st_jet
         vsp = -2.75;
     }
 }
-if argument2 && st_jet
+if argument2 && (st_jet || global.mp_flymode)
 {
     vsp = -4;
 }

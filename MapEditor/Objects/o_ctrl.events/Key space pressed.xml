@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="OTHER" id="5">
+<event category="KEYPRESS" id="32">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,7 +13,18 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">API_Free();
+        <argument kind="STRING">var sl;
+sl = API_Combobox_GetSel(ui_tl_cb);
+x1 = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz);
+y1 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz);
+if !keyboard_check(vk_shift) 
+{
+    x1 = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz);
+    y1 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz);
+    map_obj_create(sl, tx, x1, y1);
+}
+x_off = 0;
+y_off = 0;
 </argument>
       </arguments>
     </action>

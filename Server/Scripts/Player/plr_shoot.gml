@@ -156,10 +156,10 @@ switch w
         //bfg
         if a4 < 40 {exit;}
         a4 -= 40;
-        alarm[5] = 50;     
+        alarm[5] = 50 - 25 * global.mp_danmaku;     
         plr_send_stat();
         plr_send_sound(16, x, y);
-        cd = 120;
+        cd = 120 - 60 * global.mp_danmaku;
     break;
     case 8:
         //superchaingun

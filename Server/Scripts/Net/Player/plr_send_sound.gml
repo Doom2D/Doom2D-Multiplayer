@@ -1,4 +1,4 @@
-//sound arg0 will be played on all clients at (arg1, arg2)
+//sound arg0 will play on all clients at (arg1, arg2)
 var s_i, s_x, s_y;
 s_i = argument0;
 s_x = argument1;

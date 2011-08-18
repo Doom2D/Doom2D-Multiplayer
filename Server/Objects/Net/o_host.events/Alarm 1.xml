@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">net_slist_upd(global.sv_name + ' (' + global.sys_ver + ' ' + global.sys_bld + ')', string(global.sv_map) + ' (' + string(instance_number(o_pl)) + '/' + string(global.sv_maxplayers) + ')');
+        <argument kind="STRING">net_slist_upd(global.sv_name + ' [' + global.sys_ver + ' ' + global.sys_bld + ']', 
+string(global.sv_map) + ' [' + string(instance_number(o_pl)) + '/' + string(global.sv_maxplayers) + ']');
 alarm[1] = 60 * global.sv_slist_time;
 </argument>
       </arguments>

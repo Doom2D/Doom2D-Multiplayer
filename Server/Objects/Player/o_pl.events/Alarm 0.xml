@@ -15,6 +15,7 @@
       <arguments>
         <argument kind="STRING">//misc shit
 if st_jet || global.mp_flymode {plr_send_speed(); plr_send_effect(6, x, y);}
+if global.mp_danmaku {if st_jet == 0 {st_jet = 1;}; a3 = 999; a4 = 999; w = choose(5, 6, 7); if cd &gt; 8 {cd = 8;}}
 bot_send_pos();
 alarm[0] = global.bot_tickrate;
 </argument>

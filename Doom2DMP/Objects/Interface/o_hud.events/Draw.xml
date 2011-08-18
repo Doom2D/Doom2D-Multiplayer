@@ -14,7 +14,8 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if !active {exit;}
-if !instance_exists(global.cl_inst){exit;}
+if !instance_exists(global.cl_inst) {exit;}
+if global.cl_inst.object_index != o_pl {exit;}
 draw_set_font(global.fnt_sys);
 draw_background(tex_hud, view_xview + 824, view_yview);
 net_list_clients();

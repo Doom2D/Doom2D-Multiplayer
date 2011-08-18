@@ -43,7 +43,7 @@ if (hit_ground = true)
 if (hit_player = true)
 {
     if ID.cl_id == a_id {exit;}
-    if global.mp_godmode || ID.st_inv {exit;}
+    if ID.st_inv || global.mp_godmode {exit;}
     if ID.ap &lt; 1
     {
         ID.hp -= dmg;

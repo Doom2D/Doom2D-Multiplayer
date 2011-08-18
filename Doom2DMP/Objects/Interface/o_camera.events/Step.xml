@@ -25,8 +25,8 @@ if view_yview &gt; global.map_h - 768 {view_yview = global.map_h - 768;}
 if view_xview &lt; 0 {view_xview = 0;}
 if view_yview &lt; 0 {view_yview = 0;}
 
-if keyboard_check(global.key_up) &amp;&amp; offset &gt; -96 {offset -= 4;}
-if keyboard_check(global.key_dn) &amp;&amp; offset &lt; 96 {offset += 4;}
+if keyboard_check(global.key_up) &amp;&amp; offset &gt; -96 &amp;&amp; !global.con {offset -= 4;}
+if keyboard_check(global.key_dn) &amp;&amp; offset &lt; 96 &amp;&amp; !global.con {offset += 4;}
 if !keyboard_check(global.key_up) &amp;&amp; !keyboard_check(global.key_dn) &amp;&amp; offset != 0 {offset -= 4*sign(offset);}
 
 //sound shit

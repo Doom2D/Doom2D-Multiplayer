@@ -15,6 +15,7 @@ for(i=0; i < 24000; i+=1)
 con_add(':: NET: Пытаемся определить внешний IP...');
 global.sv_ip = net_my_ip();
 con_add(':: IP: ' + global.sv_ip);
+
 //open tcp socket
 sv_tcp = dll39_tcp_listen(25666, 16, 1);
 if (sv_tcp)
@@ -42,6 +43,25 @@ else
   game_end();
   exit;
 }
+
+//check ports
+if !global.sv_lan && global.sv_portcheck
+{
+    con_add(':: NET: Пытаемся определить доступность портов...');
+    var p1;
+    p1 = net_check_port(global.sv_port);
+    if !p1
+    {
+        con_add(':: NET: WARNING: Порт ' + string(global.sv_port) + ' закрыт, либо произошла ошибка при определении.#Ваш сервер не будет доступен извне. sv_lan = 1.');
+        global.sv_lan = 1;
+    }
+    else
+    {
+        con_add(':: NET: Порт ' + string(global.sv_port) + ' доступен извне.');
+    }
+}
+
+
 map_load(global.sv_map);
 con_add(':: NET: Сервер включен.');
 cfg_load('autoexec.cfg');

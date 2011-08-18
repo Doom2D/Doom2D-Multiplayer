@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">global.cl_last_ping = global.cl_ping_delay/0.06;
-alarm[1] = 16;
+alarm[1] = 60;
 </argument>
       </arguments>
     </action>

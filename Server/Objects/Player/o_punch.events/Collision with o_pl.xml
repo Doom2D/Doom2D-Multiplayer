@@ -33,7 +33,7 @@ if kb &amp;&amp; global.mp_knockback
     if other.x &lt; x {other.hsp = -8; other.vsp = -6;}
     if other.x &gt; x {other.hsp = 8; other.vsp = -6;}   
 }
-with (other) {plr_send_stat(); plr_send_speed(); plr_send_pain(); other.pt = 10;}
+with (other) {plr_send_stat(); plr_send_speed();  if !global.mp_godmode &amp;&amp; !st_inv {plr_send_pain();} other.pt = 10;}
 
 </argument>
       </arguments>

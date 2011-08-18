@@ -1,6 +1,7 @@
 //load map
 //argument0 - filename
 var _md5, _md5_str;
+global.map_md5 = '';
 _md5 = '';
 _md5_str = '';
 
@@ -96,3 +97,4 @@ _md5 = '';
 
 mus_play(global.map_mus);
 if !global.r_gfx {instance_deactivate_object(o_bkg);}
+con_add(':: MAP: Загружена карта ' + argument0);

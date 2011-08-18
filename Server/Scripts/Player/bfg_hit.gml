@@ -37,7 +37,7 @@ with o_pl
     }
 
     plr_send_stat();
-    plr_send_pain();
+    if !global.mp_godmode && !st_inv {plr_send_pain();}
     plr_send_speed();
     plr_send_effect(1, x, y);
     plr_send_effect(7, x, y);

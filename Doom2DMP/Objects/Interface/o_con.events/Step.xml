@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if keyboard_check_pressed(192)
+        <argument kind="STRING">if keyboard_check_pressed(192) &amp;&amp; !saymode
 {
   if global.con == 1
   {
@@ -28,6 +28,7 @@
   }
 }
 if keyboard_check_pressed(global.key_chat) &amp;&amp; room == rm_game &amp;&amp; !saymode &amp;&amp; !global.con {keyboard_string = ''; saymode = 1;}
+if keyboard_check_pressed(vk_f12) {screen_save('screenshots\scr' + string(current_day) + string(current_month) + string(current_year) + string(current_hour) + string(current_minute) + string(current_second) + '.png');}
 FMODUpdate();
 </argument>
       </arguments>

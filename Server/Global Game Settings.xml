@@ -28,14 +28,14 @@
     <letF1ShowGameInfo>false</letF1ShowGameInfo>
     <letF4SwitchFullscreen>false</letF4SwitchFullscreen>
     <letF5SaveF6Load>false</letF5SaveF6Load>
-    <letF9Screenshot>true</letF9Screenshot>
+    <letF9Screenshot>false</letF9Screenshot>
     <letEscEndGame>true</letEscEndGame>
     <treatCloseAsEscape>true</treatCloseAsEscape>
   </keys>
   <errors>
-    <displayErrors>true</displayErrors>
-    <writeToLog>false</writeToLog>
-    <abortOnError>false</abortOnError>
+    <displayErrors>false</displayErrors>
+    <writeToLog>true</writeToLog>
+    <abortOnError>true</abortOnError>
     <treatUninitializedAsZero>false</treatUninitializedAsZero>
   </errors>
   <gameInfo>

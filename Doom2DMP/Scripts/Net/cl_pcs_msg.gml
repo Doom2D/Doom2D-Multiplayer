@@ -24,7 +24,6 @@ while 1
             _welcome = dll39_read_string(0);
             con_add(':: NET: Получена информация о сервере.');
             map_load(global.sv_map);
-            con_add(':: MAP: Загружена карта ' + global.sv_map);
             con_add(':: MAP: MD5 карты клиента: ' + global.map_md5);
             con_add(':: MAP: MD5 карты сервера: ' + global.sv_map_md5);
             if global.map_md5 != global.sv_map_md5

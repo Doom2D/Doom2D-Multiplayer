@@ -36,18 +36,22 @@ switch sl
   break;
   case 7:
    spr = s_lifts;
+   col = c_yellow;
    im = 0;
   break;
   case 8:
    spr = s_lifts;
+   col = c_yellow;
    im = 1;
   break;
   case 9:
    spr = s_lifts;
+   col = c_yellow;
    im = 2;
   break;
   case 10:
    spr = s_lifts;
+   col = c_yellow;
    im = 3;
   break;
   case 11:
@@ -118,6 +122,8 @@ switch sl
    im = sl;
   break;
 }
+
+if keyboard_check(vk_control) {col = c_red;}
 
 th = sprite_get_height(spr);
 tw = sprite_get_width(spr);

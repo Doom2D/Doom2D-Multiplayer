@@ -17,7 +17,7 @@ if argument1 && !argument0
 }
 if argument2 && !free
 {
-    if !position_meeting(x, y + 15, o_liq)
+    if !collision_rectangle(x - 8, y, x + 8, y + 16, o_liq, 0, 0)
     {
         vsp =- jspd;
     }

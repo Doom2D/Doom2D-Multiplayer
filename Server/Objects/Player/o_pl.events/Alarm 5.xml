@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">//bfg projectile
-if w != 7 || dead {exit;}
+if (w != 7 &amp;&amp; !global.mp_danmaku) || dead {exit;}
     
 if aim == 1 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn {b_dir = 0;}
 if aim == -1 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn {b_dir = 180;}

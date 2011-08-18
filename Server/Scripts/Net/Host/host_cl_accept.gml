@@ -22,7 +22,9 @@ _cl_bld = dll39_read_string(0);
 _cl_pwd = dll39_read_string(0);
 _ip = dll39_lastin_ip();
 
-con_add(":: NET: Клиент " + string(_name) + " запрашивает соединение с IP " + string(_ip) + ". Обработка...");
+if _name == '' {exit;}
+
+con_add(":: Запрос соединения с IP " + string(_ip) + ". Обработка...");
 
 if !(_cl_ver == global.sys_ver && _cl_bld == global.sys_bld)
 {
@@ -48,6 +50,7 @@ if global.sv_use_pwd && _cl_pwd != global.sv_password
 
 if global.sv_ipbans
 {
+    //or banlist match :3
     if list_get_ind('ban_list', _ip) >= 0
     {
         dll39_buffer_clear(0);
@@ -69,10 +72,10 @@ if instance_number(o_pl) == global.sv_maxplayers
     exit;
 }
 
-//id shit
+//find some empty client slot
 _id = host_find_slot();
 
-//send server info to new client. And his id too
+//send server info to the new fucker with his id
 dll39_buffer_clear(0);
 dll39_write_byte(1, 0);
 dll39_write_byte(_id, 0);
@@ -83,6 +86,7 @@ dll39_write_byte(global.sv_maxplayers, 0);
 dll39_write_string(global.sv_welcome, 0);
 dll39_message_send(cl_sock, 0, 0, 0);
 
+//create some new player and give him his ip
 _cl = host_add_player(_id, cl_sock, _name, _skin, _color, false);
 _cl.cl_ip = _ip;
 
@@ -100,6 +104,8 @@ with(o_pl)
     plr_send_stat();
     plr_send_speed();
 }
+
+//and items
 with(o_item)
 {
     dll39_buffer_clear(0);

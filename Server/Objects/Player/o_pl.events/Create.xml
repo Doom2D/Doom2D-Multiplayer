@@ -28,6 +28,7 @@ ap = 0;
 a1 = 50;
 a2 = 0;
 a3 = 0;
+hp_old = 100; //invulnerability shit
 aim = 1;
 b_dir = 0;
 ct = 0;

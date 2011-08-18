@@ -11,7 +11,7 @@ for (i = 0; i < 1024; i += 1)
   if global.tex[i] == -1 {break;}
 }
 
-global.tex[i] = sprite_add(tx_f, -1, 0, 0, 0, 0);
+if filename_ext(tx_f) != '.gif' {global.tex[i] = sprite_add(tx_f, -1, 0, 0, 0, 0);} else {global.tex[i] = sprite_add(tx_f, -1, 1, 0, 0, 0);}
 global.tex_n += 1;
 
 sprite_collision_mask(global.tex[i], 0, 1, 0, 0, 0, 0, 1, 0);

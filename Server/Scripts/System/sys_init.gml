@@ -1,7 +1,7 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '117';
+global.sys_bld = '118';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -12,6 +12,7 @@ global.sv_maxplayers = 10;
 global.sv_use_pwd = 0;
 global.sv_password = 'pwd';
 global.sv_lan = 1;
+global.sv_portcheck = 1;
 global.sv_rcon = 1;
 global.sv_rcon_pwd = 'pwd';
 global.sv_ipbans = 1;
@@ -30,8 +31,11 @@ global.mp_knockback = 1;
 global.mp_selfdamage = 1;
 global.mp_flymode = 0;
 global.mp_godmode = 0;
+global.mp_danmaku = 0;
 global.mp_oldaim = 1;
 global.mp_itemdrop = 1;
+global.mp_dropall = 1;
+global.mp_weaponstay = 0;
 global.bot_names = 1;
 global.bot_chatter = 0;
 global.bot_tickrate = 2;
@@ -68,8 +72,11 @@ list_load('data\cfg\ip_bans.txt', 'ban_list');
 list_load('data\cfg\bot_chatter.txt', 'chat_list');
 list_load('data\cfg\map_list.txt', 'map_list');
 list_load('data\cfg\bot_names.txt', 'name_list');
-global.name_taken = ds_list_create();
+
+global.name_taken = ds_list_create(); //taken names list for bots
 list_add('name_taken', 'DEFAULT');
+
+//now we get the current map's position in the maplist
 global.map_list_ind = list_get_ind('map_list', global.sv_map);
 if global.map_list_ind == -1  {global.map_list_next = global.sv_map; exit;}
 if global.map_list_ind + 2 > list_get_len('map_list') {global.map_list_ind = -1;}

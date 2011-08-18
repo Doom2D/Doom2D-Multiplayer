@@ -1,4 +1,8 @@
 //load map
+io_clear();
+global.ed_g_sz = 16; //grid size
+background_assign(bk_current, bk_grid16);
+
 f = get_open_filename('D2DMP Maps|*.dlv', 'data\maps\Unnamed.dlv');
 if !file_exists(f) {exit;}
 with par_obj {instance_destroy();}
@@ -30,7 +34,10 @@ tx_n = real(file_text_read_string(file));
 file_text_readln(file);
 for (i = 1; i < tx_n; i += 1)
 {
-  ed_tex_load(file_text_read_string(file));
+  var tf;
+  tf = file_text_read_string(file);
+  if !file_exists(tf) {tf = 'data\textures\NO_TEXTURE.png';}
+  ed_tex_load(tf);
   file_text_readln(file);
 }
 while !file_text_eof(file)

@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">snd_play(0);
+        <argument kind="STRING">if global.con {exit;}
+snd_play(0);
 if select &lt; ds_list_size(global.slist) - 1
 {
   select += 1;

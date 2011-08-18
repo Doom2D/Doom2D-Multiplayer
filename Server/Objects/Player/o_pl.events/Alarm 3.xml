@@ -16,7 +16,7 @@
         <argument kind="STRING">//clear invincibility
 if st_inv == 0 {exit;}
 st_inv = 0;
-hp = 100;
+hp = hp_old;
 plr_send_stat();
 </argument>
       </arguments>

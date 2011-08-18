@@ -39,7 +39,7 @@ if global.mp_knockback
     if other.y &gt; y + 8 {other.vsp += 1;} 
     if other.y &lt; y - 8 {other.vsp -= 1;} 
 }
-with (other) {plr_send_stat(); plr_send_pain(); plr_send_speed();}
+with (other) {plr_send_stat();  if !global.mp_godmode &amp;&amp; !st_inv {plr_send_pain();}; plr_send_speed();}
 plr_send_effect(1, other.x, other.y);
 instance_destroy();
 //instance_create(x, y, o_explosion);

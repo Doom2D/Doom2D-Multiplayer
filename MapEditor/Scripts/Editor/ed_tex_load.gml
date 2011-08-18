@@ -1,10 +1,19 @@
 tx_f = argument0;
-if !file_exists(tx_f) {tx_f = 'data\texutres\NO_TEXTURE.png';}
+transp = 0;
+if filename_ext(tx_f) == '.gif'
+{
+    transp = 1;
+}
+
+if !file_exists(tx_f) {exit;}
 for (i = 0; i < 1024; i += 1)
 {
   if global.tex[i] == -1 {break;}
 }
-global.tex[i] = sprite_add(tx_f, -1, 0, 0, 0, 0);
+
+global.tex[i] = sprite_add(tx_f, -1, transp, 0, 0, 0);
+
+
 global.tex_n += 1;
 
 tx_nm = tx_f;
