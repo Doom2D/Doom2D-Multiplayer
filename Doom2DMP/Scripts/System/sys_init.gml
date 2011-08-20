@@ -1,5 +1,5 @@
 global.sys_ver = '0.6';
-global.sys_bld = '118';
+global.sys_bld = '119';
 global.sys_log = 'client';
 global.sys_error = false;
 _pth = 'data\logs\' + string(global.sys_log) + '.log';

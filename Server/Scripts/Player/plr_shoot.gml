@@ -28,7 +28,7 @@ switch w
         b.image_angle = b_dir;
         b.dmg = 10 + st_ber * 20;
         b.kb = st_ber;
-        b.alarm[0] = 2;
+        b.alarm[0] = 1;
         plr_send_stat();
         plr_send_sound(17, x, y);
         cd = 20;
@@ -187,7 +187,7 @@ switch w
         b.image_angle = b_dir;
         b.dmg = 16;
         b.kb = 0;
-        b.alarm[0] = 2;
+        b.alarm[0] = 1;
         plr_send_stat();
         if ct < 1 {plr_send_sound(18, x, y); ct = 100;}
         cd = 5;

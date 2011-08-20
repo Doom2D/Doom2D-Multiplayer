@@ -56,6 +56,8 @@ file_text_write_string(cfg, 'mp_oldaim ' + string(global.mp_oldaim));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_dropall ' + string(global.mp_dropall));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'mp_itemdrop ' + string(global.mp_itemdrop));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_weaponstay ' + string(global.mp_weaponstay));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'bot_names ' + string(global.bot_names));
