@@ -1,7 +1,7 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '119';
+global.sys_bld = '120';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;

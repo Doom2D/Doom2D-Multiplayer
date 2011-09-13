@@ -2,7 +2,7 @@ SuperDM - название
 by Prikol Software - описание
 1600 - ширина
 1600 - высота
-data\music\Dooshevnaya.xm - файл музыки (относительно местонахождения бинарника игры)
+data\music\Dooshevnaya.xm - файл музыки (относительно местонахождения EXE-файла игры)
 data\textures\sky\D2DSKY1.png - файл фона
 9 - количество текстур плюс одна невидимая
 data\textures\STD_10.tga - текстура 1
