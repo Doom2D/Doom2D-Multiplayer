@@ -15,6 +15,9 @@
       <arguments>
         <argument kind="STRING">cl_connect();
 global.cl_ping = 1;
+_timer = 0;
+_delay = 0;
+global.cl_tcpdelay = 0;
 alarm[1] = 32;
 </argument>
       </arguments>

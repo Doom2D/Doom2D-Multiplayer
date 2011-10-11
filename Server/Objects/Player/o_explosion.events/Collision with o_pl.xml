@@ -25,8 +25,8 @@ if other.pt &gt; 0 {exit;}
 if !variable_local_exists('l_id') {exit;}
 if other.cl_id == l_id &amp;&amp; !global.mp_selfdamage {exit;}
 var dmg, dist;
-dist = distance_to_object(other);
-if !global.mp_godmode &amp;&amp; !other.st_inv {dmg = 96 - dist;} else {dmg = 0;}
+dist = round(point_distance(x, y, other.x, other.y)/1.25);
+if !global.mp_godmode &amp;&amp; !other.st_inv {dmg = 90 - dist;} else {dmg = 0;}
 if dmg &lt; 0 {dmg = 8;}
 if other.ap &gt; 0
 {

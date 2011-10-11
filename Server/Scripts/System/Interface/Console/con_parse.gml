@@ -4,7 +4,7 @@ if string(argument0) == '' {exit;}
 prev_cmd = argument0;
 cmd = string_explode(argument0, ' ', false); 
 if is_real(ds_list_find_value(cmd, 0)){exit;}
-con_add('> ' + argument0);
+if !(ds_list_find_value(cmd, 0) == 'echo' || ds_list_find_value(cmd, 0) == 'say') {con_add('> ' + argument0);}
 if ds_list_find_value(cmd, 0) == 'help'
 {
   con_add('==Базовые команды===');
@@ -58,7 +58,7 @@ if ds_list_find_value(cmd, 0) == 'bot_add'
   bot_add();
   exit;
 }
-if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip')
+if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'sv_slist_path')
 {
   con_parse_cvar(ds_list_find_value(cmd, 0), ds_list_find_value(cmd, 1));
   exit;
@@ -121,6 +121,17 @@ if ds_list_find_value(cmd, 0) == 'sv_slist'
 {
   if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_slist); exit;}
   global.sv_slist = ds_list_find_value(cmd, 1);
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'sv_slist_path'
+{
+  if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_slist_path); exit;}
+  global.sv_slist_path = ds_list_find_value(cmd, 1);
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'resync'
+{
+  o_host.alarm[1] = 1;
   exit;
 }
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)));

@@ -117,36 +117,13 @@ switch w
     case 6:
         //plasmagun
         if a4 < 1 {exit;}
-        if !place_meeting(x, y - 15, o_water) && !place_meeting(x, y - 15, o_acid)
-        {  
-            p = instance_create(x, y, o_projectile);
-            p.l_id = cl_id;
-            p.direction = b_dir;
-            p.p_type = 2;
-            p.p_spd = 9;
-            plr_send_projectile(cl_id, 2, b_dir, x, y);
-            plr_send_sprite(cl_id, 1, 0);
-        }
-        else
-        {
-            if !global.mp_godmode && !st_inv
-            {
-            if ap > 0
-            {
-                hp -= 7;
-                ap -= 15;
-            }
-            else
-            {  
-                hp -= 15;
-            }
-            }
-            if ap < 0 {ap = 0;}
-            if pt < 1 {plr_send_sound(7, x, y); plr_send_sprite(cl_id, 0, 1); pt = 32;}
-            plr_send_effect(1, x, y);
-            killer_id = cl_id;
-            kill_type = 6;
-        }
+        p = instance_create(x, y, o_projectile);
+        p.l_id = cl_id;
+        p.direction = b_dir;
+        p.p_type = 2;
+        p.p_spd = 9;
+        plr_send_projectile(cl_id, 2, b_dir, x, y);
+        plr_send_sprite(cl_id, 1, 0);
         a4 -= 1;
         plr_send_stat();
         plr_send_sound(15, x, y);
@@ -155,11 +132,9 @@ switch w
     case 7:
         //bfg
         if a4 < 40 {exit;}
-        a4 -= 40;
-        alarm[5] = 50 - 25 * global.mp_danmaku;     
-        plr_send_stat();
+        alarm[5] = 50;    
         plr_send_sound(16, x, y);
-        cd = 120 - 60 * global.mp_danmaku;
+        cd = 120;
     break;
     case 8:
         //superchaingun

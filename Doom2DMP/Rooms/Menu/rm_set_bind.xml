@@ -98,8 +98,8 @@
   <instances>
     <instance>
       <object>o_menu</object>
-      <position x="400" y="304"/>
-      <creationCode>menu_init(global.fnt_big, c_white, 10);
+      <position x="368" y="208"/>
+      <creationCode>menu_init(global.fnt_big, c_white, 11);
 str[1, 0] = 'Вверх: ' + key_name(global.key_up);
 str[1, 1] = 'str[1, 0] = "Вверх: &lt;...&gt;"; key_bind2("+lookup"); str[1, 0] = "Вверх: " + key_name(global.key_up);';
 
@@ -127,8 +127,11 @@ str[8, 1] = "str[8, 0] = 'Сл. оружие: &lt;...&gt;'; key_bind2('+nextweap
 str[9, 0] = 'Пр. оружие: ' + key_name(global.key_chw2);
 str[9, 1] = "str[9, 0] = 'Пр. оружие: &lt;...&gt;'; key_bind2('+prevweapon'); str[9, 0] = 'Пр. оружие: ' + key_name(global.key_chw2);";
 
-str[10, 0] = 'Назад'
-str[10, 1] = 'room_goto(rm_set);';
+str[10, 0] = 'Скриншот: ' + key_name(global.key_scr);
+str[10, 1] = "str[10, 0] = 'Скриншот: &lt;...&gt;'; key_bind2('+screenshot'); str[10, 0] = 'Скриншот: ' + key_name(global.key_scr);";
+
+str[11, 0] = 'Назад'
+str[11, 1] = 'room_goto(rm_set);';
 
 str[1, 2] = '';
 str[1, 3] = '';
@@ -149,6 +152,9 @@ str[8, 3] = '';
 str[9, 2] = '';
 str[9, 3] = '';
 str[10, 2] = '';
+str[10, 3] = '';
+str[11, 2] = '';
+str[11, 3] = '';
 str[10, 3] = '';
 </creationCode>
       <locked>false</locked>

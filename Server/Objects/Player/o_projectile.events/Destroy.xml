@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">switch p_type
+        <argument kind="STRING">if water {exit;}
+switch p_type
 {
     case 1:
     //rocket
@@ -24,14 +25,13 @@
     break;
     case 2:
     //plasma
-        if !water {plr_send_effect(5, x, y);}
+        plr_send_effect(5, x, y);
         plr_send_sound(25, x, y);
     break;
     case 3:
     //bfg
         bfg_hit();
-        if !water {plr_send_xplos(l_id, 2, x, y);
-        plr_send_sound(22, x, y);}
+        plr_send_xplos(l_id, 2, x, y);
     break;
 }
 </argument>

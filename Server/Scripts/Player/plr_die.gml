@@ -3,7 +3,7 @@
 item_drop();
 plr_send_dead(killer_id, cl_id, kill_type); 
 plr_send_stat(); 
-alarm[1] = global.mp_respawn*60; 
+if global.mp_respawn > 0 {alarm[1] = global.mp_respawn*60; }
 x = -9000; 
 y = -9000; 
 plr_send_pos();    

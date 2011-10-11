@@ -6,7 +6,7 @@ while 1
     //receive shit
     msg_size = dll39_message_receive(global.cl_tcp, 0, 0);
     if msg_size < 0 break; //got nothing
-    global.cl_ping_delay = 0;
+    _delay = 0;
     
     msg_id = dll39_read_byte(0); //got message id
     
@@ -80,14 +80,9 @@ while 1
         
         case 6:
             //received pong
-            var _str;
-            global.cl_ping = 0;
-            _str = string(global.cl_ping_delay / 0.06) + 'ms';
-            global.cl_last_ping = global.cl_ping_delay/0.06;
+            global.cl_ping = round(_timer/0.06);
+            _timer = 0;
             //con_add("Received pong from server in " + _str + ".");
-            
-            //reset timer
-            global.cl_ping_delay = 0;
         break;
         
         case 7:
@@ -120,7 +115,7 @@ while 1
             global.cl_plr[_id].kb_jump = dll39_read_byte(0);
             global.cl_plr[_id].kb_lkup = dll39_read_byte(0);
             global.cl_plr[_id].kb_lkdn = dll39_read_byte(0);
-            global.cl_plr[_id].kb_strf = dll39_read_byte(0);
+            global.cl_plr[_id].st_talk = dll39_read_byte(0);
             global.cl_plr[_id].x = dll39_read_short(0);
             global.cl_plr[_id].y = dll39_read_short(0);
         break;
@@ -200,6 +195,9 @@ while 1
             global.cl_plr[_id].a4 = dll39_read_short(0);
             global.cl_plr[_id].w = dll39_read_byte(0);
             global.cl_plr[_id].frag = dll39_read_byte(0);
+            global.cl_plr[_id].st_inv = dll39_read_byte(0);
+            global.cl_plr[_id].st_ber = dll39_read_byte(0);
+            global.cl_plr[_id].alarm[2] = 1;
         break;
         
         case 10:
@@ -284,9 +282,35 @@ while 1
         
         case 19:
             //game over
-            r_inter(dll39_read_byte(0));
+            r_inter(dll39_read_byte(0), dll39_read_byte(0));
             cl_disconnect();
             room_goto(rm_inter);
+        break;
+        
+        case 20:
+            //char params change
+            _id = dll39_read_byte(0);
+            _inst = id_to_cl(_id);
+            if !instance_exists(_inst) {break;}
+            _new_name = dll39_read_string(0);
+            _new_skin = dll39_read_string(0);
+            _new_color = dll39_read_int(0);
+            if _inst.cl_name != _new_name
+            {
+                con_add(_inst.cl_name + " теперь известен как " + _new_name);
+                _inst.cl_name = _new_name;
+            }
+            if _inst.cl_color != _new_color
+            {
+                _inst.cl_color = _new_color;
+                con_add(string(_new_color));
+            }
+            if _inst.cl_skin != _new_skin
+            {
+                _inst.cl_skin = _new_skin;
+                with _inst {skin_load(cl_skin);}
+                con_add(string(_new_skin));
+            }
         break;
         
         default:

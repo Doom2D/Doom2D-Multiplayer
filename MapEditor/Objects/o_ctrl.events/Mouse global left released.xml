@@ -19,41 +19,7 @@ y2 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz);
 var sl, obj;
 sl = API_Combobox_GetSel(ui_tl_cb);
 if sl &gt;= 11 || !keyboard_check(vk_shift) {exit;}
-if keyboard_check(vk_control)
-{
-    with par_obj
-    {
-        if other.x1 &lt; other.x2 &amp;&amp; other.y1 &lt; other.y2
-        {
-            if x &lt;= other.x2 &amp;&amp; x &gt;= other.x1 &amp;&amp; y &gt;= other.y1 &amp;&amp; y &lt;= other.y2
-            {
-                event_perform(ev_mouse, ev_right_button);
-            }
-        }
-        if other.x1 &gt; other.x2 &amp;&amp; other.y1 &lt; other.y2
-        {
-            if x &lt;= other.x1 &amp;&amp; x &gt;= other.x2 &amp;&amp; y &gt;= other.y1 &amp;&amp; y &lt;= other.y2
-            {
-                event_perform(ev_mouse, ev_right_button);
-            }
-        }
-        if other.x1 &lt; other.x2 &amp;&amp; other.y1 &gt; other.y2
-        {
-            if x &lt;= other.x2 &amp;&amp; x &gt;= other.x1 &amp;&amp; y &gt;= other.y2 &amp;&amp; y &lt;= other.y1
-            {
-                event_perform(ev_mouse, ev_right_button);
-            }
-        }
-        if other.x1 &gt; other.x2 &amp;&amp; other.y1 &gt; other.y2
-        {
-            if x &lt;= other.x1 &amp;&amp; x &gt;= other.x2 &amp;&amp; y &gt;= other.y2 &amp;&amp; y &lt;= other.y1
-            {
-                event_perform(ev_mouse, ev_right_button);
-            }
-        }
-    }
-    exit;
-}
+
 switch sl
 {
     case 0:

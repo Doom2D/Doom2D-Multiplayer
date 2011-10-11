@@ -196,4 +196,11 @@ case 26:
 global.snd[26] = FMODSoundAdd('data\sounds\menu\close.wav');
 FMODSoundSetGroup(global.snd[26], 2);
 break;
+
+case 27:
+//27 - BFG Explosion
+global.snd[27] = FMODSoundAdd('data\sounds\weapon\bexplos.wav', true);
+FMODSoundSetGroup(global.snd[27], 2);
+FMODSoundSet3dMinMaxDistance(global.snd[27], 0, 1024);
+break;
 }

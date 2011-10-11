@@ -8,14 +8,16 @@ if is_real(ds_list_find_value(cmd, 2)) || string_letters(ds_list_find_value(cmd,
   con_add(string(global.pl_color));
   exit;
 } 
-if is_real(ds_list_find_value(cmd, 3)) || room == rm_game || string_letters(ds_list_find_value(cmd, 3)) != ''
+if is_real(ds_list_find_value(cmd, 3)) || string_letters(ds_list_find_value(cmd, 3)) != ''
 {
   con_add(string(global.pl_color));
   exit;
 } 
 if room == rm_game
 {
-  con_add(':: WARNING: Нельзя сменить цвет игрока в игре.');
+  if !variable_global_exists('cl_inst') {exit;}
+  if !instance_exists(global.cl_inst) {exit;}
+  net_char_look(global.cl_inst.cl_name, global.cl_inst.cl_skin, make_color_rgb(real(ds_list_find_value(cmd, 1)),real(ds_list_find_value(cmd, 2)),real(ds_list_find_value(cmd, 3))));
   exit;
 }
 global.pl_color = make_color_rgb(real(ds_list_find_value(cmd, 1)),real(ds_list_find_value(cmd, 2)),real(ds_list_find_value(cmd, 3)));

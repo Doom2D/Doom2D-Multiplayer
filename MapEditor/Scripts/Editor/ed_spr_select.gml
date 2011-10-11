@@ -123,7 +123,7 @@ switch sl
   break;
 }
 
-if keyboard_check(vk_control) {col = c_red;}
+if mouse_check_button(mb_right) {col = c_red;}
 
 th = sprite_get_height(spr);
 tw = sprite_get_width(spr);

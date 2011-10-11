@@ -1,5 +1,6 @@
 //interscreen
 var frg;
+global.cl_rc_time = argument1;
 frg[0, 0] = 1;
 for (i = 1; i <= 32; i += 1)
 {
@@ -12,7 +13,7 @@ global.inter_text[0] = '';
 global.inter_text[1] = '';
 global.inter_text[2] = '';
 
-global.inter_text[2] = 'Сервер: ' + global.sv_name + '#Карта: ' + global.sv_map + ' - ' + global.map_name + '#(' + global.map_desc + ')#';
+global.inter_text[2] = 'Сервер: ' + global.sv_name + '#Карта: ' + global.map_name + ' (' + global.sv_map + '.dlv)#(' + global.map_desc + ')#';
 
 with o_pl
 {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="10">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if !visible || !variable_local_exists('o_id') || !variable_local_exists('t_id') {exit;}
+with (o_ctrl) {if !variable_local_exists('ui_tx_cb') || !variable_local_exists('ui_tl_cb') {exit;}}
+if keyboard_check(ord('Z')) &amp;&amp; o_id != API_Combobox_GetSel(o_ctrl.ui_tl_cb) {exit;}
+if keyboard_check(ord('X')) &amp;&amp; sprite_index != global.tex[API_Combobox_GetSel(o_ctrl.ui_tx_cb)] {exit;}
+instance_destroy();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

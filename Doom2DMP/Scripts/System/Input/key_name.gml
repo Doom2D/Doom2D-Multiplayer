@@ -54,7 +54,8 @@ switch argument0
   case 191: _name = '/'; break;
   case 220: _name = '\'; break;
   case vk_insert: _name = 'Insert'; break;
-  case vk_delete: _name = 'Home'; break;
+  case vk_home: _name = 'Home'; break;
+  case vk_delete: _name = 'Delete'; break;
   case vk_end: _name = 'End'; break;
   case vk_pageup: _name = 'PgUp'; break;
   case vk_pagedown: _name = 'PgDn'; break;
@@ -73,6 +74,20 @@ switch argument0
   case vk_left: _name = 'Влево'; break;
   case vk_right: _name = 'Вправо'; break;
   case vk_enter: _name = 'Enter'; break;
+  case vk_f1: _name = 'F1'; break;
+  case vk_f2: _name = 'F2'; break;
+  case vk_f3: _name = 'F3'; break;
+  case vk_f4: _name = 'F4'; break;
+  case vk_f5: _name = 'F5'; break;
+  case vk_f6: _name = 'F6'; break;
+  case vk_f7: _name = 'F7'; break;
+  case vk_f8: _name = 'F8'; break;
+  case vk_f9: _name = 'F9'; break;
+  case vk_f10: _name = 'F10'; break;
+  case vk_f11: _name = 'F11'; break;
+  case vk_f12: _name = 'F12'; break;
+  case vk_printscreen: _name = 'PrtScrn'; break;
+  
   default: _name = '???';
 }
 return _name;

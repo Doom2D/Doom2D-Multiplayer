@@ -13,8 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">global.cl_last_ping = global.cl_ping_delay/0.06;
-alarm[1] = 60;
+        <argument kind="STRING">net_ping();
+global.cl_tcpdelay = _delay;
+alarm[1] = 120;
 </argument>
       </arguments>
     </action>

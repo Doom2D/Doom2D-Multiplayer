@@ -13,11 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if !visible || !variable_local_exists('o_id') || !variable_local_exists('t_id') {exit;}
-with (o_ctrl) {if !variable_local_exists('ui_tx_cb') || !variable_local_exists('ui_tl_cb') {exit;}}
-if keyboard_check(ord('Z')) &amp;&amp; o_id != API_Combobox_GetSel(o_ctrl.ui_tl_cb) {exit;}
-if keyboard_check(ord('X')) &amp;&amp; t_id != API_Combobox_GetSel(o_ctrl.ui_tx_cb) {exit;}
-instance_destroy();
+        <argument kind="STRING">if !keyboard_check(vk_shift) {event_user(0);}
 </argument>
       </arguments>
     </action>

@@ -4,7 +4,7 @@ if string(argument0) == '' {exit;}
 prev_cmd = argument0;
 cmd = string_explode(argument0, ' ', false);
 if is_real(ds_list_find_value(cmd, 0)){exit;}
-con_add('> ' + argument0);
+if !(ds_list_find_value(cmd, 0) == 'echo' || ds_list_find_value(cmd, 0) == 'say') {con_add('> ' + argument0, true);}
 if ds_list_find_value(cmd, 0) == 'help'
 {
   con_add('==Базовые команды===');
@@ -30,11 +30,17 @@ if ds_list_find_value(cmd, 0) == 'name'
     con_add(string(global.pl_name));
     exit;
   } 
-  if ds_list_find_value(cmd, 1) == '' || room == rm_game
+  if ds_list_find_value(cmd, 1) == ''
   {
     con_add(string(global.pl_name));
     exit;
   } 
+  if room = rm_game
+  {
+    if !variable_global_exists('cl_inst') {exit;}
+    if !instance_exists(global.cl_inst) {exit;}
+    net_char_look(string_delete(ds_list_find_value(cmd, 1), 17, string_length(ds_list_find_value(cmd, 1))), global.cl_inst.cl_skin, global.cl_inst.cl_color);
+  }
   global.pl_name = string_delete(ds_list_find_value(cmd, 1), 17, string_length(ds_list_find_value(cmd, 1)));
   exit;
 }
@@ -124,15 +130,15 @@ if ds_list_find_value(cmd, 0) == 'r_massacre'
 {
     if is_real(ds_list_find_value(cmd, 1))
     {
-        con_add('Недопустимое значение аргумента.');
+        con_add(string(global.r_massacre));
         exit;
     }
     if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
     {
-        con_add('Недопустимое значение аргумента.');
+        con_add(string(global.r_massacre));
         exit;
     }
-    global.r_massacre = real(ds_list_find_value(cmd, 1));
+    global.r_massacre = real(string_digits(ds_list_find_value(cmd, 1)));
     if global.r_massacre > 3 || global.r_massacre < 0 {global.r_massacre = 3;}
     con_add('r_massacre = ' + string(global.r_massacre));
     exit;
@@ -141,15 +147,15 @@ if ds_list_find_value(cmd, 0) == 'r_gfx'
 {
     if is_real(ds_list_find_value(cmd, 1))
     {
-        con_add('Недопустимое значение аргумента.');
+        con_add(string(global.r_gfx));
         exit;
     }
     if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
     {
-        con_add('Недопустимое значение аргумента.');
+        con_add(string(global.r_gfx));
         exit;
     }
-    global.r_gfx = real(ds_list_find_value(cmd, 1));
+    global.r_gfx = real(string_digits(ds_list_find_value(cmd, 1)));
     if global.r_gfx > 1 || global.r_gfx < 0 {global.r_gfx = 1;}
     if room == rm_game
     {
@@ -169,27 +175,32 @@ if ds_list_find_value(cmd, 0) == 'r_names'
 {
     if is_real(ds_list_find_value(cmd, 1))
     {
-        con_add('Недопустимое значение аргумента.');
+        con_add(string(global.r_names));
         exit;
     }
     if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
     {
-        con_add('Недопустимое значение аргумента.');
+        con_add(string(global.r_names));
         exit;
     }
-    global.r_names = real(ds_list_find_value(cmd, 1));
+    global.r_names = real(string_digits(ds_list_find_value(cmd, 1)));
     if global.r_names > 1 || global.r_names < 0 {global.r_names = 1;}
     con_add('r_names = ' + string(global.r_names));
     exit;
 }
 if ds_list_find_value(cmd, 0) == 'r_window'
 {
-    if is_real(ds_list_find_value(cmd, 1)) || ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
+    if is_real(ds_list_find_value(cmd, 1)) 
     {
-        con_add('Недопустимое значение аргумента.');
+        if window_get_fullscreen() {con_add('0');} else {con_add('1');}
         exit;
     }
-    if real(ds_list_find_value(cmd, 1)) == 0
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        if window_get_fullscreen() {con_add('0');} else {con_add('1');}
+        exit;
+    }
+    if real(string_digits(ds_list_find_value(cmd, 1))) == 0
     {
         window_set_fullscreen(true);
     }
@@ -199,14 +210,36 @@ if ds_list_find_value(cmd, 0) == 'r_window'
     }
     exit;
 }
-if ds_list_find_value(cmd, 0) == 's_preload'
+if ds_list_find_value(cmd, 0) == 'r_fskip'
 {
-    if is_real(ds_list_find_value(cmd, 1)) || ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
+    if is_real(ds_list_find_value(cmd, 1)) 
     {
-        con_add('Недопустимое значение аргумента.');
+        con_add(string(global.r_fskip));
         exit;
     }
-    global.s_preload = real(ds_list_find_value(cmd, 1));
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.r_fskip));
+        exit;
+    }
+    global.r_fskip = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_fskip > 1 || global.r_fskip < 0 {global.r_fskip = 1;}
+    con_add('[THIS WILL TAKE EFFECT ONLY UPON RESTART] r_fskip = ' + string(global.r_fskip));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 's_preload'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.s_preload));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.s_preload));
+        exit;
+    }
+    global.s_preload = real(string_digits(ds_list_find_value(cmd, 1)));
     if global.s_preload > 1 || global.s_preload < 0 {global.s_preload = 1;}
     con_add('s_preload = ' + string(global.s_preload));
     exit;
@@ -288,6 +321,22 @@ if ds_list_find_value(cmd, 0) == 'cl_slist'
   } 
   global.cl_slist = ds_list_find_value(cmd, 1);
   con_add('cl_slist = ' + string(global.cl_slist));
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'cl_slist_path'
+{
+  if is_real(ds_list_find_value(cmd, 1))
+  {
+    con_add(string(global.cl_slist_path));
+    exit;
+  } 
+  if ds_list_find_value(cmd, 1) == ''
+  {
+    con_add(string(global.cl_slist_path));
+    exit;
+  } 
+  global.cl_slist_path = ds_list_find_value(cmd, 1);
+  con_add('cl_slist_path = ' + string(global.cl_slist_path));
   exit;
 }
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)) + '. Введите help для списка команд.');

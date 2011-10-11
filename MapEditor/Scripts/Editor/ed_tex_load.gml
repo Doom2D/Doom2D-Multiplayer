@@ -11,7 +11,8 @@ for (i = 0; i < 1024; i += 1)
   if global.tex[i] == -1 {break;}
 }
 
-global.tex[i] = sprite_add(tx_f, -1, transp, 0, 0, 0);
+if tx_f != "NO_TEXTURE" {global.tex[i] = sprite_add(tx_f, -1, transp, 0, 0, 0);} else {global.tex[i] = tex_none;}
+sprite_collision_mask(global.tex[i], 0, 1, 0, 0, 0, 0, 1, 0);
 
 
 global.tex_n += 1;

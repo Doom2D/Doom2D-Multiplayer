@@ -68,7 +68,7 @@ while(1)
             global.sv_plr[c_id].kb_jump = dll39_read_byte(0);
             global.sv_plr[c_id].kb_lkup = dll39_read_byte(0);
             global.sv_plr[c_id].kb_lkdn = dll39_read_byte(0);
-            _garbage = dll39_read_byte(0);
+            global.sv_plr[c_id].st_talk = dll39_read_byte(0);
             
             //retranslate
             dll39_buffer_clear(0);
@@ -79,7 +79,7 @@ while(1)
             dll39_write_byte(global.sv_plr[c_id].kb_jump, 0);
             dll39_write_byte(global.sv_plr[c_id].kb_lkup, 0);
             dll39_write_byte(global.sv_plr[c_id].kb_lkdn, 0);
-            dll39_write_byte(global.sv_plr[c_id].kb_strf, 0);
+            dll39_write_byte(global.sv_plr[c_id].st_talk, 0);
             dll39_write_short(global.sv_plr[c_id].x, 0);
             dll39_write_short(global.sv_plr[c_id].y, 0);
             with  o_pl
@@ -186,5 +186,27 @@ while(1)
             }
         with _inst {plr_send_stat();}
         break;
-    }
+        
+        case 10:
+        //color/skin/name change
+        _id = dll39_read_byte(0);
+        _inst = id_to_cl(_id);
+        if !instance_exists(_inst) {exit;}
+        _inst.cl_name = dll39_read_string(0);
+        _inst.cl_skin = dll39_read_string(0);
+        _inst.cl_color = dll39_read_int(0);
+        
+        //retranslate
+        dll39_buffer_clear(0);
+        dll39_write_byte(20, 0);
+        dll39_write_byte(_id, 0);
+        dll39_write_string(_inst.cl_name, 0);
+        dll39_write_string(_inst.cl_skin, 0);
+        dll39_write_int(_inst.cl_color, 0);
+        with  o_pl
+        {   
+            dll39_message_send(cl_tcp, 0, 0, 0);
+        }
+        break;
+        }
 }

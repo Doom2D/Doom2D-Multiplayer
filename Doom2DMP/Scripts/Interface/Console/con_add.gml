@@ -1,7 +1,7 @@
 //adds string to console
 with o_con{
 con_str += string(argument0) + '#';
-msg_add(string(argument0));
+if !argument1 {msg_add(string(argument0));}
 log_add(global.sys_log, string(argument0));
 if string_length(con_str) > 1600 
 {

@@ -57,8 +57,6 @@ switch argument0
     break;
     case 7:
         //invulnerability
-        hp_old = hp;
-        hp = 250;
         st_inv = 1;
         alarm[3] = 1800;
         plr_send_stat();
@@ -88,8 +86,8 @@ switch argument0
         //berserk
         if st_ber && hp >= 100 {exit;}
         if hp < 100 && !st_inv {hp = 100;}
+        if !st_ber {w = 0;}
         st_ber = 1;
-        w = 0;
         plr_send_stat();
         plr_send_sound(5, x, y);
         with (other) {instance_destroy();}

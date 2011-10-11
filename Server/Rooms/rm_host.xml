@@ -8,7 +8,17 @@
   </grid>
   <speed>60</speed>
   <persistent>false</persistent>
-  <creationCode/>
+  <creationCode>if !file_exists('data\cfg\autoexec.cfg') 
+{
+    a = file_text_open_write('data\cfg\autoexec.cfg');
+    file_text_close(a);
+}
+if !file_exists('data\cfg\server.cfg') 
+{
+    a = file_text_open_write('data\cfg\server.cfg');
+    file_text_close(a);
+}
+</creationCode>
   <backgroundColor>000000</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>
   <backgrounds>

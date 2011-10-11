@@ -3,7 +3,7 @@
 file = 'data\cfg\'+string(argument0);
 if !file_exists(file)
 {
-  con_add(':: ERROR: Нет такого файла ' + string('data\cfg\' + string(ds_list_find_value(cmd, 1))) + '!');
+  con_add(':: ERROR: Нет такого файла ' + string('data\cfg\' + argument0) + '!');
   exit;
 }
 cfg = file_text_open_read(file);

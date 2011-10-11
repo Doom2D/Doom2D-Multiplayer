@@ -81,9 +81,9 @@ con_add(string(instance_number(o_jthr)) + " тайлов-ступеней, ");
 con_add(string(instance_number(o_lift_up) + instance_number(o_lift_down) + instance_number(o_lift_left) + instance_number(o_lift_right)) + " тайлов-лифтов, ");
 con_add(string(instance_number(o_spawn)) +  " точек респауна.");
 con_add(":: MAP: MD5: " + string(global.map_md5));
-if instance_number(o_spawn) < 2 
+if instance_number(o_spawn) < 1 
 {
-    con_add(":: MAP: ERROR: На карте меньше двух точек респауна. Она не будет работать.");
+    con_add(":: MAP: ERROR: На карте нет точек респауна. Она не будет работать.");
     sys_exit();
     exit;
 }

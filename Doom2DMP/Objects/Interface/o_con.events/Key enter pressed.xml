@@ -22,6 +22,7 @@ if saymode
 {
   if keyboard_string != '' {con_parse('say ' + string(keyboard_string));}
   saymode = 0;
+  io_clear();
 }
 </argument>
       </arguments>

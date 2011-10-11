@@ -3,7 +3,7 @@ io_clear();
 global.ed_g_sz = 16; //grid size
 background_assign(bk_current, bk_grid16);
 
-f = get_open_filename('D2DMP Maps|*.dlv', 'data\maps\Unnamed.dlv');
+f = get_open_filename('Карты Doom2DMP 0.6 (*.DLV)|*.dlv', 'data\maps\Unnamed.dlv');
 if !file_exists(f) {exit;}
 with par_obj {instance_destroy();}
 global.map_loaded = false;

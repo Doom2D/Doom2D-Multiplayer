@@ -10,6 +10,8 @@ dll39_write_short(a3, 0);
 dll39_write_short(a4, 0);
 dll39_write_byte(w, 0);
 dll39_write_byte(frag, 0);
+dll39_write_byte(st_inv, 0);
+dll39_write_byte(st_ber, 0);
 with  o_pl
 {   
     dll39_message_send(cl_tcp, 0, 0, 0);

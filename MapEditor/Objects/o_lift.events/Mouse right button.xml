@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">io_clear();
+        <argument kind="STRING">if !visible || keyboard_check(vk_shift) {exit;}
+if keyboard_check(ord('Z')) &amp;&amp; o_id != API_Combobox_GetSel(o_ctrl.ui_tl_cb) {exit;}
+if keyboard_check(ord('X')) &amp;&amp; sprite_index != global.tex[API_Combobox_GetSel(o_ctrl.ui_tx_cb)] {exit;}
+io_clear();
 instance_destroy();
 </argument>
       </arguments>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <settings>
   <graphics>
-    <scalingPercent>0</scalingPercent>
+    <scalingPercent>-1</scalingPercent>
     <displayCursor>false</displayCursor>
     <useVsync>false</useVsync>
     <interpolateColors>false</interpolateColors>

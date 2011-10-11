@@ -7,7 +7,7 @@ dll39_write_byte(kb_rght, 0);
 dll39_write_byte(kb_jump, 0);
 dll39_write_byte(kb_lkup, 0);
 dll39_write_byte(kb_lkdn, 0);
-dll39_write_byte(kb_strf, 0);
+dll39_write_byte(st_talk, 0);
 dll39_write_short(x, 0);
 dll39_write_short(y, 0);
 with  o_pl

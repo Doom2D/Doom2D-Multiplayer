@@ -16,7 +16,7 @@ new_line = chr(13) + chr(10);
 
 dll39_buffer_clear(0);
 //Edit the following line to reflect where your php file is on your server
-dll39_write_chars("GET /slist/list.php?ingame=1 HTTP/1.0" + new_line, 0);
+dll39_write_chars("GET " + global.cl_slist_path + "list.php?ingame=1 HTTP/1.0" + new_line, 0);
 dll39_write_chars("Host: " + host + new_line, 0);
 dll39_message_send(sock_id, 0, 0, 0);
     

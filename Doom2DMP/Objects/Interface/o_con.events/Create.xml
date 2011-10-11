@@ -16,6 +16,8 @@
         <argument kind="STRING">sys_init(); //inits all engine shit
 if global.sys_error {exit;}
 cfg_load('game.cfg');
+if global.r_fskip {set_automatic_draw(false);
+alarm[11] = 1;}
 if global.s_preload
 {
     for (i = 0; i &lt; 32; i += 1)

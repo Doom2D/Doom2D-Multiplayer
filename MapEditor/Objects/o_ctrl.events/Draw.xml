@@ -15,14 +15,21 @@
       <arguments>
         <argument kind="STRING">ed_spr_select();
 draw_set_color(c_white);
-if (mouse_check_button(mb_left) || keyboard_check(vk_space)) &amp;&amp; keyboard_check(vk_shift) &amp;&amp; API_Combobox_GetSel(ui_tl_cb) &lt; 11 &amp;&amp; keyboard_check(vk_shift)
+if (mouse_check_button(mb_left) || keyboard_check(vk_space)) &amp;&amp; keyboard_check(vk_shift) &amp;&amp; API_Combobox_GetSel(ui_tl_cb) &lt; 11
 {
   ed_draw_panel();
   draw_rectangle_color(x2 - 3, y2 - 3, x2 + 2, y2 + 2, c_blue, c_blue, c_blue, c_blue, 0);
 }
 else
 {
-  draw_sprite_ext(spr, im, round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off), round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off), 1, 1, 0, c_white, 0.27);  
+  draw_sprite_ext(spr, im, round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off), round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off), 1, 1, 0, c_white, 0.73);  
+}
+if mouse_check_button(mb_right) &amp;&amp; keyboard_check(vk_shift)
+{
+    draw_set_color(col);
+    draw_rectangle(x1, y1, x2, y2, 1);
+    draw_set_color(c_white);
+    draw_rectangle_color(x2 - 3, y2 - 3, x2 + 2, y2 + 2, c_blue, c_blue, c_blue, c_blue, 0);
 }
 draw_set_alpha(0.75);
 draw_text(mouse_x + 16, mouse_y, string(round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off)) + "#" + string(round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off)));

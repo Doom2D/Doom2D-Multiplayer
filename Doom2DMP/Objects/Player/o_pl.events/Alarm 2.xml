@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="2">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if st_ber &amp;&amp; !place_meeting(x, y, o_liq)
+{
+    a = instance_create(x, y, o_smoke);
+    a.image_blend = c_maroon;
+    a.image_angle = irandom(360);
+    a.vspeed = random_range(-1, -0.1);
+}
+if st_inv {image_alpha = 0.3;} else {image_alpha = 1;}
+alarm[2] = 20;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

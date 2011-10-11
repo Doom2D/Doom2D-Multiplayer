@@ -6,6 +6,6 @@ if file_exists('GMFMODSimple.dll') && file_exists('fmodex.dll') && !global.sys_e
 //free 39DLL (if loaded)
 //exit
 if global.sys_error {con_add(':: SYSTEM: Exiting with error(s).');} else {con_add(':: SYSTEM: Exiting without error(s).');}
-con_add(':: Date: ' + con_timestamp()) ;
+con_add(':: SYSTEM: Date: ' + con_timestamp()) ;
 con_add('================GAME END================');
 if argument0 == true {game_end();}

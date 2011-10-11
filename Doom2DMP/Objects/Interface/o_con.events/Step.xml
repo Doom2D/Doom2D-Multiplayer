@@ -28,7 +28,11 @@
   }
 }
 if keyboard_check_pressed(global.key_chat) &amp;&amp; room == rm_game &amp;&amp; !saymode &amp;&amp; !global.con {keyboard_string = ''; saymode = 1;}
-if keyboard_check_pressed(vk_f12) {screen_save('screenshots\scr' + string(current_day) + string(current_month) + string(current_year) + string(current_hour) + string(current_minute) + string(current_second) + '.png');}
+if keyboard_check_pressed(global.key_scr) 
+{
+    con_add(":: SYSTEM: Wrote screenshot " + 'screenshots\scr' + string(current_day) + string(current_month) + string(current_year) + string(current_hour) + string(current_minute) + string(current_second) + '.png.');
+    screen_save('screenshots\scr' + string(current_day) + string(current_month) + string(current_year) + string(current_hour) + string(current_minute) + string(current_second) + '.png');
+}
 FMODUpdate();
 </argument>
       </arguments>

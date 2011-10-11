@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="net_list_clients" type="RESOURCE"/>
+  <resource name="net_cheat" type="RESOURCE"/>
+  <resource name="id_to_cl" type="RESOURCE"/>
+  <resource name="net_rcon" type="RESOURCE"/>
+  <resource name="net_ping" type="RESOURCE"/>
+</resources>

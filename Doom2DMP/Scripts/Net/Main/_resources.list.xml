@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="cl_connect" type="RESOURCE"/>
+  <resource name="cl_pcs_msg" type="RESOURCE"/>
+  <resource name="cl_new_plr" type="RESOURCE"/>
+  <resource name="cl_disconnect" type="RESOURCE"/>
+</resources>

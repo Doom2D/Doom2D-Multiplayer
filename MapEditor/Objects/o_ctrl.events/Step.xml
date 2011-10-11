@@ -112,7 +112,7 @@ if cmd4 != 0
         case ui_win3_b3:
             global.map_w = real(API_Control_GetText(ui_win3_e1));
             global.map_h = real(API_Control_GetText(ui_win3_e2));
-            global.map_name = string_delete(API_Control_GetText(ui_win3_e3), 17, string_length(API_Control_GetText(ui_win3_e3)));
+            global.map_name = string_delete(API_Control_GetText(ui_win3_e3), 16, string_length(API_Control_GetText(ui_win3_e3)));
             global.map_desc = string_delete(API_Control_GetText(ui_win3_e4), 64, string_length(API_Control_GetText(ui_win3_e4)));
             API_Window_Destroy(ui_win3);
             API_Control_Destroy(ui_win3);

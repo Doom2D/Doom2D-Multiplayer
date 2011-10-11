@@ -13,32 +13,35 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if !active {exit;}
+        <argument kind="STRING">draw_background(tex_hud, view_xview + 824, view_yview);
+if !active {exit;}
 if !instance_exists(global.cl_inst) {exit;}
 if global.cl_inst.object_index != o_pl {exit;}
 draw_set_font(global.fnt_sys);
-draw_background(tex_hud, view_xview + 824, view_yview);
 net_list_clients();
 draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Карта: " + global.map_name);
 draw_text(view_xview + 832, view_yview + 208, str[1]);
-draw_text(view_xview + 872, view_yview + 208, str[2]);
+draw_text(view_xview + 852, view_yview + 208, str[2]);
 draw_set_halign(fa_right);
 draw_text(view_xview + 1000, view_yview + 208, str[3]);
 draw_set_halign(fa_left);
-draw_text(view_xview + 832, view_yview + 730, "Ping: " + string(global.cl_last_ping) + "#FPS: " + string(fps));
+draw_text(view_xview + 832, view_yview + 710, "TCP Delay: " + string(global.cl_tcpdelay) + " ms#Ping: " + string(global.cl_ping) + " ms#FPS: " + string(fps));
 
 draw_set_font(global.fnt_big);
-draw_set_color(c_red);
-if global.cl_inst.hp &lt; 250 
-{draw_text(view_xview + 936, view_yview + 22, global.cl_inst.hp);}
-else
+if global.cl_inst.st_inv &amp;&amp; global.r_gfx
 {
     draw_set_blend_mode_ext(bm_inv_dest_color, bm_inv_src_color);
     draw_set_color(c_white);
     draw_rectangle(view_xview, view_yview, view_xview+824, view_yview+768, 0);
     draw_set_blend_mode(bm_normal);
-    draw_set_color(c_red);
+    o_con.msg_color = c_black;
 }
+else
+{
+    o_con.msg_color = c_white;
+}
+draw_set_color(c_red);
+draw_text(view_xview + 936, view_yview + 22, global.cl_inst.hp);
 draw_text(view_xview + 936, view_yview + 72, global.cl_inst.ap);
 draw_text(view_xview + 936, view_yview + 72, global.cl_inst.ap);
 draw_sprite(s_hud_weaps, global.cl_inst.w, view_xview + 872, view_yview + 156);

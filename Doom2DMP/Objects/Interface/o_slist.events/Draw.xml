@@ -32,7 +32,7 @@ draw_set_color(c_red);
 draw_text(1024 - 100, 128, '##' + string(str2));
 draw_set_halign(fa_left);
 draw_set_color(c_white);
-if ds_list_size(global.slist) &gt; 0 {draw_text(84 - 16, 128 + 16*select, '##-&gt;');}
+if ds_list_size(global.slist) &gt; 0 {draw_sprite(s_marker2, 0, 84 - 16, 128 + 32 + 16*select);}
 </argument>
       </arguments>
     </action>

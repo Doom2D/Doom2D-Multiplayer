@@ -17,7 +17,7 @@ else
     dll39_set_format(_sl_sock, dll39_format_text, _sl_str);
 
     dll39_buffer_clear(0);
-    dll39_write_chars("GET /slist/delete.php HTTP/1.1" + _sl_str,0);
+    dll39_write_chars("GET " + global.sv_slist_path + "delete.php HTTP/1.1" + _sl_str,0);
     dll39_write_chars("Host: " + _sl_host + _sl_str,0);
     dll39_message_send(_sl_sock,0,0,0);
 

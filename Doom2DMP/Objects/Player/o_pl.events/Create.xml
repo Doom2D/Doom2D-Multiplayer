@@ -42,6 +42,9 @@ frag = 0;
 pain = 0;
 attack = 0;
 w_rot = 0;
+st_ber = 0;
+st_inv = 0;
+st_talk = 0;
 col = c_white;
 </argument>
       </arguments>

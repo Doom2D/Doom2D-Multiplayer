@@ -17,12 +17,13 @@
 change_weapon();
 
 //calculate delay
-global.cl_ping_delay += 1;
+_timer += 1;
+_delay += 1;
 
-if global.cl_ping_delay &gt; 1800
+if _timer &gt; 600
 {
     //if the server fucked up and doesnt send anything for half a minute
-    con_add(':: NET: Слишком большой пинг (&gt;30 сек). Возможно, соединение потеряно.');
+    con_add(':: NET: Слишком большой пинг (&gt;10 сек). Возможно, соединение потеряно.');
     cl_disconnect();
     mus_play(global.mus_menu);
     room_goto(rm_menu);

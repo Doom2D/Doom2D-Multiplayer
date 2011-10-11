@@ -74,6 +74,20 @@ switch argument0
   case 'Left': case 'Влево': _code = vk_left; break;
   case 'Right': case 'Вправо': _code = vk_right; break;
   case 'Enter': case 'Ввод': _code = vk_enter; break;
+  case 'F1': _code = vk_f1 break;
+  case 'F2': _code = vk_f2 break;
+  case 'F3': _code = vk_f3 break;
+  case 'F4': _code = vk_f4 break;
+  case 'F5': _code = vk_f5 break;
+  case 'F6': _code = vk_f6 break;
+  case 'F7': _code = vk_f7 break;
+  case 'F8': _code = vk_f8 break;
+  case 'F9': _code = vk_f9 break;
+  case 'F10': _code = vk_f10 break;
+  case 'F11': _code = vk_f11 break;
+  case 'F12': _code = vk_f12 break;
+  case 'PrtScr': case 'PrintScreen': _code = vk_printscreen; break;
+    
   default: _code = 1;
 }
 return _code;

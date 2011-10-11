@@ -1,10 +1,13 @@
 //selects non-taken name from the name_list
-for (a = 1; a < list_get_len('name_list'); a += 1)
+var _i, _done, _n;
+_done = false;
+while !_done
 {
-    if list_get_ind('name_taken', list_get_val('name_list', i)) < 0
+    _i = irandom(list_get_len('name_list'));
+    if list_get_ind('name_taken', list_get_val('name_list', _i)) < 0
     {
-        if !is_real(list_get_val('name_list', i)) {return list_get_val('name_list', i);}
-        break;
+        _n = string(list_get_val('name_list', _i))
+        _done = true;
     }
 }
-return 'BOT ' + string(argument0);
+return _n;

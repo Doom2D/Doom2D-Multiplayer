@@ -3,14 +3,16 @@ if is_real(ds_list_find_value(cmd, 1))
   con_add(string(global.pl_skin));
   exit;
 }
-if ds_list_find_value(cmd, 1) == '' || room == rm_game
+if ds_list_find_value(cmd, 1) == ''
 {
   con_add(string(global.pl_skin));
   exit;
 }
 if room == rm_game
 {
-  con_add(':: WARNING: Нельзя сменить скин игрока в игре.');
+  if !variable_global_exists('cl_inst') {exit;}
+  if !instance_exists(global.cl_inst) {exit;}
+  net_char_look(global.cl_inst.cl_name, string(ds_list_find_value(cmd, 1)), global.cl_inst.cl_color);
   exit;
 } 
 if !file_exists('data\skins\'+ds_list_find_value(cmd, 1)+'\seeup.tga')
