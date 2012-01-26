@@ -9,4 +9,5 @@
   <resource name="plr_die" type="RESOURCE"/>
   <resource name="bfg_hit" type="RESOURCE"/>
   <resource name="item_drop" type="RESOURCE"/>
+  <resource name="plr_hurt" type="RESOURCE"/>
 </resources>

@@ -7,7 +7,7 @@ if kb_left == 1 {aim = -1;}
 if kb_rght == 1 {aim = 1;}
 
 target = noone;
-if (hp > 25) || !global.bot_cowardly {target = instance_nearest_nth(x, y, o_pl, 2);} else {target = instance_find_health();} //is furthest player from our position
+if (hp > 25) || !global.bot_cowardly {target = bot_find_player();} else {target = bot_find_health();} //is furthest player from our position
 if !bot_check_ammo() {plr_changewpn(2);}
 if !instance_exists(target) {exit;} //if target does not exist, fuck the shit
 

@@ -7,28 +7,19 @@ with o_pl
 {
     if !variable_local_exists('cl_id') {continue;}
     if dead {continue;}
-    if distance_to_point(other.x, other.y) > 256 {continue;}
+    if distance_to_point(other.x, other.y) > 320 {continue;}
     if other.l_id == cl_id {continue;}
     if collision_line(x, y, other.x, other.y, o_solid, 0, 0) {continue;}
-    if distance_to_point(other.x, other.y) < 96 {dmg = 150;} else {dmg = 50;}
+    if distance_to_point(other.x, other.y) < 64 {dmg = 150;} else {dmg = 50;}
 
     if !global.mp_godmode && !st_inv
     {
-        if ap > 0
-        {
-            hp -= dmg/2;
-            ap -= dmg;
-        }
-        else
-        {
-            hp -= dmg;
-        }
-        if ap < 0 {ap = 0;}
+        plr_hurt(dmg);
         kill_type = 7;
         killer_id = other.l_id;
     }
 
-    if global.mp_knockback && distance_to_point(other.x, other.y) < 96
+    if global.mp_knockback && distance_to_point(other.x, other.y) < 48
     {
         if other.x < x {hsp = 20;}
         if other.x > x {hsp = -20;}   

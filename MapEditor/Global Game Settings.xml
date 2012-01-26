@@ -34,7 +34,7 @@
   </keys>
   <errors>
     <displayErrors>true</displayErrors>
-    <writeToLog>false</writeToLog>
+    <writeToLog>true</writeToLog>
     <abortOnError>false</abortOnError>
     <treatUninitializedAsZero>false</treatUninitializedAsZero>
   </errors>

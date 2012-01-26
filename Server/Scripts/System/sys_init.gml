@@ -1,7 +1,7 @@
 //inits all needed shit
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '121';
+global.sys_bld = '122';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -21,11 +21,13 @@ global.sv_cheats = 0;
 global.sv_slist_time = 60;
 global.sv_slist = 'doom2d.org';
 global.sv_slist_path = '/serverlist/doom2dmp/';
+global.sv_clalert = 0;
 global.cl_rc_time = 15;
 global.cl_timeout = 15;
 global.mp_fraglimit = 50;
 global.mp_timelimit = 3600;
 global.mp_respawn = 5;
+global.mp_respawn_inv = 0;
 global.mp_itemrespawn = 45;
 global.mp_drop_clear = 30;
 global.mp_items = 1;
@@ -46,7 +48,6 @@ global.bot_tickrate = 2;
 global.bot_randrate = 4;
 global.bot_cowardly = 1;
 global.bot_dummy = 0;
-global.sv_clalert = 0;
 global.sys_log = 'server';
 global.map_w = 0;
 global.map_h = 0; //need these two because shitty game maker cant change the w and h of the room on the fly
@@ -84,8 +85,19 @@ global.name_taken = ds_list_create(); //taken names list for bots
 list_add('name_taken', 'DEFAULT');
 
 //now we get the current map's position in the maplist
-global.map_list_ind = list_get_ind('map_list', global.sv_map);
-if global.map_list_ind == -1  {global.map_list_next = global.sv_map; exit;}
-if global.map_list_ind + 2 > list_get_len('map_list') {global.map_list_ind = -1;}
-global.map_list_next = list_get_val('map_list', global.map_list_ind + 1);
+if global.sv_cycle_maps == 1
+{
+    global.map_list_ind = list_get_ind('map_list', global.sv_map);
+    if global.map_list_ind == -1  {global.map_list_next = global.sv_map; exit;}
+    if global.map_list_ind + 2 > list_get_len('map_list') {global.map_list_ind = -1;}
+    global.map_list_next = list_get_val('map_list', global.map_list_ind + 1);
+}
+if global.sv_cycle_maps == 2
+{
+    global.map_list_next = global.sv_map;
+    while global.map_list_next == global.sv_map
+    {
+        global.map_list_next = string(list_get_val('map_list', round(random(list_get_len('map_list')))));
+    }
+}
 

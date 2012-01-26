@@ -19,10 +19,11 @@ a4 = 0;
 
 w = 1;
 
-st_inv = 0;
+if global.mp_respawn_inv > 0 {st_inv = 1;} else {st_inv = 0;}
 st_jet = 0;
 st_ber = 0;
 st_bpk = 0;
+alarm[3] = 0.06 + global.mp_respawn_inv * 60;
 
 hw[0] = 1;
 hw[1] = 1;

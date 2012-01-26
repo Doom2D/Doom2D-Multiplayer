@@ -44,9 +44,9 @@ while 1
             var msg_reason;
             msg_reason = dll39_read_string(0);
             con_add(":: NET: Вас кикнули: " + msg_reason);
-            dll39_socket_close(global.cl_tcp);
-            mus_play(global.mus_menu);
-            room_goto(rm_menu);
+            cl_disconnect();
+            r_inter(2, 255);
+            room_goto(rm_inter);
         break;
         
         case 3:
@@ -138,28 +138,28 @@ while 1
             switch kill_type
             {
                 case 1:
-                    con_add(killer_name + " застрелил " + victim_name + " из пистолета.");
+                    con_add(killer_name + " угостил " + victim_name + " пистолетной пулей.");
                 break;
                 case 2:
-                    con_add(killer_name + " нашпиговал " + victim_name + " ружейной дробью.");
+                    con_add(killer_name + " застрелил " + victim_name + " из ружья.");
                 break;
                 case 3:
-                    con_add(killer_name + " уложил " + victim_name + " из двустволки.");
+                    con_add(killer_name + " разорвал " + victim_name + " выстрелом из двустволки.");
                 break;
                 case 4:
-                    con_add(killer_name + " превратил " + victim_name + " в решето.");
+                    con_add(killer_name + " превратил " + victim_name + " в дуршлаг.");
                 break;
                 case 5:
-                    con_add(killer_name + " подорвал " + victim_name + ".");
+                    con_add(killer_name + " взорвал " + victim_name + ".");
                 break;
                 case 6:
-                    con_add(victim_name + " словил плазменный заряд " + killer_name + ".");
+                    con_add(killer_name + " прожег плазмой дырку в " + victim_name + ".");
                 break;
                 case 7:
-                    con_add(victim_name + " угодил в зону поражения BFG " + killer_name + ".");
+                    con_add(killer_name + " познакомил " + victim_name + " с зарядом BFG.");
                 break;
                 case 8:
-                    con_add(victim_name + " угодил под шквал дроби из суперпулемета " + killer_name);
+                    con_add(victim_name + " был превращен в фарш суперпулеметом " + killer_name);
                 break;
                 case 9:
                     con_add(victim_name + " утонул.");
@@ -174,7 +174,7 @@ while 1
                     con_add(victim_name + " выпал.");
                 break;
                 case 13:
-                    con_add(killer_name + " забил " + victim_name + " до смерти.");
+                    con_add(killer_name + " сломал челюсть " + victim_name + ".");
                 break;
                 case 14:
                     con_add(killer_name + " распилил " + victim_name + ".");

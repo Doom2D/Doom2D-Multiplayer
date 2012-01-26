@@ -7,4 +7,6 @@
   <resource name="net_say" type="RESOURCE"/>
   <resource name="net_url_encode" type="RESOURCE"/>
   <resource name="net_check_port" type="RESOURCE"/>
+  <resource name="not_null" type="RESOURCE"/>
+  <resource name="instance_nearest_nth" type="RESOURCE"/>
 </resources>

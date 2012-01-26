@@ -1,6 +1,7 @@
 //interscreen
 var frg;
 global.cl_rc_time = argument1;
+global._inter_reconnect = false;
 frg[0, 0] = 1;
 for (i = 1; i <= 32; i += 1)
 {
@@ -53,4 +54,5 @@ for (i = 1; i <= frg[0, 0]; i+=1)
     global.inter_text[1] += string(frg[order[i], 2]) + '#';}
 }
 
-if argument0 {global._inter_reconnect = true;} else {global._inter_reconnect = false;}
+if argument0 == 2 {global.inter_text[0] += '###';}
+if argument0 == 1 {global._inter_reconnect = true;}

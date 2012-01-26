@@ -15,16 +15,7 @@
       <arguments>
         <argument kind="STRING">if !variable_local_exists('p_id') {exit;}
 if other.cl_id == p_id || other.st_inv || global.mp_godmode || collision_line(x, y, other.x, other.y, o_solid, 0, 0) {exit;}
-if other.ap &gt; 0
-{
-    other.hp -= round(dmg/2);
-    other.ap -= dmg;
-}
-else
-{
-    other.hp -= dmg;
-}
-if other.ap &lt; 0 {other.ap = 0;}
+with (other) {plr_hurt(other.dmg)};
 other.killer_id = p_id;
 other.kill_type = 13 + p_t;
 plr_send_effect(1, other.x, other.y);

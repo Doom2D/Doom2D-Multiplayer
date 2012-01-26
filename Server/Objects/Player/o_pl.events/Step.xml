@@ -48,8 +48,8 @@ if !variable_local_exists('cl_is_bot') {ping += 1;} //in case of timeout we kick
 if ping &gt; global.cl_timeout * 60
 {
     //send a kick message to the fucker just in case
-    plr_send_kick(cl_id, "Kicked: You have timed out or were AFK too long.");
-    con_add(":: Client " + string(cl_name) + "[" + string(cl_id) + "] timed out.");
+    plr_send_kick(cl_id, "У вас слишком высокий пинг или вы были AFK слишком долго.");
+    con_add(":: Клиент " + string(cl_name) + "[" + string(cl_id) + "] кикнут за простой.");
     
     //send this to other clients
     dll39_buffer_clear(0);

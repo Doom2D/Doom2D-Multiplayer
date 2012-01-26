@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="COLLISION" with="o_explosion">
+<event category="COLLISION" with="o_jthr">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,8 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">direction = point_direction(x, y, other.x, other.y) + 180;
-speed = 8;
+        <argument kind="STRING">if gravity = 0 {exit;}
+if speed &lt; 0.25 &amp;&amp; gravity != 0 {gravity = 0; speed = 0;}
+move_bounce_all(true);
+if speed &gt; 1.5 {snd_play_pos(21, x, y);}
+speed = speed - speed/3;
 </argument>
       </arguments>
     </action>

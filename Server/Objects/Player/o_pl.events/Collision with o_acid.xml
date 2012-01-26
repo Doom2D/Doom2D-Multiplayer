@@ -14,16 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if pt &gt; 0 || st_inv || global.mp_godmode {exit;}
-if ap &lt; 1
-{
-    hp -= other.dmg;
-}
-else
-{
-    ap -= other.dmg;
-    hp -= round(other.dmg/2);
-}
-if ap &lt; 0 {ap = 0;}
+plr_hurt(other.dmg);
 killer_id = 0;
 kill_type = 10;
 plr_send_stat();

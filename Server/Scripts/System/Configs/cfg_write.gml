@@ -48,6 +48,8 @@ file_text_write_string(cfg, 'mp_timelimit ' + string(global.mp_timelimit));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_respawn ' + string(global.mp_respawn));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'mp_respawn_inv ' + string(global.mp_respawn_inv));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_itemrespawn ' + string(global.mp_itemrespawn));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_items ' + string(global.mp_items));

@@ -49,7 +49,7 @@ switch argument0
     case 6:
         //megasphere
         if hp >= 200 && ap >= 200 {exit;}
-        if hp < 200 && !st_inv {hp = 200;}
+        hp = 200;
         ap = 200;
         plr_send_stat();
         plr_send_sound(5, x, y);
@@ -73,6 +73,7 @@ switch argument0
     break;
     case 10:
         //backpack
+        if a1 >= 400 && a2 >= 100 && a3 >= 100 && a4 >= 600 {exit;}
         a1 += 10; if a1 > 400 {a1 = 400;}
         a2 += 4; if a2 > 100 {a2 = 100;}
         a3 += 1; if a3 > 100 {a3 = 100;}
@@ -85,7 +86,7 @@ switch argument0
     case 9:
         //berserk
         if st_ber && hp >= 100 {exit;}
-        if hp < 100 && !st_inv {hp = 100;}
+        if hp < 100 {hp = 100;}
         if !st_ber {w = 0;}
         st_ber = 1;
         plr_send_stat();

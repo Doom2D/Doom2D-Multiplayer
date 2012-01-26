@@ -74,7 +74,7 @@ switch w
             b = instance_create(x, y, o_bullet);
             b.a_id = cl_id;
             b.a_i_id = id;
-            b.dmg = 10;
+            b.dmg = 10 + irandom(2);
             b.direction = b_dir + random(20) - random(20);
             b.k_t = 3;
         }

@@ -23,6 +23,9 @@ message_input_color(make_color_rgb(50, 40, 10));
 message_text_font(-1, 8, c_white, 1);
 message_button_font(-1, 8, c_white, 1);
 message_input_font(-1, 8, c_white, 1);
+
+//particles
+r_part_init();
 </creationCode>
   <backgroundColor>000000</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>

@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">image_speed = 0.25;
+image_angle = random(360);
 </argument>
       </arguments>
     </action>

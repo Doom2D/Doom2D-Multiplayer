@@ -3,5 +3,5 @@
   <resource name="System" type="GROUP"/>
   <resource name="Net" type="GROUP"/>
   <resource name="Map" type="GROUP"/>
-  <resource name="Player" type="GROUP"/>
+  <resource name="Game" type="GROUP"/>
 </resources>

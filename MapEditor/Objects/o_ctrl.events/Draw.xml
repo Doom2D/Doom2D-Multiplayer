@@ -23,8 +23,16 @@ if (mouse_check_button(mb_left) || keyboard_check(vk_space)) &amp;&amp; keyboard
 else
 {
   draw_sprite_ext(spr, im, round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off), round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off), 1, 1, 0, c_white, 0.73);  
+  if API_Combobox_GetSel(ui_tl_cb) &lt; 11 &amp;&amp; !mouse_check_button(mb_right)
+  {
+    draw_set_color(col);
+    draw_set_alpha(0.73);
+    draw_rectangle(round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off), round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off), round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off) + sprite_get_width(spr) - 1, round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off) - 1 + sprite_get_height(spr), 1);
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+  }
 }
-if mouse_check_button(mb_right) &amp;&amp; keyboard_check(vk_shift)
+if mouse_check_button(mb_right) &amp;&amp; keyboard_check(vk_shift) 
 {
     draw_set_color(col);
     draw_rectangle(x1, y1, x2, y2, 1);

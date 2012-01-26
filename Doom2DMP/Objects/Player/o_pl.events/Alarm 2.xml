@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if st_ber &amp;&amp; !place_meeting(x, y, o_liq)
+        <argument kind="STRING">if st_ber
 {
     a = instance_create(x, y, o_smoke);
     a.image_blend = c_maroon;

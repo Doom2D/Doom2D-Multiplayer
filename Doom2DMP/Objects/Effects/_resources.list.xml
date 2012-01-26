@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-  <resource name="o_part" type="RESOURCE"/>
   <resource name="o_gib" type="RESOURCE"/>
   <resource name="o_corpse" type="RESOURCE"/>
   <resource name="o_projectile" type="RESOURCE"/>

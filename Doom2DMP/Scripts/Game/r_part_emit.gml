@@ -3,29 +3,13 @@ if !global.r_gfx {exit;}
 switch argument0
 {
     case 1:
-    //blood
-        repeat(4)
-        {
-            if global.r_massacre == 0 {exit;}
-            p = instance_create(argument1, argument2, o_part);
-            p.image_blend = c_maroon;
-            p.image_xscale = 0.75;
-            p.image_yscale = 0.75;
-            p.speed = 1+random(1)*choose(1, -1);
-            p.direction = random(360);
-        }
-    break;
     case 2:
-    //sparks
-        repeat(2)
-        {
-            p = instance_create(argument1, argument2, o_part);
-            p.image_blend = c_yellow;
-            p.image_xscale = 0.5;
-            p.image_yscale = 0.5;
-            p.speed = 1 + random(1)*choose(1, -1);
-            p.direction = random(360);
-        }
+        if global.r_massacre == 0 {exit;}
+        var _emitter;
+        _emitter = part_emitter_create(global.g_part_sys);
+        part_emitter_region(global.g_part_sys, _emitter, argument1 - 4, argument1 + 4, argument2 - 4, argument2 + 4, ps_shape_rectangle, ps_distr_gaussian);
+        part_emitter_burst(global.g_part_sys, _emitter, global.g_particle[argument0], 2 + irandom(6 - argument0*2));
+        part_emitter_destroy(global.g_part_sys, _emitter);
     break;
     case 3:
     //gibs

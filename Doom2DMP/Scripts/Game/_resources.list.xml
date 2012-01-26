@@ -8,4 +8,5 @@
   <resource name="r_projectile" type="RESOURCE"/>
   <resource name="r_explosion" type="RESOURCE"/>
   <resource name="r_inter" type="RESOURCE"/>
+  <resource name="r_part_init" type="RESOURCE"/>
 </resources>

@@ -22,6 +22,7 @@ if ds_list_find_value(cmd, 0) == 'help'
 }
 if ds_list_find_value(cmd, 0) == 'exit' or ds_list_find_value(cmd, 0) == 'quit'
 {
+  cfg_write('server.cfg');
   game_end();
   exit;
 }
@@ -55,18 +56,119 @@ if ds_list_find_value(cmd, 0) == 'clist'
 }
 if ds_list_find_value(cmd, 0) == 'bot_add'
 {
-  bot_add();
+  if is_real(ds_list_find_value(cmd, 1)) && is_real(ds_list_find_value(cmd, 2)) && is_real(ds_list_find_value(cmd, 3))
+  {
+    bot_add(bot_select_name(), bot_select_skin(), make_color_rgb(irandom(255), irandom(255), irandom(255)));
+  }
+  else
+  {
+    var n, c, s;
+    n = string(ds_list_find_value(cmd, 1));
+    s = string(ds_list_find_value(cmd, 2));
+    if string(ds_list_find_value(cmd, 3)) == '*' {c = make_color_rgb(irandom(255), irandom(255), irandom(255));} else {c = real(string_digits(ds_list_find_value(cmd, 3)));}
+    
+    if n == '*' || (n != '*' && string_letters(n) == '') {n = bot_select_name();}
+    if s == '*' || (s != '*' && string_letters(n) == '') {s = bot_select_skin();}
+    
+    bot_add(n, s, c);
+  }
   exit;
 }
-if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'sv_slist_path')
+if ds_list_find_value(cmd, 0) == 'bot_kick'
+{
+  with (o_pl)
+  {
+    if !variable_local_exists('cl_id') {exit;}
+    if variable_local_exists('cl_is_bot') {plr_send_kick(cl_id, 'bot_kick()');}
+  }
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'cl_setval'
+{
+    var ar0, ar1, ar2, inst;
+    ar0 = real(string_digits(ds_list_find_value(cmd, 1)));
+    if ar0 < 1 || ar0 > 16 {exit;}
+    ar1 = string(ds_list_find_value(cmd, 2));
+    ar2 = real(string_digits(ds_list_find_value(cmd, 3)));
+    if string_digits(ds_list_find_value(cmd, 3)) == '' {exit;}
+    if ar1 == '' || ar1 == '0' {exit;}
+    if ar1 == 'help' {con_add(':: cl_setval(): Следующие параметры могут быть изменены:#hp ap frag inv ber bpk jet w2 w3 w4 w5 w6 w7 w8 w9 a1 a2 a3 a4.'); exit;}
+    inst = id_to_cl(ar0);
+    if !instance_exists(inst) {exit;}
+    switch ar1
+    {
+        case 'hp':
+            inst.hp = ar2;
+        break;
+        case 'ap':
+            inst.ap = ar2;
+        break;
+        case 'frag':
+            inst.frag = ar2;
+        break;
+        case 'jet':
+            inst.st_jet = max(1, ar2);
+        break;
+        case 'inv':
+            inst.st_inv = max(1, ar2);
+        break;
+        case 'ber':
+            inst.st_ber = max(1, ar2);
+        break;
+        case 'bpk':
+            inst.st_bpk = max(1, ar2);
+        break;
+        case 'w2':
+            inst.hw[2] = max(1, ar2);
+        break;
+        case 'w3':
+            inst.hw[3] = max(1, ar2);
+        break;
+        case 'w4':
+            inst.hw[4] = max(1, ar2);
+        break;
+        case 'w5':
+            inst.hw[5] = max(1, ar2);
+        break;
+        case 'w6':
+            inst.hw[6] = max(1, ar2);
+        break;
+        case 'w7':
+            inst.hw[7] = max(1, ar2);
+        break;
+        case 'w8':
+            inst.hw[8] = max(1, ar2);
+        break;
+        case 'w9':
+            inst.hw[9] = max(1, ar2);
+        break;
+        case 'a1':
+            inst.a1 = ar2;
+        break;
+        case 'a2':
+            inst.a2 = ar2;
+        break;
+        case 'a3':
+            inst.a3 = ar2;
+        break;
+        case 'a4':
+            inst.a4 = ar2;
+        break;
+        default:
+            con_add(':: ERROR: Неизвестный параметр.');
+    }
+    with (inst) {plr_send_stat();}
+    exit;
+}
+if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'sv_slist_path' || ds_list_find_value(cmd, 0) = 'cl_setval')
 {
   con_parse_cvar(ds_list_find_value(cmd, 0), ds_list_find_value(cmd, 1));
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'sv_map'
 {
-  if ds_list_find_value(cmd, 1) == '' || is_real(ds_list_find_value(cmd, 0)) {exit;}
-  if !file_exists('data\maps\' + ds_list_find_value(cmd, 1) + '.dlv') {exit;}
+  if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_map); exit;}
+  if !file_exists('data\maps\' + ds_list_find_value(cmd, 1) + '.dlv') {con_add(":: ERROR: Нет такой карты."); exit;}
   if global.map_w != 0 
   {
     old = global.sv_cycle_maps;
@@ -129,6 +231,7 @@ if ds_list_find_value(cmd, 0) == 'sv_slist_path'
   global.sv_slist_path = ds_list_find_value(cmd, 1);
   exit;
 }
+
 if ds_list_find_value(cmd, 0) == 'resync'
 {
   o_host.alarm[1] = 1;

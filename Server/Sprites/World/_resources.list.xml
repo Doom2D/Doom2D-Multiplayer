@@ -2,5 +2,4 @@
 <resources>
   <resource name="s_lift" type="RESOURCE"/>
   <resource name="tex_none" type="RESOURCE"/>
-  <resource name="s_notex" type="RESOURCE"/>
 </resources>
