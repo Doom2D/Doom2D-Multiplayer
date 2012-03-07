@@ -1,5 +1,6 @@
 //restores cvars to their normal shit if they are bigger
-if global.sv_maxplayers > 16 {global.sv_maxplayers = 16;}
+if global.sv_maxplayers > 24 {global.sv_maxplayers = 24;}
+if global.sv_maxplayers < 1 {global.sv_maxplayers = 1;}
 if global.sv_use_pwd > 1 {global.sv_use_pwd = 1;}
 if global.sv_lan > 1 {global.sv_lan = 1;}
 if global.sv_portcheck > 1 {global.sv_portcheck = 1;}
@@ -10,7 +11,17 @@ if global.sv_clalert > 1 {global.sv_clalert = 1;}
 if global.sv_cheats > 1 {global.sv_cheats = 1;}
 if global.sv_slist_time > 60 {global.sv_slist_time = 60;}
 if global.sv_slist_time < 5 {global.sv_slist_time = 5;}
-if global.cl_rc_time > 60 {global.cl_rc_time = 60;}
+if global.sv_sync_type > 2 {global.sv_sync_type = 2;}if global.sv_rate > 60 {global.sv_rate = 60;}
+if global.sv_rate < 1 {global.sv_rate = 1;}
+if global.sv_rate > 64 {global.sv_rate = 64;}
+if global.sv_dl_rate > 1024 {global.sv_dl_rate = 1024;}
+if global.sv_dl_allow > 1 {global.sv_dl_allow = 1;}
+if global.sv_fps_max > 120 {global.sv_fps_max = 120;}
+if global.sv_fps_max < 1 {global.sv_fps_max = 1;}
+if global.sv_fps_correct > 1 {global.fps_correct = 1;}
+if global.sv_fps_correct < 0 {global.fps_correct = 0;}
+if global.cl_rc_time > 120 {global.cl_rc_time = 120;}
+if global.cl_rc_time < 3 {global.cl_rc_time = 3;}
 if global.cl_timeout > 3600 {global.cl_timeout = 3600;}
 if global.mp_fraglimit > 250 {global.mp_fraglimit = 250;}
 if global.mp_timelimit > 9000 {global.mp_timelimit = 9000;}
@@ -30,8 +41,7 @@ if global.mp_penalty > 1 {global.mp_penalty = 1;}
 if global.mp_respawn_inv > 10 {global.mp_respawn_inv = 10;}
 if global.bot_names > 1 {global.bot_names = 1;}
 if global.bot_chatter > 1 {global.bot_chatter = 1;}
-if global.bot_tickrate > 10 {global.bot_tickrate = 10;}
-if global.bot_randrate > 8 {global.bot_randrate = 8;}
+if global.bot_randrate > 100 {global.bot_randrate = 100;}
 if global.bot_cowardly > 1 {global.bot_cowardly = 1;} 
 if global.bot_dummy > 1 {global.bot_dummy = 1;} 
 

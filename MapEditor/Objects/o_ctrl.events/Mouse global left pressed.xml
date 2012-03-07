@@ -19,12 +19,10 @@ x1 = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz);
 y1 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz);
 if !keyboard_check(vk_shift) 
 {
-    x1 = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz);
-    y1 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz);
+    x1 = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz) + x_off;
+    y1 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz) + y_off;
     map_obj_create(sl, tx, x1, y1);
 }
-x_off = 0;
-y_off = 0;
 </argument>
       </arguments>
     </action>

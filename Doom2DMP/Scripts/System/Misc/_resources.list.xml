@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="string_explode" type="RESOURCE"/>
+  <resource name="sys_file_check" type="RESOURCE"/>
+  <resource name="file_md5" type="RESOURCE"/>
 </resources>

@@ -1,7 +1,7 @@
 //adds string to console
 with o_con{
 s = string(argument0);
-if string_length(s) > 145
+if string_length(s) > 145 && string_count('#', s) == 0
 {
     s = string_insert('#', s, 146);
 }

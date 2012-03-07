@@ -2,7 +2,7 @@
 API_Init ();
 
 //texture array
-for (i = 0; i < 1024; i += 1)
+for (i = 0; i < 256; i += 1)
 {
   global.tex[i] = -1;
   global.tex_nm[i] = -1;

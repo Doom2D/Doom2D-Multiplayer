@@ -91,13 +91,20 @@ switch sl
    im = 2;
   break;
   
+  case 25:
+   spr = s_bon1;
+   im = 0;
+  break;
+  case 26:
+   spr = s_bon2;
+   im = 0;
+  break;
+  
   case 20:
   case 21:
   case 22:
   case 23:
   case 24:
-  case 25:
-  case 26:
   case 27:
   case 28:
   case 29:

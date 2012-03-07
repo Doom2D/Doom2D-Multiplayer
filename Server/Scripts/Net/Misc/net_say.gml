@@ -1,22 +1,8 @@
 //similar to echo but sends to server
-if is_real(ds_list_find_value(cmd, 1))
-{
-    con_add('Недопустимое значение аргумента.');
-    exit;
-}
-if ds_list_find_value(cmd, 1) == ''
-{
-    con_add('Недопустимое значение аргумента.');
-    exit;
-}
+//a0 - string to say
+//a1 - if include the 'server' prefix
 
-c = string_count(' ', argument0);
-_str = ':: SERVER: ';
-
-for (i = 1; i < c + 1; i += 1)
-{
-    if !is_real(ds_list_find_value(cmd, i)) {_str += string(ds_list_find_value(cmd, i)) + ' ';}
-}
+if argument1 {_str = ':: SERVER: ' + argument0;} else {_str = argument0;}
 
 dll39_buffer_clear(0);
 dll39_write_byte(5, 0);

@@ -3,10 +3,5 @@
   <resource name="Skins" type="GROUP"/>
   <resource name="Map" type="GROUP"/>
   <resource name="Player" type="GROUP"/>
-  <resource name="r_part_emit" type="RESOURCE"/>
-  <resource name="r_corpse" type="RESOURCE"/>
-  <resource name="r_projectile" type="RESOURCE"/>
-  <resource name="r_explosion" type="RESOURCE"/>
-  <resource name="r_inter" type="RESOURCE"/>
-  <resource name="r_part_init" type="RESOURCE"/>
+  <resource name="Graphics" type="GROUP"/>
 </resources>

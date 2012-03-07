@@ -6,7 +6,7 @@
   <resource name="s_splash" type="RESOURCE"/>
   <resource name="s_projectile" type="RESOURCE"/>
   <resource name="msk_projectile" type="RESOURCE"/>
-  <resource name="s_corpse" type="RESOURCE"/>
+  <resource name="msk_corpse" type="RESOURCE"/>
   <resource name="msk_gibs" type="RESOURCE"/>
   <resource name="s_bfg_hit" type="RESOURCE"/>
   <resource name="s_gib" type="RESOURCE"/>

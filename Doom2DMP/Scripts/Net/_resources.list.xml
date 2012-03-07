@@ -4,4 +4,5 @@
   <resource name="Main" type="GROUP"/>
   <resource name="Player" type="GROUP"/>
   <resource name="Misc" type="GROUP"/>
+  <resource name="Fget" type="GROUP"/>
 </resources>

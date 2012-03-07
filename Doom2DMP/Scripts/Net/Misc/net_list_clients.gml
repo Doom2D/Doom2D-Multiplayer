@@ -2,7 +2,7 @@ if !variable_global_exists("pl_id") {exit;}
 str[1] = '###ID#';
 str[2] = '###ИМЯ#';
 str[3] = '###ФРАГИ#';
-for (i = 1; i <= 16; i += 1)
+for (i = 1; i <= global.sv_maxplayers; i += 1)
 {
     if global.cl_plr[i] == -1 {continue;}
     if !instance_exists(global.cl_plr[i]) {continue;}

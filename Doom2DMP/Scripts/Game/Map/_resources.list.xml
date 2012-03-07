@@ -3,4 +3,5 @@
   <resource name="map_obj_create" type="RESOURCE"/>
   <resource name="map_load" type="RESOURCE"/>
   <resource name="map_tex_load" type="RESOURCE"/>
+  <resource name="map_unpack" type="RESOURCE"/>
 </resources>

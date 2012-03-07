@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">host_cl_accept();
+con_window_work();
 </argument>
       </arguments>
     </action>

@@ -9,8 +9,8 @@
   <speed>60</speed>
   <persistent>false</persistent>
   <creationCode/>
-  <backgroundColor>C0C0C0</backgroundColor>
-  <drawBackgroundColor>false</drawBackgroundColor>
+  <backgroundColor>000000</backgroundColor>
+  <drawBackgroundColor>true</drawBackgroundColor>
   <backgrounds>
     <backgroundDef>
       <visibleOnRoomStart>true</visibleOnRoomStart>

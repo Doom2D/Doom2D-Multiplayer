@@ -20,7 +20,7 @@ _color = dll39_read_int(0);
 _cl_ver = dll39_read_string(0);
 _cl_bld = dll39_read_string(0);
 _cl_pwd = dll39_read_string(0);
-_ip = dll39_lastin_ip();
+_ip = dll39_tcpip(cl_sock);
 
 if _name == '' {exit;}
 
@@ -83,6 +83,8 @@ dll39_write_string(global.sv_name, 0);
 dll39_write_string(global.sv_map, 0);
 dll39_write_string(global.map_md5, 0);
 dll39_write_byte(global.sv_maxplayers, 0);
+dll39_write_byte(global.sv_dl_allow, 0);
+dll39_write_byte(global.sv_fps_max, 0);
 dll39_write_string(global.sv_welcome, 0);
 dll39_message_send(cl_sock, 0, 0, 0);
 
@@ -127,4 +129,17 @@ con_add(':: NET: Клиент ' + string(_name) + ' принят в слот ' +
 
 //sound
 if global.sv_clalert {sound_play(s_new_client);}
+
+//download stuff
+if global.sv_dl_allow
+{
+    if file_exists('data\temp\' + global.sv_map + '.7z')
+    {
+        with _cl {net_fsend_start(cl_id, 'data\temp\' + global.sv_map + '.7z');}
+    }
+    else
+    {
+        with _cl {net_fsend_start(cl_id, 'data\maps\' + global.sv_map + '.dlv');}
+    }
+}
 

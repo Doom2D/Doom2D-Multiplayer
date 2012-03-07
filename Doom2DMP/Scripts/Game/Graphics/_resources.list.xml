@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="r_setres" type="RESOURCE"/>
+  <resource name="r_part_init" type="RESOURCE"/>
+  <resource name="r_part_emit" type="RESOURCE"/>
+  <resource name="r_inter" type="RESOURCE"/>
+  <resource name="r_explosion" type="RESOURCE"/>
+  <resource name="r_projectile" type="RESOURCE"/>
+  <resource name="r_corpse" type="RESOURCE"/>
+</resources>

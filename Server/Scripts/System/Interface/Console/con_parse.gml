@@ -1,12 +1,16 @@
 //parses entered command
 //argument0 = command string
 if string(argument0) == '' {exit;}
+if string_copy(string(argument0), 1, 1) == ';' {exit;}
 prev_cmd = argument0;
 cmd = string_explode(argument0, ' ', false); 
 if is_real(ds_list_find_value(cmd, 0)){exit;}
+ds_list_replace(cmd, 0, string_lower(ds_list_find_value(cmd, 0)));
 if !(ds_list_find_value(cmd, 0) == 'echo' || ds_list_find_value(cmd, 0) == 'say') {con_add('> ' + argument0);}
 if ds_list_find_value(cmd, 0) == 'help'
 {
+//old code
+/*
   con_add('==Базовые команды===');
   con_add('help - выводит этот список');
   con_add('clist - вывести список клиентов');
@@ -16,14 +20,40 @@ if ds_list_find_value(cmd, 0) == 'help'
   con_add('sv_map MAP - кикнуть всех клиентов и сменить карту на MAP');
   con_add('say STR - отослать клиентам сообщение STR');
   con_add('echo STR - вывести текст STR');
-  con_add('exit/quit - выключить сервер');
+  con_add('cfg_load CFG - загрузить файл конфигурации "CFG.cfg"');
+  con_add('cfg_save CFG - сохранить конфигурацию в файл "CFG.cfg"');
+  con_add('exit/quit/die - выключить сервер');
+  con_add('restart - перезапустить сервер');
   con_add('======================');
+*/
+  con_add('========================');
+  con_add('cfg_save NAME - сохранить конфигурацию в файл NAME.cfg');
+  con_add('cfg_load NAME - загрузить конфигурацию из файла NAME.cfg');
+  con_add('restart - перезапустить сервер');
+  con_add('die - выключить сервер, не сохраняя конфигурацию')
+  con_add('exit/quit - выключить сервер');
+  con_add('ban_reload - перезагрузить банлист');
+  con_add('ban X - занести IP клиента из слота X в банлист');
+  con_add('kick X - отключить клиента из слота X');
+  con_add('bot_kick - удалить всех ботов с сервера')
+  con_add('bot_add - добавить бота на сервер')
+  con_add('say STR - написать строку STR в чат');
+  con_add('sv_map MAP - сменить карту на MAP.dlv');
+  con_add('help - вывести данный список');
+  con_add('echo STR - вывести строку STR в консоль');
+  con_add('clist - вывести список клиентов');
+  con_add('БАЗОВЫЕ КОМАНДЫ СЕРВЕРА:');
+  con_add('========================');
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'exit' or ds_list_find_value(cmd, 0) == 'quit'
 {
-  cfg_write('server.cfg');
-  game_end();
+  sys_exit(0);
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'die'
+{
+  sys_exit(1);
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'echo'
@@ -33,8 +63,25 @@ if ds_list_find_value(cmd, 0) == 'echo'
 }
 if ds_list_find_value(cmd, 0) == 'say'
 {
-  net_say();
-  exit;
+    if is_real(ds_list_find_value(cmd, 1))
+    {
+        con_add('Недопустимое значение аргумента.');
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == ''
+    {
+        con_add('Недопустимое значение аргумента.');
+        exit;
+    }
+    var _s, c;
+    _s = '';
+    c = string_count(' ', argument0);
+    for (i = 1; i < c + 1; i += 1)
+    {
+        if !is_real(ds_list_find_value(cmd, i)) {_s += string(ds_list_find_value(cmd, i)) + ' ';}
+    }
+    net_say(_s, 1);
+    exit;
 }
 if ds_list_find_value(cmd, 0) == 'sv_name'
 {
@@ -48,13 +95,14 @@ if ds_list_find_value(cmd, 0) == 'sv_welcome'
 }
 if ds_list_find_value(cmd, 0) == 'clist'
 {
-  con_add('==CONNECTED CLIENTS==');
-  con_add('   (ID, name, IP)   ');
+  if !instance_exists(o_pl) {con_add ('На сервере нет игроков.'); exit;}
+  con_add('========================');
   net_list_clients();
-  con_add('=====================');
+  con_add('СПИСОК ИГРОКОВ (ID, имя, IP):');
+  con_add('========================');
   exit;
 }
-if ds_list_find_value(cmd, 0) == 'bot_add'
+if ds_list_find_value(cmd, 0) == 'bot_add' or ds_list_find_value(cmd, 0) == 'addbot'
 {
   if is_real(ds_list_find_value(cmd, 1)) && is_real(ds_list_find_value(cmd, 2)) && is_real(ds_list_find_value(cmd, 3))
   {
@@ -162,28 +210,29 @@ if ds_list_find_value(cmd, 0) == 'cl_setval'
 }
 if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'sv_slist_path' || ds_list_find_value(cmd, 0) = 'cl_setval')
 {
-  con_parse_cvar(ds_list_find_value(cmd, 0), ds_list_find_value(cmd, 1));
+  con_cvar_parse(ds_list_find_value(cmd, 0), ds_list_find_value(cmd, 1));
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'sv_map'
 {
-  if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_map); exit;}
-  if !file_exists('data\maps\' + ds_list_find_value(cmd, 1) + '.dlv') {con_add(":: ERROR: Нет такой карты."); exit;}
+  var m;
+  m = ds_list_find_value(cmd, 1);
+  if is_real(m) {con_add(global.sv_map); exit;}
+  if m == '>' {m = global.map_list_next;}
+  if !file_exists('data\maps\' + m + '.dlv') {con_add(":: ERROR: Нет такой карты."); exit;}
   if global.map_w != 0 
   {
     old = global.sv_cycle_maps;
     global.sv_cycle_maps = 1;
-    with (o_pl) {plr_send_gameover();}
-    global.sv_cycle_maps = old;
-    global.sv_map = ds_list_find_value(cmd, 1);
-    cfg_write('server.cfg');
+    plr_send_gameover();
     sleep(60);
-    if file_exists("Server.exe") {execute_program('Server.exe', -1, 0);}
-    if file_exists("d2dmp_sv.exe") {execute_program('d2dmp_sv.exe', -1, 0);}
-    game_end();
+    with (o_pl) {plr_send_kick(cl_id, "Game over."); instance_destroy();}
+    global.sv_cycle_maps = old;
+    global.sv_map = m;
+    event_user(0);
     exit;
   }
-  global.sv_map = ds_list_find_value(cmd, 1);
+  global.sv_map = m;
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'kick'
@@ -235,6 +284,33 @@ if ds_list_find_value(cmd, 0) == 'sv_slist_path'
 if ds_list_find_value(cmd, 0) == 'resync'
 {
   o_host.alarm[1] = 1;
+  exit;
+}
+
+if ds_list_find_value(cmd, 0) == 'restart'
+{
+    if is_real(ds_list_find_value(cmd, 1)) || string_letters(ds_list_find_value(cmd, 1)) != '' {con_parse('restart 0'); exit;}
+    var _t;
+    _t = real(ds_list_find_value(cmd, 1));
+    plr_send_gameover();
+    sleep(60);
+    with (o_pl) {plr_send_kick(cl_id, "Game over.");}
+    if file_exists(parameter_string(0)) {execute_program(parameter_string(0), -1, 0);}
+    sys_exit(_t);
+    exit;
+}
+
+if ds_list_find_value(cmd, 0) == 'cfg_save'
+{
+  if is_real(ds_list_find_value(cmd, 1)) {con_add('Недопустимое значение аргумента.'); exit;}
+  cfg_write(string(ds_list_find_value(cmd, 1)), 1);
+  exit;
+}
+
+if ds_list_find_value(cmd, 0) == 'cfg_load'
+{
+  if is_real(ds_list_find_value(cmd, 1)) {con_add('Недопустимое значение аргумента.'); exit;}
+  cfg_load(string(ds_list_find_value(cmd, 1)));
   exit;
 }
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)));

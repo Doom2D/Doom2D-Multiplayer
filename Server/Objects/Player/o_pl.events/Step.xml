@@ -45,7 +45,7 @@ if dt &gt;= 1800 &amp;&amp; pt &lt; 0 &amp;&amp; !st_inv &amp;&amp; !global.mp_g
 }
 
 if !variable_local_exists('cl_is_bot') {ping += 1;} //in case of timeout we kick player
-if ping &gt; global.cl_timeout * 60
+if ping &gt; global.cl_timeout * global.sv_fps_max
 {
     //send a kick message to the fucker just in case
     plr_send_kick(cl_id, "У вас слишком высокий пинг или вы были AFK слишком долго.");

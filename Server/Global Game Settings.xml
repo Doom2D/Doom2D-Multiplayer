@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <settings>
   <graphics>
-    <scalingPercent>-1</scalingPercent>
+    <scalingPercent>100</scalingPercent>
     <displayCursor>true</displayCursor>
     <useVsync>false</useVsync>
     <interpolateColors>false</interpolateColors>
@@ -9,10 +9,10 @@
   </graphics>
   <windowing>
     <startFullscreen>false</startFullscreen>
-    <dontDrawBorder>false</dontDrawBorder>
+    <dontDrawBorder>true</dontDrawBorder>
     <allowWindowResize>false</allowWindowResize>
     <alwaysOnTop>false</alwaysOnTop>
-    <dontShowButtons>false</dontShowButtons>
+    <dontShowButtons>true</dontShowButtons>
     <switchVideoMode>false</switchVideoMode>
   </windowing>
   <splashImage>
@@ -22,7 +22,7 @@
   </splashImage>
   <progressBar>
     <mode>LOADBAR_NONE</mode>
-    <scaleImage>true</scaleImage>
+    <scaleImage>false</scaleImage>
   </progressBar>
   <keys>
     <letF1ShowGameInfo>false</letF1ShowGameInfo>
@@ -41,10 +41,10 @@
   <gameInfo>
     <gameId>13376669</gameId>
     <author/>
-    <version>100</version>
+    <version/>
     <information/>
-    <versionMajor>1</versionMajor>
-    <versionMinor>0</versionMinor>
+    <versionMajor>0</versionMajor>
+    <versionMinor>6</versionMinor>
     <versionRelease>0</versionRelease>
     <versionBuild>0</versionBuild>
     <company/>

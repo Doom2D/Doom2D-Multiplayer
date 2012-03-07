@@ -28,6 +28,9 @@ if _timer &gt; 600
     mus_play(global.mus_menu);
     room_goto(rm_menu);
 }
+
+if global.cl_sync_type == 0 {exit;}
+cl_input_check();
 </argument>
       </arguments>
     </action>

@@ -17,7 +17,7 @@ for(i=0; i < 255; i+=1)
 {
     global.cl_plr[i] = noone;
 }
-for(i=0; i < 24000; i+=1)
+for(i=0; i < 8192; i+=1)
 {
     global.cl_itm[i] = noone;
 }

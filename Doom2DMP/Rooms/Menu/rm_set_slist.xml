@@ -10,7 +10,7 @@
   <persistent>false</persistent>
   <creationCode>
 </creationCode>
-  <backgroundColor>C0C0C0</backgroundColor>
+  <backgroundColor>000000</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>
   <backgrounds>
     <backgroundDef>

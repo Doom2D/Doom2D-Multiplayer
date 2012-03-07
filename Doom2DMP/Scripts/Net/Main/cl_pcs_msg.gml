@@ -13,6 +13,7 @@ while 1
     switch msg_id
     {
         case 1:
+            var _candl;
             //receive mah id and server info
             global.pl_id = dll39_read_byte(0);
             con_add(':: NET: Получен ID: ' + string(global.pl_id) + '.');
@@ -20,22 +21,22 @@ while 1
             global.sv_map = dll39_read_string(0);
             global.sv_map_md5 = dll39_read_string(0);
             global.sv_maxplayers = dll39_read_byte(0);
+            global.sv_dlallow = dll39_read_byte(0);
+            global.cl_fps_max = dll39_read_byte(0);
             _welcome = '';
             _welcome = dll39_read_string(0);
             con_add(':: NET: Получена информация о сервере.');
-            map_load(global.sv_map);
-            con_add(':: MAP: MD5 карты клиента: ' + global.map_md5);
-            con_add(':: MAP: MD5 карты сервера: ' + global.sv_map_md5);
-            if global.map_md5 != global.sv_map_md5
+            
+            if !global.sv_dlallow
             {
-                con_add(':: MAP: ERROR: MD5 не сходятся.');
-                cl_disconnect();
-                mus_play(global.mus_menu);
-                room_goto(rm_menu);
-                exit;
+                event_user(0);
             }
-            con_add(_welcome);
-            instance_create(0, 0, o_hud);
+            else
+            {
+                global.map_done = 0;
+            }
+            
+            room_speed = global.cl_fps_max;
             alarm[0] = 5;
         break;
         
@@ -45,8 +46,16 @@ while 1
             msg_reason = dll39_read_string(0);
             con_add(":: NET: Вас кикнули: " + msg_reason);
             cl_disconnect();
-            r_inter(2, 255);
-            room_goto(rm_inter);
+            if global.map_w > 0
+            {
+                r_inter(2, 255);
+                room_goto(rm_inter);
+            }
+            else
+            {
+                mus_play(global.mus_menu);
+                room_goto(rm_set_ip);
+            }
         break;
         
         case 3:
@@ -207,6 +216,7 @@ while 1
             _it = dll39_read_byte(0);
             xx = dll39_read_short(0);
             yy = dll39_read_short(0);
+            if instance_exists(global.cl_itm[_id]) {exit;}
             o = instance_create(xx, yy, o_item);
             o.item_id = _id;
             o.item = _it;
@@ -311,6 +321,34 @@ while 1
                 with _inst {skin_load(cl_skin);}
                 con_add(string(_new_skin));
             }
+        break;
+        
+        case 21:
+            //fsend start
+            var _state, _file, _size, _md5, _cmd5;
+            _state = dll39_read_byte(0);
+            _size = dll39_read_int(0);
+            _file = dll39_read_string(0);
+            _md5 = dll39_read_string(0);
+            _cmd5 = dll39_read_string(0);
+            if _state && !global.fget_state
+            {
+                net_fget_main(_file, _size, _md5, _cmd5);
+            }
+            if !_state && global.fget_state
+            {
+                net_fget_finish(_size, _md5);
+                
+                if global.sv_dlallow && !global.map_done
+                {
+                    with (o_client) {event_user(0);}
+                }
+            }
+        break;
+        
+        case 22:
+            //fsend inbyte
+            net_fget_inb(dll39_read_byte(0), dll39_read_int(0));
         break;
         
         default:

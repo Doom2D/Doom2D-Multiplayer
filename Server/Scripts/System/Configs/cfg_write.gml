@@ -1,13 +1,17 @@
 //writes current configuration to some config in argument0
+//if a1 is present, does not write map, fps, etc
 file = 'data\cfg\'+string(argument0);
 cfg = file_text_open_write(file);
 con_add(':: SYSTEM: Сохранение конфигурации в файл ' + string(file) + '...');
-file_text_write_string(cfg, 'sv_map ' + string(global.sv_map));
-file_text_writeln(cfg);
-file_text_write_string(cfg, 'sv_name ' + string(global.sv_name));
-file_text_writeln(cfg);
-file_text_write_string(cfg, 'sv_welcome ' + string(global.sv_welcome));
-file_text_writeln(cfg);
+if !argument1
+{
+    file_text_write_string(cfg, 'sv_map ' + string(global.sv_map));
+    file_text_writeln(cfg);
+    file_text_write_string(cfg, 'sv_name ' + string(global.sv_name));
+    file_text_writeln(cfg);
+    file_text_write_string(cfg, 'sv_welcome ' + string(global.sv_welcome));
+    file_text_writeln(cfg);
+}
 file_text_write_string(cfg, 'sv_maxplayers ' + string(global.sv_maxplayers));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_clalert ' + string(global.sv_clalert));
@@ -35,6 +39,18 @@ file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_slist ' + string(global.sv_slist));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_slist_path ' + string(global.sv_slist_path));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_sync_type ' + string(global.sv_sync_type));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_rate ' + string(global.sv_rate));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_fps_max ' + string(global.sv_fps_max));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_fps_correct ' + string(global.sv_fps_correct));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_dl_allow ' + string(global.sv_dl_allow));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_dl_rate ' + string(global.sv_dl_rate));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'cl_rc_time ' + string(global.cl_rc_time));
 file_text_writeln(cfg);
@@ -75,8 +91,6 @@ file_text_writeln(cfg);
 file_text_write_string(cfg, 'bot_names ' + string(global.bot_names));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'bot_chatter ' + string(global.bot_chatter));
-file_text_writeln(cfg);
-file_text_write_string(cfg, 'bot_tickrate ' + string(global.bot_tickrate));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'bot_randrate ' + string(global.bot_randrate));
 file_text_writeln(cfg);

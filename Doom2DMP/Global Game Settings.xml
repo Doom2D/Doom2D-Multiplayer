@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <settings>
   <graphics>
-    <scalingPercent>0</scalingPercent>
+    <scalingPercent>100</scalingPercent>
     <displayCursor>false</displayCursor>
     <useVsync>false</useVsync>
     <interpolateColors>false</interpolateColors>
@@ -40,22 +40,22 @@
   </errors>
   <gameInfo>
     <gameId>13376669</gameId>
-    <author>Prostovitalik</author>
-    <version>100</version>
+    <author/>
+    <version/>
     <information/>
     <versionMajor>0</versionMajor>
     <versionMinor>6</versionMinor>
     <versionRelease>0</versionRelease>
     <versionBuild>0</versionBuild>
     <company/>
-    <product>Doom 2D Multiplayer</product>
+    <product/>
     <copyright/>
     <description/>
     <directPlayGuid>3080d5ad21095f4c8f6620fafd7fa83b</directPlayGuid>
   </gameInfo>
   <system>
     <processPriority>PRIORITY_NORMAL</processPriority>
-    <disableScreensavers>false</disableScreensavers>
+    <disableScreensavers>true</disableScreensavers>
     <freezeOnLoseFocus>false</freezeOnLoseFocus>
   </system>
   <includes>

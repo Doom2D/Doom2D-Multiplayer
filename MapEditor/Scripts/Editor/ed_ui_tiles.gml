@@ -30,8 +30,8 @@ API_Combobox_AddString(ui_tl_cb, 'Обойма');
 API_Combobox_AddString(ui_tl_cb, 'Коробка патронов');
 API_Combobox_AddString(ui_tl_cb, '4 гильзы');
 API_Combobox_AddString(ui_tl_cb, '25 гильз'); //24
-API_Combobox_AddString(ui_tl_cb, '1 граната');
-API_Combobox_AddString(ui_tl_cb, '10 гранат');
+API_Combobox_AddString(ui_tl_cb, 'Бутылек +1 HP');
+API_Combobox_AddString(ui_tl_cb, 'Черепок +1 AP');
 API_Combobox_AddString(ui_tl_cb, '1 ракета');
 API_Combobox_AddString(ui_tl_cb, '5 ракет');
 API_Combobox_AddString(ui_tl_cb, 'Батарейка');

@@ -4,4 +4,5 @@
   <resource name="Net" type="GROUP"/>
   <resource name="Map" type="GROUP"/>
   <resource name="Game" type="GROUP"/>
+  <resource name="Fsend" type="GROUP"/>
 </resources>

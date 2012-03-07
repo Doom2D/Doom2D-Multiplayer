@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="con_window_work" type="RESOURCE"/>
+  <resource name="con_window_init" type="RESOURCE"/>
+  <resource name="con_window_update" type="RESOURCE"/>
+</resources>

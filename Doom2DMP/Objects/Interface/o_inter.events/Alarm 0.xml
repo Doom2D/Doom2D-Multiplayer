@@ -13,7 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">snd_play(26);
+        <argument kind="STRING">//snd_play(26);
+//instance_destroy();
+//sleep(60);
+FMODInstanceStop(global._s_cur_mus);
 room_goto(rm_game);
 </argument>
       </arguments>

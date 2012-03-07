@@ -13,7 +13,12 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.con == 1
+        <argument kind="STRING">if room == rm_game &amp;&amp; global.map_w == 0
+{
+    draw_rectangle_color(view_xview, view_yview, view_xview + 1024, view_yview + 768, c_black, c_black, c_black, c_black, 0);
+}
+
+if global.con == 1
 {
   con_draw();
 }
@@ -21,6 +26,18 @@ else
 {
   if room == rm_game {msg_draw();}
 }
+
+if global.fget_state
+{
+  draw_set_font(global.fnt_sys);
+  draw_set_color(c_white);
+  draw_set_alpha(0.6);
+  draw_set_valign(fa_bottom);
+  draw_text(view_xview + 4, view_yview + 764, 'FGET: ' + global.fget_path + '  ' + string(round(global.fget_pos/2)) + '/' + string(global.fget_size));
+  draw_set_valign(fa_top);
+  draw_set_alpha(1);
+}
+
 </argument>
       </arguments>
     </action>

@@ -2,7 +2,6 @@
 <resources>
   <resource name="Host" type="GROUP"/>
   <resource name="Player" type="GROUP"/>
-  <resource name="Bot" type="GROUP"/>
   <resource name="Misc" type="GROUP"/>
   <resource name="Item" type="GROUP"/>
   <resource name="Serverlist" type="GROUP"/>

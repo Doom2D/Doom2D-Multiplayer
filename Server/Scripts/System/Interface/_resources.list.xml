@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="Console" type="GROUP"/>
-  <resource name="fnt_load" type="RESOURCE"/>
+  <resource name="WinApi" type="GROUP"/>
 </resources>

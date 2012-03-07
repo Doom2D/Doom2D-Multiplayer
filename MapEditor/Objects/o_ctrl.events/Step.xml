@@ -18,15 +18,12 @@ cmd1 = API_Check_Command(1);
 switch (cmd1)
 {
   case ui_mbar_m1q:
-   if API_Dialog_MessageBox(window_handle(), 'Серьезно?', 'Уже уходите?', MB_YESNO) == 7 {exit;}
+   if API_Dialog_MessageBox(window_handle(), 'Уже уходите?', 'Серьезный вопрос', MB_YESNO) == 7 {exit;}
    game_end();
   break;
   
   case ui_mbar_m1n:
-   if API_Dialog_MessageBox(window_handle(), 'Вы действительно хотите очистить карту?', 'Серьезный вопрос', MB_YESNO) == 7 {exit;}
-   API_Free();
-   if file_exists('MapEditor.exe') {execute_program('MapEditor.exe', 0, 0);}
-   game_end();
+   if API_Dialog_MessageBox(window_handle(), 'Вы действительно хотите очистить карту?', 'Серьезный вопрос', MB_YESNO) != 7 {map_clear(); break;}
   break;
   
   case ui_mbar_m1o:
@@ -41,6 +38,10 @@ switch (cmd1)
     ed_about();
   break;
   
+  case ui_mbar_m3m:
+    ed_manual();
+  break;
+  
   case ui_mbar_m2e:
     ed_settings();
   break;
@@ -52,7 +53,7 @@ switch (cmd1)
 cmd2 = API_Check_Command(2);
 if cmd2 == ui_tx_bt
 {
-  ed_tex_load(get_open_filename('Images |*.tga; *.png; *.jpg; *.gif', 'data\textures\STD_1_16_16.tga'));
+  ed_tex_load(get_open_filename('Все поддерживаемые файлы текстур |*.tga; *.png; *.jpg; *.gif', 'data\textures\STD_1_16_16.tga'));
 }  
 cmd3 = API_Check_Command(3);
 if cmd3 != 0
@@ -94,7 +95,7 @@ if cmd4 != 0
     switch cmd4
     {
         case ui_win3_b1:
-            _tmp = get_open_filename('Music |*.xm; *.mod; *.it; *.s3m; *.wav; *.mp3; *.ogg; *.mid', 'data\music\AC.xm');
+            _tmp = get_open_filename('Все поддерживаемые файлы музыки |*.xm; *.mod; *.it; *.s3m; *.wav; *.mp3; *.ogg; *.mid', 'data\music\AC.xm');
             if !file_exists(_tmp) {exit;}
             _tmp = string_replace(_tmp, working_directory + '\', '');
             global.map_mus = _tmp;
@@ -102,7 +103,7 @@ if cmd4 != 0
         break;
         
         case ui_win3_b2:
-            _tmp = get_open_filename('Images |*.tga; *.png; *.jpg; *.gif', 'data\sky\D2DSKY1.png');
+            _tmp = get_open_filename('Все поддерживаемые файлы текстур |*.tga; *.png; *.jpg; *.gif', 'data\sky\D2DSKY1.png');
             if !file_exists(_tmp) {exit;}
             _tmp = string_replace(_tmp, working_directory + '\', '');
             global.map_bkg = _tmp;
@@ -112,14 +113,13 @@ if cmd4 != 0
         case ui_win3_b3:
             global.map_w = real(API_Control_GetText(ui_win3_e1));
             global.map_h = real(API_Control_GetText(ui_win3_e2));
-            global.map_name = string_delete(API_Control_GetText(ui_win3_e3), 16, string_length(API_Control_GetText(ui_win3_e3)));
+            global.map_name = string_delete(API_Control_GetText(ui_win3_e3), 32, string_length(API_Control_GetText(ui_win3_e3)));
             global.map_desc = string_delete(API_Control_GetText(ui_win3_e4), 64, string_length(API_Control_GetText(ui_win3_e4)));
             API_Window_Destroy(ui_win3);
             API_Control_Destroy(ui_win3);
         break;
     }
 } 
-            
 </argument>
       </arguments>
     </action>

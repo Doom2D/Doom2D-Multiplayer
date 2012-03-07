@@ -1,8 +1,5 @@
 //load map
 //argument0 - filename
-var _md5, _md5_str;
-_md5 = '';
-_md5_str = '';
 f = 'data\maps\' + argument0 + '.dlv';
 if !file_exists(f) 
 {
@@ -14,7 +11,7 @@ if !file_exists(f)
 con_add("==== MAP LOAD START ====");
 con_add(":: MAP: Загрузка карты " + f + "...");
 
-for (i = 0; i < 1024; i += 1)
+for (i = 0; i < 256; i += 1)
 {
   global.tex[i] = -1;
   global.tex_nm[i] = -1;
@@ -33,46 +30,35 @@ file_text_readln(file);
 global.map_desc = file_text_read_string(file);
 file_text_readln(file);
 global.map_w = file_text_read_real(file);
-_md5_str += string(global.map_w);
 file_text_readln(file);
 global.map_h = file_text_read_real(file);
-_md5_str += string(global.map_h);
 file_text_readln(file);
 con_add(":: MAP: Ширина: " + string(global.map_w) + ", высота: " + string(global.map_h));
 file_text_readln(file);
 file_text_readln(file);
 tx_n = real(file_text_read_string(file));
-_md5_str += string(tx_n);
 file_text_readln(file);
 con_add(":: MAP: Информация прочитана.");
 for (i = 1; i < tx_n; i += 1)
 {
   map_tex_load(file_text_read_string(file));
-  _md5_str += file_text_read_string(file);
   file_text_readln(file);
 }
 while !file_text_eof(file)
 {
   o_id = real(file_text_read_string(file));
-  _md5_str += file_text_read_string(file);
   file_text_readln(file);
   t_id = real(file_text_read_string(file));
-  _md5_str += file_text_read_string(file);
   file_text_readln(file);
   o_x = real(file_text_read_string(file));
-  _md5_str += file_text_read_string(file);
   file_text_readln(file);
   o_y = real(file_text_read_string(file));
-  _md5_str += file_text_read_string(file);
   file_text_readln(file);
   map_obj_create(o_id, t_id, o_x, o_y);
 }
 file_text_close(file);
 
-_md5 = dll39_md5_string(_md5_str);
-global.map_md5 = _md5;
-_md5_str = '';
-_md5 = '';
+global.map_md5 = file_md5(f);
 
 con_add(":: MAP: Создано: ");
 con_add(string(instance_number(o_solid)) + " тайлов-стен, "); 
@@ -89,3 +75,5 @@ if instance_number(o_spawn) < 1
 }
 con_add(":: MAP: Карта загружена.");
 con_add("==== MAP  LOAD  END ====");
+
+cfg_load('autoexec.cfg'); //load autoexec

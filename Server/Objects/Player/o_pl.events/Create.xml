@@ -17,6 +17,8 @@
 fail = 0;
 kb_left = 0;
 kb_rght = 0;
+kb_left_n = 0;
+kb_rght_n = 0;
 kb_lkup = 0;
 kb_lkdn = 0;
 kb_jump = 0;
@@ -39,6 +41,7 @@ for (i = 2; i &lt; 10; i += 1) {hw[i] = 0;}
 cd = 0; //weapon cooldown
 pt = 0; //pain sound cooldown
 dt = 0; //drown time
+jt = 0; //jump cooldown for bots
 frag = 0;
 dead = 0;
 ping = 0;
@@ -47,7 +50,17 @@ st_jet = 0; //jetpack
 st_ber = 0; //berserk
 st_bpk = 0; //backpack
 st_talk = 0;
+
+fsend_path = '';
+fsend_file = -1;
+fsend_pos = 0;
+fsend_state = 0;
+fsend_size = 0;
+fsend_md5 = '';
+fsend_cmd5 = '';
+
 alarm[0] = 2;
+alarm[2] = 1;
 </argument>
       </arguments>
     </action>

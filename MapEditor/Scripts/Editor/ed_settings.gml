@@ -10,7 +10,7 @@ API_Control_SetText(ui_win2_rb2, "Сетка 8x8");
 ui_win2_rb3 = API_Button_Create(ui_win2, 112, 56, 96, 16, BS_AUTORADIOBUTTON);
 API_Control_SetText(ui_win2_rb3, "Без сетки");
 ui_win2_b2 = API_Button_Create(ui_win2, 4, 48, 96, 24, BS_PUSHBUTTON);
-API_Control_SetText(ui_win2_b2, "Применить");
+API_Control_SetText(ui_win2_b2, "Закрыть");
 ui_win2_cb1 = API_Button_Create(ui_win2, 112, 80, 96, 16, BS_AUTOCHECKBOX);
 API_Control_SetText(ui_win2_cb1, "Контуры");
 

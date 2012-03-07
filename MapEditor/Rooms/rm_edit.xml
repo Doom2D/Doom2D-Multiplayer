@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <room>
-  <caption>Редактор карт для Doom 2D Multiplayer v0.6</caption>
+  <caption>Редактор карт для Doom 2D Multiplayer 0.6</caption>
   <size height="16000" width="16000"/>
   <grid>
     <isometric>false</isometric>
@@ -97,8 +97,8 @@
   <views>
     <view>
       <visibleOnRoomStart>true</visibleOnRoomStart>
-      <viewInRoom height="768" width="1024" x="0" y="0"/>
-      <portOnScreen height="768" width="1024" x="0" y="0"/>
+      <viewInRoom height="600" width="800" x="0" y="0"/>
+      <portOnScreen height="600" width="800" x="0" y="0"/>
       <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
     </view>
     <view>

@@ -8,7 +8,7 @@ if !file_exists(f) {exit;}
 with par_obj {instance_destroy();}
 global.map_loaded = false;
 
-for (i = 0; i < 1024; i += 1)
+for (i = 0; i < 256; i += 1)
 {
   global.tex[i] = -1;
   global.tex_nm[i] = -1;

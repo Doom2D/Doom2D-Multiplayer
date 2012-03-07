@@ -2,13 +2,13 @@
 <resources>
   <resource name="con_init" type="RESOURCE"/>
   <resource name="con_add" type="RESOURCE"/>
-  <resource name="con_draw" type="RESOURCE"/>
   <resource name="con_parse" type="RESOURCE"/>
   <resource name="string_explode" type="RESOURCE"/>
-  <resource name="con_parse_cvar" type="RESOURCE"/>
+  <resource name="con_cvar_parse" type="RESOURCE"/>
   <resource name="con_cvar_restore" type="RESOURCE"/>
   <resource name="con_sv_name" type="RESOURCE"/>
   <resource name="con_sv_welcome" type="RESOURCE"/>
   <resource name="con_timestamp" type="RESOURCE"/>
   <resource name="con_echo" type="RESOURCE"/>
+  <resource name="Window" type="GROUP"/>
 </resources>

@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if st_ber
+        <argument kind="STRING">if st_ber &amp;&amp; global.r_gfx
 {
     a = instance_create(x, y, o_smoke);
     a.image_blend = c_maroon;

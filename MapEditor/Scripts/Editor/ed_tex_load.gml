@@ -6,7 +6,7 @@ if filename_ext(tx_f) == '.gif'
 }
 
 if !file_exists(tx_f) {exit;}
-for (i = 0; i < 1024; i += 1)
+for (i = 0; i < 256; i += 1)
 {
   if global.tex[i] == -1 {break;}
 }

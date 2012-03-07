@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="plr_init_phys" type="RESOURCE"/>
+  <resource name="plr_phys" type="RESOURCE"/>
+  <resource name="plr_changewpn" type="RESOURCE"/>
+  <resource name="plr_respawn" type="RESOURCE"/>
+  <resource name="plr_shoot" type="RESOURCE"/>
+  <resource name="plr_die" type="RESOURCE"/>
+  <resource name="plr_hurt" type="RESOURCE"/>
+</resources>

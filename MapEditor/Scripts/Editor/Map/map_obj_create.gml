@@ -171,13 +171,26 @@ switch sl
    o.image_single = 2;
   break;
   
+  case 25:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.t_id = tx;
+   o.sprite_index = s_bon1;
+   o.image_single = 0;
+  break;
+  case 26:
+   o = instance_create(xx, yy, o_item);
+   o.o_id = sl;
+   o.t_id = tx;
+   o.sprite_index = s_bon2;
+   o.image_single = 0;
+  break;
+  
   case 20:
   case 21:
   case 22:
   case 23:
   case 24:
-  case 25:
-  case 26:
   case 27:
   case 28:
   case 29:

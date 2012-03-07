@@ -18,7 +18,7 @@ global.sv_itm[item_id] = noone;
 if variable_local_exists('drop') {exit;}
 o = instance_create(x, y, o_itm_spwn);
 o.item = item;
-o.alarm[0] = global.mp_itemrespawn * 60;
+o.alarm[0] = global.mp_itemrespawn * global.sv_fps_max;
 </argument>
       </arguments>
     </action>

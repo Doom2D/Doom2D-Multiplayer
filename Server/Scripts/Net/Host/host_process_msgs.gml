@@ -63,51 +63,7 @@ while(1)
             var c_id;
             c_id = dll39_read_byte(0);
             if !instance_exists(global.sv_plr[c_id]) {break;}
-            new_left = dll39_read_byte(0);
-            new_right = dll39_read_byte(0);
-            global.sv_plr[c_id].kb_jump = dll39_read_byte(0);
-            global.sv_plr[c_id].kb_lkup = dll39_read_byte(0);
-            global.sv_plr[c_id].kb_lkdn = dll39_read_byte(0);
-            global.sv_plr[c_id].st_talk = dll39_read_byte(0);
-            
-            //retranslate
-            dll39_buffer_clear(0);
-            dll39_write_byte(7, 0);
-            dll39_write_byte(c_id, 0);
-            dll39_write_byte(new_left, 0);
-            dll39_write_byte(new_right, 0);
-            dll39_write_byte(global.sv_plr[c_id].kb_jump, 0);
-            dll39_write_byte(global.sv_plr[c_id].kb_lkup, 0);
-            dll39_write_byte(global.sv_plr[c_id].kb_lkdn, 0);
-            dll39_write_byte(global.sv_plr[c_id].st_talk, 0);
-            dll39_write_short(global.sv_plr[c_id].x, 0);
-            dll39_write_short(global.sv_plr[c_id].y, 0);
-            with  o_pl
-            {   
-                dll39_message_send(cl_tcp, 0, 0, 0);
-            }
-
-            //strafe shit
-            if new_left == 1 && new_right == 1
-            {
-                if global.sv_plr[c_id].hsp > 0
-                {
-                    global.sv_plr[c_id].aim = -1;
-                    new_left = 0;
-                }
-                if global.sv_plr[c_id].hsp < 0
-                {
-                    global.sv_plr[c_id].aim = 1;
-                    new_right = 0;
-                }
-            }
-            else
-            {
-                if new_left == 1 {global.sv_plr[c_id].aim = -1;}
-                if new_right == 1 {global.sv_plr[c_id].aim = 1;}
-            }
-            global.sv_plr[c_id].kb_left = new_left;
-            global.sv_plr[c_id].kb_rght = new_right;
+            host_message_input(c_id);
         break;
         
         case 6:
@@ -191,7 +147,7 @@ while(1)
         //color/skin/name change
         _id = dll39_read_byte(0);
         _inst = id_to_cl(_id);
-        if !instance_exists(_inst) {exit;}
+        if !instance_exists(_inst) {break;}
         _inst.cl_name = dll39_read_string(0);
         _inst.cl_skin = dll39_read_string(0);
         _inst.cl_color = dll39_read_int(0);
@@ -206,6 +162,27 @@ while(1)
         with  o_pl
         {   
             dll39_message_send(cl_tcp, 0, 0, 0);
+        }
+        break;
+        
+        case 11:
+        //transfer abort
+        _id = dll39_read_byte(0);
+        _inst = id_to_cl(_id);
+        
+        if !instance_exists(_inst) {break;}
+        if !_inst.fsend_state {break;}
+        
+        with _inst 
+        {
+            con_add(':: NET: FSEND: Передача прервана клиентом.');
+            file_bin_close(fsend_file);
+            fsend_state = 0;
+            fsend_path = '';
+            fsend_file = -1;
+            fsend_pos = 0;
+            fsend_state = 0;
+            fsend_size = 0;
         }
         break;
         }

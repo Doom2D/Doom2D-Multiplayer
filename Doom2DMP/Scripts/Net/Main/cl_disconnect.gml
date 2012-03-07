@@ -27,6 +27,17 @@ if instance_number(o_pl) > 0
     }
 }
 
+//file sending stuff
+if global.fget_state
+{  
+    file_bin_close(global.fget_file); 
+    net_fget_abort();
+    file_delete(global.fget_file);
+}
+
+//destroy backgrounds and music
+if background_exists(global.map_bkg) {if global.map_bkg != bkg_inter {background_delete(global.map_bkg);} global.map_bkg = -1;}
+
 //destroy sockets
 dll39_socket_close(global.cl_tcp);
 con_add(":: NET: Закрываем сокеты...");

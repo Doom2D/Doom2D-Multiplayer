@@ -6,7 +6,7 @@ if !file_exists(tx_f)
     tx_f = 'NO_TEXTURE';
 }
 
-for (i = 0; i < 1024; i += 1)
+for (i = 0; i < 256; i += 1)
 {
   if global.tex[i] == -1 {break;}
 }

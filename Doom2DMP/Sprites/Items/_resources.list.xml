@@ -9,4 +9,6 @@
   <resource name="s_item_ammo" type="RESOURCE"/>
   <resource name="s_item_weaps" type="RESOURCE"/>
   <resource name="s_item_inv" type="RESOURCE"/>
+  <resource name="s_item_bon1" type="RESOURCE"/>
+  <resource name="s_item_bon2" type="RESOURCE"/>
 </resources>

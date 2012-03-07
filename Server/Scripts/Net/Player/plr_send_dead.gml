@@ -26,7 +26,7 @@ else
 if argument0 != argument1 && argument0 != 0 
 {
     global.sv_plr[argument0].frag += 1;
-    if global.sv_plr[argument0].frag >= global.mp_fraglimit
+    if global.sv_plr[argument0].frag >= global.mp_fraglimit && global.mp_fraglimit > 0
     {
         o_host.alarm[0] = 1;
     }

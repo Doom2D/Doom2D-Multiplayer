@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <room>
-  <caption>Doom 2D MP v0.6 Server</caption>
-  <size height="480" width="640"/>
+  <caption>Сервер Doom2DMP 0.6</caption>
+  <size height="1" width="1"/>
   <grid>
     <isometric>false</isometric>
     <snap x="16" y="16"/>
   </grid>
   <speed>60</speed>
   <persistent>false</persistent>
-  <creationCode>if !file_exists('data\cfg\autoexec.cfg') 
-{
-    a = file_text_open_write('data\cfg\autoexec.cfg');
-    file_text_close(a);
-}
-if !file_exists('data\cfg\server.cfg') 
-{
-    a = file_text_open_write('data\cfg\server.cfg');
-    file_text_close(a);
-}
+  <creationCode>
 </creationCode>
   <backgroundColor>000000</backgroundColor>
-  <drawBackgroundColor>true</drawBackgroundColor>
+  <drawBackgroundColor>false</drawBackgroundColor>
   <backgrounds>
     <backgroundDef>
       <visibleOnRoomStart>false</visibleOnRoomStart>
@@ -28,8 +19,8 @@ if !file_exists('data\cfg\server.cfg')
       <backgroundImage/>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
-      <tileHorizontally>true</tileHorizontally>
-      <tileVertically>true</tileVertically>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
       <stretch>false</stretch>
     </backgroundDef>
     <backgroundDef>
@@ -103,57 +94,7 @@ if !file_exists('data\cfg\server.cfg')
       <stretch>false</stretch>
     </backgroundDef>
   </backgrounds>
-  <enableViews>true</enableViews>
-  <views>
-    <view>
-      <visibleOnRoomStart>true</visibleOnRoomStart>
-      <viewInRoom height="480" width="640" x="0" y="0"/>
-      <portOnScreen height="480" width="640" x="0" y="0"/>
-      <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
-    </view>
-    <view>
-      <visibleOnRoomStart>false</visibleOnRoomStart>
-      <viewInRoom height="480" width="640" x="0" y="0"/>
-      <portOnScreen height="480" width="640" x="0" y="0"/>
-      <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
-    </view>
-    <view>
-      <visibleOnRoomStart>false</visibleOnRoomStart>
-      <viewInRoom height="480" width="640" x="0" y="0"/>
-      <portOnScreen height="480" width="640" x="0" y="0"/>
-      <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
-    </view>
-    <view>
-      <visibleOnRoomStart>false</visibleOnRoomStart>
-      <viewInRoom height="480" width="640" x="0" y="0"/>
-      <portOnScreen height="480" width="640" x="0" y="0"/>
-      <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
-    </view>
-    <view>
-      <visibleOnRoomStart>false</visibleOnRoomStart>
-      <viewInRoom height="480" width="640" x="0" y="0"/>
-      <portOnScreen height="480" width="640" x="0" y="0"/>
-      <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
-    </view>
-    <view>
-      <visibleOnRoomStart>false</visibleOnRoomStart>
-      <viewInRoom height="480" width="640" x="0" y="0"/>
-      <portOnScreen height="480" width="640" x="0" y="0"/>
-      <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
-    </view>
-    <view>
-      <visibleOnRoomStart>false</visibleOnRoomStart>
-      <viewInRoom height="480" width="640" x="0" y="0"/>
-      <portOnScreen height="480" width="640" x="0" y="0"/>
-      <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
-    </view>
-    <view>
-      <visibleOnRoomStart>false</visibleOnRoomStart>
-      <viewInRoom height="480" width="640" x="0" y="0"/>
-      <portOnScreen height="480" width="640" x="0" y="0"/>
-      <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
-    </view>
-  </views>
+  <enableViews>false</enableViews>
   <instances>
     <instance>
       <object>o_host</object>

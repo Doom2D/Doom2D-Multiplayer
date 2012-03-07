@@ -3,4 +3,8 @@
   <resource name="map_obj_create" type="RESOURCE"/>
   <resource name="map_load" type="RESOURCE"/>
   <resource name="map_tex_load" type="RESOURCE"/>
+  <resource name="map_clear" type="RESOURCE"/>
+  <resource name="map_tex_init" type="RESOURCE"/>
+  <resource name="map_next" type="RESOURCE"/>
+  <resource name="map_pack" type="RESOURCE"/>
 </resources>

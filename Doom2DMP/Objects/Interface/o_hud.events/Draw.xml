@@ -25,7 +25,7 @@ draw_text(view_xview + 852, view_yview + 208, str[2]);
 draw_set_halign(fa_right);
 draw_text(view_xview + 1000, view_yview + 208, str[3]);
 draw_set_halign(fa_left);
-draw_text(view_xview + 832, view_yview + 710, "TCP Delay: " + string(global.cl_tcpdelay) + " ms#Ping: " + string(global.cl_ping) + " ms#FPS: " + string(fps));
+draw_text(view_xview + 832, view_yview + 710, "TCP Delay: " + string(global.cl_tcpdelay) + " ms#Ping: " + string(global.cl_ping) + " ms#FPS: " + string(fps) + '/' + string(room_speed));
 
 draw_set_font(global.fnt_big);
 if global.cl_inst.st_inv &amp;&amp; global.r_gfx

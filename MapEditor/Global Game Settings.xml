@@ -28,23 +28,23 @@
     <letF1ShowGameInfo>false</letF1ShowGameInfo>
     <letF4SwitchFullscreen>false</letF4SwitchFullscreen>
     <letF5SaveF6Load>false</letF5SaveF6Load>
-    <letF9Screenshot>true</letF9Screenshot>
-    <letEscEndGame>true</letEscEndGame>
-    <treatCloseAsEscape>true</treatCloseAsEscape>
+    <letF9Screenshot>false</letF9Screenshot>
+    <letEscEndGame>false</letEscEndGame>
+    <treatCloseAsEscape>false</treatCloseAsEscape>
   </keys>
   <errors>
     <displayErrors>true</displayErrors>
-    <writeToLog>true</writeToLog>
+    <writeToLog>false</writeToLog>
     <abortOnError>false</abortOnError>
     <treatUninitializedAsZero>false</treatUninitializedAsZero>
   </errors>
   <gameInfo>
     <gameId>133766699</gameId>
     <author/>
-    <version>100</version>
+    <version/>
     <information/>
-    <versionMajor>1</versionMajor>
-    <versionMinor>0</versionMinor>
+    <versionMajor>0</versionMajor>
+    <versionMinor>6</versionMinor>
     <versionRelease>0</versionRelease>
     <versionBuild>0</versionBuild>
     <company/>

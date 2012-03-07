@@ -1,9 +1,11 @@
 //parses entered command
 //argument0 = command string
 if string(argument0) == '' {exit;}
+if string_copy(string(argument0), 1, 1) == ';' {exit;}
 prev_cmd = argument0;
 cmd = string_explode(argument0, ' ', false);
 if is_real(ds_list_find_value(cmd, 0)){exit;}
+ds_list_replace(cmd, 0, string_lower(ds_list_find_value(cmd, 0)));
 if !(ds_list_find_value(cmd, 0) == 'echo' || ds_list_find_value(cmd, 0) == 'say') {con_add('> ' + argument0, true);}
 if ds_list_find_value(cmd, 0) == 'help'
 {
@@ -13,6 +15,8 @@ if ds_list_find_value(cmd, 0) == 'help'
   con_add('cfg_save CONF - сохраняет настройки в файл data\cfg\CONF.cfg');
   con_add('echo STR - пишет в консоль строку STR');
   con_add('exit/quit - выход из игры');
+  con_add('cfg_load CFG - загрузить конфигурационный файл CFG');
+  con_add('cfg_save CFG - сохранить конфигурационный файл CFG');
   con_add('disconnect - отсоединиться от сервера');
   con_add('======================');
   exit;
@@ -84,7 +88,7 @@ if ds_list_find_value(cmd, 0) == 'skin'
   skin_change();
   exit;
 }
-if ds_list_find_value(cmd, 0) == 'cfg_exec'
+if ds_list_find_value(cmd, 0) == 'cfg_load'
 {
   if is_real(ds_list_find_value(cmd, 1))
   {
@@ -97,6 +101,21 @@ if ds_list_find_value(cmd, 0) == 'cfg_exec'
     exit;
   }
   cfg_load(string(ds_list_find_value(cmd, 1)));
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'cfg_save'
+{
+  if is_real(ds_list_find_value(cmd, 1))
+  {
+    con_add('Недопустимое значение аргумента.');
+    exit;
+  }
+  if ds_list_find_value(cmd, 1) == ''
+  {
+    con_add('Недопустимое значение аргумента.');
+    exit;
+  }
+  cfg_write(string(ds_list_find_value(cmd, 1)));
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'echo'
@@ -139,7 +158,7 @@ if ds_list_find_value(cmd, 0) == 'r_massacre'
         exit;
     }
     global.r_massacre = real(string_digits(ds_list_find_value(cmd, 1)));
-    if global.r_massacre > 3 || global.r_massacre < 0 {global.r_massacre = 3;}
+    if global.r_massacre < 0 || global.r_massacre > 3 {global.r_massacre = 3;}
     con_add('r_massacre = ' + string(global.r_massacre));
     exit;
 }
@@ -156,7 +175,7 @@ if ds_list_find_value(cmd, 0) == 'r_gfx'
         exit;
     }
     global.r_gfx = real(string_digits(ds_list_find_value(cmd, 1)));
-    if global.r_gfx > 1 || global.r_gfx < 0 {global.r_gfx = 1;}
+    if global.r_gfx < 0 || global.r_gfx > 1 {global.r_gfx = 1;}
     if room == rm_game
     {
         if global.r_gfx
@@ -184,7 +203,7 @@ if ds_list_find_value(cmd, 0) == 'r_names'
         exit;
     }
     global.r_names = real(string_digits(ds_list_find_value(cmd, 1)));
-    if global.r_names > 1 || global.r_names < 0 {global.r_names = 1;}
+    if global.r_names < 0 || global.r_names > 1 {global.r_names = 1;}
     con_add('r_names = ' + string(global.r_names));
     exit;
 }
@@ -223,8 +242,81 @@ if ds_list_find_value(cmd, 0) == 'r_fskip'
         exit;
     }
     global.r_fskip = real(string_digits(ds_list_find_value(cmd, 1)));
-    if global.r_fskip > 1 || global.r_fskip < 0 {global.r_fskip = 1;}
-    con_add('[THIS WILL TAKE EFFECT ONLY UPON RESTART] r_fskip = ' + string(global.r_fskip));
+    if global.r_fskip < 0 || global.r_fskip > 1 {global.r_fskip = 1;}
+    con_add('[ИЗМЕНЕНИЯ ВСТУПЯТ В СИЛУ ПОСЛЕ ПЕРЕЗАГРУЗКИ] r_fskip = ' + string(global.r_fskip));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'r_scale'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.r_scale));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.r_scale));
+        exit;
+    }
+    global.r_scale = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_scale < 0 || global.r_scale > 1 {global.r_scale = 1;}
+    con_add('r_scale = ' + string(global.r_scale));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'r_width'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.r_width));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.r_width));
+        exit;
+    }
+    global.r_width = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_width < 640 || global.r_width > 2048 {global.r_width = 1024;}
+    con_add('r_width = ' + string(global.r_width));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'r_height'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.r_height));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.r_height));
+        exit;
+    }
+    global.r_height = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_height < 480 || global.r_height > 2048 {global.r_height = 768;}
+    con_add('r_height = ' + string(global.r_height));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'r_fps_correct'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.r_fps_correct));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.r_fps_correct));
+        exit;
+    }
+    global.r_fps_correct = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_fps_correct < 0 || global.r_fps_correct > 1 {global.r_fps_correct = 1;}
+    con_add('[ИЗМЕНЕНИЯ ВСТУПЯТ В СИЛУ ПОСЛЕ ПЕРЕЗАГРУЗКИ] r_fps_correct = ' + string(global.r_fps_correct));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'r_restart'
+{
+    r_setres(global.r_width, global.r_height);
     exit;
 }
 if ds_list_find_value(cmd, 0) == 's_preload'
@@ -240,7 +332,7 @@ if ds_list_find_value(cmd, 0) == 's_preload'
         exit;
     }
     global.s_preload = real(string_digits(ds_list_find_value(cmd, 1)));
-    if global.s_preload > 1 || global.s_preload < 0 {global.s_preload = 1;}
+    if global.s_preload < 0 || global.s_preload > 1 {global.s_preload = 1;}
     con_add('s_preload = ' + string(global.s_preload));
     exit;
 }
@@ -339,4 +431,73 @@ if ds_list_find_value(cmd, 0) == 'cl_slist_path'
   con_add('cl_slist_path = ' + string(global.cl_slist_path));
   exit;
 }
+if ds_list_find_value(cmd, 0) == 'cl_rate'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.cl_rate));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.cl_rate));
+        exit;
+    }
+    global.cl_rate = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.cl_rate < 1 || global.cl_rate > 64 {global.cl_rate = 1;}
+    con_add('cl_rate = ' + string(global.cl_rate));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'cl_sync_type'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.cl_sync_type));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.cl_sync_type));
+        exit;
+    }
+    global.cl_sync_type = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.cl_sync_type < 0 || global.cl_sync_type > 1 {global.cl_sync_type = 1;}
+    con_add('cl_sync_type = ' + string(global.cl_sync_type));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'cl_dl_allow'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.cl_dl_allow));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.cl_dl_allow));
+        exit;
+    }
+    global.cl_dl_allow = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.cl_dl_allow < 0 || global.cl_dl_allow > 1 {global.cl_dl_allow = 1;}
+    con_add('cl_dl_allow = ' + string(global.cl_dl_allow));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'cl_dl_override'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.cl_dl_override));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.cl_dl_override));
+        exit;
+    }
+    global.cl_dl_override = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.cl_dl_override < 0 || global.cl_dl_override > 1 {global.cl_dl_override = 1;}
+    con_add('cl_dl_override = ' + string(global.cl_dl_override));
+    exit;
+}
+
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)) + '. Введите help для списка команд.');

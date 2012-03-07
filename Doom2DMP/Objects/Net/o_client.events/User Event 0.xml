@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="10">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if file_exists('data\temp\' + global.sv_map + '.7z') &amp;&amp; !file_exists('data\maps\' + global.sv_map + '.dlv') {map_unpack(global.sv_map);}
+map_load(global.sv_map);
+con_add(':: MAP: MD5 карты клиента: ' + global.map_md5);
+con_add(':: MAP: MD5 карты сервера: ' + global.sv_map_md5);
+if global.map_md5 != global.sv_map_md5
+{
+    con_add(':: MAP: ERROR: MD5 не сходятся.');
+    cl_disconnect();
+    mus_play(global.mus_menu);
+    room_goto(rm_menu);
+    exit;
+}
+con_add(_welcome);
+instance_create(0, 0, o_hud);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

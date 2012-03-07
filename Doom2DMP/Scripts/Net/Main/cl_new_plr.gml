@@ -4,6 +4,7 @@
 //2 - skin
 //3 - color
 
+if instance_exists(global.cl_plr[argument0]) {exit;}
 var _inst;
 _inst = instance_create(0, 0, o_pl);
 _inst.cl_name = 'unknown';

@@ -14,16 +14,11 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">//timelimit
-sleep(60);
 plr_send_gameover();
 sleep(60);
-with (o_pl) {plr_send_kick(cl_id, "Game over.");}
+with (o_pl) {plr_send_kick(cl_id, "Game over."); instance_destroy();}
 if global.sv_cycle_maps {global.sv_map = global.map_list_next;}
-cfg_write('server.cfg');
-sleep(60);
-if file_exists('Server.exe') {execute_program('Server.exe', -1, 0);}
-if file_exists("d2dmp_sv.exe") {execute_program('d2dmp_sv.exe', -1, 0);}
-game_end();
+event_user(0);
 </argument>
       </arguments>
     </action>

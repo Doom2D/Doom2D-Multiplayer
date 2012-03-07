@@ -5,4 +5,5 @@
   <resource name="change_weapon" type="RESOURCE"/>
   <resource name="shoot_send" type="RESOURCE"/>
   <resource name="pos_send" type="RESOURCE"/>
+  <resource name="cl_input_check" type="RESOURCE"/>
 </resources>

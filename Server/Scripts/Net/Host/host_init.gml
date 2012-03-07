@@ -5,7 +5,7 @@ for(i=0; i < 255; i+=1)
 {
     global.sv_plr[i] = noone;
 }
-for(i=0; i < 24000; i+=1)
+for(i=0; i < 8192; i += 1)
 {
     global.sv_itm[i] = noone;
 }
@@ -62,9 +62,8 @@ if !global.sv_lan && global.sv_portcheck
 }
 
 
-map_load(global.sv_map);
+event_user(0);
 con_add(':: NET: Сервер включен.');
-cfg_load('autoexec.cfg');
 alarm[1] = 300; //server list update shit
 //that's all, folks
 

@@ -35,17 +35,17 @@ switch item
     
     case 5:
         sprite_index = s_item_bsphr;
-        image_speed = 0.05;
+        image_speed = 0.07;
     break;
     
     case 6:
         sprite_index = s_item_wsphr;
-        image_speed = 0.05;
+        image_speed = 0.07;
     break;
     
     case 7:
         sprite_index = s_item_inv;
-        image_speed = 0.05;
+        image_speed = 0.07;
     break;
     
     case 8:
@@ -64,8 +64,6 @@ switch item
     case 12:
     case 13:
     case 14:
-    case 15:
-    case 16:
     case 17:
     case 18:
     case 19:
@@ -73,6 +71,15 @@ switch item
         sprite_index = s_item_ammo;
         image_speed = 0;
         image_index = item - 10;
+    break;
+    
+    case 15:
+        sprite_index = s_item_bon1;
+        image_speed = 0.07;
+    break;
+    case 16:
+        sprite_index = s_item_bon2;
+        image_speed = 0.07;
     break;
     
     case 21:

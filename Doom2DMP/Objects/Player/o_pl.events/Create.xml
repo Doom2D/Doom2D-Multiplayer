@@ -15,7 +15,9 @@
       <arguments>
         <argument kind="STRING">plr_init_phys();
 kb_left = 0;
+kb_left_n = 0;
 kb_rght = 0;
+kb_rght_n = 0;
 kb_jump = 0;
 kb_lkup = 0;
 kb_lkdn = 0;
