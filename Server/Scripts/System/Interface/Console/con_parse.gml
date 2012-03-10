@@ -9,23 +9,6 @@ ds_list_replace(cmd, 0, string_lower(ds_list_find_value(cmd, 0)));
 if !(ds_list_find_value(cmd, 0) == 'echo' || ds_list_find_value(cmd, 0) == 'say') {con_add('> ' + argument0);}
 if ds_list_find_value(cmd, 0) == 'help'
 {
-//old code
-/*
-  con_add('==Базовые команды===');
-  con_add('help - выводит этот список');
-  con_add('clist - вывести список клиентов');
-  con_add('kick ID - кикнуть клиента из слота ID');
-  con_add('ban ID - внести IP клиента из слота ID в банлист');
-  con_add('ban_reload - перезагрузить банлист');
-  con_add('sv_map MAP - кикнуть всех клиентов и сменить карту на MAP');
-  con_add('say STR - отослать клиентам сообщение STR');
-  con_add('echo STR - вывести текст STR');
-  con_add('cfg_load CFG - загрузить файл конфигурации "CFG.cfg"');
-  con_add('cfg_save CFG - сохранить конфигурацию в файл "CFG.cfg"');
-  con_add('exit/quit/die - выключить сервер');
-  con_add('restart - перезапустить сервер');
-  con_add('======================');
-*/
   con_add('========================');
   con_add('cfg_save NAME - сохранить конфигурацию в файл NAME.cfg');
   con_add('cfg_load NAME - загрузить конфигурацию из файла NAME.cfg');
@@ -155,40 +138,40 @@ if ds_list_find_value(cmd, 0) == 'cl_setval'
             inst.frag = ar2;
         break;
         case 'jet':
-            inst.st_jet = max(1, ar2);
+            inst.st_jet = min(1, ar2);
         break;
         case 'inv':
-            inst.st_inv = max(1, ar2);
+            inst.st_inv = min(1, ar2);
         break;
         case 'ber':
-            inst.st_ber = max(1, ar2);
+            inst.st_ber = min(1, ar2);
         break;
         case 'bpk':
-            inst.st_bpk = max(1, ar2);
+            inst.st_bpk = min(1, ar2);
         break;
         case 'w2':
-            inst.hw[2] = max(1, ar2);
+            inst.hw[2] = min(1, ar2);
         break;
         case 'w3':
-            inst.hw[3] = max(1, ar2);
+            inst.hw[3] = min(1, ar2);
         break;
         case 'w4':
-            inst.hw[4] = max(1, ar2);
+            inst.hw[4] = min(1, ar2);
         break;
         case 'w5':
-            inst.hw[5] = max(1, ar2);
+            inst.hw[5] = min(1, ar2);
         break;
         case 'w6':
-            inst.hw[6] = max(1, ar2);
+            inst.hw[6] = min(1, ar2);
         break;
         case 'w7':
-            inst.hw[7] = max(1, ar2);
+            inst.hw[7] = min(1, ar2);
         break;
         case 'w8':
-            inst.hw[8] = max(1, ar2);
+            inst.hw[8] = min(1, ar2);
         break;
         case 'w9':
-            inst.hw[9] = max(1, ar2);
+            inst.hw[9] = min(1, ar2);
         break;
         case 'a1':
             inst.a1 = ar2;
@@ -218,21 +201,12 @@ if ds_list_find_value(cmd, 0) == 'sv_map'
   var m;
   m = ds_list_find_value(cmd, 1);
   if is_real(m) {con_add(global.sv_map); exit;}
-  if m == '>' {m = global.map_list_next;}
-  if !file_exists('data\maps\' + m + '.dlv') {con_add(":: ERROR: Нет такой карты."); exit;}
-  if global.map_w != 0 
-  {
-    old = global.sv_cycle_maps;
-    global.sv_cycle_maps = 1;
-    plr_send_gameover();
-    sleep(60);
-    with (o_pl) {plr_send_kick(cl_id, "Game over."); instance_destroy();}
-    global.sv_cycle_maps = old;
-    global.sv_map = m;
-    event_user(0);
-    exit;
-  }
+  if m == '>' && global.sv_cycle_maps {m = global.map_list_next;}
+  if !file_exists('data\maps\' + m + '.dlv') {con_add(":: ERROR: No such map."); exit;}
   global.sv_map = m;
+  global.map_list_next = m;
+  if global.map_w == 0 {exit;}
+  o_host.alarm[0] = 1;
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'kick'

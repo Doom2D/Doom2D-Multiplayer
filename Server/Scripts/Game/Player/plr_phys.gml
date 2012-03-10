@@ -30,6 +30,7 @@ if argument2 && (st_jet || global.mp_flymode)
 {
     vsp = -4;
 }
+
 //this piece of code is responsive for physics and is taken full from jenner's platform physics engine with minor changes
 //all shit reserved
 /////

@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">screen_redraw();
-if fps &gt; 0 {alarm[11] = 60/fps;} else {alarm[11] = 1;}
+if fps &gt; 0 {alarm[11] = global.cl_fps_max/room_speed;} else {alarm[11] = 1;}
 </argument>
       </arguments>
     </action>

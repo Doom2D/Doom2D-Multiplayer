@@ -9,7 +9,7 @@ if parameter_count() > 0
 
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '123';
+global.sys_bld = '124';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -93,7 +93,7 @@ if quiet = 0
 else
   {con_add(':: SYSTEM: WARNING: Включен тихий режим. GUI отключен.');}
 con_add(':: SYSTEM: Дата: ' + con_timestamp());
-con_add(':: SYSTEM: Версия: ' + global.sys_ver + ', сборка ' + global.sys_bld + '.');
+con_add(':: SYSTEM: Версия сервера: ' + global.sys_ver + ' (Сборка ' + global.sys_bld + ').');
 
 //check for resources
 sys_file_check();

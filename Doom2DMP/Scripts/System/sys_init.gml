@@ -1,5 +1,5 @@
 global.sys_ver = '0.6';
-global.sys_bld = '123';
+global.sys_bld = '124';
 global.sys_log = 'client';
 global.sys_error = false;
 global.sys_cpu = 0;

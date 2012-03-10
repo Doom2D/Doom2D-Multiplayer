@@ -126,21 +126,20 @@ vsp += 0.22;
 
 if !free {hsp = max(0,abs(hsp)-deacc)*sign(hsp)} else {hsp = max(0,abs(hsp)-deacc/2)*sign(hsp)}
 //////
-
-//underwater physics
 if place_meeting(x, y - 15, o_liq)
 {
     free = false;
     if vsp > 2 {vsp = 2;}
     if vsp < -2 {vsp = -2;}
     if hsp > 2 {hsp = 2;}
-    if hsp < -2 {hsp = -2;} 
+    if hsp < -2 {hsp = -2;}
 }
 
 if place_meeting(x, y, o_jthr)
 {
     free = false;
 }
+
 if vsp > 13 {vsp = 13;}
 
 if place_meeting(x, y, o_lift_up) && vsp > -5 {vsp -= 0.5;}

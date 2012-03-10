@@ -35,10 +35,12 @@ if global.cl_inst.st_inv &amp;&amp; global.r_gfx
     draw_rectangle(view_xview, view_yview, view_xview+824, view_yview+768, 0);
     draw_set_blend_mode(bm_normal);
     o_con.msg_color = c_black;
+    o_con.msg_color2 = c_white;
 }
 else
 {
     o_con.msg_color = c_white;
+    o_con.msg_color2 = c_black;
 }
 draw_set_color(c_red);
 draw_text(view_xview + 936, view_yview + 22, global.cl_inst.hp);

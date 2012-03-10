@@ -57,7 +57,7 @@ switch w
             b.a_id = cl_id;
             b.a_i_id = id;
             b.dmg = 8;
-            b.direction = b_dir + random(5) - random(5);
+            b.direction = b_dir + random(6) - random(6);
             b.k_t = 2;
         }
         a2 -= 1;
