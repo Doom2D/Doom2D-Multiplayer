@@ -1,4 +1,4 @@
-//the ultrahuge input processign code
+//the ultrahuge input processing code
 //a0 - client id
             var c_id;
             c_id = argument0;

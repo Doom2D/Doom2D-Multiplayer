@@ -3,57 +3,48 @@
 if !global.sv_dl_allow {exit;}
 if !file_exists('7zs.exe')
 {
-    con_add(':: MAP: PACK: ERROR: 7z.exe не найден.');
+    con_add(':: MAP: PACK: ERROR: 7zs.exe не найден.');
     exit;    
 }
-if !file_exists('data\maps\' + argument0 + '.dlv')
+if !file_exists('data\maps\' + string(argument0) + '.dlv')
 {
-    con_add(':: MAP: PACK: ERROR: Карты ' + argument0 + ' не существует.');
+    con_add(':: MAP: PACK: ERROR: Карты ' + string(argument0) + ' не существует.');
     exit;
 }
-if file_exists('data\temp\' + argument0 + '.7z')
+if file_exists('data\temp\' + string(argument0) + '.7z')
 {
-    con_add(':: MAP: PACK: WARNING: Карта '  + argument0 + ' уже запакована.');
+    con_add(':: MAP: PACK: WARNING: Карта '  + string(argument0) + ' уже упакована.');
     exit;
 }
 
-var mapname;
-mapname = argument0;
+var mapname, pack, sky, mus, tex;
+mapname = string(argument0);
 
 //creates the temp directory
 if !directory_exists(working_directory + '\data\temp') {directory_create('data\temp');}
 
 //finds all the files
-var sky, mus, tex;
 //music
-mus =   'data\music\' + file_find_first('data\music\' + mapname + '.*', 0)
+mus = '"data\music\' + file_find_first('data\music\' + mapname + '.*', 0) + '" '
 file_find_close();
-if mus = 'data\music\' {mus = '';}
+if mus = '"data\music\" ' {mus = ' ';}
 
 //sky
-sky = 'data\sky\' +  file_find_first('data\sky\' + mapname + '.*', 0)
+sky = '"data\sky\' +  file_find_first('data\sky\' + mapname + '.*', 0) + '" '
 file_find_close();
-if sky = 'data\sky\' {sky = '';}
+if sky = '"data\sky\" ' {sky = ' ';}
 
 //texture folder
-tex = '';
-if directory_exists(working_directory + '\data\textures\' + mapname)
-{
-    tex = 'data\textures\' + mapname;
-}
+tex = ' ';
+if directory_exists(working_directory + '\data\textures\' + mapname) {tex = '"data\textures\' + mapname + '" ';}
+
+pack = '"' + working_directory + '\data\temp\' + mapname + '.7z' + '" ';
 
 //launches 7z.exe
-execute_program('7zs', ' a -r -y -mx9 temp.7z ' + sky + ' ' + mus + ' ' + tex + ' ' + 'data\maps\' + mapname + '.dlv', true);
+execute_program('7zs.exe', ' a -r -y -mx9 ' + pack + sky + mus + tex + '"data\maps\' + mapname + '.dlv"', true);
 sleep(30);
 
-//moves the 7z into the temp folder
-if file_exists(working_directory + '\temp.7z')
-{
-    file_copy('temp.7z', 'data\temp\' + mapname + '.7z');
-    file_delete('temp.7z');
-    con_add(':: MAP: PACK: Карта запакована в ' + 'data\temp\' + mapname + '.7z');
-}
+if file_exists(working_directory + '\data\temp\' + mapname + '.7z')
+  {con_add(':: MAP: PACK: Карта упакована в ' + 'data\temp\' + mapname + '.7z');}
 else
-{
-    con_add(':: MAP: PACK: ERROR: temp.7z не был создан. Возможны ошибки при исполнении 7zs.exe.');
-}
+  {con_add(':: MAP: PACK: ERROR: Карта не была упакована. Возможно, произошла ошибка при архивации.');}

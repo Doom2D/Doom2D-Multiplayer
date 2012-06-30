@@ -14,4 +14,6 @@
   <resource name="s_spawn" type="RESOURCE"/>
   <resource name="s_bon1" type="RESOURCE"/>
   <resource name="s_bon2" type="RESOURCE"/>
+  <resource name="s_flag_r" type="RESOURCE"/>
+  <resource name="s_flag_b" type="RESOURCE"/>
 </resources>

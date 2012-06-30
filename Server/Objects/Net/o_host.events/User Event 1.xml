@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="11">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//team balance
+var red, blu;
+red = team_count(1);
+blu = team_count(2);
+
+if red &gt; blu + 1
+{
+    with o_pl
+    {
+        if cl_team == 1
+        {
+            cl_team = 2;
+            cl_color = c_blue;
+            plr_send_team();
+            plr_send_skin();
+            plr_kill(cl_id);
+            dll39_buffer_clear(0);
+            dll39_write_byte(5, 0);
+            dll39_write_string(':: SERVER: mp_autobalance переместил вас в другую команду.', 0);
+            dll39_message_send(cl_tcp, 0, 0, 0);
+            break;
+        }
+    }
+}
+
+if blu &gt; red + 1
+{
+    with o_pl
+    {
+        if cl_team == 2
+        {
+            cl_team = 1;
+            cl_color = c_red;
+            plr_send_team();
+            plr_send_skin();
+            plr_kill(cl_id);
+            dll39_buffer_clear(0);
+            dll39_write_byte(5, 0);
+            dll39_write_string(':: SERVER: mp_autobalance переместил вас в другую команду.', 0);
+            dll39_message_send(cl_tcp, 0, 0, 0);
+            break;
+        }
+    }
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

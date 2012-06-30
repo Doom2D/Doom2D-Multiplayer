@@ -15,7 +15,12 @@
       <arguments>
         <argument kind="STRING">item_send_destroy(item_id);
 global.sv_itm[item_id] = noone;
-if variable_local_exists('drop') {exit;}
+if variable_local_exists('drop')
+{
+    //derp temporary shit
+    exit;
+}
+if item &gt; 28 {exit;}
 o = instance_create(x, y, o_itm_spwn);
 o.item = item;
 o.alarm[0] = global.mp_itemrespawn * global.sv_fps_max;

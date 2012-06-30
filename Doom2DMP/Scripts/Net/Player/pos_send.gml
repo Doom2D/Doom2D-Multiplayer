@@ -22,5 +22,5 @@ dll39_write_byte(keyboard_check(global.key_right), 0);
 dll39_write_byte(keyboard_check(global.key_jmp), 0);
 dll39_write_byte(keyboard_check(global.key_up), 0);
 dll39_write_byte(keyboard_check(global.key_dn), 0);
-dll39_write_byte(0, 0);
+dll39_write_byte(0, 0); //in case we are downloading something
 dll39_message_send(global.cl_tcp, 0, 0, 0);

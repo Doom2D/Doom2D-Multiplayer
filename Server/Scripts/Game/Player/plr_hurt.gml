@@ -1,5 +1,6 @@
 //armor and shit counting algorhytm
 //a0 - damage
+
 var a;
 if ap <= 100 {a = 2;} else {a = 3;}
 if ap > 0

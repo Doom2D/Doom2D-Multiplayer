@@ -21,7 +21,8 @@ if place_meeting(x + hspeed, y, o_solid) {hspeed = 0;}
 if x &lt; 0 || y &lt; 0 || x &gt; global.map_w || y &gt; global.map_h {instance_destroy();}
 if place_meeting(x, y, o_lift_up) {vspeed -= 0.5;}
 if place_meeting(x, y, o_lift_down) {if vspeed &gt; 3 {vspeed -= 0.5;}}
-if vspeed &gt; 10 {vspeed = 10;}
+if vspeed &gt; 10 {vspeed = 10;}; if vspeed &lt; -10 {vspeed = -10;}
+if hspeed &gt; 10 {hspeed = 10;}; if hspeed &lt; -10 {hspeed = -10;}
 </argument>
       </arguments>
     </action>

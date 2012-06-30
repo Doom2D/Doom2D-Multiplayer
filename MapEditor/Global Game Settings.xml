@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <settings>
   <graphics>
-    <scalingPercent>100</scalingPercent>
+    <scalingPercent>-1</scalingPercent>
     <displayCursor>true</displayCursor>
     <useVsync>false</useVsync>
     <interpolateColors>false</interpolateColors>
@@ -55,7 +55,7 @@
   </gameInfo>
   <system>
     <processPriority>PRIORITY_NORMAL</processPriority>
-    <disableScreensavers>true</disableScreensavers>
+    <disableScreensavers>false</disableScreensavers>
     <freezeOnLoseFocus>false</freezeOnLoseFocus>
   </system>
   <includes>

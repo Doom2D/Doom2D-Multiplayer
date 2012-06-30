@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <room>
-  <caption>Сервер Doom2DMP 0.6</caption>
+  <caption>Сервер Doom 2D Multiplayer 0.6</caption>
   <size height="1" width="1"/>
   <grid>
     <isometric>false</isometric>

@@ -30,14 +30,14 @@ global.map_done = 1;
 global.fget_path = '';
 global.fget_file = -1;
 global.fget_pos = 0;
-global.fget_state = 0;
 global.fget_size = 0;
 global.fget_md5 = '';
 
 //temporary patch to avoid bugs
 cl_disconnect();
-con_add(':: FGET: Подключитесь заново.');
-mus_play(global.mus_menu);
-room_goto(rm_set_ip);
+screen_redraw();
+sleep(180);
+global.fget_state = 0;
+room_restart();
 
 return _err;

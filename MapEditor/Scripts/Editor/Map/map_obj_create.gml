@@ -223,5 +223,34 @@ switch sl
    o = instance_create(xx, yy, o_spawn);
    o.o_id = sl;
    o.t_id = tx;
+   o.image_single = 0;
+  break;
+  case 40:
+   //if position_meeting(xx, yy, o_spawn) {break;}
+   o = instance_create(xx, yy, o_spawn);
+   o.o_id = sl;
+   o.t_id = tx;
+   o.image_single = 1;
+  break;
+  case 41:
+   //if position_meeting(xx, yy, o_spawn) {break;}
+   o = instance_create(xx, yy, o_spawn);
+   o.o_id = sl;
+   o.t_id = tx;
+   o.image_single = 2;
+  break;
+  case 42:
+   //if position_meeting(xx, yy, o_spawn) {break;}
+   o = instance_create(xx, yy, o_spawn);
+   o.o_id = sl;
+   o.t_id = tx;
+   o.sprite_index = s_flag_r;
+  break;
+  case 43:
+   //if position_meeting(xx, yy, o_spawn) {break;}
+   o = instance_create(xx, yy, o_spawn);
+   o.o_id = sl;
+   o.t_id = tx;
+   o.sprite_index = s_flag_b;
   break;
 }

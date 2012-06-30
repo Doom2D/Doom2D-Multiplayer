@@ -1,28 +1,18 @@
 //load map
-io_clear();
-global.ed_g_sz = 16; //grid size
-background_assign(bk_current, bk_grid16);
 
 f = get_open_filename('Карты Doom2DMP 0.6 (*.DLV)|*.dlv', 'data\maps\Unnamed.dlv');
 if !file_exists(f) {exit;}
-with par_obj {instance_destroy();}
-global.map_loaded = false;
 
-for (i = 0; i < 256; i += 1)
-{
-  global.tex[i] = -1;
-  global.tex_nm[i] = -1;
-}
-global.tex[0] = tex_none;
-global.tex_n = 1;
-ed_tools_reset();
+map_clear(true);
 
+//f = argument0;
 file = file_text_open_read(f);
+
 global.map_name = file_text_read_string(file);
 file_text_readln(file);
 global.map_desc = file_text_read_string(file);
 file_text_readln(file);
-global.map_w =  real(file_text_read_string(file));
+global.map_w = real(file_text_read_string(file));
 file_text_readln(file);
 global.map_h = real(file_text_read_string(file));
 file_text_readln(file);

@@ -5,6 +5,15 @@ if !room == rm_game || !variable_global_exists('pl_id')
     con_add(":: NET: Вы сейчас не в игре.");
     exit;
 }
+
+//check the fget process
+if global.fget_state && global.fget_file != -1
+{  
+    file_bin_close(global.fget_file);
+    file_delete(global.fget_path);
+    net_fget_abort();
+}
+
 //first send message to server
 con_add(":: NET: Отправляем сообщение об отключении...");
 dll39_buffer_clear(0);
@@ -25,14 +34,6 @@ if instance_number(o_pl) > 0
             if sprite_exists(sprites[i, 1]) {sprite_delete(sprites[i, 2]);}
         }
     }
-}
-
-//file sending stuff
-if global.fget_state
-{  
-    file_bin_close(global.fget_file); 
-    net_fget_abort();
-    file_delete(global.fget_file);
 }
 
 //destroy backgrounds and music

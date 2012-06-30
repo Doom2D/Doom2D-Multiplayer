@@ -13,8 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if API_Dialog_MessageBox(window_handle(), 'Уже уходите?', 'Серьезный вопрос', MB_YESNO) == 7 {exit;}
-game_end();
+        <argument kind="STRING">ed_dialogs('EXIT');
 </argument>
       </arguments>
     </action>

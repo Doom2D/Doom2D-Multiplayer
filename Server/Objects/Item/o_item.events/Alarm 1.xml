@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <event category="ALARM" id="1">
   <actions>
-    <action id="203" library="1">
-      <!--action name: Kill_Object-->
-      <kind>NORMAL</kind>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
       <allowRelative>false</allowRelative>
       <question>false</question>
       <canApplyTo>true</canApplyTo>
-      <actionType>FUNCTION</actionType>
-      <functionName>action_kill_object</functionName>
+      <actionType>CODE</actionType>
+      <functionName/>
       <relative>false</relative>
       <not>false</not>
       <appliesTo>.self</appliesTo>
-      <arguments/>
+      <arguments>
+        <argument kind="STRING">if item == 29 &amp;&amp; global.red_flag == 2
+{
+    if global.mp_announcer {with o_pl {plr_send_text(cl_id, 'КРАСНЫЙ ФЛАГ ВЕРНУЛСЯ НА БАЗУ!', 3, 2, c_red, 412, 264, 1);}}
+        
+    i = item_find_slot();
+    o = instance_create(global.red_crd[0], global.red_crd[1], o_item);
+    o.item_id = i;
+    o.item = 29;
+    global.sv_itm[i] = o;
+    item_send_create(i, o.item, global.red_crd[0], global.red_crd[1]);
+
+    global.red_flag = 0;
+}
+if item == 30 &amp;&amp; global.blu_flag == 2
+{
+    if global.mp_announcer {with o_pl {plr_send_text(cl_id, 'СИНИЙ ФЛАГ ВЕРНУЛСЯ НА БАЗУ!', 3, 2, c_blue, 412, 264, 1);}}
+        
+    i = item_find_slot();
+    o = instance_create(global.blu_crd[0], global.blu_crd[1], o_item);
+    o.item_id = i;
+    o.item = 30;
+    global.sv_itm[i] = o;
+    item_send_create(i, o.item, global.blu_crd[0], global.blu_crd[1]);
+        
+    global.blu_flag = 0;
+}
+instance_destroy();
+</argument>
+      </arguments>
     </action>
   </actions>
 </event>

@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">plr_init_phys();
+dname = true;
 kb_left = 0;
 kb_left_n = 0;
 kb_rght = 0;
@@ -47,7 +48,10 @@ w_rot = 0;
 st_ber = 0;
 st_inv = 0;
 st_talk = 0;
+st_flag = 0;
 col = c_white;
+alarm[3] = 3 * global.cl_fps_max;
+
 </argument>
       </arguments>
     </action>

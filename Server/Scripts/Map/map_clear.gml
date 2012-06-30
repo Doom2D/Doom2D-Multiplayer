@@ -23,9 +23,19 @@ for (i = 1; i < 256; i += 1)
   global.tex_nm[i] = -1;
 }
 
-con_add(":: MAP: Удаляем инфомрацию...");
+con_add(":: MAP: Удаляем информацию...");
 global.map_name = '';
 global.map_desc = '';
 global.map_w = 0;
 global.map_h = 0;
+global.team_score[1] = 0;
+global.team_score[2] = 0;
+global.red_flag = 0; //flag states 0 - standing 1 - taken 2 - dropped
+global.blu_flag = 0;
+
+if global.sv_log_update
+{
+    log_init(); //delete logs if needed
+}
+
 con_add(":: MAP: Карта очищена.");

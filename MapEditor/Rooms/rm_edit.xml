@@ -97,8 +97,8 @@
   <views>
     <view>
       <visibleOnRoomStart>true</visibleOnRoomStart>
-      <viewInRoom height="600" width="800" x="0" y="0"/>
-      <portOnScreen height="600" width="800" x="0" y="0"/>
+      <viewInRoom height="576" width="768" x="0" y="0"/>
+      <portOnScreen height="576" width="768" x="0" y="0"/>
       <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
     </view>
     <view>

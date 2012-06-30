@@ -18,12 +18,11 @@ cmd1 = API_Check_Command(1);
 switch (cmd1)
 {
   case ui_mbar_m1q:
-   if API_Dialog_MessageBox(window_handle(), 'Уже уходите?', 'Серьезный вопрос', MB_YESNO) == 7 {exit;}
-   game_end();
+   ed_dialogs('EXIT')
   break;
   
   case ui_mbar_m1n:
-   if API_Dialog_MessageBox(window_handle(), 'Вы действительно хотите очистить карту?', 'Серьезный вопрос', MB_YESNO) != 7 {map_clear(); break;}
+   ed_dialogs('MAPCLR')
   break;
   
   case ui_mbar_m1o:
@@ -35,11 +34,15 @@ switch (cmd1)
   break;
   
   case ui_mbar_m3a:
-    ed_about();
+    ed_dialogs('ABOUT');
   break;
   
   case ui_mbar_m3m:
-    ed_manual();
+    ed_dialogs('MANUAL');
+  break;
+
+  case ui_mbar_m3i:
+    ed_ui_info();
   break;
   
   case ui_mbar_m2e:
@@ -49,12 +52,13 @@ switch (cmd1)
   case ui_mbar_m2m:
     ed_map_settings();
   break;
+  
+  case ui_mbar_m2r:
+    ed_tbox_init();
+  break;
 }
 cmd2 = API_Check_Command(2);
-if cmd2 == ui_tx_bt
-{
-  ed_tex_load(get_open_filename('Все поддерживаемые файлы текстур |*.tga; *.png; *.jpg; *.gif', 'data\textures\STD_1_16_16.tga'));
-}  
+if cmd2 == ui_tx_bt {ed_tex_select();}  
 cmd3 = API_Check_Command(3);
 if cmd3 != 0
 {
@@ -65,27 +69,57 @@ if cmd3 != 0
         break;
         
         case ui_win2_rb1:
-            background_assign(bk_current, bk_grid16);
-            global.ed_g_sz = 16;
+            if global.ed_g_vis {background_assign(bk_current, bk_grid16);}
+            if global.ed_g_sz != 1 {global.ed_g_sz = 16;}
+            global.ed_g_szo = 16;
         break;
         
         case ui_win2_rb2:
-            background_assign(bk_current, bk_grid8);
-            global.ed_g_sz = 8;
+            if global.ed_g_vis {background_assign(bk_current, bk_grid8);}
+            if global.ed_g_sz != 1 {global.ed_g_sz = 8;}
+            global.ed_g_szo = 8;
         break;
         
-        case ui_win2_rb3:
-            background_assign(bk_current, bk_nogrid);
-            global.ed_g_sz = 1;
+        case ui_win2_cb1:
+            if !API_Button_GetCheck(ui_win2_cb1)
+            {
+                global.ed_g_vis = false;
+                background_assign(bk_current, bk_nogrid);
+            }
+            else
+            {
+                global.ed_g_vis = true;
+                switch global.ed_g_szo
+                {
+                    case 8:
+                        background_assign(bk_current, bk_grid8);
+                    break;
+                    case 16:
+                        background_assign(bk_current, bk_grid16);
+                    break;
+                }
+            }
+        break;
+        
+        case ui_win2_cb2:
+            if !API_Button_GetCheck(ui_win2_cb2) 
+            {
+                global.ed_g_sz = 1;
+            }
+            else
+            {
+                global.ed_g_sz = global.ed_g_szo;
+            }
+        break;
+        
+        case ui_win2_cb3:
+            global.ed_outline = API_Button_GetCheck(ui_win2_cb3);
         break;
         
         case ui_win2_b2:
             API_Window_Destroy(ui_win2);
-            API_Control_Destroy(ui_win2);
-        break;
-
-        case ui_win2_cb1:
-            global.ed_outline = API_Button_GetCheck(ui_win2_cb1);
+          //API_Control_Destroy(ui_win2);
+            ui_win2 = -1;
         break;
     }
 }
@@ -116,10 +150,28 @@ if cmd4 != 0
             global.map_name = string_delete(API_Control_GetText(ui_win3_e3), 32, string_length(API_Control_GetText(ui_win3_e3)));
             global.map_desc = string_delete(API_Control_GetText(ui_win3_e4), 64, string_length(API_Control_GetText(ui_win3_e4)));
             API_Window_Destroy(ui_win3);
-            API_Control_Destroy(ui_win3);
+          //API_Control_Destroy(ui_win3);
+            ui_win3 = -1;
         break;
     }
 } 
+
+
+cmd5 = API_Check_Command(5);
+if cmd5 == ui_if_bt
+{
+    API_Control_SetText(ui_win4_t1, 
+                    'Текстур: ' + string(global.tex_n - 1) + chr(13) + chr(10) +
+                    'Тайлов окружения: ' + string(instance_number(o_solid) +
+                                                  instance_number(o_jthr) +
+                                                  instance_number(o_bkg) +
+                                                  instance_number(o_frg) +
+                                                  instance_number(o_liquid) +
+                                                  instance_number(o_lift)) + chr(13) + chr(10) +
+                    'Предметов: ' + string(instance_number(o_item)) + chr(13) + chr(10) +
+                    'Областей: ' + string(instance_number(o_spawn)));
+    API_Control_SetText(ui_if_bt, 'Обновить статистику');
+}
 </argument>
       </arguments>
     </action>

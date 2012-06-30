@@ -21,7 +21,7 @@ switch argument0
         with (other) {instance_destroy();}
     break;
     case 3:
-        //g armor
+        //green armor
         if ap >= 100 {exit;}
         ap += 100;
         if ap > 100 {ap = 100;}
@@ -30,7 +30,7 @@ switch argument0
         with (other) {instance_destroy();}
     break;
     case 4:
-        //b armor
+        //blue armor
         if ap >= 200 {exit;}
         ap = 200;
         plr_send_stat();
@@ -132,7 +132,8 @@ switch argument0
     case 15:
         //health bonus
         if hp >= 200 {exit;}
-        hp += 1;
+        hp += 4;
+        if hp > 200 {hp = 200;}
         plr_send_stat();
         plr_send_sound(3, x, y);
         with (other) {instance_destroy();}
@@ -140,7 +141,8 @@ switch argument0
     case 16:
         //armor bonus
         if ap >= 200 {exit;}
-        ap += 1;
+        ap += 5;
+        if ap > 200 {ap = 200;}
         plr_send_stat();
         plr_send_sound(3, x, y);
         with (other) {instance_destroy();}
@@ -266,6 +268,157 @@ switch argument0
         plr_send_stat();
         plr_send_sound(4, x, y);
         if !global.mp_weaponstay {with (other) {instance_destroy();}}
+    break;
+    case 29:
+        //red flag
+        if global.red_flag == 0
+        {
+            if cl_team == 1
+            {
+                if st_flag == 2
+                {
+                    //capture their flag
+                    i = item_find_slot();
+                    o = instance_create(global.blu_crd[0], global.blu_crd[1], o_item);
+                    o.item_id = i;
+                    o.item = 30;
+                    global.sv_itm[i] = o;
+                    item_send_create(i, o.item, global.blu_crd[0], global.blu_crd[1]);
+                    
+                    if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' ЗАХВАТИЛ СИНИЙ ФЛАГ!', 3, 2, c_red, 412, 264, 1);}}
+                    plr_send_sound(28, x, y);
+                    
+                    global.team_score[1] += 1;
+                    frag += 1;
+                    plr_send_score();
+                    if global.team_score[1] >= global.mp_scorelimit && global.mp_scorelimit > 0
+                    {
+                        o_host.alarm[0] = 1;
+                    }
+                    
+                    st_flag = 0;
+                    plr_send_stat();
+                    global.blu_flag = 0;
+                }
+                else {break;}
+            }
+            else
+            {
+                //take the flag
+                with (other) {instance_destroy();}
+                
+                st_flag = 1;
+                plr_send_stat();
+                
+                global.red_flag = 1;
+                if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' УКРАЛ КРАСНЫЙ ФЛАГ!', 3, 2, c_blue, 412, 264, 1);}}
+                plr_send_sound(27, x, y);
+            }
+        }
+        if global.red_flag == 2
+        {
+            if cl_team == 1
+            {
+                //return flag to its stand
+                i = item_find_slot();
+                o = instance_create(global.red_crd[0], global.red_crd[1], o_item);
+                o.item_id = i;
+                o.item = 29;
+                global.sv_itm[i] = o;
+                item_send_create(i, o.item, global.red_crd[0], global.red_crd[1]);
+                with (other) {instance_destroy();}
+                
+                global.red_flag = 0;
+                if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' ВЕРНУЛ КРАСНЫЙ ФЛАГ!', 3, 2, c_red, 412, 264, 1);}}
+            }
+            else
+            {
+                //grab the flag
+                with (other) {instance_destroy();}
+                
+                st_flag = 1;
+                plr_send_stat();
+                
+                global.red_flag = 1;
+                if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' ПОДОБРАЛ КРАСНЫЙ ФЛАГ!', 3, 2, c_blue, 412, 264, 1);}}
+            }
+        }
+    break;
+        
+    case 30:
+        //blu flag
+        if global.blu_flag == 0
+        {
+            if cl_team == 2
+            {
+                if st_flag == 1
+                {
+                    //capture their flag
+                    i = item_find_slot();
+                    o = instance_create(global.red_crd[0], global.red_crd[1], o_item);
+                    o.item_id = i;
+                    o.item = 29;
+                    global.sv_itm[i] = o;
+                    item_send_create(i, o.item, global.red_crd[0], global.red_crd[1]);
+                    
+                    if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' ЗАХВАТИЛ КРАСНЫЙ ФЛАГ!', 3, 2, c_blue, 412, 264, 1);}}
+                    plr_send_sound(28, x, y);
+                    
+                    global.team_score[2] += 1;
+                    frag += 1;
+                    plr_send_score();
+                    if global.team_score[2] >= global.mp_scorelimit && global.mp_scorelimit > 0
+                    {
+                        o_host.alarm[0] = 1;
+                    }
+                    
+                    st_flag = 0;
+                    plr_send_stat();
+                    global.red_flag = 0;
+                }
+                else {break;}
+            }
+            else
+            {
+                //take the flag
+                with (other) {instance_destroy();}
+                
+                st_flag = 2;
+                plr_send_stat();
+                
+                global.blu_flag = 1;
+                if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' УКРАЛ СИНИЙ ФЛАГ!', 3, 2, c_red, 412, 264, 1);}}
+                plr_send_sound(27, x, y);
+            }
+        }
+        if global.blu_flag == 2
+        {
+            if cl_team == 2
+            {
+                //return flag to its stand
+                i = item_find_slot();
+                o = instance_create(global.blu_crd[0], global.blu_crd[1], o_item);
+                o.item_id = i;
+                o.item = 30;
+                global.sv_itm[i] = o;
+                item_send_create(i, o.item, global.blu_crd[0], global.blu_crd[1]);
+                with (other) {instance_destroy();}
+                
+                global.blu_flag = 0;
+                if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' ВЕРНУЛ СИНИЙ ФЛАГ!', 3, 2, c_blue, 412, 264, 1);}}
+            }
+            else
+            {
+                //grab the flag
+                with (other) {instance_destroy();}
+                
+                st_flag = 2;
+                plr_send_stat();
+                
+                global.blu_flag = 1;
+                if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' ПОДОБРАЛ СИНИЙ ФЛАГ!', 3, 2, c_red, 412, 264, 1);}}
+            }
+        }
     break;
 }
 

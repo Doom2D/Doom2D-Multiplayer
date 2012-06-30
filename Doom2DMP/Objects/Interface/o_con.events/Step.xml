@@ -34,6 +34,7 @@ if keyboard_check_pressed(global.key_scr)
     screen_save('screenshots\scr' + string(current_day) + string(current_month) + string(current_year) + string(current_hour) + string(current_minute) + string(current_second) + '.png');
 }
 if (saymode || global.con) &amp;&amp; string_length(keyboard_string) &gt; 96 * (string_count('#', keyboard_string) + 1) {keyboard_string = string_delete(keyboard_string, 96 * (string_count('#', keyboard_string) + 1) + 1, string_length(keyboard_string));}
+
 FMODUpdate();
 </argument>
       </arguments>

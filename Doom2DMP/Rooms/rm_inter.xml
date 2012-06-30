@@ -10,7 +10,7 @@
   <persistent>false</persistent>
   <creationCode/>
   <backgroundColor>000000</backgroundColor>
-  <drawBackgroundColor>true</drawBackgroundColor>
+  <drawBackgroundColor>false</drawBackgroundColor>
   <backgrounds>
     <backgroundDef>
       <visibleOnRoomStart>true</visibleOnRoomStart>

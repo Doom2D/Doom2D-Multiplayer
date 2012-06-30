@@ -17,8 +17,6 @@
 old2 = global.ed_g_sz;
 old3 = global.ed_g_vis;
 bk = bk_nogrid;
-view_xview = 0;
-view_yview = -10;
 </argument>
       </arguments>
     </action>

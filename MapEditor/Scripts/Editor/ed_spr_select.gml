@@ -1,4 +1,4 @@
-//slects spr to draw
+//selects sprite to draw
 var sl;
 sl = API_Combobox_GetSel(ui_tl_cb);
 tx = API_Combobox_GetSel(ui_tx_cb);
@@ -126,7 +126,23 @@ switch sl
   break;
   case 39:
    spr = s_spawn;
-   im = sl;
+   im = 0;
+  break;
+  case 40:
+   spr = s_spawn;
+   im = 1;
+  break;
+  case 41:
+   spr = s_spawn;
+   im = 2;
+  break;
+  case 42:
+   spr = s_flag_r;
+   im = 0;
+  break;
+  case 43:
+   spr = s_flag_b;
+   im = 0;
   break;
 }
 

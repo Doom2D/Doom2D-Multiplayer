@@ -1,6 +1,8 @@
 //writes current configuration to some config in argument0
 if global.sys_error {exit;}
-file = 'data\cfg\'+string(argument0);
+file = 'data\cfg\' + string(argument0);
+if argument0 == '' || argument0 == '0' {file = 'data\cfg\game.cfg';}
+if !string_count('.cfg', file) {file += '.cfg';}
 cfg = file_text_open_write(file);
 con_add(':: SYSTEM: Сохранение конфигурации в файл ' + string(file) + '...');
 file_text_write_string(cfg, 'name ' + global.pl_name);
@@ -8,6 +10,8 @@ file_text_writeln(cfg);
 file_text_write_string(cfg, 'color ' + string(color_get_red(global.pl_color)) + ' ' + string(color_get_green(global.pl_color)) + ' ' + string(color_get_blue(global.pl_color)));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'skin ' + global.pl_skin);
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'team ' + string(global.pl_team));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'bind ' + key_name(global.key_up) + ' +lookup');
 file_text_writeln(cfg);
@@ -35,6 +39,8 @@ file_text_write_string(cfg, 'r_massacre ' + string(global.r_massacre));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'r_names ' + string(global.r_names));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'r_announcer ' + string(global.r_announcer));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'r_window ' + string(1 - window_get_fullscreen()));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'r_width ' + string(global.r_width));
@@ -47,6 +53,8 @@ file_text_write_string(cfg, 'r_fskip ' + string(global.r_fskip));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'r_fps_correct ' + string(global.r_fps_correct));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'r_vsync ' + string(global.r_vsync));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 's_preload ' + string(global.s_preload));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 's_vol_sound ' + string(round(FMODGroupGetVolume(2)*100)));
@@ -54,8 +62,6 @@ file_text_writeln(cfg);
 file_text_write_string(cfg, 's_vol_music ' + string(round(FMODGroupGetVolume(3)*100)));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'cl_slist ' + string(global.cl_slist));
-file_text_writeln(cfg);
-file_text_write_string(cfg, 'cl_slist_path ' + string(global.cl_slist_path));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'cl_sync_type ' + string(global.cl_sync_type));
 file_text_writeln(cfg);

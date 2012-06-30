@@ -1,13 +1,25 @@
-var spawn, number;
-number = round(random(instance_number(o_spawn)));
+var n1, n2, n3;
+n1 = floor(random(instance_number(o_spawn)));
+spawn = instance_find(o_spawn, n1);
+
+if global.mp_gamemode == 1 || global.mp_gamemode == 2
+{
+    if cl_team == 1 && instance_number(o_spawn_r) > 0
+    {
+        n2 = floor(random(instance_number(o_spawn_r)));
+        spawn = instance_find(o_spawn_r, n2);
+    }
+    if cl_team == 2 && instance_number(o_spawn_b) > 0
+    {
+        n3 = floor(random(instance_number(o_spawn_b)));
+        spawn = instance_find(o_spawn_b, n3);
+    }
+}
 
 
-spawn = instance_nearest_nth(0, 0, o_spawn, number);
-
-if !instance_exists(spawn) {spawn = instance_nearest(0, 0, o_spawn);}
 if !instance_exists(spawn) {exit;}
-x = spawn.x + 17;
-y = spawn.y + 26;
+x = spawn.x + 16;
+y = spawn.y + 32;
 
 hp = 100;
 ap = 0;

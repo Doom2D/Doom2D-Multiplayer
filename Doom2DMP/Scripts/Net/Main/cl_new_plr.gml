@@ -3,6 +3,7 @@
 //1 - name
 //2 - skin
 //3 - color
+//4 - team
 
 if instance_exists(global.cl_plr[argument0]) {exit;}
 var _inst;
@@ -12,6 +13,7 @@ _inst.cl_id = argument0;
 _inst.cl_name = argument1;
 _inst.cl_skin = argument2;
 _inst.cl_color = argument3;
+_inst.cl_team = argument4;
 
 if argument0 = global.pl_id {global.cl_inst = _inst;}
 

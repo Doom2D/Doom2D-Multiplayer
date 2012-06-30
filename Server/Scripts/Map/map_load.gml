@@ -11,6 +11,23 @@ if !file_exists(f)
 con_add("==== MAP LOAD START ====");
 con_add(":: MAP: Загрузка карты " + f + "...");
 
+if global.mp_automode
+{
+    con_add(":: MAP: Определяем режим...");
+    if string_lower(string_copy(argument0, 1, 2)) == 'dm'
+    {
+        global.mp_gamemode = 0;
+    }
+    if string_lower(string_copy(argument0, 1, 3)) == 'tdm'
+    {
+        global.mp_gamemode = 1;
+    }
+    if string_lower(string_copy(argument0, 1, 3)) == 'ctf'
+    {
+        if global.mp_automode == 1 {global.mp_gamemode = 2;} else {global.mp_gamemode = choose(1, 2);}
+    }
+}
+
 for (i = 0; i < 256; i += 1)
 {
   global.tex[i] = -1;
@@ -72,6 +89,11 @@ if instance_number(o_spawn) < 1
     con_add(":: MAP: ERROR: На карте нет точек респауна. Она не будет работать.");
     sys_exit();
     exit;
+}
+if global.mp_gamemode == 2 && !flag_check()
+{
+    con_add(":: MAP: ERROR: На карте нет флагов. Включен TDM.");
+    global.mp_gamemode = 1;
 }
 con_add(":: MAP: Карта загружена.");
 con_add("==== MAP  LOAD  END ====");

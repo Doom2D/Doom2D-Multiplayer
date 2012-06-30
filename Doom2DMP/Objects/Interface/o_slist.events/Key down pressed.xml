@@ -13,15 +13,15 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.con || ds_list_size(global.slist) &lt; 1 {exit;}
+        <argument kind="STRING">if global.con || global.slist[0, 5] &lt; 1 {exit;}
 snd_play(0);
-if select &lt; ds_list_size(global.slist) - 1
+if select &lt; global.slist[0, 5]
 {
   select += 1;
 }
 else
 {
-  select = 0;
+  select = 1;
 }
 </argument>
       </arguments>

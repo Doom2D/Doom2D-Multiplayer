@@ -1,6 +1,12 @@
 //writes current configuration to some config in argument0
 //if a1 is present, does not write map, fps, etc
-file = 'data\cfg\'+string(argument0);
+file = 'data\cfg\' + string(argument0);
+if argument0 == '' || argument0 == '0'
+{
+    file = 'data\cfg\server.cfg';
+    argument1 = 0;
+}
+if !string_count('.cfg', file) {file += '.cfg';}
 cfg = file_text_open_write(file);
 con_add(':: SYSTEM: Сохранение конфигурации в файл ' + string(file) + '...');
 if !argument1
@@ -8,6 +14,8 @@ if !argument1
     file_text_write_string(cfg, 'sv_map ' + string(global.sv_map));
     file_text_writeln(cfg);
     file_text_write_string(cfg, 'sv_name ' + string(global.sv_name));
+    file_text_writeln(cfg);
+    file_text_write_string(cfg, 'sv_port ' + string(global.sv_port));
     file_text_writeln(cfg);
     file_text_write_string(cfg, 'sv_welcome ' + string(global.sv_welcome));
     file_text_writeln(cfg);
@@ -38,8 +46,6 @@ file_text_write_string(cfg, 'sv_slist_time ' + string(global.sv_slist_time));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_slist ' + string(global.sv_slist));
 file_text_writeln(cfg);
-file_text_write_string(cfg, 'sv_slist_path ' + string(global.sv_slist_path));
-file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_sync_type ' + string(global.sv_sync_type));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_rate ' + string(global.sv_rate));
@@ -52,13 +58,23 @@ file_text_write_string(cfg, 'sv_dl_allow ' + string(global.sv_dl_allow));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'sv_dl_rate ' + string(global.sv_dl_rate));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_md5check ' + string(global.sv_md5check));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'sv_log_update ' + string(global.sv_log_update));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'cl_rc_time ' + string(global.cl_rc_time));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'cl_timeout ' + string(global.cl_timeout));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_gamemode ' + string(global.mp_gamemode));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'mp_automode ' + string(global.mp_automode));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'mp_ffire ' + string(global.mp_ffire));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_fraglimit ' + string(global.mp_fraglimit));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'mp_scorelimit ' + string(global.mp_scorelimit));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_timelimit ' + string(global.mp_timelimit));
 file_text_writeln(cfg);
@@ -85,6 +101,10 @@ file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_weaponstay ' + string(global.mp_weaponstay));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_penalty ' + string(global.mp_penalty));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'mp_autobalance ' + string(global.mp_autobalance));
+file_text_writeln(cfg);
+file_text_write_string(cfg, 'mp_announcer ' + string(global.mp_announcer));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_drop_clear ' + string(global.mp_drop_clear));
 file_text_writeln(cfg);

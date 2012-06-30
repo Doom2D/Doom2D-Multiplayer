@@ -19,7 +19,7 @@ if other.cl_id == l_id {exit;}
 if p_type == 1 || p_type == 3 {instance_destroy(); exit;}
 if !other.st_inv &amp;&amp; !global.mp_godmode
 {
-    with (other) {plr_hurt(10)};
+    if !global.mp_gamemode  || global.mp_ffire || l_team != other.cl_team  {with (other) {plr_hurt(10)};}
 }
 other.killer_id = l_id;
 other.kill_type = 6;

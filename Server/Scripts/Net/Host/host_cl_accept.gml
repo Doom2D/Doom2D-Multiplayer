@@ -16,6 +16,7 @@ dll39_message_receive(cl_sock, 0, 0);
 _name = string_replace(dll39_read_string(0), '#', ' ');
 _skin = dll39_read_string(0);
 _color = dll39_read_int(0);
+_team =  dll39_read_byte(0);
 //now receive the version info because shit will happen
 _cl_ver = dll39_read_string(0);
 _cl_bld = dll39_read_string(0);
@@ -24,7 +25,7 @@ _ip = dll39_tcpip(cl_sock);
 
 if _name == '' {exit;}
 
-con_add(":: Запрос соединения с IP " + string(_ip) + ". Обработка...");
+con_add(":: Запрос соединения от " + string(_ip) + ". Обработка...");
 
 if !(_cl_ver == global.sys_ver && _cl_bld == global.sys_bld)
 {
@@ -81,15 +82,17 @@ dll39_write_byte(1, 0);
 dll39_write_byte(_id, 0);
 dll39_write_string(global.sv_name, 0);
 dll39_write_string(global.sv_map, 0);
-dll39_write_string(global.map_md5, 0);
+if global.sv_md5check {dll39_write_string(global.map_md5, 0);} else {dll39_write_string('-255', 0);}
 dll39_write_byte(global.sv_maxplayers, 0);
+if global.mp_gamemode != 2 {dll39_write_byte(global.mp_fraglimit, 0);} else {dll39_write_byte(global.mp_scorelimit, 0);}
+dll39_write_byte(global.mp_gamemode, 0);
 dll39_write_byte(global.sv_dl_allow, 0);
 dll39_write_byte(global.sv_fps_max, 0);
 dll39_write_string(global.sv_welcome, 0);
 dll39_message_send(cl_sock, 0, 0, 0);
 
 //create some new player and give him his ip
-_cl = host_add_player(_id, cl_sock, _name, _skin, _color, false);
+_cl = host_add_player(_id, cl_sock, _name, _skin, _color, false, plr_select_team(_team));
 _cl.cl_ip = _ip;
 
 //send all fuckers' info to the new player
@@ -98,6 +101,7 @@ with(o_pl)
     dll39_buffer_clear(0);
     dll39_write_byte(3, 0);
     dll39_write_byte(cl_id, 0);
+    dll39_write_byte(cl_team, 0);
     dll39_write_string(cl_name, 0);
     dll39_write_string(cl_skin, 0);
     dll39_write_int(cl_color, 0);
@@ -118,6 +122,9 @@ with(o_item)
     dll39_write_short(y, 0);
     dll39_message_send(cl_sock, 0, 0, 0);
 }
+
+//and score
+plr_send_score();
 
 
 //done.

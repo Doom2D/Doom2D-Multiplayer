@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">if keyboard_check(ord('E'))
 {
-    draw_background_stretched(bk, view_xview, view_yview, 1024, 768);
+    draw_background_stretched(bk, view_xview, view_yview, view_wview, view_hview);
 }
 </argument>
       </arguments>

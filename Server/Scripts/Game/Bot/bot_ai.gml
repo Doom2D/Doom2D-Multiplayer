@@ -12,9 +12,9 @@ if kb_rght == 1 {aim = 1;}
 //if kb_jump && jt < 1 {kb_jump = 0; jt = global.bot_randrate*random(2);}
 
 target = noone;
-if (hp > 25) || !global.bot_cowardly {target = bot_find_player();} else {target = bot_find_health();} //is furthest player from our position
+if (hp > 25) || !global.bot_cowardly {if global.mp_gamemode {target = bot_find_player_team();} else {target = bot_find_player();}} else {target = bot_find_health();} //is furthest player from our position
 if !bot_check_ammo() {plr_changewpn(2);}
-if target == noone && killer_id > 0 && instance_exists(id_to_cl(killer_id)) {target = id_to_cl(killer_id);}
+if target == noone && killer_id > 0 && instance_exists(id_to_cl(killer_id)) {if id_to_cl(killer_id).cl_team != cl_team {target = id_to_cl(killer_id);}}
 
 if (hw[2] && a2 > 0) || (hw[3] && a2 >= 2) || (hw[4] && a1 > 0) || (hw[5] && a3 > 0) ||  (hw[6] && a4 > 0) ||  (hw[7] && a4 >= 40) || (hw[8] && a2 >= 4) && w < 2 {plr_changewpn(1);}     
 if hw[9] && w == 0 {w = 9;}

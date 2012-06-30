@@ -29,7 +29,7 @@ if pain = 1 {spr = 8;}
 image_index += 0.1 + hsp*sign(hsp)/100;
 
 if hp &lt; 1 &amp;&amp; dead == 0 {dead = 1;}
-if hp &gt;= 1 &amp;&amp; dead == 1 {dead = 0;}
+if hp &gt;= 1 &amp;&amp; dead == 1 {dead = 0; dname = true; alarm[3] = 3 * global.cl_fps_max;}
 
 if dead {exit;}
 plr_phys(kb_left, kb_rght, kb_jump);

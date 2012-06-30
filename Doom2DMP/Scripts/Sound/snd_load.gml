@@ -197,4 +197,18 @@ case 26:
 global.snd[26] = FMODSoundAdd('data\sounds\menu\close.wav');
 FMODSoundSetGroup(global.snd[26], 2);
 break;
+
+case 27:
+//27 - Flag get
+global.snd[27] = FMODSoundAdd('data\sounds\game\flag_get.wav', true);
+FMODSoundSetGroup(global.snd[27], 2);
+FMODSoundSet3dMinMaxDistance(global.snd[27], 0, 8192);
+break;
+
+case 28:
+//28 - Flag сфз
+global.snd[28] = FMODSoundAdd('data\sounds\game\flag_cap.wav', true);
+FMODSoundSetGroup(global.snd[28], 2);
+FMODSoundSet3dMinMaxDistance(global.snd[28], 0, 8192);
+break;
 }

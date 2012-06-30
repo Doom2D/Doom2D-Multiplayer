@@ -145,7 +145,7 @@ if place_meeting(x, y, o_jthr)
     free = false;
 }
 
-if vsp > 13 - st_jet*8 {vsp = 13 - st_jet*8;}
+if vsp > 13 - (st_jet + global.mp_flymode)*8 {vsp = 13 - (st_jet + global.mp_flymode)*8;}
 
 if place_meeting(x, y, o_lift_up) && vsp > -5 {vsp -= 0.5;}
 if place_meeting(x, y, o_lift_down) && vsp > 3 {vsp -= 0.5;}

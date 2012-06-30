@@ -26,7 +26,26 @@ else
 if argument0 != argument1 && argument0 != 0 
 {
     global.sv_plr[argument0].frag += 1;
-    if global.sv_plr[argument0].frag >= global.mp_fraglimit && global.mp_fraglimit > 0
+    if global.mp_gamemode == 1 {global.team_score[global.sv_plr[argument0].cl_team] += 1;}
+    global.sv_plr[argument0].kill_streak += 1;
+    global.sv_plr[argument0].kt = global.sv_fps_max * 3;
+    
+    if global.mp_gamemode && global.sv_plr[argument0].cl_team == global.sv_plr[argument1].cl_team
+    {
+        global.sv_plr[argument0].frag -= 1 + global.mp_penalty;
+        if global.mp_gamemode == 1 {global.team_score[global.sv_plr[argument0].cl_team] -= 1;}
+        if global.sv_plr[argument0].frag < 0 {global.sv_plr[argument0].frag = 0;}
+        global.sv_plr[argument0].kill_streak -= 1 + global.mp_penalty;
+    }
+    
+    plr_send_kstreak(argument0);
+    plr_send_score();
+    
+    if global.sv_plr[argument0].frag >= global.mp_fraglimit && global.mp_fraglimit > 0 && !global.mp_gamemode
+    {
+        o_host.alarm[0] = 1;
+    }
+    if global.mp_gamemode == 1 && (global.team_score[1] >= global.mp_fraglimit || global.team_score[2] >= global.mp_fraglimit) && global.mp_fraglimit > 0
     {
         o_host.alarm[0] = 1;
     }

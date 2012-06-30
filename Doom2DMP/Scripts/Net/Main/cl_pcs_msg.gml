@@ -21,6 +21,8 @@ while 1
             global.sv_map = dll39_read_string(0);
             global.sv_map_md5 = dll39_read_string(0);
             global.sv_maxplayers = dll39_read_byte(0);
+            global.mp_fraglimit = dll39_read_byte(0);
+            global.mp_gamemode = dll39_read_byte(0);
             global.sv_dlallow = dll39_read_byte(0);
             global.cl_fps_max = dll39_read_byte(0);
             _welcome = '';
@@ -60,12 +62,17 @@ while 1
         
         case 3:
             //some create new player
-            var _name, _skin, _color, _id;
+            var _name, _skin, _color, _id, _team;
             _id = dll39_read_byte(0);
+            _team = dll39_read_byte(0);
             _name = dll39_read_string(0);
             _skin = dll39_read_string(0);
             _color = dll39_read_int(0);
-            cl_new_plr(_id, _name, _skin, _color);
+            cl_new_plr(_id, _name, _skin, _color, _team);
+            if instance_exists(o_hud)
+            {
+                with o_hud if !alarm[0] net_list_clients();
+            }
         break;
         
         case 4:
@@ -77,6 +84,10 @@ while 1
             con_add('Игрок ' + global.cl_plr[_id].cl_name + ' вышел.');
             if global.cl_plr[_id].object_index != o_client {with global.cl_plr[_id] {instance_destroy();}}
             global.cl_plr[_id] = noone;
+            if instance_exists(o_hud)
+            {
+                with o_hud if !alarm[0] net_list_clients();
+            }
         break;
         
         case 5:
@@ -188,14 +199,23 @@ while 1
                 case 14:
                     con_add(killer_name + " распилил " + victim_name + ".");
                 break;
+                case 15:
+                    con_add(victim_name + " умер.");
+                break;
+            }
+            if instance_exists(o_hud)
+            {
+                with o_hud if !alarm[0] net_list_clients();
             }
         break;
         
         case 9:
             //stats update
-            var _id;
+            var _id, _oh;
+            _oh = 0;
             _id = dll39_read_byte(0);
             if !instance_exists(global.cl_plr[_id]) {break;}
+            if _id = global.pl_id {if variable_global_exists ('cl_inst') {if instance_exists(global.cl_inst) {_oh = global.cl_inst.hp;}}}
             global.cl_plr[_id].hp = dll39_read_byte(0);
             global.cl_plr[_id].ap = dll39_read_byte(0);
             global.cl_plr[_id].a1 = dll39_read_short(0);
@@ -206,7 +226,18 @@ while 1
             global.cl_plr[_id].frag = dll39_read_byte(0);
             global.cl_plr[_id].st_inv = dll39_read_byte(0);
             global.cl_plr[_id].st_ber = dll39_read_byte(0);
+            global.cl_plr[_id].st_flag = dll39_read_byte(0);
             global.cl_plr[_id].alarm[2] = 1;
+            
+            //pain splash
+            if !instance_exists(o_hud) {break;}
+            with o_hud {if !variable_local_exists('pain_alpha') {break;}}
+            if _id == global.pl_id && _oh != 0 {o_hud.pain_alpha += max(-0.5, (_oh - global.cl_inst.hp)/100);}
+            
+            if instance_exists(o_hud)
+            {
+                with o_hud if !alarm[0] net_list_clients();
+            }
         break;
         
         case 10:
@@ -263,6 +294,7 @@ while 1
             global.cl_plr[spr_id].pain = spr_pain;
             global.cl_plr[spr_id].alarm[0] = 32;
             global.cl_plr[spr_id].alarm[1] = 10;
+            //if spr_pain == 1 {global.cl_plr[spr_id].dname = true; global.cl_plr[spr_id].alarm[3] = 32;}
         break;
         
         case 15:
@@ -313,13 +345,15 @@ while 1
             if _inst.cl_color != _new_color
             {
                 _inst.cl_color = _new_color;
-                con_add(string(_new_color));
             }
             if _inst.cl_skin != _new_skin
             {
                 _inst.cl_skin = _new_skin;
                 with _inst {skin_load(cl_skin);}
-                con_add(string(_new_skin));
+            }
+            if instance_exists(o_hud)
+            {
+                with o_hud if !alarm[0] net_list_clients();
             }
         break;
         
@@ -351,10 +385,79 @@ while 1
             net_fget_inb(dll39_read_byte(0), dll39_read_int(0));
         break;
         
+        case 23:
+            //hud text
+            var n, ns, nt, nf, nc, nx, ny, ns;
+            n = 1;
+            ns = dll39_read_string(0); //text
+            nt = dll39_read_double(0) * global.cl_fps_max; //timer
+            nf = dll39_read_byte(0); //font
+            nc = dll39_read_int(0);
+            nx = dll39_read_double(0); //offset x
+            ny = dll39_read_double(0); //offset y
+            n = dll39_read_byte(0);
+            for (i = 1; i <= 4; i += 1)
+            {
+                if global.hud_text[i, 1] == '' && n == 0
+                {
+                    n = i;
+                    break;
+                }
+            }
+            global.hud_text[n, 1] = ns; //text
+            global.hud_text[n, 2] = nt; //timer
+            f = nf; //font
+            global.hud_text[n, 6] = nc;
+            global.hud_text[n, 4] = nx; //offset x
+            global.hud_text[n, 5] = ny; //offset y
+            switch f
+            {
+                case 1: global.hud_text[n, 3] = global.fnt_sys; break;
+                case 2: global.hud_text[n, 3] = global.fnt_small; break;
+                case 3: global.hud_text[n, 3] = global.fnt_big; break;
+            }
+        break;
+        
+        case 24:
+            //team change
+            _id = dll39_read_byte(0);
+            _inst = id_to_cl(_id);
+            if !instance_exists(_inst) {break;}
+            _team = dll39_read_byte(0);
+            if _team == 1
+            {
+                con_add(":: Игрок " + string(_inst.cl_name) + " перешел в красную команду.");
+            }
+            else
+            {
+                con_add(":: Игрок " + string(_inst.cl_name) + " перешел в синюю команду.");
+            }
+            _inst.cl_team = _team;
+            if instance_exists(o_hud)
+            {
+                with o_hud if !alarm[0] net_list_clients();
+            }
+        break;
+        
+        case 25:
+            //team score
+            global.team_score[1] = dll39_read_byte(0);
+            global.team_score[2] = dll39_read_byte(0);
+            if instance_exists(o_hud)
+            {
+                with o_hud if !alarm[0] net_list_clients();
+            }
+        break;
+        
         default:
-            con_add(":: NET: DEBUG: Мусорный пакет (ID " + string(msg_id) + "). Возможно, сервер вылетел.");
-            cl_disconnect();
-            mus_play(global.mus_menu);
-            room_goto(rm_menu);
+            con_add(":: NET: DEBUG: Принят пакет с неизвестным ID (" + string(msg_id) + ").");
+            global.debug_counter += 1;
+            if global.debug_counter > 15
+            {
+                con_add(":: NET: DEBUG: Слишком много неопознанных пакетов. Возможно, сервер вылетел.");
+                cl_disconnect();
+                mus_play(global.mus_menu);
+                room_goto(rm_menu);
+            }
     }
 }           

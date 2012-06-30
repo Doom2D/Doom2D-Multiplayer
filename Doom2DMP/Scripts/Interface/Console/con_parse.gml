@@ -90,31 +90,11 @@ if ds_list_find_value(cmd, 0) == 'skin'
 }
 if ds_list_find_value(cmd, 0) == 'cfg_load'
 {
-  if is_real(ds_list_find_value(cmd, 1))
-  {
-    con_add('Недопустимое значение аргумента.');
-    exit;
-  }
-  if ds_list_find_value(cmd, 1) == ''
-  {
-    con_add('Недопустимое значение аргумента.');
-    exit;
-  }
   cfg_load(string(ds_list_find_value(cmd, 1)));
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'cfg_save'
 {
-  if is_real(ds_list_find_value(cmd, 1))
-  {
-    con_add('Недопустимое значение аргумента.');
-    exit;
-  }
-  if ds_list_find_value(cmd, 1) == ''
-  {
-    con_add('Недопустимое значение аргумента.');
-    exit;
-  }
   cfg_write(string(ds_list_find_value(cmd, 1)));
   exit;
 }
@@ -314,6 +294,41 @@ if ds_list_find_value(cmd, 0) == 'r_fps_correct'
     con_add('[ИЗМЕНЕНИЯ ВСТУПЯТ В СИЛУ ПОСЛЕ ПЕРЕЗАГРУЗКИ] r_fps_correct = ' + string(global.r_fps_correct));
     exit;
 }
+if ds_list_find_value(cmd, 0) == 'r_vsync'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.r_vsync));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.r_vsync));
+        exit;
+    }
+    global.r_vsync = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_vsync < 0 || global.r_vsync > 1 {global.r_vsync = 1;}
+    set_synchronization(global.r_vsync);
+    con_add('r_vsync = ' + string(global.r_vsync));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'r_announcer'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.r_announcer));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.r_announcer));
+        exit;
+    }
+    global.r_announcer = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_announcer < 0 || global.r_announcer > 1 {global.r_announcer = 1;}
+    con_add('r_announcer = ' + string(global.r_announcer));
+    exit;
+}
 if ds_list_find_value(cmd, 0) == 'r_restart'
 {
     r_setres(global.r_width, global.r_height);
@@ -499,5 +514,26 @@ if ds_list_find_value(cmd, 0) == 'cl_dl_override'
     con_add('cl_dl_override = ' + string(global.cl_dl_override));
     exit;
 }
-
+if ds_list_find_value(cmd, 0) == 'changeteam'
+{
+    team_change();
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'team'
+{
+    if is_real(ds_list_find_value(cmd, 1))
+    {
+        con_add(string(global.pl_team));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
+    {
+        con_add(string(global.pl_team));
+        exit;
+    }
+    global.pl_team = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.pl_team < 1 || global.pl_team > 2 {global.pl_team = 1;}
+    con_add('team = ' + string(global.pl_team));
+    exit;
+}
 con_add('Неизвестная команда: ' + string(ds_list_find_value(cmd, 0)) + '. Введите help для списка команд.');

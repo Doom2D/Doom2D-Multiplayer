@@ -1,9 +1,6 @@
 tx_f = argument0;
 transp = 0;
-if filename_ext(tx_f) == '.gif'
-{
-    transp = 1;
-}
+if string_lower(filename_ext(tx_f)) == '.gif' {transp = 1;}
 
 if !file_exists(tx_f) {exit;}
 for (i = 0; i < 256; i += 1)

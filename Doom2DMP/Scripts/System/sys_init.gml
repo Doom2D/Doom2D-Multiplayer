@@ -1,8 +1,10 @@
+set_application_title('Doom 2D Multiplayer 0.6');
+
 global.sys_ver = '0.6';
-global.sys_bld = '124';
+global.sys_bld = '125';
 global.sys_log = 'client';
 global.sys_error = false;
-global.sys_cpu = 0;
+global.sys_cleanup = 0;
 if !directory_exists('data')
 {
     directory_create('data');
@@ -24,11 +26,13 @@ msg_str = '';
 global.pl_name = 'Player';
 global.pl_color = make_color_rgb(64, 255, 64);
 global.pl_skin = 'doomer';
+global.pl_team = 1;
 global.sv_password = '';
 global.sv_rcon_pwd = '';
-global.sv_ip = '127.0.0.1';
-global.cl_slist = 'doom2d.org';
-global.cl_slist_path = '/serverlist/doom2dmp/';
+global.sv_ip = '127.0.0.1:25666';
+global.mp_fraglimit = 30;
+global.mp_gamemode = 0;
+global.cl_slist = '109.195.21.30:25667';
 global.cl_rc_time = 7;
 global.cl_rate = 2;
 global.cl_sync_type = 0;
@@ -38,13 +42,16 @@ global.cl_fps_max = 60;
 global.r_massacre = 3;
 global.r_names = 1;
 global.r_gfx = 1;
-global.r_fskip = true;
+global.r_announcer = 1;
+global.r_fskip = false;
 global.r_width = 1024;
 global.r_height = 768;
 global.r_scale = 1;
 global.r_fps_correct = 0;
+global.r_vsync = 0;
+global.r_announcer = 1;
 
-global.slist = ds_list_create();
+global.slist[0, 0] = 0;
 global.map_h = 320;
 global.map_w = 240;
 global.map_bkg = bkg_inter;
@@ -64,6 +71,8 @@ global.fget_pos = 0;
 global.fget_state = 0;
 global.fget_size = 0;
 global.fget_md5 = '';
+
+global.team_score[1] = 0;
 
 //texture array for shits and giggles
 for (i = 0; i < 1024; i += 1)

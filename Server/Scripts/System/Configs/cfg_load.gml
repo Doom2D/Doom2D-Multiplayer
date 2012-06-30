@@ -1,9 +1,11 @@
 //loads a config
 //argument0 - config filename
-file = 'data\cfg\'+string(argument0);
+file = 'data\cfg\' + string(argument0);
+if argument0 == '' || argument0 == '0' {file = 'data\cfg\server.cfg';}
+if !string_count('.cfg', file) {file += '.cfg';}
 if !file_exists(file)
 {
-  con_add(':: ERROR: Нет такого файла ' + string('data\cfg\' + argument0) + '!');
+  con_add(':: ERROR: Нет такого файла ' + string(file) + '!');
   exit;
 }
 cfg = file_text_open_read(file);

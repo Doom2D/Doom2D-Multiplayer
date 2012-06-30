@@ -14,6 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if global.con {exit;}
+
 r_slist_fetch();
 </argument>
       </arguments>

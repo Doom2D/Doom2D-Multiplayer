@@ -39,8 +39,13 @@ if mouse_check_button(mb_right) &amp;&amp; keyboard_check(vk_shift)
     draw_set_color(c_white);
     draw_rectangle_color(x2 - 3, y2 - 3, x2 + 2, y2 + 2, c_blue, c_blue, c_blue, c_blue, 0);
 }
+
+var mx, my;
+if mouse_x &gt; view_xview + 712 {mx = -40;} else {mx = 16;}
+if mouse_y &gt; view_yview + 536 {my = -28;} else {my = 0;}
+
 draw_set_alpha(0.75);
-draw_text(mouse_x + 16, mouse_y, string(round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off)) + "#" + string(round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off)));
+draw_text(mouse_x + mx, mouse_y + my, string(round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off)) + "#" + string(round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off)));
 draw_set_alpha(1);
 </argument>
       </arguments>

@@ -119,5 +119,38 @@ switch sl
    o = instance_create(xx, yy, o_spawn);
    o.o_id = sl;
    o.t_id = tx;
+   o.team = 0;
+  break;
+  case 40:
+   //if position_meeting(xx, yy, o_spawn) {break;}
+   o = instance_create(xx, yy, o_spawn_r);
+   o.o_id = sl;
+   o.t_id = tx;
+  break;
+  case 41:
+   //if position_meeting(xx, yy, o_spawn) {break;}
+   o = instance_create(xx, yy, o_spawn_b);
+   o.o_id = sl;
+   o.t_id = tx;
+  break;
+  case 42:
+   //if position_meeting(xx, yy, o_spawn) {break;}
+    i = item_find_slot();
+    o = instance_create(xx, yy, o_item);
+    o.item_id = i;
+    o.item = 29;
+    global.sv_itm[i] = o;
+    global.red_crd[0] = xx;
+    global.red_crd[1] = yy;
+  break;
+  case 43:
+   //if position_meeting(xx, yy, o_spawn) {break;}
+    i = item_find_slot();
+    o = instance_create(xx, yy, o_item);
+    o.item_id = i;
+    o.item = 30;
+    global.sv_itm[i] = o;
+    global.blu_crd[0] = xx;
+    global.blu_crd[1] = yy;
   break;
 }

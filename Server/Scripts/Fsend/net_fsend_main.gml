@@ -24,4 +24,5 @@ repeat global.sv_dl_rate
 with id_to_cl(argument0)
 {
     dll39_message_send(cl_tcp, 0, 0, 0);
+    if !st_inv {st_inv = 1; st_talk = 1;}
 }

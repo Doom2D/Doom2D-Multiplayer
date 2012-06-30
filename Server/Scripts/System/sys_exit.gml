@@ -1,6 +1,8 @@
 //argument0 - whether or not to save config
-if !variable_global_exists('gui') {exit;}
-if global.gui[0] == -1 {exit;}
+//argument1 - checking call from "restart" console command
+
+//if !variable_global_exists('gui') {exit;}
+//if global.gui[0] == -1 {exit;}
 
 //stop server
 host_exit();
@@ -17,8 +19,18 @@ else
 {
     con_add(':: SYSTEM: Обнаружена(ы) ошибка(и) GML. См. game_errors.log.');
 }
-if !quiet {con_add(':: WINAPI: Отключение успешно.');}
+if !o_host.quiet {con_add(':: WINAPI: Отключение успешно.');}
 con_add(':: SYSTEM: Дата: ' + con_timestamp()) ;
 con_add('====SERVER SHUTDOWN====');
-if !quiet {API_Free();}
+if !o_host.quiet {API_Free();}
+
+//restarting or exiting
+if argument1
+{
+    var arg;
+    arg = '';
+    if o_host.quiet == 1 {arg = '-q';}
+    if o_host.quiet == 2 {arg = '-nogui';}
+    execute_program(parameter_string(0), arg, false);
+}
 game_end();

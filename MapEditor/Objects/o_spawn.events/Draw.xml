@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if !keyboard_check(ord('E')) {draw_sprite(sprite_index, image_index, x, y);}
+        <argument kind="STRING">if !keyboard_check(ord('E')) || sprite_index == s_flag_r || sprite_index == s_flag_b {draw_sprite(sprite_index, image_index, x, y);}
 </argument>
       </arguments>
     </action>

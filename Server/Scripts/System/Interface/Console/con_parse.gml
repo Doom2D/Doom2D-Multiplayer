@@ -87,21 +87,25 @@ if ds_list_find_value(cmd, 0) == 'clist'
 }
 if ds_list_find_value(cmd, 0) == 'bot_add' or ds_list_find_value(cmd, 0) == 'addbot'
 {
-  if is_real(ds_list_find_value(cmd, 1)) && is_real(ds_list_find_value(cmd, 2)) && is_real(ds_list_find_value(cmd, 3))
+  if is_real(ds_list_find_value(cmd, 1)) && is_real(ds_list_find_value(cmd, 2)) && is_real(ds_list_find_value(cmd, 3)) && is_real(ds_list_find_value(cmd, 4))
   {
-    bot_add(bot_select_name(), bot_select_skin(), make_color_rgb(irandom(255), irandom(255), irandom(255)));
+    bot_add(bot_select_name(), bot_select_skin(), make_color_rgb(irandom(255), irandom(255), irandom(255)), plr_select_team());
   }
   else
   {
-    var n, c, s;
+    var n, c, s, t;
     n = string(ds_list_find_value(cmd, 1));
     s = string(ds_list_find_value(cmd, 2));
-    if string(ds_list_find_value(cmd, 3)) == '*' {c = make_color_rgb(irandom(255), irandom(255), irandom(255));} else {c = real(string_digits(ds_list_find_value(cmd, 3)));}
+    if string(ds_list_find_value(cmd, 3)) == '*' {c = make_color_rgb(irandom(255), irandom(255), irandom(255));} else {c = real(string_digits(ds_list_find_value(cmd, 3))); if string_digits(ds_list_find_value(cmd, 3)) == '' {c = irandom(16777215);}}
+    t = real(string_digits(ds_list_find_value(cmd, 4)));
     
-    if n == '*' || (n != '*' && string_letters(n) == '') {n = bot_select_name();}
-    if s == '*' || (s != '*' && string_letters(n) == '') {s = bot_select_skin();}
+    //if n == '*' || (n != '*' && string_letters(n) == '') {n = bot_select_name();}
+    //if s == '*' || (s != '*' && string_letters(n) == '') {s = bot_select_skin();}
+    if n == '*' || n == '' {n = bot_select_name();}
+    if s == '*' || n == '' {s = bot_select_skin();}
+    if string(ds_list_find_value(cmd, 4)) == '*' || string(ds_list_find_value(cmd, 4)) == '' || t == 0 {t = plr_select_team();}
     
-    bot_add(n, s, c);
+    bot_add(n, s, c, t);
   }
   exit;
 }
@@ -185,13 +189,39 @@ if ds_list_find_value(cmd, 0) == 'cl_setval'
         case 'a4':
             inst.a4 = ar2;
         break;
+        case 'team':
+            if ar2 == 1
+            {
+                with inst
+                {
+                    cl_team = 1;
+                    cl_color = c_red;
+                    plr_send_team();
+                    plr_send_skin();
+                }
+                plr_kill(inst.cl_id);
+            
+            }
+            if ar2 == 2
+            {
+                with inst
+                {
+                    cl_team = 2;
+                    cl_color = c_blue;
+                    plr_send_team();
+                    plr_send_skin();
+                }
+                plr_kill(inst.cl_id);
+            }
+        break;
+        
         default:
             con_add(':: ERROR: Неизвестный параметр.');
     }
     with (inst) {plr_send_stat();}
     exit;
 }
-if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'sv_slist_path' || ds_list_find_value(cmd, 0) = 'cl_setval')
+if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'cl_setval')
 {
   con_cvar_parse(ds_list_find_value(cmd, 0), ds_list_find_value(cmd, 1));
   exit;
@@ -202,7 +232,7 @@ if ds_list_find_value(cmd, 0) == 'sv_map'
   m = ds_list_find_value(cmd, 1);
   if is_real(m) {con_add(global.sv_map); exit;}
   if m == '>' && global.sv_cycle_maps {m = global.map_list_next;}
-  if !file_exists('data\maps\' + m + '.dlv') {con_add(":: ERROR: No such map."); exit;}
+  if !file_exists('data\maps\' + m + '.dlv') {con_add(':: ERROR: Карта ' + m + ' не найдена.'); exit;}
   global.sv_map = m;
   global.map_list_next = m;
   if global.map_w == 0 {exit;}
@@ -248,16 +278,20 @@ if ds_list_find_value(cmd, 0) == 'sv_slist'
   global.sv_slist = ds_list_find_value(cmd, 1);
   exit;
 }
-if ds_list_find_value(cmd, 0) == 'sv_slist_path'
-{
-  if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_slist_path); exit;}
-  global.sv_slist_path = ds_list_find_value(cmd, 1);
-  exit;
-}
 
 if ds_list_find_value(cmd, 0) == 'resync'
 {
   o_host.alarm[1] = 1;
+  exit;
+}
+
+if ds_list_find_value(cmd, 0) == 'repack'
+{
+  if file_exists('data\temp\' + string(global.sv_map) + '.7z')
+  {
+    file_delete('data\temp\' + string(global.sv_map) + '.7z');
+  }
+  map_pack(global.sv_map);
   exit;
 }
 
@@ -269,21 +303,24 @@ if ds_list_find_value(cmd, 0) == 'restart'
     plr_send_gameover();
     sleep(60);
     with (o_pl) {plr_send_kick(cl_id, "Game over.");}
-    if file_exists(parameter_string(0)) {execute_program(parameter_string(0), -1, 0);}
-    sys_exit(_t);
+//  var arg;
+//  arg = '';
+//  if o_host.quiet == 1 {arg = '-q';}
+//  if o_host.quiet == 2 {arg = '-nogui';}
+//  if file_exists(parameter_string(0)) {execute_program(parameter_string(0), arg, 0);}
+//  sys_exit(_t);
+    sys_exit(_t, true);
     exit;
 }
 
 if ds_list_find_value(cmd, 0) == 'cfg_save'
 {
-  if is_real(ds_list_find_value(cmd, 1)) {con_add('Недопустимое значение аргумента.'); exit;}
   cfg_write(string(ds_list_find_value(cmd, 1)), 1);
   exit;
 }
 
 if ds_list_find_value(cmd, 0) == 'cfg_load'
 {
-  if is_real(ds_list_find_value(cmd, 1)) {con_add('Недопустимое значение аргумента.'); exit;}
   cfg_load(string(ds_list_find_value(cmd, 1)));
   exit;
 }

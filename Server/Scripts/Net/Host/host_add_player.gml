@@ -5,6 +5,7 @@
 //argument3 - skin
 //argument4 - color
 //argument5 - is bot
+//argument6 - team (only if teamplay is on)
 //returns instance id
 
 var cl_inst;
@@ -19,15 +20,23 @@ cl_inst.cl_tcp = argument1;
 cl_inst.cl_name = argument2;
 cl_inst.cl_skin = argument3;
 cl_inst.cl_color = argument4;
+cl_inst.cl_team = argument6;
 global.sv_plr[i] = cl_inst;
+
+if global.mp_gamemode
+{
+    if argument6 == 1 {cl_inst.cl_color = c_red;}
+    if argument6 == 2 {cl_inst.cl_color = c_blue;}
+}
 
 //let everyone know about this fucker
 dll39_buffer_clear(0);
 dll39_write_byte(3, 0);
 dll39_write_byte(argument0, 0);
+dll39_write_byte(argument6, 0);
 dll39_write_string(argument2, 0);
 dll39_write_string(argument3, 0);
-dll39_write_int(argument4, 0);
+dll39_write_int(cl_inst.cl_color, 0);
 with(o_pl)
 {
     if id != cl_inst

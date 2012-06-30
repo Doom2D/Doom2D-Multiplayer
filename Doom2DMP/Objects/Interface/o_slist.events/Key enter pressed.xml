@@ -13,9 +13,14 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.con || ds_list_size(global.slist) &lt; 1 {exit;}
+        <argument kind="STRING">if global.con || global.slist[0, 5] &lt; 1 {exit;}
 snd_play(1);
-global.sv_ip = server[select, 3];
+if string_char_at(global.slist[select, 1], 0) == '*'
+{
+    global.sv_password = get_string('Введите пароль: ', global.sv_password);
+}
+global.sv_ip = global.slist[select, 0];
+//con_add(global.sv_ip);
 room_goto(rm_game);
 </argument>
       </arguments>

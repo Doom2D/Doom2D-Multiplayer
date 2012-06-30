@@ -15,6 +15,7 @@
       <arguments>
         <argument kind="STRING">//misc shit
 if fsend_state {net_fsend_main(cl_id);}
+
 if st_jet || global.mp_flymode {if global.sv_sync_type &lt; 2 {plr_send_speed();} plr_send_effect(6, x, y);}
 if global.sv_sync_type &lt; 2 {bot_send_pos();}
 alarm[0] = global.sv_rate;

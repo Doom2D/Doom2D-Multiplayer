@@ -1,6 +1,6 @@
 //draws menu
 draw_set_font(menu_f);
-for (i = 1; i < menu_n+1; i += 1)
+for (i = 1; i < menu_n; i += 1)
 {
   if sel == i
   {

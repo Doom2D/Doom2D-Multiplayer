@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="bfg_hit" type="RESOURCE"/>
+  <resource name="team_count" type="RESOURCE"/>
+  <resource name="flag_check" type="RESOURCE"/>
   <resource name="Player" type="GROUP"/>
   <resource name="Item" type="GROUP"/>
   <resource name="Bot" type="GROUP"/>

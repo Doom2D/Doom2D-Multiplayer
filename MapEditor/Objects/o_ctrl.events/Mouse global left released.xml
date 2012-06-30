@@ -48,7 +48,6 @@ switch sl
 }
 
 ed_create_panel(x1, y1, x2, y2, obj, tx, sl);
-
 </argument>
       </arguments>
     </action>

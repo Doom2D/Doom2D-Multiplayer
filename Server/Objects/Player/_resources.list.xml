@@ -2,6 +2,8 @@
 <resources>
   <resource name="o_pl" type="RESOURCE"/>
   <resource name="o_spawn" type="RESOURCE"/>
+  <resource name="o_spawn_r" type="RESOURCE"/>
+  <resource name="o_spawn_b" type="RESOURCE"/>
   <resource name="o_bullet" type="RESOURCE"/>
   <resource name="o_projectile" type="RESOURCE"/>
   <resource name="o_explosion" type="RESOURCE"/>

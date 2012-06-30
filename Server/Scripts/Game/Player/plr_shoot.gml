@@ -25,6 +25,7 @@ switch w
         b = instance_create(x, y, o_punch);
         b.p_id = cl_id;
         b.p_t = 0;
+        b.p_team = cl_team;
         b.image_angle = b_dir;
         b.dmg = 10 + st_ber * 20;
         b.kb = st_ber;
@@ -39,6 +40,7 @@ switch w
         b = instance_create(x, y, o_bullet);
         b.a_id = cl_id;
         b.a_i_id = id;
+        b.a_team = cl_team;
         b.direction = b_dir + random(3) - random(3);
         b.dmg = 9;
         b.k_t = 1;
@@ -56,6 +58,7 @@ switch w
             b = instance_create(x, y, o_bullet);
             b.a_id = cl_id;
             b.a_i_id = id;
+            b.a_team = cl_team;
             b.dmg = 8;
             b.direction = b_dir + random(6) - random(6);
             b.k_t = 2;
@@ -74,6 +77,7 @@ switch w
             b = instance_create(x, y, o_bullet);
             b.a_id = cl_id;
             b.a_i_id = id;
+            b.a_team = cl_team;
             b.dmg = 10 + irandom(2);
             b.direction = b_dir + random(20) - random(20);
             b.k_t = 3;
@@ -90,6 +94,7 @@ switch w
         b = instance_create(x, y, o_bullet);
         b.a_id = cl_id;
         b.a_i_id = id;
+        b.a_team = cl_team;
         b.direction = b_dir + random(4) - random(4);
         b.dmg = 6;
         b.k_t  = 4;
@@ -107,6 +112,7 @@ switch w
         p.direction = b_dir;
         p.p_type = 1;
         p.p_spd = 7;
+        p.l_team = cl_team;
         a3 -= 1;
         plr_send_stat();
         plr_send_sprite(cl_id, 1, 0);
@@ -122,6 +128,7 @@ switch w
         p.direction = b_dir;
         p.p_type = 2;
         p.p_spd = 9;
+        p.l_team = cl_team;
         plr_send_projectile(cl_id, 2, b_dir, x, y);
         plr_send_sprite(cl_id, 1, 0);
         a4 -= 1;
@@ -144,6 +151,7 @@ switch w
             b = instance_create(x, y, o_bullet);
             b.a_id = cl_id;
             b.a_i_id = id;
+            b.a_team = cl_team;
             b.dmg = 15;
             b.direction = b_dir + random(5) - random(5);
             b.k_t = 8;
@@ -159,6 +167,7 @@ switch w
         b = instance_create(x, y, o_punch);
         b.p_id = cl_id;
         b.p_t = 1;
+        b.p_team = cl_team;
         b.image_angle = b_dir;
         b.dmg = 16;
         b.kb = 0;

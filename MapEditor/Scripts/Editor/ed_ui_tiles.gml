@@ -1,7 +1,7 @@
 //tile listbox
 ui_tl_txt = API_Static_Create(ui_win1, 8, 4, 64, 12, 0, 0);
-API_Control_SetText(ui_tl_txt, 'Тайлы:');
-ui_tl_cb = API_Combobox_Create(ui_win1, 8, 20, 144, 20, CBS_HASSTRINGS|CBS_DROPDOWNLIST|WS_VSCROLL, 0);
+API_Control_SetText(ui_tl_txt, 'Тайл');
+ui_tl_cb = API_Combobox_Create(ui_win1, 8, 20, 200, 20, CBS_HASSTRINGS|CBS_DROPDOWNLIST|WS_VSCROLL, 0);
 
 //strings//
 //tiles
@@ -27,11 +27,11 @@ API_Combobox_AddString(ui_tl_cb, 'Джетпак');
 API_Combobox_AddString(ui_tl_cb, 'Берсерк'); //19
 API_Combobox_AddString(ui_tl_cb, 'Рюкзак');
 API_Combobox_AddString(ui_tl_cb, 'Обойма');
-API_Combobox_AddString(ui_tl_cb, 'Коробка патронов');
+API_Combobox_AddString(ui_tl_cb, 'Ящик патронов');
 API_Combobox_AddString(ui_tl_cb, '4 гильзы');
 API_Combobox_AddString(ui_tl_cb, '25 гильз'); //24
-API_Combobox_AddString(ui_tl_cb, 'Бутылек +1 HP');
-API_Combobox_AddString(ui_tl_cb, 'Черепок +1 AP');
+API_Combobox_AddString(ui_tl_cb, 'Бутылек +4 HP');
+API_Combobox_AddString(ui_tl_cb, 'Черепок +5 AP');
 API_Combobox_AddString(ui_tl_cb, '1 ракета');
 API_Combobox_AddString(ui_tl_cb, '5 ракет');
 API_Combobox_AddString(ui_tl_cb, 'Батарейка');
@@ -45,4 +45,8 @@ API_Combobox_AddString(ui_tl_cb, 'Плазмаган'); //36
 API_Combobox_AddString(ui_tl_cb, 'BFG9000');
 API_Combobox_AddString(ui_tl_cb, 'Суперпулемет');
 API_Combobox_AddString(ui_tl_cb, 'Точка DM'); //39
+API_Combobox_AddString(ui_tl_cb, 'Красная точка DM');
+API_Combobox_AddString(ui_tl_cb, 'Синяя точка DM');
+API_Combobox_AddString(ui_tl_cb, 'Красный флаг'); 
+API_Combobox_AddString(ui_tl_cb, 'Синий флаг'); //43
 API_Combobox_SetSel(ui_tl_cb, 0);

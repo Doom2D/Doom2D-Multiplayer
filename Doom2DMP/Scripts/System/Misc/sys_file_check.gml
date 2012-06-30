@@ -1,9 +1,9 @@
 //checks if sum files exist
-con_add(":: SYSTEM: Checking for necessary files...");
+con_add(":: SYSTEM: Проверяем наличие необходимых ресурсов...");
 if !directory_exists('data')
 {
     global.sys_error = true;
-    con_add(":: SYSTEM: FATAL ERROR: Папка 'data\' не найдена. No resources to operate. Аварийное завершение.");
+    con_add(":: SYSTEM: FATAL ERROR: Папка 'data\' не найдена. Нет ресурсов. Аварийное завершение.");
     sys_exit();
     exit;
 }
@@ -55,6 +55,21 @@ if !directory_exists('data\temp')
 {
     con_add(":: SYSTEM: WARNING: Папка 'data\temp\' не найдена. ");
     directory_create('data\temp');
+}
+else
+{
+    if global.sys_cleanup
+    {
+        con_add(":: SYSTEM: Чистим папку data\temp\...");
+        var fn;
+        fn = file_find_first("data\temp\*.*", 0);
+        while file_exists("data\temp\" + fn)
+        {
+            file_delete("data\temp\" + fn);
+            fn = file_find_next();
+        }
+        file_find_close();
+    }
 }
 
 if !file_exists('data\cfg\game.cfg')

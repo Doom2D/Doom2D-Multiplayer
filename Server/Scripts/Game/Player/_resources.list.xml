@@ -7,4 +7,6 @@
   <resource name="plr_shoot" type="RESOURCE"/>
   <resource name="plr_die" type="RESOURCE"/>
   <resource name="plr_hurt" type="RESOURCE"/>
+  <resource name="plr_select_team" type="RESOURCE"/>
+  <resource name="plr_kill" type="RESOURCE"/>
 </resources>

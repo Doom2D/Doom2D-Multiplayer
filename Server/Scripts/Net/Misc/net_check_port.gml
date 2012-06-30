@@ -16,23 +16,23 @@ if (!tcp) return -1;
 dll39_set_format(tcp, 1, "<br>"); //set format to html mode to receive <br> lines
 
 //send post request
-dll39_buffer_clear(0);
-dll39_write_chars("POST / HTTP/1.1" + chr(13) + chr(10), 0);
-dll39_write_chars("Host: canyouseeme.org" + chr(13) + chr(10), 0);
-dll39_write_chars("Keep-Alive: 300" + chr(13) + chr(10), 0);
-dll39_write_chars("Connection: keep-alive" + chr(13) + chr(10), 0);
-dll39_write_chars("User-Agent: Mozilla/4.0" + chr(13) + chr(10), 0);
-dll39_write_chars("Content-Type: application/x-www-form-urlencoded" + chr(13) + chr(10), 0);
-dll39_write_chars("Content-Length: " + string(string_length(data)) + chr(13) + chr(10), 0);
-dll39_write_chars(chr(13) + chr(10), 0);
-dll39_write_chars(data, 0);
-dll39_write_chars(tcp, 0);
-dll39_message_send(tcp, 0, 0, 0);
+dll39_buffer_clear(global._sl_buf);
+dll39_write_chars("POST / HTTP/1.1" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Host: canyouseeme.org" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Keep-Alive: 300" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Connection: keep-alive" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("User-Agent: Mozilla/4.0" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Content-Type: application/x-www-form-urlencoded" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Content-Length: " + string(string_length(data)) + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars(chr(13) + chr(10), global._sl_buf);
+dll39_write_chars(data, global._sl_buf);
+dll39_write_chars(tcp, global._sl_buf);
+dll39_message_send(tcp, 0, 0, global._sl_buf);
 
 while (true)    // infinite loop
 {
-        a = dll39_message_receive(tcp, 0, 0);  // receive data
-        b = dll39_read_chars(dll39_bytes_left(0), 0)
+        a = dll39_message_receive(tcp, 0, global._sl_buf);  // receive data
+        b = dll39_read_chars(dll39_bytes_left(global._sl_buf), global._sl_buf)
         if string_count("Success", b) // until Keyword "Success" is found
         {
                 return 1

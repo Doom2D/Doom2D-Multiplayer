@@ -17,15 +17,41 @@
 if !active {exit;}
 if !instance_exists(global.cl_inst) {exit;}
 if global.cl_inst.object_index != o_pl {exit;}
+
+if global.r_gfx
+{
+    draw_set_alpha(pain_alpha);
+    draw_rectangle_color(view_xview, view_yview, view_xview + 824, view_yview + 768, c_maroon, c_maroon, c_maroon, c_maroon, 0);
+    draw_set_alpha(1);
+    
+    if global.r_announcer
+    {
+        for (i = 1; i &lt;= 4; i += 1)
+        {
+            if global.hud_text[i, 1] == '' {continue;}
+            draw_set_color(global.hud_text[i, 6]);
+            draw_set_halign(fa_center);
+            draw_set_font(global.hud_text[i, 3]);
+            draw_text(view_xview + global.hud_text[i, 4], view_yview + global.hud_text[i, 5], global.hud_text[i, 1]);
+            draw_set_font(-1);
+            draw_set_halign(fa_left);
+            draw_set_color(c_white);
+        }
+    }
+}
+
 draw_set_font(global.fnt_sys);
-net_list_clients();
-draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Карта: " + global.map_name);
-draw_text(view_xview + 832, view_yview + 208, str[1]);
-draw_text(view_xview + 852, view_yview + 208, str[2]);
+
+draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Карта: " + global.map_name + "#Лимит очков: " + string(global.mp_fraglimit));
+
+draw_text(view_xview + 832, view_yview + 216, str[1]);
+draw_text(view_xview + 852, view_yview + 216, str[2]);
+
 draw_set_halign(fa_right);
-draw_text(view_xview + 1000, view_yview + 208, str[3]);
+draw_text(view_xview + 1000, view_yview + 216, str[3]);
+
 draw_set_halign(fa_left);
-draw_text(view_xview + 832, view_yview + 710, "TCP Delay: " + string(global.cl_tcpdelay) + " ms#Ping: " + string(global.cl_ping) + " ms#FPS: " + string(fps) + '/' + string(room_speed));
+draw_text(view_xview + 832, view_yview + 710, "Interval: " + string(global.cl_tcpdelay) + " ms#Delay: " + string(global.cl_ping) + " ms#FPS: " + string(fps) + '/' + string(room_speed));
 
 draw_set_font(global.fnt_big);
 if global.cl_inst.st_inv &amp;&amp; global.r_gfx
@@ -42,6 +68,7 @@ else
     o_con.msg_color = c_white;
     o_con.msg_color2 = c_black;
 }
+
 draw_set_color(c_red);
 draw_text(view_xview + 936, view_yview + 22, global.cl_inst.hp);
 draw_text(view_xview + 936, view_yview + 72, global.cl_inst.ap);

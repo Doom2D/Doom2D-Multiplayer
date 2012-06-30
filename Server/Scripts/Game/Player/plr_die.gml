@@ -11,6 +11,22 @@ alarm[2] = 1800;
 drown = 0; 
 dead = 1;
 
+if instance_exists(id_to_cl(killer_id)) && killer_id > 0
+{
+    if killer_id == cl_id
+    {
+        plr_send_text(cl_id, 'Произошел несчастный случай.', global.mp_respawn, 2, c_white, 412, 724, 2);
+    }
+    else
+    {
+        plr_send_text(cl_id, 'Вас убил#' + string(id_to_cl(killer_id).cl_name), global.mp_respawn, 2, c_white, 412, 724, 2);
+    }
+}
+else
+{
+    plr_send_text(cl_id, 'Вы умерли.', global.mp_respawn, 2, c_white, 412, 724, 2);
+}
+
 if !instance_exists(id_to_cl(killer_id)) || killer_id <= 0 || killer_id == cl_id || !global.bot_chatter {exit;}
 with (id_to_cl(killer_id))
 {

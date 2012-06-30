@@ -1,46 +1,57 @@
-//Description: Gets the list of available games from the server
-//Arguments: none
-var sock_id,new_line,listening,headers,game;
-host = global.cl_slist;
-ds_list_clear(global.slist);
+//gets the list from the master
+var sock_id, run, size, mid, prt, str;
+str = string_explode(global.cl_slist, ':', false);
+host = string(ds_list_find_value(str, 0));
+prt = real(string_digits(ds_list_find_value(str, 1)));
+if prt == 0 {prt = 25667;}
+ds_list_destroy(str);
 
-sock_id = dll39_tcp_connect(host,80,0);
+sock_id = dll39_tcp_connect(host, prt, 0);
 if (!sock_id) {
     con_add(":: NET: SLIST: ERROR: Не могу получить серверлист.");
     exit;
 }
 
-dll39_set_format(sock_id, dll39_format_text,chr(13) + chr(10));
-
-new_line = chr(13) + chr(10);
-
 dll39_buffer_clear(0);
-//Edit the following line to reflect where your php file is on your server
-dll39_write_chars("GET " + global.cl_slist_path + "list.php?ingame=1 HTTP/1.0" + new_line, 0);
-dll39_write_chars("Host: " + host + new_line, 0);
+dll39_write_byte(0, 0);
+dll39_write_string("", 0);
+dll39_write_double(0, 0);
+dll39_write_string("", 0);
+dll39_write_string("", 0);
+dll39_write_string("", 0);
 dll39_message_send(sock_id, 0, 0, 0);
     
-listening = true;
-
-while(listening) {
-    dll39_message_receive(sock_id, 0, 0);
-    headers = dll39_read_sep(" ", 0);
-    if(headers == "") {
-        listening = false;
+while 1 {
+    size = dll39_message_receive(sock_id, 0, 0);
+    //con_add(string(size));
+    if size < 0 break;
+    
+    mid = dll39_read_byte(0);
+    //con_add(string(mid));
+    if mid == 254
+    {
+        global.slist[0, 5] = dll39_read_byte(0); //total entry count
+        //con_add(string(global.slist[0, 5]));
+        for (i = 1; i <= global.slist[0, 5]; i += 1)
+        {
+            global.slist[i, 0] = dll39_read_string(0);
+            //con_add(global.slist[i, 0]);
+            global.slist[i, 1] = dll39_read_string(0);
+            global.slist[i, 1] = string_delete(global.slist[i, 1], 32, string_length(global.slist[i, 1]));
+            //con_add(global.slist[i, 1]);
+            global.slist[i, 2] = dll39_read_string(0);
+            global.slist[i, 2] = string_delete(global.slist[i, 2], 17, string_length(global.slist[i, 1]));
+            //con_add(global.slist[i, 2]);
+            global.slist[i, 3] = dll39_read_string(0);
+            //con_add(global.slist[i, 3]);
+            global.slist[i, 4] = dll39_read_string(0);
+            //con_add(global.slist[i, 4]);
+            prt = dll39_read_double(0);
+            global.slist[i, 0] += ':' + string(prt);
+            //con_add(global.slist[i, 0]);
+        }
         break;
     }
 }
-
-dll39_set_format(sock_id, dll39_format_none, '');
-
-result = "";
-
-size = dll39_message_receive(sock_id, 10000, 0);
-
-while(true) {
-    game = dll39_read_sep(chr(10),0);
-    if(game == "") {break;}
-    ds_list_add(global.slist, string_replace_all(game,"|", " | "));
-}
-
 dll39_socket_close(sock_id);
+//con_add(global.slist[1, 0]);

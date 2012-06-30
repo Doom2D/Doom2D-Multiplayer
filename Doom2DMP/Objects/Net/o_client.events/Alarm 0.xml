@@ -22,7 +22,9 @@ if global.map_w == 0 &amp;&amp; !global.fget_state &amp;&amp; global.map_done
 {
     event_user(0);
 }
+
 alarm[0] = global.cl_rate;
+
 
 </argument>
       </arguments>

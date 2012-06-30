@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">if !variable_local_exists('cl_is_bot') {host_process_msgs();} else {bot_ai();}
 
-if y &gt; global.map_h &amp;&amp; !dead
+if y &gt; global.map_h &amp;&amp; !dead &amp;&amp; !fsend_state
 {
     //if a player fell
     hp = 0;
@@ -27,6 +27,8 @@ if y &gt; global.map_h &amp;&amp; !dead
 cd -= 1;
 pt -= 1;
 ct -= 1;
+if kt &gt;  0 {kt -= 1;} else {kill_streak = 0;}
+
 
 if hp &lt; 1 &amp;&amp; dead == 0 {plr_die();}
 if hp &gt;= 1 &amp;&amp; dead == 1 {dead = 0;}

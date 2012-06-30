@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">//because fps updates once a second this shit is needed
-global.fps_last = fps;
+//global.fps_last = fps;
 alarm[10] = global.cl_fps_max;
 
 </argument>

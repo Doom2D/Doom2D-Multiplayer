@@ -28,7 +28,7 @@ message_input_font(-1, 8, c_white, 1);
 r_part_init();
 </creationCode>
   <backgroundColor>000000</backgroundColor>
-  <drawBackgroundColor>true</drawBackgroundColor>
+  <drawBackgroundColor>false</drawBackgroundColor>
   <backgrounds>
     <backgroundDef>
       <visibleOnRoomStart>false</visibleOnRoomStart>

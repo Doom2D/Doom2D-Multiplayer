@@ -2,10 +2,13 @@
 f = get_save_filename('Карты Doom2DMP 0.6 (*.DLV)|*.dlv', 'data\maps\Unnamed.dlv');
 if file_exists(f)
 {
-    if API_Dialog_MessageBox(window_handle(), 'Файл ' + f + ' уже  существует. Перезаписать?', 'Серьезный вопрос', MB_YESNO) == 7 {exit;}
+    if API_Dialog_MessageBox(window_handle(), 'Файл "' + filename_name(f) + '" уже существует.'
+                                              + chr(13) + chr(10) +
+                                              'Перезаписать?',
+                                              'Серьезный вопрос', MB_YESNO) == 7 {exit;}
 }
 if is_real(f) || f == '' {exit;}
-if string_count('.dlv', f) == 0 && string_count('.DLV', f) == 0 {f += '.dlv';}
+if string_count('.dlv', string_lower(f)) == 0 {f += '.dlv';}
 file = file_text_open_write(f);
 file_text_write_string(file, global.map_name);
 file_text_writeln(file);

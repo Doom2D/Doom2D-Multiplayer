@@ -13,4 +13,9 @@
   <resource name="plr_send_xplos" type="RESOURCE"/>
   <resource name="plr_send_pain" type="RESOURCE"/>
   <resource name="plr_send_gameover" type="RESOURCE"/>
+  <resource name="plr_send_text" type="RESOURCE"/>
+  <resource name="plr_send_team" type="RESOURCE"/>
+  <resource name="plr_send_kstreak" type="RESOURCE"/>
+  <resource name="plr_send_skin" type="RESOURCE"/>
+  <resource name="plr_send_score" type="RESOURCE"/>
 </resources>

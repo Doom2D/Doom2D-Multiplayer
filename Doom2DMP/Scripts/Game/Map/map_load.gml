@@ -16,10 +16,7 @@ if !file_exists(f)
 //free the shit for less lags
 for (i = 0; i < 256; i += 1)
 {
-  if sprite_exists(global.tex[i]) && global.tex[i] != -1
-  {
-    sprite_delete(global.tex[i]);
-  }
+  if sprite_exists(global.tex[i]) && global.tex[i] != -1 {sprite_delete(global.tex[i]);}
   global.tex[i] = -1;
   global.tex_nm[i] = -1;
 }

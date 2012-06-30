@@ -9,4 +9,5 @@
   <resource name="bot_select_skin" type="RESOURCE"/>
   <resource name="bot_chat" type="RESOURCE"/>
   <resource name="bot_find_player" type="RESOURCE"/>
+  <resource name="bot_find_player_team" type="RESOURCE"/>
 </resources>

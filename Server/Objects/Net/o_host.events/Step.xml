@@ -15,6 +15,18 @@
       <arguments>
         <argument kind="STRING">host_cl_accept();
 con_window_work();
+
+if !global.mp_announcer {exit;}
+if alarm[0] == 300 * global.sv_fps_max &amp;&amp; _warn == 0
+{
+    with o_pl {plr_send_text(cl_id, 'ОСТАЛОСЬ 5 МИНУТ', 3, 2, c_white, 412, 264, 1);}
+    _warn = 1;
+}
+if alarm[0] == 60 * global.sv_fps_max &amp;&amp; _warn &lt; 2
+{
+   with o_pl {plr_send_text(cl_id, 'ОСТАЛАСЬ 1 МИНУТА', 3, 2, c_white, 412, 264, 1);}
+    _warn = 2;
+}
 </argument>
       </arguments>
     </action>

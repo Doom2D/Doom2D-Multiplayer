@@ -14,7 +14,7 @@ with o_pl
 
     if !global.mp_godmode && !st_inv
     {
-        plr_hurt(dmg);
+        if !global.mp_gamemode  || global.mp_ffire || cl_team != other.l_team {plr_hurt(dmg);}
         kill_type = 7;
         killer_id = other.l_id;
     }

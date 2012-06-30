@@ -15,6 +15,7 @@
       <arguments>
         <argument kind="STRING">plr_init_phys();
 fail = 0;
+spawn = instance_nearest(0, 0, o_spawn);
 kb_left = 0;
 kb_rght = 0;
 kb_left_n = 0;
@@ -25,6 +26,8 @@ kb_jump = 0;
 kb_strf = 0;
 killer_id = 0;
 kill_type = 0;
+kill_streak = 0;
+kt = 0;
 hp = 100;
 ap = 0;
 a1 = 50;
@@ -50,6 +53,7 @@ st_jet = 0; //jetpack
 st_ber = 0; //berserk
 st_bpk = 0; //backpack
 st_talk = 0;
+st_flag = 0; //if 1, carries the red flag, 2 - the blu flag
 
 fsend_path = '';
 fsend_file = -1;

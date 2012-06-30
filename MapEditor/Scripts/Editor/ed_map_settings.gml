@@ -1,4 +1,6 @@
 //show map settings window
+if !API_Window_Exists(ui_win3) {ui_win3 = -1;}
+if ui_win3 != -1 {exit;}
 ui_win3 = API_Window_Create(window_handle(), 640, 480, 172, 205, WS_OVERLAPPED|WS_CAPTION, 0);
 API_Window_SetText(ui_win3, 'Параметры карты');
 
@@ -6,13 +8,13 @@ ui_win3_b1 = API_Button_Create(ui_win3, 100, 4, 64, 24, BS_PUSHBUTTON);
 API_Control_SetText(ui_win3_b1, "Музыка");
 ui_win3_b2 = API_Button_Create(ui_win3, 100, 28, 64, 24, BS_PUSHBUTTON);
 API_Control_SetText(ui_win3_b2, "Фон");
-ui_win3_e1 = API_Edit_Create(ui_win3, 100, 55, 64, 20, ES_NUMBER|WS_DLGFRAME);
+ui_win3_e1 = API_Edit_Create(ui_win3, 100, 55, 64, 20, ES_NUMBER, WS_EX_CLIENTEDGE);
 API_Control_SetText(ui_win3_e1, string(global.map_w));
-ui_win3_e2 = API_Edit_Create(ui_win3, 100, 75, 64, 20, ES_NUMBER|WS_DLGFRAME);
+ui_win3_e2 = API_Edit_Create(ui_win3, 100, 75, 64, 20, ES_NUMBER, WS_EX_CLIENTEDGE);
 API_Control_SetText(ui_win3_e2, string(global.map_h));
-ui_win3_e3 = API_Edit_Create(ui_win3, 4, 97, 160, 20, ES_AUTOHSCROLL|WS_DLGFRAME);
+ui_win3_e3 = API_Edit_Create(ui_win3, 4, 97, 160, 20, ES_AUTOHSCROLL, WS_EX_CLIENTEDGE);
 API_Control_SetText(ui_win3_e3, global.map_name);
-ui_win3_e4 = API_Edit_Create(ui_win3, 4, 117, 160, 20, ES_AUTOHSCROLL|WS_DLGFRAME);
+ui_win3_e4 = API_Edit_Create(ui_win3, 4, 117, 160, 20, ES_AUTOHSCROLL, WS_EX_CLIENTEDGE);
 API_Control_SetText(ui_win3_e4, global.map_desc);
 ui_win3_b3 = API_Button_Create(ui_win3, 48, 147, 68, 24, BS_PUSHBUTTON);
 API_Control_SetText(ui_win3_b3, "Сохранить");

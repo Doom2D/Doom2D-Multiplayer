@@ -44,7 +44,7 @@ if (hit_player = true)
 {
     if ID.cl_id == a_id {exit;}
     if ID.st_inv || global.mp_godmode {exit;}
-    with (ID) {plr_hurt(other.dmg);}
+    if !global.mp_gamemode  || global.mp_ffire || a_team != ID.cl_team  {with (ID) {plr_hurt(other.dmg);}}
     ID.killer_id = a_id;
     ID.kill_type = k_t;
     if global.mp_knockback

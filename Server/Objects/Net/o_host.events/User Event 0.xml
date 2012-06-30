@@ -17,6 +17,7 @@
 map_load(global.sv_map);
 map_next();
 map_pack(global.sv_map);
+_warn = 0;
 alarm[0] = global.mp_timelimit * global.sv_fps_max;
 </argument>
       </arguments>

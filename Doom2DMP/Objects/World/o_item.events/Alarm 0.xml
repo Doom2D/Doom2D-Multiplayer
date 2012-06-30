@@ -94,6 +94,14 @@ switch item
         image_speed = 0;
         image_index = item - 21;
     break;
+    case 29:
+        sprite_index = s_flag_r;
+        image_speed = 0.1;
+    break;
+    case 30:
+        sprite_index = s_flag_b;
+        image_speed = 0.1;
+    break;
 }
 
 </argument>

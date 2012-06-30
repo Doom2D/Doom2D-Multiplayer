@@ -1,22 +1,40 @@
-//Return your external IP adress, returns an empty string if failed
+//gets your ip from the master
 if global.sv_lan {return mplay_ipaddress();}
-var tcp, s, a;
-tcp = dll39_tcp_connect("whatismyip.org", 80, 0);
-if(!tcp) {con_add(":: WARNING: Не удалось определить внешний IP, используется внутренний."); return mplay_ipaddress();}
-dll39_set_format(tcp,dll39_format_text, chr(13) + chr(10) + chr(13) + chr(10)); //set format to text mode to receive double blank lines (the whole header file)
-//send get request
-dll39_buffer_clear(0);
-dll39_write_chars("GET / HTTP/1.1" + chr(13) + chr(10),0);
-dll39_write_chars("Host: whatismyip.org" + chr(13) + chr(10),0);
-dll39_write_chars("Connection: close"+chr(13) + chr(10),0);
-dll39_write_chars("Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/xaml+xml, application/vnd.ms-xpsdocument, application/x-ms-xbap, application/x-ms-application, application/x-alambik-script, application/x-alambik-alamgram-link, */*"+chr(13)+chr(10),0);
-dll39_write_chars("Accept-Language: en-us"+chr(13) + chr(10),0);
-dll39_write_chars("User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.1; .NET CLR 2.0.50727; .NET CLR 1.1.4322)" +chr(13) + chr(10),0);
-dll39_message_send(tcp,0,0,0);
+var sock_id, run, size, mid, prt, str;
+str = string_explode(global.sv_slist, ':', false);
+host = string(ds_list_find_value(str, 0));
+prt = real(string_digits(ds_list_find_value(str, 1)));
+if prt == 0 {prt = 25667;}
+ds_list_destroy(str);
 
-a = dll39_message_receive(tcp,0,0);
-a = dll39_message_receive(tcp,16,0);
-dll39_socket_close(tcp);
-s = dll39_read_chars(dll39_bytes_left(0),0)
-if string_length(s) > 16 || string_count('<', s) > 0 {con_add(":: WARNING: Не удалось определить внешний IP, используется внутренний."); s = mplay_ipaddress();}
-return s;
+sock_id = dll39_tcp_connect(host, prt, 0);
+if (!sock_id) {
+    con_add(":: NET: SLIST: WARNING: Не могу соединиться с мастерсервером. sv_lan -> 1. Используется локальный IP.");
+    global.sv_lan = 1;
+    return mplay_ipaddress();
+    exit;
+}
+
+dll39_buffer_clear(global._sl_buf);
+dll39_write_byte(3, global._sl_buf); //mode3 - get IP
+dll39_write_string("", global._sl_buf);
+dll39_write_double(0, global._sl_buf);
+dll39_write_string("", global._sl_buf);
+dll39_write_string("", global._sl_buf);
+dll39_write_string("", global._sl_buf);
+dll39_write_double(0, global._sl_buf);
+dll39_message_send(sock_id, 0, 0, global._sl_buf);
+    
+while 1 {
+    size = dll39_message_receive(sock_id, 0, global._sl_buf);
+    if size < 0 break;
+    
+    mid = dll39_read_byte(global._sl_buf);
+    if mid == 253
+    {
+        return dll39_read_string(global._sl_buf);
+        break;
+    }
+}
+
+dll39_socket_close(sock_id);

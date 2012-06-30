@@ -17,6 +17,17 @@
 if !variable_local_exists('cl_color') {exit;}
 if !variable_global_exists('cl_inst') {exit;}
 if dead {exit;}
+if global.fget_state {exit;}
+
+if st_flag == 1
+{
+    draw_sprite_ext(s_flag_r, image_index, x - 8 * image_xscale, y - 36, -image_xscale, image_yscale, 0, c_white, 1);
+}
+if st_flag == 2
+{
+    draw_sprite_ext(s_flag_b, image_index, x - 8 * image_xscale, y - 36, -image_xscale, image_yscale, 0, c_white, 1);
+}
+
 if !pain &amp;&amp; r_weapon 
 { 
     if !attack {draw_sprite_ext(s_wpns, w, x + r_xoff[r_off]*image_xscale, y + r_yoff[r_off], image_xscale, image_yscale, w_rot, c_white, 1);} else {draw_sprite_ext(s_wpns_f, w, x + r_xoff[r_off]*image_xscale, y + r_yoff[r_off], image_xscale, image_yscale, w_rot, c_white, 1);}
@@ -24,17 +35,18 @@ if !pain &amp;&amp; r_weapon
 draw_sprite_ext(sprites[spr, 0], image_index, x, y, image_xscale, image_yscale, 0, image_blend, image_alpha);
 draw_sprite_ext(sprites[spr, 1], image_index, x, y, image_xscale, image_yscale, 0, cl_color, image_alpha);
 
-if id == global.cl_inst || !global.r_names {exit;}
+if st_talk &amp;&amp; id != global.cl_inst
+{
+    if image_xscale == 1 {draw_sprite(s_plr_talk, 0, x, y - 42);} else {draw_sprite(s_plr_talk, 1, x, y - 42);}
+    dname = true; alarm[3] = global.cl_fps_max;
+}
+
+if !global.r_names || !dname {exit;}
 draw_set_font(global.fnt_sys);
 draw_set_halign(fa_center);
 draw_text(x, y - 48, cl_name);
 draw_set_halign(fa_left);
 draw_set_font(-1);
-
-if st_talk
-{
-    if image_xscale == 1 {draw_sprite(s_plr_talk, 0, x, y - 42);} else {draw_sprite(s_plr_talk, 1, x, y - 42);}
-}
 </argument>
       </arguments>
     </action>

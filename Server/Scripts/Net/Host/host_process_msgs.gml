@@ -6,8 +6,7 @@ var msg_size, msg_id;
 //Check for messages
 while(1)
 {
-    msg_size = dll39_message_receive(o_host.sv_udp, 0, 0); //accept message via udp
-    if (msg_size <= 0) msg_size = dll39_message_receive(cl_tcp, 0, 0); //if no udp then tcp
+    msg_size = dll39_message_receive(cl_tcp, 0, 0); //if no udp then tcp
     if (msg_size <=0) break; //if nothing then break
     msg_id = dll39_read_byte(0); //read message id
     ping = 0;
@@ -150,19 +149,10 @@ while(1)
         if !instance_exists(_inst) {break;}
         _inst.cl_name = dll39_read_string(0);
         _inst.cl_skin = dll39_read_string(0);
-        _inst.cl_color = dll39_read_int(0);
+        if global.mp_gamemode == 0 {_inst.cl_color = dll39_read_int(0);} else {dll39_read_int(0);};
         
         //retranslate
-        dll39_buffer_clear(0);
-        dll39_write_byte(20, 0);
-        dll39_write_byte(_id, 0);
-        dll39_write_string(_inst.cl_name, 0);
-        dll39_write_string(_inst.cl_skin, 0);
-        dll39_write_int(_inst.cl_color, 0);
-        with  o_pl
-        {   
-            dll39_message_send(cl_tcp, 0, 0, 0);
-        }
+        with _inst {plr_send_skin();}
         break;
         
         case 11:
@@ -183,6 +173,44 @@ while(1)
             fsend_pos = 0;
             fsend_state = 0;
             fsend_size = 0;
+            st_inv = 0;
+            st_talk = 0;
+            plr_respawn();
+        }
+        break;
+        
+        case 12:
+        //team change request
+        _id = dll39_read_byte(0);
+        _team = dll39_read_byte(0);
+        if !instance_exists(id_to_cl(_id)) {break;}
+        var red, blu;
+        red = team_count(1);
+        blu = team_count(2);
+        
+        if _team == 1 && (red < blu || !global.mp_autobalance)
+        {
+            with id_to_cl(_id)
+            {
+                cl_team = 1;
+                cl_color = c_red;
+                plr_send_team();
+                plr_send_skin();
+            }
+            plr_kill(_id);
+            
+        }
+        if _team == 2 && (red > blu || !global.mp_autobalance)
+        {
+            with id_to_cl(_id)
+            {
+                cl_team = 2;
+                cl_color = c_blue;
+                plr_send_team();
+                plr_send_skin();
+            }
+            plr_kill(_id);
+            
         }
         break;
         }
