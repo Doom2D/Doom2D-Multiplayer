@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="STEP" id="0">
+<event category="DRAW" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,9 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if !variable_local_exists('drop') {exit;}
-if place_meeting(x, y + 1, o_solid) || place_meeting(x, y + 1, o_jthr) {gravity = 0; vspeed = 0; hspeed = hspeed/1.5;} else {gravity = 0.3;}
-if place_meeting(x, y, o_liq) &amp;&amp; vspeed &gt; 2 {vspeed = 2;}
+        <argument kind="STRING">if !sprite_exists(sprite_index) {exit;}
+if x + sprite_width &lt;= view_xview || x &gt;= view_xview + view_wview - 200 {exit;}
+if y + sprite_height &lt;= view_yview || y &gt;= view_yview + view_hview {exit;}
+draw_sprite(sprite_index, image_index, x, y);
 </argument>
       </arguments>
     </action>

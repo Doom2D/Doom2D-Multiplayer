@@ -1,6 +1,6 @@
 //show map settings window
 if !API_Window_Exists(ui_win3) {ui_win3 = -1;}
-if ui_win3 != -1 {exit;}
+if ui_win3 != -1 {API_Window_SetFocus(ui_win3); exit;}
 ui_win3 = API_Window_Create(window_handle(), 640, 480, 172, 205, WS_OVERLAPPED|WS_CAPTION, 0);
 API_Window_SetText(ui_win3, 'Параметры карты');
 

@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if !sprite_exists(sprites[spr, 0]) {exit;}
+        <argument kind="STRING">if x &lt;= view_xview - 96 || x &gt;= view_xview + view_wview - 200 + 96 {exit;}
+if y &lt;= view_yview - 96 || y &gt;= view_yview + view_hview {exit;}
+if !sprite_exists(sprites[spr, 0]) {exit;}
 if !variable_local_exists('cl_color') {exit;}
 if !variable_global_exists('cl_inst') {exit;}
 if dead {exit;}

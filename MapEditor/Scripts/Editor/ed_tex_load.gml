@@ -15,7 +15,7 @@ sprite_collision_mask(global.tex[i], 0, 1, 0, 0, 0, 0, 1, 0);
 global.tex_n += 1;
 
 tx_nm = tx_f;
-tx_nm = string_replace(tx_nm, string(working_directory) + '\', '');
+tx_nm = string_replace(tx_nm, global.ed_workdir + '\', '');
 global.tex_nm[i] = tx_nm;
 tx_nm = string_replace(tx_nm, 'data\textures\', '');
 

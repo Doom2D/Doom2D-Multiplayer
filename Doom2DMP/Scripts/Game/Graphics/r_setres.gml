@@ -1,4 +1,5 @@
 //a0 - w, a1 - h
+set_synchronization(global.r_vsync);
 if !window_get_fullscreen() {exit;}
 if !display_test_all(argument0, argument1, -1, -1) 
 {

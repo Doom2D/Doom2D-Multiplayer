@@ -30,6 +30,7 @@ global.ed_g_use = true; //does it work
 global.ed_overdel = true; //delete overlaying objects
 global.ed_outline = false; //outline the objects
 global.ed_camspeed = 16; //camera speed (one step in pixels)
+global.ed_workdir = working_directory; //because Max WinAPI 2 corrupts the working_directory value after open file dialog calling
 x_off = 0;
 x1 = 0;
 x2 = 0;

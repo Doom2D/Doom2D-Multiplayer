@@ -9,7 +9,7 @@ API_Window_SetSmIcon(global.gui[0], API_Window_GetSmIcon(window_handle()));
 global.gui[1] = API_Edit_Create(global.gui[0], 8, 8, 378, 220, ES_READONLY|ES_MULTILINE|WS_VSCROLL, WS_EX_CLIENTEDGE);
 
 //creates the console inputbox
-global.gui[2] = API_Edit_Create(global.gui[0], 8, 242, 316, 20, ES_AUTOHSCROLL, WS_EX_CLIENTEDGE);
+global.gui[2] = API_Edit_Create(global.gui[0], 8, 242, 316, 20, ES_AUTOHSCROLL|ES_AUTOVSCROLL|ES_MULTILINE, WS_EX_CLIENTEDGE);
 
 //creates the send button
 global.gui[3] = API_Button_Create(global.gui[0], 332, 242, 24, 20);

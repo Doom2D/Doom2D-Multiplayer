@@ -1,5 +1,5 @@
 //texture selector
-var fd, fn, fdir, ff;
+var fd, fn, ff;
 
 API_FileDialog_Prepare ('Все поддерживаемые файлы текстур
                         |*.tga; *.png; *.jpg; *.gif',
@@ -20,12 +20,10 @@ if fn == 1
     exit;
 }
 
-fdir = API_FileDialog_GetFile(0);
 ff = 0;
-
 while ff < fn
 {
     ff += 1;
-    ed_tex_load(fdir + '\' + API_FileDialog_GetFile(ff));
+    ed_tex_load(fd + '\' + API_FileDialog_GetFile(ff));
 }
 

@@ -23,8 +23,7 @@ if global.r_fskip
   alarm[11] = 1;
 }
 if global.r_fps_correct {alarm[9] = 1;}
-if window_get_fullscreen() {r_setres(global.r_width, global.r_height);}
-set_synchronization(global.r_vsync);
+if window_get_fullscreen() {r_setres(global.r_width, global.r_height);} else {set_synchronization(global.r_vsync);}
 if global.s_preload
 {
     for (i = 0; i &lt; 32; i += 1)

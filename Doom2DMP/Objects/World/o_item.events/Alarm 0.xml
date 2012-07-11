@@ -104,6 +104,7 @@ switch item
     break;
 }
 
+draw_state = true;
 </argument>
       </arguments>
     </action>

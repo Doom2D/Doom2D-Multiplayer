@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, 1);
+        <argument kind="STRING">if x &lt;= view_xview - 64 || x &gt;= view_xview + view_wview {exit;}
+if y &lt;= view_yview - 64 || y &gt;= view_yview + view_hview {exit;}
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, 1);
 if !variable_local_exists('msk') {exit;}
 draw_sprite_ext(msk, image_index, x, y, image_xscale, image_yscale, 0, color, 1);
 </argument>

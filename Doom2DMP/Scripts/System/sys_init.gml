@@ -1,7 +1,7 @@
 set_application_title('Doom 2D Multiplayer 0.6');
 
 global.sys_ver = '0.6';
-global.sys_bld = '125';
+global.sys_bld = '126';
 global.sys_log = 'client';
 global.sys_error = false;
 global.sys_cleanup = 0;
@@ -32,7 +32,7 @@ global.sv_rcon_pwd = '';
 global.sv_ip = '127.0.0.1:25666';
 global.mp_fraglimit = 30;
 global.mp_gamemode = 0;
-global.cl_slist = '109.195.21.30:25667';
+global.cl_slist = '94.19.235.229:25667';
 global.cl_rc_time = 7;
 global.cl_rate = 2;
 global.cl_sync_type = 0;
@@ -50,6 +50,7 @@ global.r_scale = 1;
 global.r_fps_correct = 0;
 global.r_vsync = 0;
 global.r_announcer = 1;
+global.r_flash = 1;
 
 global.slist[0, 0] = 0;
 global.map_h = 320;
@@ -75,7 +76,7 @@ global.fget_md5 = '';
 global.team_score[1] = 0;
 
 //texture array for shits and giggles
-for (i = 0; i < 1024; i += 1)
+for (i = 0; i < 256; i += 1)
 {
   global.tex[i] = -1;
   global.tex_nm[i] = -1;

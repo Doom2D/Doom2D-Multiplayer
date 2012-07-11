@@ -20,9 +20,12 @@ if global.cl_inst.object_index != o_pl {exit;}
 
 if global.r_gfx
 {
-    draw_set_alpha(pain_alpha);
-    draw_rectangle_color(view_xview, view_yview, view_xview + 824, view_yview + 768, c_maroon, c_maroon, c_maroon, c_maroon, 0);
-    draw_set_alpha(1);
+    if global.r_flash
+    {
+        draw_set_alpha(pain_alpha);
+        draw_rectangle_color(view_xview, view_yview, view_xview + 824, view_yview + 768, c_maroon, c_maroon, c_maroon, c_maroon, 0);
+        draw_set_alpha(1);
+    }
     
     if global.r_announcer
     {
@@ -51,7 +54,7 @@ draw_set_halign(fa_right);
 draw_text(view_xview + 1000, view_yview + 216, str[3]);
 
 draw_set_halign(fa_left);
-draw_text(view_xview + 832, view_yview + 710, "Interval: " + string(global.cl_tcpdelay) + " ms#Delay: " + string(global.cl_ping) + " ms#FPS: " + string(fps) + '/' + string(room_speed));
+draw_text(view_xview + 832, view_yview + 710, "Интервал: " + string(global.cl_tcpdelay) + " мс#Пинг: " + string(global.cl_ping) + " мс#FPS: " + string(fps) + '/' + string(room_speed));
 
 draw_set_font(global.fnt_big);
 if global.cl_inst.st_inv &amp;&amp; global.r_gfx

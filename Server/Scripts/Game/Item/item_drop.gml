@@ -7,7 +7,10 @@ if st_flag == 1 && global.mp_gamemode == 2
     o.item = 29;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    if global.mp_drop_clear > 0 
+    {
+        if x < global.map_w && x > 0 && y < global.map_h - 8 && y > 0 && kill_type != 12 {o.alarm[1] = global.mp_drop_clear * 60;} else {o.alarm[1] = 1;}
+    }
     item_send_create(i, o.item, x - 32, y - 24);
     
     global.red_flag = 2;
@@ -22,7 +25,10 @@ if st_flag == 2 && global.mp_gamemode == 2
     o.item = 30;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    if global.mp_drop_clear > 0 
+    {
+        if x < global.map_w && x > 0 && y < global.map_h && y > 0 && kill_type != 12 {o.alarm[1] = global.mp_drop_clear * 60;} else {o.alarm[1] = 1;}
+    }
     item_send_create(i, o.item, x - 32, y - 24);
     
     global.blu_flag = 2;

@@ -37,6 +37,8 @@ file_text_write_string(cfg, 'r_gfx ' + string(global.r_gfx));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'r_massacre ' + string(global.r_massacre));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'r_flash ' + string(global.r_flash));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'r_names ' + string(global.r_names));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'r_announcer ' + string(global.r_announcer));

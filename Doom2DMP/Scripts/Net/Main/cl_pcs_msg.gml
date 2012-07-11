@@ -233,11 +233,8 @@ while 1
             if !instance_exists(o_hud) {break;}
             with o_hud {if !variable_local_exists('pain_alpha') {break;}}
             if _id == global.pl_id && _oh != 0 {o_hud.pain_alpha += max(-0.5, (_oh - global.cl_inst.hp)/100);}
-            
-            if instance_exists(o_hud)
-            {
-                with o_hud if !alarm[0] net_list_clients();
-            }
+
+            with o_hud if !alarm[0] net_list_clients();
         break;
         
         case 10:
@@ -294,7 +291,7 @@ while 1
             global.cl_plr[spr_id].pain = spr_pain;
             global.cl_plr[spr_id].alarm[0] = 32;
             global.cl_plr[spr_id].alarm[1] = 10;
-            //if spr_pain == 1 {global.cl_plr[spr_id].dname = true; global.cl_plr[spr_id].alarm[3] = 32;}
+            if spr_pain == 1 {global.cl_plr[spr_id].dname = true; global.cl_plr[spr_id].alarm[3] = 60;}
         break;
         
         case 15:

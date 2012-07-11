@@ -2,7 +2,7 @@
 dll39_buffer_clear(0);
 dll39_write_byte(9, 0);
 dll39_write_byte(cl_id, 0);
-dll39_write_byte(hp, 0);
+dll39_write_byte(max(0, hp), 0);
 dll39_write_byte(ap, 0);
 dll39_write_short(a1, 0);
 dll39_write_short(a2, 0);

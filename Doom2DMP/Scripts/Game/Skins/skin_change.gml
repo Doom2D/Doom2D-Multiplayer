@@ -15,10 +15,10 @@ if room == rm_game
   net_char_look(global.cl_inst.cl_name, string(ds_list_find_value(cmd, 1)), global.cl_inst.cl_color);
   exit;
 } 
-if !file_exists('data\skins\'+ds_list_find_value(cmd, 1)+'\seeup.tga')
+if !skin_check('data\skins\' + string(ds_list_find_value(cmd, 1)))
 {
-  con_add(':: ERROR: Нет такого скина: data\skins\' + string(ds_list_find_value(cmd, 1)) + '!');
+  con_add(':: ERROR: Скин ' + string(ds_list_find_value(cmd, 1)) + ' не найден, либо он поврежден.');
   exit;
 }
 global.pl_skin = string(ds_list_find_value(cmd, 1));
-//con_add('Скин игрока сменен на ' + string(global.pl_skin));
+//con_add('Скин игрока сменен на ' + string(global.pl_skin) + '.');

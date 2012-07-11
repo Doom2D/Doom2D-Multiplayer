@@ -142,6 +142,23 @@ if ds_list_find_value(cmd, 0) == 'r_massacre'
     con_add('r_massacre = ' + string(global.r_massacre));
     exit;
 }
+if ds_list_find_value(cmd, 0) == 'r_flash'
+{
+    if is_real(ds_list_find_value(cmd, 1))
+    {
+        con_add(string(global.r_flash));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
+    {
+        con_add(string(global.r_flash));
+        exit;
+    }
+    global.r_flash = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_flash < 0 || global.r_flash > 1 {global.r_flash = 1;}
+    con_add('r_flash = ' + string(global.r_flash));
+    exit;
+}
 if ds_list_find_value(cmd, 0) == 'r_gfx'
 {
     if is_real(ds_list_find_value(cmd, 1))

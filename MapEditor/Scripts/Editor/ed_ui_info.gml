@@ -1,6 +1,6 @@
 //shows the map info
 if !API_Window_Exists(ui_win4) {ui_win4 = -1;}
-if ui_win4 != -1 {exit;}
+if ui_win4 != -1 {API_Window_SetFocus(ui_win4); exit;}
 ui_win4 = API_Window_Create(window_handle(), 640, 480, 155, 123, WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU, 0); //156
 API_Window_SetText(ui_win4, 'Статистика');
 API_Window_SetIcon(ui_win4, API_Window_GetIcon(window_handle()));

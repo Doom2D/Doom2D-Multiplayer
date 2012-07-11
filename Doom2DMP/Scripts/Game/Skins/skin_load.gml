@@ -4,9 +4,9 @@
 var info;
 for (i = 0; i < 32; i += 1){sprites[i, 0] = -1; sprites[i, 1] = -1;}
 _skin = 'data\skins\' + argument0;
-if !directory_exists(_skin) || !file_exists(_skin + '\stand.tga') || !file_exists(_skin + '\standmask.tga') || !file_exists(_skin + '\walk.tga') || !file_exists(_skin + '\walkmask.tga') || !file_exists(_skin + '\attack.tga') || !file_exists(_skin + '\attackmask.tga') || !file_exists(_skin + '\seeup.tga') || !file_exists(_skin + '\seeupmask.tga') || !file_exists(_skin + '\seedown.tga') || !file_exists(_skin + '\seedownmask.tga') || !file_exists(_skin + '\attackup.tga') || !file_exists(_skin + '\attackupmask.tga') || !file_exists(_skin + '\attackdown.tga') || !file_exists(_skin + '\attackdownmask.tga') || !file_exists(_skin + '\pain.tga') || !file_exists(_skin + '\painmask.tga') || !file_exists(_skin + '\die.tga') || !file_exists(_skin + '\diemask.tga') || !file_exists(_skin + '\INFO')
+if !skin_check(_skin)
 {
-  con_add(':: ERROR: Скин ' + string(argument0) + ' не найден, или он поврежден. Загрузка скина doomer...');
+  con_add(':: ERROR: Скин ' + string(argument0) + ' не найден, либо он поврежден. Загрузка скина "doomer"...');
   _skin = 'data\skins\doomer';
 }
 
@@ -67,7 +67,6 @@ sprites[8, 0] = sprite_add(_skin + '\pain.tga', sprites[8, 2], 0, 0, 32, 32);
 sprites[8, 1] = sprite_add(_skin + '\painmask.tga', sprites[8, 2], 0, 0, 32, 32);
 sprites[9, 0] = sprite_add(_skin + '\die.tga', sprites[9, 2], 0, 0, 32, 32);
 sprites[9, 1] = sprite_add(_skin + '\diemask.tga', sprites[9, 2], 0, 0, 32, 32);
-
 
 
 spr = 1;

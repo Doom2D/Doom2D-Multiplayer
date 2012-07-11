@@ -11,7 +11,7 @@ if parameter_count() > 0
 
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '125';
+global.sys_bld = '126';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -29,7 +29,7 @@ global.sv_ipbans = 1;
 global.sv_cycle_maps = 1;
 global.sv_cheats = 0;
 global.sv_slist_time = 60;
-global.sv_slist = '109.195.21.30:25667';
+global.sv_slist = '94.19.235.229:25667';
 global.sv_clalert = 1;
 global.sv_sync_type = 2;
 global.sv_rate = 2;
