@@ -13,20 +13,16 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">sys_init(); //inits all engine shit
+        <argument kind="STRING">image_speed = 0;
+
+sys_init(); //inits all engine shit
 if global.sys_error {exit;}
 cfg_load('game.cfg');
 //global.fps_last = global.cl_fps_max;
-if global.r_fskip
-{
-  set_automatic_draw(false);
-  alarm[11] = 1;
-}
-if global.r_fps_correct {alarm[9] = 1;}
-if window_get_fullscreen() {r_setres(global.r_width, global.r_height);} else {set_synchronization(global.r_vsync);}
+r_screenset();
 if global.s_preload
 {
-    for (i = 0; i &lt; 32; i += 1)
+    for (i = 0; i &lt; 48; i += 1)
     {
         snd_free(i);
         snd_load(i);

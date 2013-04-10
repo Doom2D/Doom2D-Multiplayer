@@ -9,4 +9,5 @@
   <resource name="plr_hurt" type="RESOURCE"/>
   <resource name="plr_select_team" type="RESOURCE"/>
   <resource name="plr_kill" type="RESOURCE"/>
+  <resource name="plr_use" type="RESOURCE"/>
 </resources>

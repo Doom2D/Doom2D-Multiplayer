@@ -147,6 +147,9 @@ if ds_list_find_value(cmd, 0) == 'cl_setval'
         case 'inv':
             inst.st_inv = min(1, ar2);
         break;
+        case 'vis':
+            inst.st_vis = min(1, ar2);
+        break;
         case 'ber':
             inst.st_ber = min(1, ar2);
         break;
@@ -221,7 +224,7 @@ if ds_list_find_value(cmd, 0) == 'cl_setval'
     with (inst) {plr_send_stat();}
     exit;
 }
-if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'cl_setval')
+if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_priority' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'cl_setval')
 {
   con_cvar_parse(ds_list_find_value(cmd, 0), ds_list_find_value(cmd, 1));
   exit;
@@ -276,6 +279,16 @@ if ds_list_find_value(cmd, 0) == 'sv_slist'
 {
   if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_slist); exit;}
   global.sv_slist = ds_list_find_value(cmd, 1);
+  exit;
+}
+if ds_list_find_value(cmd, 0) == 'sv_priority'
+{
+  if is_real(ds_list_find_value(cmd, 1)) || string_letters(ds_list_find_value(cmd, 1)) != '' {con_add(global.sv_priority); exit;}
+  global.sv_priority = real(ds_list_find_value(cmd, 1));
+  if global.sv_priority < 0 {global.sv_priority = 0;}
+  if global.sv_priority > 7 {global.sv_priority = 7;}
+  sys_set_priority();
+  con_add('sv_priority = ' + string(global.sv_priority));
   exit;
 }
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="Editor" type="GROUP"/>
+  <resource name="Windows" type="GROUP"/>
+  <resource name="ui_upd_title" type="RESOURCE"/>
+  <resource name="ui_windows_destroy" type="RESOURCE"/>
+</resources>

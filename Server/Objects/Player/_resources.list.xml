@@ -7,5 +7,6 @@
   <resource name="o_bullet" type="RESOURCE"/>
   <resource name="o_projectile" type="RESOURCE"/>
   <resource name="o_explosion" type="RESOURCE"/>
+  <resource name="o_supersplash" type="RESOURCE"/>
   <resource name="o_punch" type="RESOURCE"/>
 </resources>

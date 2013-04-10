@@ -13,10 +13,12 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">var hit_ground, hit_player, ID;
+        <argument kind="STRING">var hit_ground, hit_player, hit_trig, ID, ID1;
 hit_ground = 0;
 hit_player = 0;
+hit_trig = 0;
 ID = -1;
+ID1 = -1;
 
 if (spd &gt; 0)
 {
@@ -26,12 +28,16 @@ if (spd &gt; 0)
         x += lengthdir_x(2, direction);
         y += lengthdir_y(2, direction);
         
-        if (instance_place(x,y,o_solid) &gt; 0)
+        if (instance_place(x, y, o_solid) &gt; 0)
         { spd = 0; hit_ground = true; break; }
         
-        ID = instance_place(x,y,o_pl);
+        ID = instance_place(x, y, o_pl);
         if (ID &gt; 0) and !(a_i_id = ID)
         { spd = 0; hit_player = true; break; }
+        
+        ID1 = instance_place(x, y, trg_atshot);
+        if ID1 &gt; 0
+        { hit_trig = true; }
     }
 }
 
@@ -56,6 +62,11 @@ if (hit_player = true)
     }
     with (ID) {plr_send_stat(); plr_send_pain(); plr_send_speed();}
     plr_send_effect(1, x, y);
+}
+
+if hit_trig 
+{
+    with ID1 {event_user(0);}
 }
 </argument>
       </arguments>

@@ -20,7 +20,11 @@ if variable_local_exists('drop')
     //derp temporary shit
     exit;
 }
-if item &gt; 28 {exit;}
+
+if item &gt; 28 &amp;&amp; item &lt; 31 {exit;}
+if global.mp_items == 0 {exit;}
+if global.mp_powerups == 0 &amp;&amp; (item &gt;= 5 &amp;&amp; item &lt;= 10 || item == 31) {exit;}
+
 o = instance_create(x, y, o_itm_spwn);
 o.item = item;
 o.alarm[0] = global.mp_itemrespawn * global.sv_fps_max;

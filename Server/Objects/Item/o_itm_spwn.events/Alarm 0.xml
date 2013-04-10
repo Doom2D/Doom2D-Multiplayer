@@ -17,7 +17,7 @@
 a = instance_create(x, y, o_item);
 a.item_id = i;
 a.item = item;
-item_send_create(i, item, x, y);
+item_send_create(i, item, x, y, true);
 global.sv_itm[i] = a;
 plr_send_sound(9, x, y);
 instance_destroy();

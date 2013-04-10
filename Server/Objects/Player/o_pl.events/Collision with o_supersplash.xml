@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="COLLISION" with="o_supersplash">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if pt || st_inv || global.mp_godmode || !other.alive  {exit;}
+if !global.mp_ffire &amp;&amp; cl_id != other.killer_id &amp;&amp; cl_team == other.team &amp;&amp; global.mp_gamemode {exit;}
+killer_id = other.killer_id; 
+kill_type = other.kill_type;
+plr_hurt(other.dmg);
+plr_send_stat();
+plr_send_pain();
+pt = 10;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

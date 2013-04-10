@@ -15,14 +15,16 @@
       <arguments>
         <argument kind="STRING">if !variable_local_exists('ingame')
 {
-    snd_play(26);
-    room_goto(rm_menu);
+    global.menu_id = 0;
 }
 else
 {
-    snd_play(26);
-    instance_destroy();
+    global.menu_id = 7;
+
 }
+snd_play(26);
+instance_create(0, 0, o_menu);
+instance_destroy();
 </argument>
       </arguments>
     </action>

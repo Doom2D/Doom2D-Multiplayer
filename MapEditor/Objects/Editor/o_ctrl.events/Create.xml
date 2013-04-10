@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="CREATE" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">image_speed = 0;
+
+//Editor initialization
+global.ed_apptitle = room_caption;
+set_application_title(global.ed_apptitle);
+background_assign(bk_current, bk_grid16);
+
+//texture array
+for (i = 0; i &lt; 256; i += 1)
+{
+  global.tex[i] = -1;
+  global.tex_nm[i] = '';
+}
+
+global.tex[0] = tex_none;
+global.tex_n = 1;
+
+//map settings
+global.map_name = 'Unnamed Map';
+global.map_desc = 'Temp Description';
+global.map_mus = 'data\music\AC.xm';
+global.map_bkg = 'data\sky\D2DSKY1.png';
+global.map_w = 1600;
+global.map_h = 1600;
+global.map_proc = false;
+global.map_file = working_directory + '\data\maps\*.dlv';
+
+//editor settings
+global.ed_g_sz = 16; //grid size
+global.ed_g_szo = 16; //old grid size
+global.ed_g_vis = true; //is it visible
+global.ed_g_use = true; //does it work
+global.ed_overdel = true; //delete overlaying objects
+global.ed_outline = false; //outline the objects
+global.ed_camspeed = 16; //camera speed (one step in pixels)
+global.ed_mode = 0; //0 - normal; 1 - trigger zone placement; 2 - trigger target zone placement
+global.ed_trg = 0; //trigger type (see server code)
+
+//editor variables
+x_off = 0;
+y_off = 0;
+x1 = 0;
+x2 = 0;
+y1 = 0;
+y2 = 0;
+tw = 0;
+th = 0;
+col = 0;
+spr = -1;
+tx = 0;
+im = 0;
+trg = noone;
+
+//Interface initialization
+API_Init();
+API_Check_Set(1, window_handle());
+
+ui_win1 = -1; //toolbox window
+ui_win2 = -1; //editor settings window
+ui_win3 = -1; //map settings window
+ui_win4 = -1; //map information window
+ui_win5 = -1; //textures deleting window
+ui_win6 = -1; //objects moving window
+ui_win7 = -1; //map optimization window
+
+ui_menu_cr();
+ed_ui_init();
+
+//standard timer values for triggers t#
+t2_std = 0;
+t4_std = 0;
+
+instance_create(x, y, o_cam);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

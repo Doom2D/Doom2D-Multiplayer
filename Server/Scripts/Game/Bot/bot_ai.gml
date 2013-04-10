@@ -18,6 +18,7 @@ if target == noone && killer_id > 0 && instance_exists(id_to_cl(killer_id)) {if 
 
 if (hw[2] && a2 > 0) || (hw[3] && a2 >= 2) || (hw[4] && a1 > 0) || (hw[5] && a3 > 0) ||  (hw[6] && a4 > 0) ||  (hw[7] && a4 >= 40) || (hw[8] && a2 >= 4) && w < 2 {plr_changewpn(1);}     
 if hw[9] && w == 0 {w = 9;}
+if place_meeting(x, y, o_water) && (w == 6 || w == 7) {plr_changewpn(1);}
 
 //basic obstacle avoiding
 if (place_meeting(x + sign(hsp), y, o_solid) && !place_meeting(x + sign(hsp), y - 64, o_solid)) || place_meeting(x, y, o_jthr) || place_meeting(x, y - 64, o_jthr) || !place_meeting(x + sign(hsp), y + 1, o_solid) {kb_jump = 1;} else {kb_jump = 0;}
@@ -37,6 +38,14 @@ if irandom(global.bot_randrate) == 1
 }
 
 canshoot = 0;
+
+if place_meeting(x, y, trg_atuse)
+{
+    if irandom(global.bot_userate) == 1
+    {
+        plr_use();
+    }
+}
 
 if !instance_exists(target) {exit;} //if target does not exist, fuck the shit
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.con {alarm[0] = 300; exit;}
+var dem_fn;
+dem_fn = demo_find()
+if dem_fn == 'demos\' || dem_fn == "" {alarm[0] = 300; exit;}
+
+global.dem_will = "PLAY";
+global.dem_menu = 1;
+global.dem_fn = dem_fn;
+global.menu_id = -1;
+FMODGroupSetMuted(2, true);
+room_goto(rm_game);
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

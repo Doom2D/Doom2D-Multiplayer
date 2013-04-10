@@ -16,6 +16,7 @@
         <argument kind="STRING">alarm[1] = 8;
 alarm[0] = 512;
 gravity = 0.3;
+image_speed = 0;
 image_single = round(random(16));
 r_part_emit(1, x, y);
 </argument>

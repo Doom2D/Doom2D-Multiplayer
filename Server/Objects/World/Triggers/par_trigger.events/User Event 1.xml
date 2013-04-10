@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="11">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">//timer check
+if t &gt; 500
+{
+    timer = t - 500;
+    t = 4;
+}
+if t &gt; 100
+{
+    timer = t - 100;
+    t = 2;
+}
+
+//add all dem tiles in action zone to the list
+with o_solid
+{
+    if !collision_rectangle(other.xx[1], other.yy[1], other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+    with other {ds_list_add(tiles, other.id);}
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

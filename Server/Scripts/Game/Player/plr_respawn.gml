@@ -35,7 +35,8 @@ if global.mp_respawn_inv > 0 {st_inv = 1;} else {st_inv = 0;}
 st_jet = 0;
 st_ber = 0;
 st_bpk = 0;
-alarm[3] = 0.06 + global.mp_respawn_inv * 60;
+st_vis = 0;
+alarm[3] = global.mp_respawn_inv * 60;
 
 hw[0] = 1;
 hw[1] = 1;
@@ -50,7 +51,7 @@ dt = 0;
 for (i = 2; i < 10; i += 1) {hw[i] = 0;}
 
 plr_send_effect(7, x, y);
-plr_send_sound(9, x, y);
+plr_send_sound(10, x, y);
 plr_send_pos();
 plr_send_stat();
 plr_send_speed();

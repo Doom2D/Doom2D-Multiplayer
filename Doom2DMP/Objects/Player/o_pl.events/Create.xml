@@ -50,6 +50,8 @@ st_inv = 0;
 st_talk = 0;
 st_flag = 0;
 col = c_white;
+xto = x;
+yto = y;
 alarm[3] = 3 * global.cl_fps_max;
 
 </argument>

@@ -13,11 +13,27 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">cl_connect();
+        <argument kind="STRING">image_speed = 0;
+
+cl_connect();
 global.cl_ping = 1;
 _timer = 0;
 _delay = 0;
+_dem_delay = 0;
+_dem_time = 0;
 global.cl_tcpdelay = 0;
+uset = 0;
+alarm[11] = 45 * 60;
+
+FMODGroupSetMuted(2, false);
+
+if global.menu_id == -1 
+{
+    global.menu_id = 0;
+    FMODGroupSetMuted(2, true);
+    instance_create(0, 0, o_menu);
+}
+
 alarm[1] = 32;
 </argument>
       </arguments>

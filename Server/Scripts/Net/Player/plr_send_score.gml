@@ -1,7 +1,7 @@
 //sends team score
-dll39_buffer_clear(0);
-dll39_write_byte(25, 0);
-dll39_write_byte(global.team_score[1], 0); //red
-dll39_write_byte(global.team_score[2], 0); //blu
+dyclearbuffer(0);
+dywritebyte(25, 0);
+dywritebyte(global.team_score[1], 0); //red
+dywritebyte(global.team_score[2], 0); //blu
 
-with (o_pl) {dll39_message_send(cl_tcp, 0, 0, 0);}
+with (o_pl) {dysendmessage(cl_tcp, 0, 0, 0);}

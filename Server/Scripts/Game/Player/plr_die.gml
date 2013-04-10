@@ -3,7 +3,7 @@
 item_drop();
 plr_send_dead(killer_id, cl_id, kill_type); 
 plr_send_stat(); 
-if global.mp_respawn > 0 {alarm[1] = global.mp_respawn * global.sv_fps_max;}
+if global.mp_respawn > 0 {alarm[1] = global.mp_respawn * global.sv_fps_max;} else {alarm[1] = 1;}
 x = -9000; 
 y = -9000; 
 plr_send_pos();    
@@ -24,7 +24,7 @@ if instance_exists(id_to_cl(killer_id)) && killer_id > 0
 }
 else
 {
-    plr_send_text(cl_id, 'Вы умерли.', global.mp_respawn, 2, c_white, 412, 724, 2);
+    plr_send_text(cl_id, 'Вы погибли.', global.mp_respawn, 2, c_white, 412, 724, 2);
 }
 
 if !instance_exists(id_to_cl(killer_id)) || killer_id <= 0 || killer_id == cl_id || !global.bot_chatter {exit;}

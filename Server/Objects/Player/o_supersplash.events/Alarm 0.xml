@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if dmg &gt; 100 {plr_send_effect(9, x, y);} else {plr_send_effect(8, x, y);}
+alive = true;
+var s;
+if place_meeting(x + 1, y, o_water) &amp;&amp; !place_meeting(x + 1, y, o_supersplash) &amp;&amp; !place_meeting(x + 1, y, o_solid)
+{
+    s = instance_create(x + 16, y, o_supersplash);
+    s.dmg = dmg;
+    s.killer_id = killer_id;
+    s.kill_type = kill_type;
+    s.team = team;
+}
+if place_meeting(x - 1, y, o_water) &amp;&amp; !place_meeting(x - 1, y, o_supersplash) &amp;&amp; !place_meeting(x - 1, y, o_solid)
+{
+    s = instance_create(x - 16, y, o_supersplash);
+    s.dmg = dmg;
+    s.killer_id = killer_id;
+    s.kill_type = kill_type;
+    s.team = team;
+}
+if place_meeting(x, y + 1, o_water) &amp;&amp; !place_meeting(x, y + 1, o_supersplash) &amp;&amp; !place_meeting(x, y + 1, o_solid)
+{
+    s = instance_create(x, y + 16, o_supersplash);
+    s.dmg = dmg;
+    s.killer_id = killer_id;
+    s.kill_type = kill_type;
+    s.team = team;
+}
+if place_meeting(x, y - 1, o_water) &amp;&amp; !place_meeting(x, y - 1, o_supersplash) &amp;&amp; !place_meeting(x, y - 1, o_solid)
+{
+    s = instance_create(x, y - 16, o_supersplash);
+    s.dmg = dmg;
+    s.killer_id = killer_id;
+    s.kill_type = kill_type;
+    s.team = team;
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

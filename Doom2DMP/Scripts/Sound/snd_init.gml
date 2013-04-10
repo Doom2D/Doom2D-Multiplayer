@@ -1,5 +1,5 @@
 //init sound array
-for (i = 0; i < 32; i += 1)
+for (i = 0; i < 48; i += 1)
 {
     global.snd[i] = -1;
 }

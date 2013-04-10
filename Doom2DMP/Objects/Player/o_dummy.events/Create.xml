@@ -18,8 +18,8 @@ color = global.pl_color;
 spr = 1;
 r_weapon = 1;
 skin_load(skin);
-y = 600;
-x = 512;
+y = 500;
+x = 502;
 wpn = 0;
 alarm[0] = 10;
 </argument>

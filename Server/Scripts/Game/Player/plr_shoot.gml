@@ -123,13 +123,24 @@ switch w
     case 6:
         //plasmagun
         if a4 < 1 {exit;}
-        p = instance_create(x, y, o_projectile);
-        p.l_id = cl_id;
-        p.direction = b_dir;
-        p.p_type = 2;
-        p.p_spd = 9;
-        p.l_team = cl_team;
-        plr_send_projectile(cl_id, 2, b_dir, x, y);
+        if (position_meeting(x, y, o_water) || position_meeting(x, y, o_acid)) && global.mp_waterfrag == 1
+        {
+            killer_id = cl_id; 
+            kill_type = 6;
+            plr_hurt(10);
+            plr_send_stat();
+            plr_send_pain();
+        }
+        else
+        {
+            p = instance_create(x, y, o_projectile);
+            p.l_id = cl_id;
+            p.direction = b_dir;
+            p.p_type = 2;
+            p.p_spd = 9;
+            p.l_team = cl_team;
+            plr_send_projectile(cl_id, 2, b_dir, x, y);
+        }
         plr_send_sprite(cl_id, 1, 0);
         a4 -= 1;
         plr_send_stat();

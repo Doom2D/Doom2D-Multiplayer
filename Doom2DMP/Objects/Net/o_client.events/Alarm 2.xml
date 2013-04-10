@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="2">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.dem_mode &lt; 2
+{
+    //request tile update
+    dyclearbuffer(0);
+    dywritebyte(13, 0);
+    dysendmessage(global.cl_tcp, 0, 0, 0);
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

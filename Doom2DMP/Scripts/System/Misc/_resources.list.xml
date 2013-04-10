@@ -3,4 +3,6 @@
   <resource name="string_explode" type="RESOURCE"/>
   <resource name="sys_file_check" type="RESOURCE"/>
   <resource name="file_md5" type="RESOURCE"/>
+  <resource name="item_get_w" type="RESOURCE"/>
+  <resource name="item_get_h" type="RESOURCE"/>
 </resources>

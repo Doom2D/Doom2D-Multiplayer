@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">plr_init_phys();
+        <argument kind="STRING">image_speed = 0;
+
+plr_init_phys();
 fail = 0;
 spawn = instance_nearest(0, 0, o_spawn);
 kb_left = 0;
@@ -52,8 +54,10 @@ st_inv = 0; //invulnerability
 st_jet = 0; //jetpack
 st_ber = 0; //berserk
 st_bpk = 0; //backpack
+st_vis = 0; //invisibility
 st_talk = 0;
 st_flag = 0; //if 1, carries the red flag, 2 - the blu flag
+voted = false;
 
 fsend_path = '';
 fsend_file = -1;

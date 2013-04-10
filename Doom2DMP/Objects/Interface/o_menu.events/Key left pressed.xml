@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">snd_play(0);
+        <argument kind="STRING">if global.con {exit;}
+snd_play(0);
 execute_string(str[sel, 3]);
 </argument>
       </arguments>

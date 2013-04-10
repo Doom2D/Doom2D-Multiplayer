@@ -11,7 +11,7 @@ switch argument1
     
     case 2:
     e.sprite_index = s_splash2;
-    snd_play_pos(25, argument2, argument3);
+    snd_play_pos(29, argument2, argument3);
     break;
 }
 e.l_id = argument0;

@@ -13,29 +13,26 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">global.map_mus = FMODSoundAdd('data\gui\music\scores.xm');
+        <argument kind="STRING">image_speed = 0;
+
+global.map_mus = FMODSoundAdd('data\gui\music\scores.xm');
 FMODSoundSetGroup(global.map_mus, 3);
 mus_play(global.map_mus);
 str[0] = 'Doom 2D Multiplayer#Версия ' + global.sys_ver + ' (Сборка ' + global.sys_bld + ')';
 
 str[1] = '';
-str[1] += 'Программист:';
-str[1] += '###Художники:';
-str[1] += '#'
-//str[1] += '###Мапперы:';
-//str[1] += '###';
-str[1] += '###Тестеры:';
-str[1] += '##';
-str[1] += '###Особая благодарность:'
+str[1] += 'Программисты:';
+str[1] += '####Художники:';
+str[1] += '####Тестеры:';
+str[1] += '#####Особая благодарность:'
 
 str[2] = '';
-str[2] += 'PrimuS';
+str[2] += 'PrimuS#Черный Думер';
 str[2] += '###Черный Думер#ar888';
-//str[2] += '###ar888#Черный Думер#PrimuS#Prikol Software';
 str[2] += '###Черный Думер#ar888#Jabberwock';
-str[2] += '###id Software#Prikol Software#Doom2D.org Community#kt0-t0#Jenner#39ster#h0bbel#YoYo Games#Igor Pavlov#и др.';
+str[2] += '###kt0-t0#Rembo#Romixal#Doom2D.org Community#Jenner#39ster#h0bbel#YoYo Games#Igor Pavlov#и др.';
 
-str[3] = 'Игра сделана на Game Maker 8.0 с использованием#FMOD (GMFMOD), WinAPI (Max WinAPI 2) и 7-Zip.#Большая часть игровых ресурсов честно украдена у#id Software, Prikol Software и разработчиков Doom2D: Forever.#Все права на эти хорошие вещи принадлежат их владельцам.#2011-2012';
+str[3] = 'Игра сделана на Game Maker 8.0 с использованием#FMOD (GMFMOD), WinAPI (Max WinAPI 2) и 7-Zip.#Большая часть игровых ресурсов честно украдена у#id Software, Prikol Software и разработчиков Doom 2D: Forever.#Все права на эти хорошие вещи принадлежат их владельцам.#2011-2013';
 
 </argument>
       </arguments>

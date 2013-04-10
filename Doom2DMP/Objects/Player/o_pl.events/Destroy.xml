@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DESTROY" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.dem_mode != 2 {exit;}
+if instance_exists(o_menu) || global.con {exit;}
+
+global.cl_inst = instance_furthest(x, y, o_pl);
+if instance_exists(global.cl_id) {o_hud.viewing = global.cl_inst.cl_id;} else {o_hud.viewing = 0;}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

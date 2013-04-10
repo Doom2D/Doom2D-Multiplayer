@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="DRAW" id="0">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if keyboard_check(ord('E')) {exit;}
+draw_set_font(fnt_sys);
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, 1);
+draw_text_color(x + 2, y + 2, string(image_index), c_white, c_white, c_white, c_white, 1);
+if t_id == 8 {draw_text_color(x + 2, y + 16, string(t_id), c_red, c_red, c_red, c_red, 1); exit;}
+draw_line_color(x, y, xx[1], yy[1], c_lime, c_lime);
+if o_ctrl.trg != id
+{
+  if t_id == 2 || t_id == 4
+  {
+    draw_text_color(xx[1] + 2, yy[1] + 2, string(t_id) + ", " + string(timer), c_red, c_red, c_red, c_red, 1);
+  } else {
+    draw_text_color(xx[1] + 2, yy[1] + 2, string(t_id), c_red, c_red, c_red, c_red, 1);
+    if t_id == 7 {draw_sprite_ext(s_spawn, 0, xx[1] - 16, yy[1] - 32, 1, 1, 0, c_lime, 1); exit;}
+  }
+}
+draw_rectangle_color(xx[1], yy[1], xx[2], yy[2], c_lime, c_lime, c_lime, c_lime, true);
+
+
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

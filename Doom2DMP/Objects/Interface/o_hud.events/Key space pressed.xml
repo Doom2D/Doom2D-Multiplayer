@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="KEYPRESS" id="32">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.dem_mode != 2 {exit;}
+if instance_exists(o_menu) || global.con {exit;}
+if global.dem_pause 
+{
+    with o_pl 
+    {
+        hsp = __hsp; 
+        vsp = __vsp; 
+        kb_rght = __kb_rght; 
+        kb_left = __kb_left; 
+        kb_jump = __kb_jump; 
+        hsp = 0; 
+        vsp = 0; 
+        kb_left = 0; 
+        kb_rght = 0; 
+        kb_jump = 0;
+    }
+    with o_projectile 
+    {
+        speed = __speed;
+        p_spd = __p_spd;
+    }
+    global.dem_pause = 0;
+} 
+else 
+{
+    with o_pl 
+    {
+        __hsp = hsp; 
+        __vsp = vsp; 
+        __kb_rght = kb_rght; 
+        __kb_left = kb_left; 
+        __kb_jump = kb_jump; 
+        hsp = 0; 
+        vsp = 0; 
+        kb_left = 0; 
+        kb_rght = 0; 
+        kb_jump = 0;
+    }
+    with o_projectile
+    {
+        __speed = speed;
+        __p_spd = p_spd;
+        p_spd = 0;
+        speed = 0;
+    }
+    global.dem_pause = 1;
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

@@ -102,9 +102,16 @@ switch item
         sprite_index = s_flag_b;
         image_speed = 0.1;
     break;
+    case 31:
+        sprite_index = s_item_vis;
+        image_speed = 0.07;
+    break;
 }
 
-draw_state = true;
+item_w = item_get_w(item);
+item_h = item_get_h(item);
+visible = true;
+if anim_st {r_part_emit(10, x + item_w / 2, y + item_h / 2);}
 </argument>
       </arguments>
     </action>

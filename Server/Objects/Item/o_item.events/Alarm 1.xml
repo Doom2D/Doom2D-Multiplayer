@@ -22,7 +22,7 @@
     o.item_id = i;
     o.item = 29;
     global.sv_itm[i] = o;
-    item_send_create(i, o.item, global.red_crd[0], global.red_crd[1]);
+    item_send_create(i, o.item, global.red_crd[0], global.red_crd[1], true);
 
     global.red_flag = 0;
 }
@@ -35,7 +35,7 @@ if item == 30 &amp;&amp; global.blu_flag == 2
     o.item_id = i;
     o.item = 30;
     global.sv_itm[i] = o;
-    item_send_create(i, o.item, global.blu_crd[0], global.blu_crd[1]);
+    item_send_create(i, o.item, global.blu_crd[0], global.blu_crd[1], true);
         
     global.blu_flag = 0;
 }

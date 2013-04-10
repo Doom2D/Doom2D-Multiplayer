@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">vsp = 0;
+        <argument kind="STRING">image_speed = 0;
+
+vsp = 0;
 hsp = 0;
 </argument>
       </arguments>

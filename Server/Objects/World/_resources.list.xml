@@ -6,8 +6,10 @@
   <resource name="o_frg" type="RESOURCE"/>
   <resource name="o_water" type="RESOURCE"/>
   <resource name="o_acid" type="RESOURCE"/>
+  <resource name="par_lift" type="RESOURCE"/>
   <resource name="o_lift_right" type="RESOURCE"/>
   <resource name="o_lift_left" type="RESOURCE"/>
   <resource name="o_lift_down" type="RESOURCE"/>
   <resource name="o_lift_up" type="RESOURCE"/>
+  <resource name="Triggers" type="GROUP"/>
 </resources>

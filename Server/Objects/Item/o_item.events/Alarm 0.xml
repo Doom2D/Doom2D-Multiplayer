@@ -14,9 +14,9 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">image_index = item - 1;
-if global.mp_items == 0 {instance_destroy();}
-if global.mp_powerups == 0 &amp;&amp; item &gt;= 5 &amp;&amp; item &lt;= 10 {instance_destroy();}
-if item &gt; 28 &amp;&amp; global.mp_gamemode != 2 {instance_destroy();}
+if global.mp_items == 0 &amp;&amp; item &lt; 29 {instance_destroy(); exit;}
+if global.mp_powerups == 0 &amp;&amp; (item &gt; 4 &amp;&amp; item &lt; 11 || item == 31) {instance_destroy(); exit;}
+if global.mp_gamemode != 2 &amp;&amp; item &gt; 28 &amp;&amp; item &lt; 31 {instance_destroy(); exit;}
 </argument>
       </arguments>
     </action>

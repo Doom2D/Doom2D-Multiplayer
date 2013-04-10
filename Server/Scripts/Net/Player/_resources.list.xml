@@ -18,4 +18,6 @@
   <resource name="plr_send_kstreak" type="RESOURCE"/>
   <resource name="plr_send_skin" type="RESOURCE"/>
   <resource name="plr_send_score" type="RESOURCE"/>
+  <resource name="plr_send_tile" type="RESOURCE"/>
+  <resource name="plr_send_cvars" type="RESOURCE"/>
 </resources>

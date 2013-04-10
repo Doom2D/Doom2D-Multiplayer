@@ -8,7 +8,7 @@
   </grid>
   <speed>60</speed>
   <persistent>false</persistent>
-  <creationCode>
+  <creationCode>con_parse('cls');
 </creationCode>
   <backgroundColor>C0C0C0</backgroundColor>
   <drawBackgroundColor>false</drawBackgroundColor>

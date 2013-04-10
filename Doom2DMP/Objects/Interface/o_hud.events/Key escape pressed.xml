@@ -13,10 +13,12 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if instance_exists(o_exit) {exit;}
+        <argument kind="STRING">if !active {exit;}
+if instance_exists(o_menu) {exit;}
+if !menu {exit;}
 snd_play(0);
-e = instance_create(x, y, o_exit);
-e.ingame = 1;
+global.menu_id = 7;
+instance_create(x, y, o_menu);
 </argument>
       </arguments>
     </action>

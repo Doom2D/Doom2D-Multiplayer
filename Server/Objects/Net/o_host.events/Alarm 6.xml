@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="6">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if !global.vote_now {exit;}
+var votes_needed;
+votes_needed = ceil(instance_number(o_pl)/2);
+with o_pl
+{
+    if variable_local_exists("cl_is_bot") &amp;&amp; !voted
+    {
+        net_vote();
+    }
+}
+if global.vote_num &gt;= votes_needed
+{
+    net_vote_pass(true);
+}
+else
+{
+    net_vote_pass(false);
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

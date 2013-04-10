@@ -6,7 +6,7 @@ var ds,selected;
 ds = ds_priority_create();
 ds_priority_add(ds,noone,100000000);
 with (target) {
-    if (!st_talk && id != other.id) {
+    if (!st_talk && !st_vis && id != other.id) {
         ds_priority_add(ds,id,point_distance(x,y,other.x,other.y));
     }
 }

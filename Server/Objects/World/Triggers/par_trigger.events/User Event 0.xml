@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="OTHER" id="10">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if at {exit;}
+if !alive {exit;}
+at = round(global.sv_fps_max / 2);
+
+var sw, m;
+if tt == -1 {sw = t; m = true;} else {sw = tt; m = false; tt = -1;}
+
+var s, inst, c;
+s = ds_list_size(tiles);
+
+c = false;
+switch sw
+{
+  case 0:
+    //tile activate
+    for (i = 0; i &lt; s; i += 1)
+    {
+      inst = ds_list_find_value(tiles, i);
+      if !instance_exists(inst) {continue;}
+      if inst.active {break;}
+      with inst
+      {
+        active = true;
+        c = true;
+        x = xstart;
+        y = ystart;
+        plr_send_tile(tile_id, active);
+      }
+    }
+    if !c {break;}
+    with o_pl
+    {
+      if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
+                              other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+      kill_type = 16;
+      killer_id = 0;
+      plr_hurt(999);
+    }
+    plr_send_sound(32, xx[1], yy[1]);
+  break;
+  case 1:
+    //tile deactivate
+    for (i = 0; i &lt; s; i += 1)
+    {
+      inst = ds_list_find_value(tiles, i);
+      if !instance_exists(inst) {continue;}
+      if !inst.active {break;}
+      with inst
+      {
+        active = false;
+        c = true;
+        x = -2048;
+        y = -2048;
+        plr_send_tile(tile_id, active);
+      }
+    }
+    if !c {break;}
+    plr_send_sound(31, xx[1], yy[1]);
+  break;
+  case 2:
+    //tile toggle for n sec
+    for (i = 0; i &lt; s; i += 1)
+    {
+      inst = ds_list_find_value(tiles, i);
+      if !instance_exists(inst) {continue;}
+      with inst
+      {
+        if active
+        {
+          other.tt = 0;
+          x = -2048;
+          y = -2048;
+          active = false;
+          plr_send_tile(tile_id, active);
+          continue;
+        }
+        else
+        {
+          other.tt = 1;
+          x = xstart;
+          y = ystart;
+          active = true;
+          plr_send_tile(tile_id, active);
+          continue;
+        }
+      }
+    }
+    if tt == 1
+    {
+      with o_pl
+      {
+        if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
+                                other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+        kill_type = 16;
+        killer_id = 0;
+        plr_hurt(999);
+      }
+      plr_send_sound(32, xx[1], yy[1]);
+    }
+    else
+    {
+      plr_send_sound(31, xx[1], yy[1]);
+    }
+
+    if timer &gt; 0
+    {
+      at = global.sv_fps_max * timer + 150;
+      alarm[0] = global.sv_fps_max * timer;
+    }
+    else
+    {
+      tt = -1;
+    }
+  break;
+  case 3:
+    //random activator
+    //actually, this is just a placeholder trigger, it's pointless
+    var f;
+    f = false;
+    while !f
+    {
+      with par_trigger
+      {
+        if f {break;}
+        if id == other.id {continue;}
+        if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
+                                other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+        if !(irandom(10) - 7) {continue;}
+        if t == 7 {act_t = other.id;}
+        at = 0;
+        event_user(0);
+        f = true;
+      }
+    }
+  break;
+  case 4:
+    //activate another trigger
+    //can result in infinite loops
+    if timer &gt; 0 &amp;&amp; m
+    {
+      tt = 4;
+      at = global.sv_fps_max * timer + 150;
+      alarm[0] = global.sv_fps_max * timer;
+      break;
+    }
+
+    with par_trigger
+    {
+      if id == other.id {continue;}
+      if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
+                              other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+      if t == 7 {act_t = other.id;}
+      at = 0;
+      event_user(0);
+    }
+  break;
+  case 5:
+    //toggle another trigger
+    //if trigger is not alive, it will not fire
+    with par_trigger
+    {
+      if id == other.id {continue;}
+      if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
+                              other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+      at = 0;
+      alive *= -1;
+    }
+  break;
+  case 6:
+    //kill
+    with o_pl
+    {
+      if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
+                              other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+      plr_send_sound(30, x, y);
+      kill_type = 17;
+      killer_id = 0;
+      plr_hurt(999);
+    }
+  break;
+  case 7:
+    //teleport
+    var inst;
+    if act_t == noone {inst = id;} else {inst = act_t; act_t = noone;}
+    if !instance_exists(inst) {break;}
+    with instance_place(xx[1], yy[1], o_pl)
+    {
+      if global.mp_telefrag
+      {
+        kill_type = 15;
+        killer_id = 0;
+        plr_hurt(999);
+      }
+    }
+    with o_pl
+    {
+      if !place_meeting(x, y, inst.id) {continue;}
+      plr_send_effect(7, x, y);
+      plr_send_sound(10, x, y);
+      x = other.xx[1];
+      y = other.yy[1];
+      plr_send_pos();
+      plr_send_effect(7, x, y);
+      plr_send_sound(10, x, y);
+    }
+  break;
+  case 8:
+    //exit
+    plr_send_sound(30, x, y);
+    o_host.alarm[0] = 5;
+  break;
+}
+
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

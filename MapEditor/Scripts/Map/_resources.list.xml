@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="map_load" type="RESOURCE"/>
+  <resource name="map_save" type="RESOURCE"/>
+  <resource name="map_clear" type="RESOURCE"/>
+  <resource name="map_obj_create" type="RESOURCE"/>
+</resources>

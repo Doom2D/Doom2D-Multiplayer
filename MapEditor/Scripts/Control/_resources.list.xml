@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ed_kbd_proc" type="RESOURCE"/>
+  <resource name="ed_btn_press" type="RESOURCE"/>
+  <resource name="ed_btn_active" type="RESOURCE"/>
+  <resource name="ed_btn_release" type="RESOURCE"/>
+</resources>

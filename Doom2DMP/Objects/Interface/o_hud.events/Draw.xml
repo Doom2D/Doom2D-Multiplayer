@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">draw_background(tex_hud, view_xview + 824, view_yview);
+        <argument kind="STRING">if !huddraw {exit;}
+draw_background(tex_hud, view_xview + 824, view_yview);
 if !active {exit;}
 if !instance_exists(global.cl_inst) {exit;}
 if global.cl_inst.object_index != o_pl {exit;}
@@ -45,16 +46,17 @@ if global.r_gfx
 
 draw_set_font(global.fnt_sys);
 
-draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Карта: " + global.map_name + "#Лимит очков: " + string(global.mp_fraglimit));
+draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Карта: " + global.map_name + "#Режим игры: " + modestr + "#Лимит очков: " + string(global.mp_fraglimit));
 
-draw_text(view_xview + 832, view_yview + 216, str[1]);
-draw_text(view_xview + 852, view_yview + 216, str[2]);
+draw_text(view_xview + 832, view_yview + 232, str[1]);
+draw_text(view_xview + 852, view_yview + 232, str[2]);
 
 draw_set_halign(fa_right);
-draw_text(view_xview + 1000, view_yview + 216, str[3]);
+draw_text(view_xview + 1000, view_yview + 232, str[3]);
+draw_text(view_xview + 1016, view_yview + 710, demostr);
 
 draw_set_halign(fa_left);
-draw_text(view_xview + 832, view_yview + 710, "Интервал: " + string(global.cl_tcpdelay) + " мс#Пинг: " + string(global.cl_ping) + " мс#FPS: " + string(fps) + '/' + string(room_speed));
+draw_text(view_xview + 832, view_yview + 710, pingstr);
 
 draw_set_font(global.fnt_big);
 if global.cl_inst.st_inv &amp;&amp; global.r_gfx

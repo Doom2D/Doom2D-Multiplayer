@@ -2,7 +2,6 @@
 <resources>
   <resource name="bk_grid16" type="RESOURCE"/>
   <resource name="bk_grid8" type="RESOURCE"/>
-  <resource name="bk_current" type="RESOURCE"/>
   <resource name="bk_nogrid" type="RESOURCE"/>
-  <resource name="bk_map" type="RESOURCE"/>
+  <resource name="bk_current" type="RESOURCE"/>
 </resources>

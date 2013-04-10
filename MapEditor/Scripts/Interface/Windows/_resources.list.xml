@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="ui_edsets_cr" type="RESOURCE"/>
+  <resource name="ui_edsets_pr" type="RESOURCE"/>
+  <resource name="ui_mapsets_cr" type="RESOURCE"/>
+  <resource name="ui_mapsets_pr" type="RESOURCE"/>
+  <resource name="ui_mapinfo_cr" type="RESOURCE"/>
+  <resource name="ui_mapinfo_pr" type="RESOURCE"/>
+  <resource name="ui_deltex_cr" type="RESOURCE"/>
+  <resource name="ui_deltex_pr" type="RESOURCE"/>
+  <resource name="ui_moveobj_cr" type="RESOURCE"/>
+  <resource name="ui_moveobj_pr" type="RESOURCE"/>
+  <resource name="ui_mapopt_cr" type="RESOURCE"/>
+  <resource name="ui_mapopt_pr" type="RESOURCE"/>
+</resources>

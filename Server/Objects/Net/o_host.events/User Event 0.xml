@@ -18,6 +18,9 @@ map_load(global.sv_map);
 map_next();
 map_pack(global.sv_map);
 _warn = 0;
+
+with par_trigger {event_user(1);}
+with trg_atstart {event_user(0);}
 alarm[0] = global.mp_timelimit * global.sv_fps_max;
 </argument>
       </arguments>

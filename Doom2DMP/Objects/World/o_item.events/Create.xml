@@ -13,8 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">draw_state = false;
-alarm[0] = 1;
+        <argument kind="STRING">alarm[0] = 1;
 </argument>
       </arguments>
     </action>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="KEYPRESS" id="38">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.dem_mode != 2 {exit;}
+if instance_exists(o_menu) || global.con {exit;}
+viewing = net_find_plr(viewing, -1);
+if viewing == 0 {viewing = net_find_plr(global.sv_maxplayers, -1);}
+
+if instance_exists(id_to_cl(viewing))
+{
+    global.cl_inst = id_to_cl(viewing);
+    net_list_clients();
+}
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

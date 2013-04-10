@@ -7,29 +7,42 @@ with o_pl
 {
     if !variable_local_exists('cl_id') {continue;}
     if dead {continue;}
-    if distance_to_point(other.x, other.y) > 320 {continue;}
     if other.l_id == cl_id {continue;}
-    if collision_line(x, y, other.x, other.y, o_solid, 0, 0) {continue;}
-    if distance_to_point(other.x, other.y) < 64 {dmg = 150;} else {dmg = 50;}
+    if distance_to_point(other.x, other.y) > 256 {continue;}
+    if collision_line(x, y, other.x, other.y, o_solid, 0, 1) {continue;}
+
+    if distance_to_point(other.x, other.y) <= 37
+    {
+        dmg = 150;
+        if global.mp_knockback
+        {
+            if other.x < x {hsp = 20 + +hsp * 1.5;}
+            if other.x > x {hsp = -20 - -hsp * 1.5;}
+            if other.vspeed != 0
+            {
+                if other.y < y {vsp = 20 + +vsp;}
+                if other.y > y {vsp = -20 - -vsp;}
+            }
+        }
+    } else {
+        if collision_line(x, y, other.x, other.y, o_jthr, 0, 1) && y > other.y {continue;}
+        dmg = 50;
+        plr_send_effect(11, x, y);
+        plr_send_sound(25, other.x, other.y);
+    }
 
     if !global.mp_godmode && !st_inv
     {
-        if !global.mp_gamemode  || global.mp_ffire || cl_team != other.l_team {plr_hurt(dmg);}
-        kill_type = 7;
-        killer_id = other.l_id;
-    }
-
-    if global.mp_knockback && distance_to_point(other.x, other.y) < 48
-    {
-        if other.x < x {hsp = 20;}
-        if other.x > x {hsp = -20;}   
-        //if other.y > y {vsp = -22;} 
-        //if other.y < y {vsp = 22;} 
+        if !global.mp_gamemode  || global.mp_ffire || cl_team != other.l_team
+        {
+            killer_id = other.l_id;
+            kill_type = 7;
+            plr_hurt(dmg);
+        }
     }
 
     plr_send_stat();
     if !global.mp_godmode && !st_inv {plr_send_pain();}
     plr_send_speed();
     plr_send_effect(1, x, y);
-    plr_send_effect(7, x, y);
 }

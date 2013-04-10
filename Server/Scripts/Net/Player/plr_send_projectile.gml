@@ -4,11 +4,11 @@
 //arg2 - direction
 //arg3 - x
 //arg4 - y
-dll39_buffer_clear(0);
-dll39_write_byte(16, 0);
-dll39_write_byte(argument0, 0);
-dll39_write_byte(argument1, 0);
-dll39_write_short(argument2, 0);
-dll39_write_short(argument3, 0);
-dll39_write_short(argument4, 0);
-with (o_pl) {dll39_message_send(cl_tcp, 0, 0, 0);}
+dyclearbuffer(0);
+dywritebyte(16, 0);
+dywritebyte(argument0, 0);
+dywritebyte(argument1, 0);
+dywriteshort(argument2, 0);
+dywriteshort(argument3, 0);
+dywriteshort(argument4, 0);
+with (o_pl) {dysendmessage(cl_tcp, 0, 0, 0);}

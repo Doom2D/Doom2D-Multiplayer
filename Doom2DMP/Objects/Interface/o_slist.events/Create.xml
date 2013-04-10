@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">//init the shit, get the fucking slist and fetch it
+        <argument kind="STRING">image_speed = 0;
+
+//init the shit, get the fucking slist and fetch it
 r_slist_init();
 r_slist_fetch();
 </argument>

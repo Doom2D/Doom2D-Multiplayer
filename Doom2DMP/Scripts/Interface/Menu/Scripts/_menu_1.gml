@@ -1,0 +1,13 @@
+menu_init(global.fnt_big, c_white, 5, 30);
+cfg_write('game.cfg');
+str[0, 0] = 'НАСТРОЙКИ';
+str[1, 0] = 'Видео';
+str[1, 1] = 'global.menu_id = 4; instance_create(x, y, o_menu); instance_destroy();';
+str[2, 0] = 'Звук';
+str[2, 1] = 'global.menu_id = 2; instance_create(x, y, o_menu); instance_destroy();';
+str[3, 0] = 'Управление';
+str[3, 1] = 'global.menu_id = 3; instance_create(x, y, o_menu); instance_destroy();';
+str[4, 0] = 'Игрок';
+str[4, 1] = 'global.menu_id = 5; instance_create(x, y, o_menu); instance_destroy();';
+str[5, 0] = 'Назад';
+str[5, 1] = 'global.menu_id = 0; instance_create(x, y, o_menu); instance_destroy();';

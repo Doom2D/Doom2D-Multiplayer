@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">if global.con {exit;}
 snd_play(26);
-room_goto(rm_set_ip);
+global.menu_id = 6; room_goto(rm_menu);
 </argument>
       </arguments>
     </action>

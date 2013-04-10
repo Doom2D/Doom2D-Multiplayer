@@ -1,4 +1,4 @@
-//armor and shit counting algorhytm
+//armor and shit counting algorhitm
 //a0 - damage
 
 var a;

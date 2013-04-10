@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="par_trigger" type="RESOURCE"/>
+  <resource name="trg_atcollide" type="RESOURCE"/>
+  <resource name="trg_atuse" type="RESOURCE"/>
+  <resource name="trg_atshot" type="RESOURCE"/>
+  <resource name="trg_atstart" type="RESOURCE"/>
+  <resource name="trg_attrg" type="RESOURCE"/>
+</resources>

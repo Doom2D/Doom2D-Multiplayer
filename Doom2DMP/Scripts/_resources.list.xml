@@ -5,4 +5,5 @@
   <resource name="Sound" type="GROUP"/>
   <resource name="Net" type="GROUP"/>
   <resource name="Interface" type="GROUP"/>
+  <resource name="Demo" type="GROUP"/>
 </resources>

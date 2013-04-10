@@ -8,8 +8,10 @@
   <resource name="msk_projectile" type="RESOURCE"/>
   <resource name="msk_corpse" type="RESOURCE"/>
   <resource name="msk_gibs" type="RESOURCE"/>
+  <resource name="s_respawn" type="RESOURCE"/>
+  <resource name="s_irespawn" type="RESOURCE"/>
   <resource name="s_bfg_hit" type="RESOURCE"/>
   <resource name="s_gib" type="RESOURCE"/>
-  <resource name="s_part" type="RESOURCE"/>
   <resource name="s_splash2" type="RESOURCE"/>
+  <resource name="s_wsplash" type="RESOURCE"/>
 </resources>

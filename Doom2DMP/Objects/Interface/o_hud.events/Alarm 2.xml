@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="ALARM" id="2">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">pingstr = '';
+demostr = '#';
+if global.dem_mode == 2 {pingstr = '#'; demostr = "##PLAY"; if global.dem_pause {demostr = "##PAUSE";};}
+pingstr += "Интервал: " + string(global.cl_tcpdelay) + " мс";
+if global.dem_mode &lt; 2 {pingstr += "#Пинг: " + string(global.cl_ping) + " мс"; if global.dem_mode {demostr = "##REC";};}
+ 
+pingstr += "#FPS: " + string(fps) + '/' + string(room_speed);
+alarm[2] = 60;
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

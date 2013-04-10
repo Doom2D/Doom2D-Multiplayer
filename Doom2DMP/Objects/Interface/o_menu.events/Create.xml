@@ -13,7 +13,14 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">image_speed = 0.025;
+        <argument kind="STRING">if room == rm_game &amp;&amp; global.menu_id == 0 &amp;&amp; !global.dem_menu {global.menu_id = 7;}
+execute_string('_menu_' + string(global.menu_id) + '();');
+image_speed = 0.025;
+
+if room != rm_game &amp;&amp; global.menu_id == 0
+{
+    alarm[0] = 1000;
+}
 </argument>
       </arguments>
     </action>

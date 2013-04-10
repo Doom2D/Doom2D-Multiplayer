@@ -1,12 +1,15 @@
 //finishes the file transfer procedure
 //a0 - server file size
 //a1 - md5
+
+if global.dem_mode >= 2 {exit;}
+
 var _err;
 _err = 0;
 
-if !global.fget_state 
+if !global.fget_state
 {
-    con_add(':: NET: FGET: Сейчас не получаем никаких файлов.');
+    con_add(':: NET: FGET: В данный момент не принимается никаких файлов.');
     exit;
 }
 

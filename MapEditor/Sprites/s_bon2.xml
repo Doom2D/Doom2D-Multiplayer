@@ -2,8 +2,8 @@
 <sprite>
   <origin x="0" y="0"/>
   <mask>
-    <separate>false</separate>
-    <shape>PRECISE</shape>
+    <separate>true</separate>
+    <shape>RECTANGLE</shape>
     <bounds alphaTolerance="0" mode="AUTO"/>
   </mask>
   <preload>true</preload>

@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">if room == rm_game &amp;&amp; global.map_w == 0
 {
-    draw_rectangle_color(view_xview, view_yview, view_xview + 1024, view_yview + 768, c_black, c_black, c_black, c_black, 0);
+  draw_rectangle_color(view_xview, view_yview, view_xview + 1024, view_yview + 768, c_black, c_black, c_black, c_black, 0);
 }
 
 if global.con == 1
@@ -24,7 +24,7 @@ if global.con == 1
 }
 else
 {
-  if room == rm_game {msg_draw();}
+  if (!instance_exists(o_menu) &amp;&amp; !instance_exists(o_exit)) || !global.dem_menu {msg_draw();}
 }
 
 if global.fget_state
@@ -40,6 +40,8 @@ if global.fget_state
   draw_set_alpha(1);
   draw_set_font(-1);
 }
+
+draw_set_color(c_white);
 
 </argument>
       </arguments>

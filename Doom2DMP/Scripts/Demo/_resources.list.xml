@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="demo_rec" type="RESOURCE"/>
+  <resource name="demo_play" type="RESOURCE"/>
+  <resource name="demo_tic" type="RESOURCE"/>
+  <resource name="demo_finish" type="RESOURCE"/>
+  <resource name="demo_find" type="RESOURCE"/>
+</resources>

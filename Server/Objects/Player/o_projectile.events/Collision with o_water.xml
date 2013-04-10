@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="COLLISION" with="o_water">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.mp_waterfrag != 2 {exit;}
+if p_type &lt; 2 {exit;}
+var s;
+s = instance_create(other.x, other.y, o_supersplash);
+s.killer_id = l_id;
+s.team = l_team;
+if p_type == 2 {s.dmg = 10; s.kill_type = 6;} else {s.dmg = global.mp_waterbfgdmg; s.kill_type = 7;}
+instance_destroy();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

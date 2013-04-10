@@ -3,7 +3,7 @@
   <origin x="32" y="14"/>
   <mask>
     <separate>false</separate>
-    <shape>PRECISE</shape>
+    <shape>RECTANGLE</shape>
     <bounds alphaTolerance="0" mode="AUTO"/>
   </mask>
   <preload>true</preload>

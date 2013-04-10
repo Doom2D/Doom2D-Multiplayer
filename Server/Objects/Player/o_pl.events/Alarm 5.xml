@@ -34,7 +34,7 @@ else
 }
 
 a4 -= 40;
-if (position_meeting(x, y, o_water) || position_meeting(x, y, o_acid))
+if (position_meeting(x, y, o_water) || position_meeting(x, y, o_acid)) &amp;&amp; global.mp_waterfrag
 {  
     if !st_inv &amp;&amp; !global.mp_godmode
     {
@@ -45,6 +45,19 @@ if (position_meeting(x, y, o_water) || position_meeting(x, y, o_acid))
         plr_send_effect(1, x, y);
     }
     plr_send_stat();
+    
+    if global.mp_waterfrag != 2 || !place_meeting(x, y, o_water) {exit;}
+    
+    with instance_place(x, y, o_water)
+    {
+        var s;
+        s = instance_create(x, y, o_supersplash);
+        s.dmg = global.mp_waterbfgdmg;
+        s.killer_id = other.cl_id;
+        s.kill_type = 7;
+        s.team = other.cl_team;
+    }
+    
     exit;
 }
 

@@ -10,5 +10,4 @@
   <resource name="con_sv_welcome" type="RESOURCE"/>
   <resource name="con_timestamp" type="RESOURCE"/>
   <resource name="con_echo" type="RESOURCE"/>
-  <resource name="Window" type="GROUP"/>
 </resources>

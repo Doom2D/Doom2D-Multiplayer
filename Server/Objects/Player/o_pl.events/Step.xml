@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">if !variable_local_exists('cl_is_bot') {host_process_msgs();} else {bot_ai();}
 
-if y &gt; global.map_h &amp;&amp; !dead &amp;&amp; !fsend_state
+if y + 32 &gt; global.map_h &amp;&amp; !dead &amp;&amp; !fsend_state
 {
     //if a player fell
     hp = 0;
@@ -27,7 +27,7 @@ if y &gt; global.map_h &amp;&amp; !dead &amp;&amp; !fsend_state
 cd -= 1;
 pt -= 1;
 ct -= 1;
-if kt &gt;  0 {kt -= 1;} else {kill_streak = 0;}
+if kt &gt; 0 {kt -= 1;} else {kill_streak = 0;}
 
 
 if hp &lt; 1 &amp;&amp; dead == 0 {plr_die();}
@@ -47,17 +47,17 @@ if dt &gt;= 1800 &amp;&amp; pt &lt; 0 &amp;&amp; !st_inv &amp;&amp; !global.mp_g
 }
 
 if !variable_local_exists('cl_is_bot') {ping += 1;} //in case of timeout we kick player
-if ping &gt; global.cl_timeout * global.sv_fps_max
+if ping &gt; global.cl_timeout * global.sv_fps_max &amp;&amp; global.cl_timeout &gt; 0
 {
     //send a kick message to the fucker just in case
     plr_send_kick(cl_id, "У вас слишком высокий пинг или вы были AFK слишком долго.");
     con_add(":: Клиент " + string(cl_name) + "[" + string(cl_id) + "] кикнут за простой.");
     
     //send this to other clients
-    dll39_buffer_clear(0);
-    dll39_write_byte(4, 0);
-    dll39_write_byte(cl_id, 0);
-    with (o_pl) {dll39_message_send(cl_tcp, 0, 0, 0);}
+    dyclearbuffer(0);
+    dywritebyte(4, 0);
+    dywritebyte(cl_id, 0);
+    with (o_pl) {dysendmessage(cl_tcp, 0, 0, 0);}
     global.sv_plr[cl_id] = noone;
     instance_destroy();      
 }

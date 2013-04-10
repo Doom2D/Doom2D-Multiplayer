@@ -33,6 +33,7 @@ if hp &gt;= 1 &amp;&amp; dead == 1 {dead = 0; dname = true; alarm[3] = 3 * globa
 
 if dead {exit;}
 plr_phys(kb_left, kb_rght, kb_jump);
+net_interp();
 
 if spr == 1 || spr == 5 {r_off = 1;}
 if spr == 2 {r_off = 2;}

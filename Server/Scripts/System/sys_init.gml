@@ -1,5 +1,5 @@
 //inits all needed shit
-set_application_title('Сервер Doom 2D Multiplayer 0.6')
+randomize();
 
 //gets the first parm
 quiet = 0;
@@ -11,7 +11,7 @@ if parameter_count() > 0
 
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '126';
+global.sys_bld = '127';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -33,16 +33,21 @@ global.sv_slist = '94.19.235.229:25667';
 global.sv_clalert = 1;
 global.sv_sync_type = 2;
 global.sv_rate = 2;
+global.sv_voting = 1; //toggle voting system
+global.sv_voting_time = 30;
 global.sv_dl_rate = 32;
 global.sv_dl_allow = 1;
 global.sv_fps_max = 60;
 global.sv_fps_correct = 0;
 global.sv_md5check = 1;
 global.sv_log_update = 0;
+global.sv_autoexec = 1; //0 - doesn't load autoexec 1 - loads autoexec.cfg 2 - loads MAP_NAME.cfg
+global.sv_priority = 0;
 global.cl_rc_time = 7;
 global.cl_timeout = 15;
-global.mp_fraglimit = 25;
-global.mp_scorelimit = 5;
+global.mp_fraglimit = 23;
+global.mp_scorelimit = 30;
+global.mp_caplimit = 7;
 global.mp_timelimit = 1800;
 global.mp_respawn = 5;
 global.mp_respawn_inv = 0;
@@ -54,19 +59,22 @@ global.mp_knockback = 1;
 global.mp_selfdamage = 1;
 global.mp_flymode = 0;
 global.mp_godmode = 0;
-global.mp_gamemode = 0; //0 - dm, 1 - teamplay, 2 - CTF
-global.mp_automode = 0;
+global.mp_gamemode = 0; //0 - DM, 1 - TDM, 2 - CTF
+global.mp_automode = 1;
 global.mp_ffire = 0;
 global.mp_autobalance = 1;
 global.mp_oldaim = 1;
-global.mp_itemdrop = 1;
-global.mp_dropall = 1;
+global.mp_itemdrop = 2;
 global.mp_weaponstay = 0;
 global.mp_penalty = 1;
 global.mp_announcer = 1;
+global.mp_telefrag = 0;
+global.mp_waterfrag = 2;
+global.mp_waterbfgdmg = 250;
 global.bot_names = 1;
 global.bot_chatter = 0;
 global.bot_randrate = 32;
+global.bot_userate = 32;
 global.bot_cowardly = 0;
 global.bot_dummy = 0;
 global.sys_log = 'server';
@@ -88,9 +96,13 @@ global.name_list = -1;
 global.skin_list = -1;
 global.name_taken = -1;
 global.chat_list = -1;
+global.vote_list = -1;
 global.map_list_ind = -1;
 global.map_list_next = global.sv_map;
 global.map_md5 = '';
+global.vote_now = false;
+global.vote_num = 0;
+global.vote_str = '';
 
 //inits log system
 log_init();
@@ -124,6 +136,7 @@ list_load('data\cfg\bot_chatter.txt', 'chat_list');
 list_load('data\cfg\map_list.txt', 'map_list');
 list_load('data\cfg\bot_names.txt', 'name_list');
 list_load('data\cfg\bot_skins.txt', 'skin_list');
+list_load('data\cfg\blacklist.txt', 'vote_list');
 global.map_played = ds_list_create();
 
 global.name_taken = ds_list_create(); //taken names list for bots
@@ -133,6 +146,6 @@ map_next();
 map_tex_init();
 
 //additional buffer for serverlist and other shit
-global._sl_buf = dll39_buffer_create();
+global._sl_buf = dycreatebuffer();
 
 //global.fps_last = global.sv_fps_max;

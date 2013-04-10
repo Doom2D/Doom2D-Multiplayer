@@ -13,9 +13,12 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">view_xview[1] = -2048;
+        <argument kind="STRING">image_speed = 0;
+
+view_xview[1] = -2048;
 view_yview[1] = -2048;
 offset = 0;
+bkoffset = max(0, global.r_drawhud - global.dem_menu) * 200;
 </argument>
       </arguments>
     </action>

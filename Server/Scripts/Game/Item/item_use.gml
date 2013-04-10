@@ -58,6 +58,8 @@ switch argument0
     case 7:
         //invulnerability
         st_inv = 1;
+        st_vis = 0;
+        alarm[2] = 0;
         alarm[3] = 1800;
         plr_send_stat();
         plr_send_sound(5, x, y);
@@ -74,10 +76,10 @@ switch argument0
     case 10:
         //backpack
         if a1 >= 400 && a2 >= 100 && a3 >= 100 && a4 >= 600 {exit;}
-        a1 += 10; if a1 > 400 {a1 = 400;}
-        a2 += 4; if a2 > 100 {a2 = 100;}
-        a3 += 1; if a3 > 100 {a3 = 100;}
-        a4 += 40; if a4 > 600 {a4 = 600;}
+        if a1 < 400 { a1 += 10; if a1 > 400 {a1 = 400;} }
+        if a2 < 100 { a2 += 4; if a2 > 100 {a2 = 100;} }
+        if a3 < 100 { a3 += 1; if a3 > 100 {a3 = 100;} }
+        if a4 < 600 { a4 += 40; if a4 > 600 {a4 = 600;} }
         st_bpk = 1;
         plr_send_stat();
         plr_send_sound(4, x, y);
@@ -283,7 +285,7 @@ switch argument0
                     o.item_id = i;
                     o.item = 30;
                     global.sv_itm[i] = o;
-                    item_send_create(i, o.item, global.blu_crd[0], global.blu_crd[1]);
+                    item_send_create(i, o.item, global.blu_crd[0], global.blu_crd[1], true);
                     
                     if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' ЗАХВАТИЛ СИНИЙ ФЛАГ!', 3, 2, c_red, 412, 264, 1);}}
                     plr_send_sound(28, x, y);
@@ -291,7 +293,7 @@ switch argument0
                     global.team_score[1] += 1;
                     frag += 1;
                     plr_send_score();
-                    if global.team_score[1] >= global.mp_scorelimit && global.mp_scorelimit > 0
+                    if global.team_score[1] >= global.mp_caplimit && global.mp_caplimit > 0
                     {
                         o_host.alarm[0] = 1;
                     }
@@ -325,7 +327,7 @@ switch argument0
                 o.item_id = i;
                 o.item = 29;
                 global.sv_itm[i] = o;
-                item_send_create(i, o.item, global.red_crd[0], global.red_crd[1]);
+                item_send_create(i, o.item, global.red_crd[0], global.red_crd[1], true);
                 with (other) {instance_destroy();}
                 
                 global.red_flag = 0;
@@ -359,7 +361,7 @@ switch argument0
                     o.item_id = i;
                     o.item = 29;
                     global.sv_itm[i] = o;
-                    item_send_create(i, o.item, global.red_crd[0], global.red_crd[1]);
+                    item_send_create(i, o.item, global.red_crd[0], global.red_crd[1], true);
                     
                     if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' ЗАХВАТИЛ КРАСНЫЙ ФЛАГ!', 3, 2, c_blue, 412, 264, 1);}}
                     plr_send_sound(28, x, y);
@@ -367,7 +369,7 @@ switch argument0
                     global.team_score[2] += 1;
                     frag += 1;
                     plr_send_score();
-                    if global.team_score[2] >= global.mp_scorelimit && global.mp_scorelimit > 0
+                    if global.team_score[2] >= global.mp_caplimit && global.mp_caplimit > 0
                     {
                         o_host.alarm[0] = 1;
                     }
@@ -401,7 +403,7 @@ switch argument0
                 o.item_id = i;
                 o.item = 30;
                 global.sv_itm[i] = o;
-                item_send_create(i, o.item, global.blu_crd[0], global.blu_crd[1]);
+                item_send_create(i, o.item, global.blu_crd[0], global.blu_crd[1], true);
                 with (other) {instance_destroy();}
                 
                 global.blu_flag = 0;
@@ -419,6 +421,16 @@ switch argument0
                 if global.mp_announcer {with o_pl {plr_send_text(cl_id, other.cl_name + ' ПОДОБРАЛ СИНИЙ ФЛАГ!', 3, 2, c_red, 412, 264, 1);}}
             }
         }
+    break;
+    
+    case 31:
+        //invisibility
+        if st_inv {break;}
+        st_vis = 1;
+        alarm[2] = 1800;
+        plr_send_stat();
+        plr_send_sound(5, x, y);
+        with (other) {instance_destroy();}
     break;
 }
 

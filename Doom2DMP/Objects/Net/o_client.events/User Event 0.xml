@@ -27,6 +27,7 @@ if global.map_md5 != global.sv_map_md5 &amp;&amp; global.sv_map_md5 != '-255'
 }
 con_add(_welcome);
 instance_create(0, 0, o_hud);
+alarm[2] = 2;
 </argument>
       </arguments>
     </action>

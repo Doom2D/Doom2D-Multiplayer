@@ -13,8 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">net_ping();
+        <argument kind="STRING">if global.dem_mode == 2 {_timer = 0;}
+net_ping();
 global.cl_tcpdelay = _delay;
+
 alarm[1] = 120;
 </argument>
       </arguments>

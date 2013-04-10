@@ -7,4 +7,5 @@
   <resource name="host_add_player" type="RESOURCE"/>
   <resource name="host_process_msgs" type="RESOURCE"/>
   <resource name="host_message_input" type="RESOURCE"/>
+  <resource name="host_input" type="RESOURCE"/>
 </resources>

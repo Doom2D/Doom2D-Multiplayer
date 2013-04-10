@@ -4,7 +4,7 @@ var _str, _f, _md5;
 _md5 = '';
 _str = '';
 
-if !file_exists(argument0) {return _md5;}
+if !file_exists(argument0) {return '';}
 _f = file_text_open_read(argument0);
 
 while !file_text_eof(_f)
@@ -14,6 +14,6 @@ while !file_text_eof(_f)
 }
 
 file_text_close(_f);
-_md5 = dll39_md5_string(_str);
+_md5 = dymd5string(_str);
 
 return _md5;

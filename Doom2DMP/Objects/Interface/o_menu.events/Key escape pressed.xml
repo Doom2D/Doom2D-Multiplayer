@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">sel = menu_n;
+        <argument kind="STRING">if global.con {exit;}
+sel = menu_n;
 menu_select();
 
 </argument>

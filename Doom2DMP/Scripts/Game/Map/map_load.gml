@@ -1,12 +1,11 @@
 //load map
 //argument0 - filename
-global.map_md5 = '';
 
-f = 'data\maps\' + argument0 + '.dlv';
-
-if !file_exists(f) 
+var temp_fn;
+temp_fn = 'data\maps\' + argument0 + '.dlv';
+if !file_exists(temp_fn) 
 {
-    con_add(":: MAP: ERROR: Карты " + f + " не существует.");
+    con_add(":: MAP: ERROR: Карты " + temp_fn + " не существует.");
     cl_disconnect();
     mus_play(global.mus_menu);
     room_goto(rm_menu);
@@ -14,12 +13,12 @@ if !file_exists(f)
 }
 
 //free the shit for less lags
-for (i = 0; i < 256; i += 1)
+for (i = 1; i < 256; i += 1)
 {
-  if sprite_exists(global.tex[i]) && global.tex[i] != -1 {sprite_delete(global.tex[i]);}
+  if global.tex[i] != tex_error && sprite_exists(global.tex[i]) {sprite_delete(global.tex[i]);}
   global.tex[i] = -1;
-  global.tex_nm[i] = -1;
 }
+global.tex_n = 1;
 
 //and this shit
 if global.map_bkg != bkg_inter
@@ -34,49 +33,89 @@ if global.map_mus != -1
     FMODSoundFree(global.map_mus);
 }
 
-global.tex[0] = tex_none;
-global.tex_n = 1;
+ds_list_destroy(global.cl_tiles);
+global.cl_tiles = ds_list_create();
 
-file = file_text_open_read(f);
-global.map_name = file_text_read_string(file);
-file_text_readln(file);
-global.map_desc = file_text_read_string(file);
-file_text_readln(file);
-global.map_w = file_text_read_real(file);
-file_text_readln(file);
-global.map_h = file_text_read_real(file);
-file_text_readln(file);
-_mus = file_text_read_string(file);
-if !file_exists(_mus) {_mus = 'data\music\AC.xm';}
+var fnum;
+fnum = file_text_open_read(temp_fn);
+
+global.map_name = file_text_read_string(fnum);
+file_text_readln(fnum);
+global.map_desc = file_text_read_string(fnum);
+file_text_readln(fnum);
+global.map_w = file_text_read_real(fnum);
+file_text_readln(fnum);
+global.map_h = file_text_read_real(fnum);
+file_text_readln(fnum);
+
+_mus = file_text_read_string(fnum);
+if !file_exists(_mus)
+{
+    con_add(':: MAP: ERROR: Файл музыки ' + _mus + ' не найден. Установлена стандартная.');
+    _mus = 'data\music\AC.xm';
+}
 global.map_mus = FMODSoundAdd(_mus);
 FMODSoundSetGroup(global.map_mus, 3);
-file_text_readln(file);
-_bkg = file_text_read_string(file);
-if !file_exists(_bkg) {_bkg = 'data\textures\sky\DFSKY0.png';}
+file_text_readln(fnum);
+
+_bkg = file_text_read_string(fnum);
+if !file_exists(_bkg)
+{
+    con_add(':: MAP: ERROR: Текстура фона ' + _bkg + ' не найдена. Установлена стандартная.');
+    _bkg = 'data\sky\D2DSKY1.png';
+}
 global.map_bkg = background_add(_bkg, 0, 0);
-file_text_readln(file);
-tx_n = real(file_text_read_string(file));
-file_text_readln(file);
+file_text_readln(fnum);
+
+tx_n = real(file_text_read_string(fnum));
+file_text_readln(fnum);
 for (i = 1; i < tx_n; i += 1)
 {
-  map_tex_load(file_text_read_string(file));
-  file_text_readln(file);
+  map_tex_load(file_text_read_string(fnum));
+  file_text_readln(fnum);
 }
-while !file_text_eof(file)
-{
-  o_id = real(file_text_read_string(file));
-  file_text_readln(file);
-  t_id = real(file_text_read_string(file));
-  file_text_readln(file);
-  o_x = real(file_text_read_string(file));
-  file_text_readln(file);
-  o_y = real(file_text_read_string(file));
-  file_text_readln(file);
-  map_obj_create(o_id, t_id, o_x, o_y);
-}
-file_text_close(file);
 
-global.map_md5 = file_md5(f);
+var obj_id, ext_id, o_x, o_y;
+obj_id = -1; ext_id = -1;
+o_x = -1; o_y = -1;
+
+while !file_text_eof(fnum)
+{
+  obj_id = real(file_text_read_string(fnum));
+  file_text_readln(fnum);
+  ext_id = real(file_text_read_string(fnum));
+  file_text_readln(fnum);
+  if obj_id >= 0 && obj_id <= 10
+  {
+    o_x = real(file_text_read_string(fnum));
+    file_text_readln(fnum);
+    o_y = real(file_text_read_string(fnum));
+    file_text_readln(fnum);
+    map_obj_create(obj_id, ext_id, o_x, o_y);
+    continue;
+  }
+  //skipping data that we don't need
+  file_text_readln(fnum);
+  file_text_readln(fnum);
+  if obj_id > 43 && obj_id < 49
+  {
+    file_text_readln(fnum);
+    file_text_readln(fnum);
+    if ext_id != 8
+    {
+      file_text_readln(fnum);
+      file_text_readln(fnum);
+      if ext_id != 7
+      {
+        file_text_readln(fnum);
+        file_text_readln(fnum);
+      }
+    }
+  }
+}
+
+file_text_close(fnum);
+global.map_md5 = file_md5(temp_fn);
 
 mus_play(global.map_mus);
 if !global.r_gfx {instance_deactivate_object(o_bkg);}

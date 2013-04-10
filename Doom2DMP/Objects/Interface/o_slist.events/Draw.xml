@@ -36,7 +36,7 @@ for (i = 1; i &lt;= global.slist[0, 5]; i += 1)
     
 }
 draw_set_color(c_white);
-if global.slist[0, 5] &gt; 0 {draw_sprite(s_marker2, 0, 64 - 24, 144 + 16 * select);}
+if global.slist[0, 5] &gt; 0 {draw_sprite(s_marker2, 0, 64 - 24, 140 + 16 * select);}
 else
 {draw_set_color(c_red); draw_text(64, 160, global.slist[1, 1]);}
 

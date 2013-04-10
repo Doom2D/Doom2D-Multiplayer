@@ -14,7 +14,13 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">active = true;
+if !global.mp_gamemode {modestr = 'DM';}
+if global.mp_gamemode == 1 {modestr = 'TDM';}
+if global.mp_gamemode == 2 {modestr = 'CTF';}
+if global.mp_gamemode &gt; 2 {modestr = 'MOD';}
+alarm[2] = 1;
 net_list_clients();
+
 </argument>
       </arguments>
     </action>

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="Control" type="GROUP"/>
+  <resource name="Interface" type="GROUP"/>
+  <resource name="Dialogs" type="GROUP"/>
+  <resource name="Map" type="GROUP"/>
+  <resource name="Routine" type="GROUP"/>
+  <resource name="ed_create_panel" type="RESOURCE"/>
+  <resource name="ed_draw_panel" type="RESOURCE"/>
+  <resource name="ed_tex_select" type="RESOURCE"/>
+  <resource name="ed_tex_load" type="RESOURCE"/>
+  <resource name="ed_tex_delete" type="RESOURCE"/>
+  <resource name="ed_spr_select" type="RESOURCE"/>
   <resource name="Max WinAPI 2" type="GROUP"/>
-  <resource name="Editor" type="GROUP"/>
 </resources>

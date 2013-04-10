@@ -13,12 +13,22 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">active = false;
+        <argument kind="STRING">image_speed = 0;
+
+active = false;
+menu = false
+alarm[11] = 1;;
 alarm[0] = 64;
 str[1] = '';
 str[2] = '';
 str[3] = '';
 pain_alpha = 0;
+dem_img = global.dem_mode;
+alarm[1] = 30;
+pingstr = '';
+demostr = '';
+modestr = '';
+viewing = global.pl_id;
 
 for (i = 1; i &lt;= 4; i += 1)
 {
@@ -28,6 +38,7 @@ for (i = 1; i &lt;= 4; i += 1)
     global.hud_text[i, 4] = 0;
     global.hud_text[i, 5] = 0;
 }
+huddraw = max(0, global.r_drawhud - global.dem_menu);
 </argument>
       </arguments>
     </action>

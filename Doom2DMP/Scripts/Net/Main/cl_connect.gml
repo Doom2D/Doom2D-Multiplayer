@@ -14,6 +14,7 @@ global.map_desc = '';
 global.team_score[1] = 0;
 global.team_score[2] = 0;
 global.debug_counter = 0;
+if global.dem_b == -1 {global.dem_b = dycreatebuffer();}
 
 for(i=0; i < 255; i+=1)
 {
@@ -24,14 +25,21 @@ for(i=0; i < 8192; i+=1)
     global.cl_itm[i] = noone;
 }
 
+ds_list_destroy(global.cl_tiles);
+global.cl_tiles = ds_list_create();
+
 con_parse('cls');
+
+if global.dem_will == 'PLAY' {demo_play();}
+
+if global.dem_mode >= 2 {exit;}
 
 //divide the ip string
 istr = string_explode(global.sv_ip, ':', false);
 if is_real(ds_list_find_value(istr, 0))
 {
     con_add(":: NET: Неверный адрес.");
-    dll39_socket_close(global.cl_tcp);
+    dyclosesock(global.cl_tcp);
     mus_play(global.mus_menu);
     room_goto(rm_menu);
     ds_list_destroy(istr);
@@ -45,33 +53,35 @@ ds_list_destroy(istr);
 //try to connect
 con_add(":: NET: Пытаемся соединиться с " + string(ip) + ":" + string(prt) + "...");
 screen_redraw();
-global.cl_tcp = dll39_tcp_connect(ip, prt, 1);
+global.cl_tcp = dytcpconnect(ip, prt, true);
 
-if !dll39_tcp_connected(global.cl_tcp)
+if !dytcpconnected(global.cl_tcp)
 {
     //did not connect
     con_add(':: NET: ERROR: Невозможно соединиться с ' + string(ip) + ':' + string(prt)); 
-    dll39_socket_close(global.cl_tcp);
+    dyclosesock(global.cl_tcp);
     mus_play(global.mus_menu);
     room_goto(rm_menu);
     exit;
 }
 else
 {
+    if global.dem_will == 'ДА' {demo_rec();}
+    
     //did connect
-    dll39_set_nagle(global.cl_tcp, 1);
+    dysetnagle(global.cl_tcp, 1);
     con_add(':: NET: Успешно присоединились к ' + string(ip) + ':' + string(prt));
     
     //send our shit to host
-    dll39_buffer_clear(0);
-    dll39_write_string(global.pl_name, 0);
-    dll39_write_string(global.pl_skin, 0);
-    dll39_write_int(global.pl_color, 0);
-    dll39_write_byte(global.pl_team, 0);
-    dll39_write_string(global.sys_ver, 0);
-    dll39_write_string(global.sys_bld, 0);
-    dll39_write_string(global.sv_password, 0);
-    dll39_message_send(global.cl_tcp, 0, 0, 0);
+    dyclearbuffer(0);
+    dywritestring(global.pl_name, 0);
+    dywritestring(global.pl_skin, 0);
+    dywriteint(global.pl_color, 0);
+    dywritebyte(global.pl_team, 0);
+    dywritestring(global.sys_ver, 0);
+    dywritestring(global.sys_bld, 0);
+    dywritestring(global.sv_password, 0);
+    dysendmessage(global.cl_tcp, 0, 0, 0);
     con_add(':: NET: Отослана информация о клиенте.');
 }
 

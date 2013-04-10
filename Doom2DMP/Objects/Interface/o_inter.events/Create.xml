@@ -13,10 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">global.map_mus = FMODSoundAdd('data\gui\music\scores.xm');
+        <argument kind="STRING">image_speed = 0;
+
+global.map_mus = FMODSoundAdd('data\gui\music\scores.xm');
 FMODSoundSetGroup(global.map_mus, 3);
 mus_play(global.map_mus);
 snd_play(26);
+global.menu_id = 0;
 if global._inter_reconnect {alarm[0] = 60*global.cl_rc_time;}
 </argument>
       </arguments>

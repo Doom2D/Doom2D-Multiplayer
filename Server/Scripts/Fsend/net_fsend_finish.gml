@@ -1,6 +1,6 @@
 //finishes the file sending process
 //a0 - client id
-file_bin_close(fsend_file);
+if fsend_state && fsend_file != -1 {file_bin_close(fsend_file);}
 
 con_add(':: NET: FSEND: Клиенту ' + id_to_cl(argument0).cl_name + ' отослан файл ' + fsend_path + '.');
 

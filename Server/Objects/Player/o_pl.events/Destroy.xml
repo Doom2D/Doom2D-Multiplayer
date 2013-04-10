@@ -20,10 +20,10 @@ ds_list_delete(global.name_taken, list_get_ind('name_taken', cl_name));
 plr_send_effect(3, x, y);
 plr_send_sound(20, x, y);
 item_drop();
-dll39_socket_close(cl_tcp);
+dyclosesock(cl_tcp);
 
-//close map laoding stuff
-if fsend_state 
+//close map loading stuff
+if fsend_state &amp;&amp; fsend_file != -1
 {
     file_bin_close(fsend_file);
     fsend_state = 0;

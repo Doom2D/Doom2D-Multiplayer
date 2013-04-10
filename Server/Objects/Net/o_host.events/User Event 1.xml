@@ -29,10 +29,10 @@ if red &gt; blu + 1
             plr_send_team();
             plr_send_skin();
             plr_kill(cl_id);
-            dll39_buffer_clear(0);
-            dll39_write_byte(5, 0);
-            dll39_write_string(':: SERVER: mp_autobalance переместил вас в другую команду.', 0);
-            dll39_message_send(cl_tcp, 0, 0, 0);
+            dyclearbuffer(0);
+            dywritebyte(5, 0);
+            dywritestring(':: SERVER: Вы переведены в другую команду для баланса.', 0);
+            dysendmessage(cl_tcp, 0, 0, 0);
             break;
         }
     }
@@ -49,10 +49,10 @@ if blu &gt; red + 1
             plr_send_team();
             plr_send_skin();
             plr_kill(cl_id);
-            dll39_buffer_clear(0);
-            dll39_write_byte(5, 0);
-            dll39_write_string(':: SERVER: mp_autobalance переместил вас в другую команду.', 0);
-            dll39_message_send(cl_tcp, 0, 0, 0);
+            dyclearbuffer(0);
+            dywritebyte(5, 0);
+            dywritestring(':: SERVER: Вы переведены в другую команду для баланса.', 0);
+            dysendmessage(cl_tcp, 0, 0, 0);
             break;
         }
     }

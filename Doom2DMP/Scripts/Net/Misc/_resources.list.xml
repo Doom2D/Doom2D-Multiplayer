@@ -5,4 +5,6 @@
   <resource name="id_to_cl" type="RESOURCE"/>
   <resource name="net_rcon" type="RESOURCE"/>
   <resource name="net_ping" type="RESOURCE"/>
+  <resource name="net_find_plr" type="RESOURCE"/>
+  <resource name="net_vote" type="RESOURCE"/>
 </resources>

@@ -20,9 +20,12 @@ if place_meeting(x, y, o_lift_up) {vspeed -= 0.5;}
 if place_meeting(x, y, o_lift_down) {vspeed += 0.5;}
 if p_type == 1 {image_angle = direction;}
 
-/*if direction == 0 || direction == 180 || direction == 90 || direction == 270 {exit;}
+/*
+if direction == 0 || direction == 180 || direction == 90 || direction == 270 {exit;}
 if place_meeting(x, y, o_lift_left) {direction -= 1;}
-if place_meeting(x, y, o_lift_right) {direction += 1;}*/
+if place_meeting(x, y, o_lift_right) {direction += 1;}
+*/
+
 if place_meeting(x, y, o_lift_left) 
 {   
     hspeed -= 0.5;

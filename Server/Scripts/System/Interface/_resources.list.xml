@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
   <resource name="Console" type="GROUP"/>
-  <resource name="WinApi" type="GROUP"/>
+  <resource name="Window" type="GROUP"/>
+  <resource name="Max WinAPI 2" type="GROUP"/>
 </resources>

@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if !sprite_exists(sprite_index) {exit;}
-if x + sprite_width &lt;= view_xview || x &gt;= view_xview + view_wview - 200 {exit;}
+if x + sprite_width &lt;= view_xview || x &gt;= view_xview + view_wview - o_camera.bkoffset {exit;}
 if y + sprite_height &lt;= view_yview || y &gt;= view_yview + view_hview {exit;}
 draw_sprite(sprite_index, image_index, x, y);
 </argument>

@@ -10,10 +10,14 @@
   <resource name="s_ammo" type="RESOURCE"/>
   <resource name="s_jetpack" type="RESOURCE"/>
   <resource name="tex_none" type="RESOURCE"/>
+  <resource name="tex_error" type="RESOURCE"/>
   <resource name="s_lifts" type="RESOURCE"/>
   <resource name="s_spawn" type="RESOURCE"/>
   <resource name="s_bon1" type="RESOURCE"/>
   <resource name="s_bon2" type="RESOURCE"/>
+  <resource name="s_vis" type="RESOURCE"/>
   <resource name="s_flag_r" type="RESOURCE"/>
   <resource name="s_flag_b" type="RESOURCE"/>
+  <resource name="s_trigger" type="RESOURCE"/>
+  <resource name="s_point" type="RESOURCE"/>
 </resources>

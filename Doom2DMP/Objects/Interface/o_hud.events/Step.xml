@@ -27,9 +27,18 @@ if !instance_exists(global.cl_inst) {exit;}
 with global.cl_inst
 {
     if !variable_local_exists('dead') {exit;}
-    if !dead {FMODListenerSet3dPosition(1, x, y, 0);} else {FMODListenerSet3dPosition(1, view_xview + 512, view_yview + 384, 0); with o_pl {dname = true; alarm[3] = global.cl_fps_max/2;}}
-
+    if !dead {FMODListenerSet3dPosition(1, x, y, 0);} else {FMODListenerSet3dPosition(1, view_xview + 512, view_yview + 384, 0);
+    with o_pl {dname = true; alarm[3] = global.cl_fps_max/2;}}
 }
+if global.dem_mode != 2 {exit;}
+if global.dem_pause
+{
+    with o_pl {x = xprevious; y = yprevious;};
+    with o_projectile {x = xprevious; y = yprevious;};
+}
+
+
+
 </argument>
       </arguments>
     </action>

@@ -13,10 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">sys_init();
+        <argument kind="STRING">image_speed = 0;
+
+sys_init();
 host_init();
 alarm[2] = global.sv_rate;
-if global.sv_fps_correct {alarm[10] = global.sv_fps_max;}
+alarm[5] = 2 * global.sv_fps_max;
+if global.sv_fps_correct {alarm[10] = 1;}
 str = '';
 room_speed = global.sv_fps_max;
 
@@ -24,7 +27,7 @@ _warn[1] = 0;
 _warn[2] = 0;
 if quiet {exit;}
 alarm[3] = 60;
-API_Window_SetText(global.gui[0], global.sv_name + '- ' + global.sys_ver + '(' + global.sys_bld + ')');
+API_Window_SetText(global.gui[0], global.sv_name + '- ' + global.sys_ver + ' (' + global.sys_bld + ')');
 </argument>
       </arguments>
     </action>

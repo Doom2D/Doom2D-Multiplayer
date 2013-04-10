@@ -3,6 +3,5 @@
   <resource name="s_pl_mask" type="RESOURCE"/>
   <resource name="s_wpns" type="RESOURCE"/>
   <resource name="s_wpns_f" type="RESOURCE"/>
-  <resource name="s_respawn" type="RESOURCE"/>
   <resource name="s_plr_talk" type="RESOURCE"/>
 </resources>

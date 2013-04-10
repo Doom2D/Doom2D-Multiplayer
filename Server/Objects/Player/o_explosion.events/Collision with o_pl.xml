@@ -15,10 +15,10 @@
       <arguments>
         <argument kind="STRING">if global.mp_knockback
 {
-    if other.x &lt; x {other.hsp = -8;}
-    if other.x &gt; x {other.hsp = 8;}   
-    if other.y &gt; y {other.vsp = 8;} 
-    if other.y &lt; y {other.vsp = -8;} 
+    if other.x &lt; x {other.hsp = -7.8;}
+    if other.x &gt; x {other.hsp = 7.8;}   
+    if other.y &gt; y {other.vsp = 7.8;} 
+    if other.y &lt; y {other.vsp = -7.8;} 
     with (other) {plr_send_speed();}
 }
 if other.pt &gt; 0 {exit;}

@@ -1,4 +1,5 @@
 //draws text messages
+if !global.r_drawhud {exit;}
 draw_set_font(global.fnt_sys);
 draw_set_alpha(0.8);
 draw_set_color(msg_color2);

@@ -1,9 +1,9 @@
 //packs the map into a 7z archive
 //a0 - map name
 if !global.sv_dl_allow {exit;}
-if !file_exists('7zs.exe')
+if !file_exists('7z_sv.exe')
 {
-    con_add(':: MAP: PACK: ERROR: 7zs.exe не найден.');
+    con_add(':: MAP: PACK: ERROR: 7z_sv.exe не найден.');
     exit;    
 }
 if !file_exists('data\maps\' + string(argument0) + '.dlv')
@@ -41,7 +41,7 @@ if directory_exists(working_directory + '\data\textures\' + mapname) {tex = '"da
 pack = '"' + working_directory + '\data\temp\' + mapname + '.7z' + '" ';
 
 //launches 7z.exe
-execute_program('7zs.exe', ' a -r -y -mx9 ' + pack + sky + mus + tex + '"data\maps\' + mapname + '.dlv"', true);
+execute_program('7z_sv.exe', ' a -r -y -mx9 ' + pack + sky + mus + tex + '"data\maps\' + mapname + '.dlv"', true);
 sleep(30);
 
 if file_exists(working_directory + '\data\temp\' + mapname + '.7z')

@@ -19,10 +19,13 @@ else
 {
     con_add(':: SYSTEM: Обнаружена(ы) ошибка(и) GML. См. game_errors.log.');
 }
-if !o_host.quiet {con_add(':: WINAPI: Отключение успешно.');}
+if !o_host.quiet
+{
+    API_Free();
+    con_add(':: WINAPI: Отключение успешно.');
+}
 con_add(':: SYSTEM: Дата: ' + con_timestamp()) ;
 con_add('====SERVER SHUTDOWN====');
-if !o_host.quiet {API_Free();}
 
 //restarting or exiting
 if argument1

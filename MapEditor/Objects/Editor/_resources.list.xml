@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="o_ctrl" type="RESOURCE"/>
+  <resource name="o_cam" type="RESOURCE"/>
+  <resource name="par_obj" type="RESOURCE"/>
+</resources>

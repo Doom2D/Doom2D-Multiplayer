@@ -26,11 +26,13 @@ switch p_type
     break;
     case 2:
     //plasma
+        if (place_meeting(x, y, o_water) || place_meeting(x, y, o_acid)) &amp;&amp; global.mp_waterfrag == 2 {break;}
         plr_send_effect(5, x, y);
         plr_send_sound(25, x, y);
     break;
     case 3:
     //bfg
+        if (place_meeting(x, y, o_water) || place_meeting(x, y, o_acid)) &amp;&amp; global.mp_waterfrag == 2 {break;}
         bfg_hit();
         plr_send_xplos(l_id, 2, x, y);
     break;

@@ -5,7 +5,7 @@ if argument0 == '' || argument0 == '0' {file = 'data\cfg\game.cfg';}
 if !string_count('.cfg', file) {file += '.cfg';}
 if !file_exists(file)
 {
-  con_add(':: ERROR: Нет такого файла ' + string(file) + '!');
+  con_add(':: ERROR: Файл не найден: ' + string(file) + '.');
   exit;
 }
 cfg = file_text_open_read(file);

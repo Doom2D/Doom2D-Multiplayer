@@ -13,13 +13,14 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if x &lt;= view_xview - 96 || x &gt;= view_xview + view_wview - 200 + 96 {exit;}
-if y &lt;= view_yview - 96 || y &gt;= view_yview + view_hview {exit;}
+        <argument kind="STRING">if x + 96 &lt;= view_xview || x - 96 &gt;= view_xview + view_wview - o_camera.bkoffset {exit;}
+if y + 96 &lt;= view_yview || y - 96 &gt;= view_yview + view_hview {exit;}
 if !sprite_exists(sprites[spr, 0]) {exit;}
 if !variable_local_exists('cl_color') {exit;}
 if !variable_global_exists('cl_inst') {exit;}
 if dead {exit;}
 if global.fget_state {exit;}
+
 
 if st_flag == 1
 {
@@ -32,7 +33,7 @@ if st_flag == 2
 
 if !pain &amp;&amp; r_weapon 
 { 
-    if !attack {draw_sprite_ext(s_wpns, w, x + r_xoff[r_off]*image_xscale, y + r_yoff[r_off], image_xscale, image_yscale, w_rot, c_white, 1);} else {draw_sprite_ext(s_wpns_f, w, x + r_xoff[r_off]*image_xscale, y + r_yoff[r_off], image_xscale, image_yscale, w_rot, c_white, 1);}
+    if !attack {draw_sprite_ext(s_wpns, w, x + r_xoff[r_off]*image_xscale, y + r_yoff[r_off], image_xscale, image_yscale, w_rot, c_white, image_alpha);} else {draw_sprite_ext(s_wpns_f, w, x + r_xoff[r_off]*image_xscale, y + r_yoff[r_off], image_xscale, image_yscale, w_rot, c_white, image_alpha);}
 }
 draw_sprite_ext(sprites[spr, 0], image_index, x, y, image_xscale, image_yscale, 0, image_blend, image_alpha);
 draw_sprite_ext(sprites[spr, 1], image_index, x, y, image_xscale, image_yscale, 0, cl_color, image_alpha);
@@ -43,7 +44,7 @@ if st_talk &amp;&amp; id != global.cl_inst
     dname = true; alarm[3] = global.cl_fps_max;
 }
 
-if !global.r_names || !dname {exit;}
+if !global.r_names || !dname || id == global.cl_inst {exit;}
 draw_set_font(global.fnt_sys);
 draw_set_halign(fa_center);
 draw_text(x, y - 48, cl_name);

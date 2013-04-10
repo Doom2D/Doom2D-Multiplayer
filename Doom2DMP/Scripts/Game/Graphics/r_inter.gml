@@ -57,7 +57,7 @@ if !global.mp_gamemode
     for (i = 1; i <= frg[0, 0]; i+=1) 
     {
         if frg[order[i], 2] >= 0 {
-        if frg[order[i], 3] == global.pl_id {global.inter_text[0] += string(i) + '. [' + frg[order[i], 1] + "]: #";} else {global.inter_text[0] += string(i) + '. ' + frg[order[i], 1] + ": #";}
+        if frg[order[i], 3] == global.pl_id {global.inter_text[0] += string(i) + '. [' + frg[order[i], 1] + "] #";} else {global.inter_text[0] += string(i) + '. ' + frg[order[i], 1] + " #";}
         global.inter_text[1] += string(frg[order[i], 2]) + '#';}
     }
 }
@@ -104,7 +104,7 @@ else
     for (i = 1; i <= frg[0, 0]; i+=1) 
     {
         if frg[order[i], 2] >= 0 {
-        if frg[order[i], 3] == global.pl_id {global.inter_text[0] += string(i) + '. [' + frg[order[i], 1] + "]: #";} else {global.inter_text[0] += string(i) + '. ' + frg[order[i], 1] + ": #";}
+        if frg[order[i], 3] == global.pl_id {global.inter_text[0] += string(i) + '. [' + frg[order[i], 1] + "] #";} else {global.inter_text[0] += string(i) + '. ' + frg[order[i], 1] + " #";}
         global.inter_text[1] += string(frg[order[i], 2]) + '#';}
     }
     global.inter_text[0] += '#';
@@ -162,3 +162,4 @@ else
 
 if argument0 == 2 {global.inter_text[0] += '###';}
 if argument0 == 1 {global._inter_reconnect = true;}
+if global.dem_mode == 2 {global.cl_rc_time = 10; global._inter_reconnect = false;}

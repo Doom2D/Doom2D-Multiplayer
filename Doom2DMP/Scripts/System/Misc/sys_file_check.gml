@@ -56,6 +56,11 @@ if !directory_exists('data\temp')
     con_add(":: SYSTEM: WARNING: Папка 'data\temp\' не найдена. ");
     directory_create('data\temp');
 }
+if !directory_exists('demos')
+{
+    con_add(":: SYSTEM: WARNING: Папка 'demos\' не найдена. ");
+    directory_create('demos');
+}
 else
 {
     if global.sys_cleanup

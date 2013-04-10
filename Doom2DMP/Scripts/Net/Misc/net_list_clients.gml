@@ -1,7 +1,7 @@
 if !variable_global_exists("pl_id") {exit;}
 str[1] = '###ID#';
 str[2] = '###ИМЯ#';
-str[3] = '###ФРАГИ#';
+str[3] = '###ОЧКИ#';
 
 if global.mp_gamemode == 0
 {
@@ -11,7 +11,7 @@ if global.mp_gamemode == 0
         if !instance_exists(global.cl_plr[i]) {continue;}
         with global.cl_plr[i] {if !variable_local_exists('cl_name') {continue;}}
         str[1] += string(i) + "#";
-            if i == global.pl_id {str[2] += '[' + global.cl_plr[i].cl_name + "]#";} else {str[2] += global.cl_plr[i].cl_name + "#";}
+            if i == viewing {str[2] += '[' + global.cl_plr[i].cl_name + "]#";} else {str[2] += global.cl_plr[i].cl_name + "#";}
         str[3] += string(global.cl_plr[i].frag) + "#";
     }
     exit;
@@ -28,7 +28,7 @@ for (i = 1; i <= global.sv_maxplayers; i += 1)
     with global.cl_plr[i] {if !variable_local_exists('cl_name') {continue;}}
     if global.cl_plr[i].cl_team != 1 {continue;}
     str[1] += string(i) + "#";
-    if i == global.pl_id {str[2] += '[' + global.cl_plr[i].cl_name + "]#";} else {str[2] += global.cl_plr[i].cl_name + "#";}
+    if i == viewing {str[2] += '[' + global.cl_plr[i].cl_name + "]#";} else {str[2] += global.cl_plr[i].cl_name + "#";}
     str[3] += string(global.cl_plr[i].frag) + "#";
 }
 
@@ -44,7 +44,7 @@ for (i = 1; i <= global.sv_maxplayers; i += 1)
     with global.cl_plr[i] {if !variable_local_exists('cl_name') {continue;}}
     if global.cl_plr[i].cl_team != 2 {continue;}
     str[1] += string(i) + "#";
-    if i == global.pl_id {str[2] += '[' + global.cl_plr[i].cl_name + "]#";} else {str[2] += global.cl_plr[i].cl_name + "#";}
+    if i == viewing {str[2] += '[' + global.cl_plr[i].cl_name + "]#";} else {str[2] += global.cl_plr[i].cl_name + "#";}
     str[3] += string(global.cl_plr[i].frag) + "#";
 }
 

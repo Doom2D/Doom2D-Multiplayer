@@ -9,7 +9,7 @@ ds_list_replace(cmd, 0, string_lower(ds_list_find_value(cmd, 0)));
 if !(ds_list_find_value(cmd, 0) == 'echo' || ds_list_find_value(cmd, 0) == 'say') {con_add('> ' + argument0, true);}
 if ds_list_find_value(cmd, 0) == 'help'
 {
-  con_add('==Базовые команды===');
+  con_add('=== Базовые команды ===');
   con_add('help - выводит этот список');
   con_add('cfg_exec CONF - загружает конфигурацию из файла data\cfg\CONF.cfg');
   con_add('cfg_save CONF - сохраняет настройки в файл data\cfg\CONF.cfg');
@@ -18,7 +18,7 @@ if ds_list_find_value(cmd, 0) == 'help'
   con_add('cfg_load CFG - загрузить конфигурационный файл CFG');
   con_add('cfg_save CFG - сохранить конфигурационный файл CFG');
   con_add('disconnect - отсоединиться от сервера');
-  con_add('======================');
+  con_add('=======================');
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'exit' or ds_list_find_value(cmd, 0) == 'quit'
@@ -50,32 +50,33 @@ if ds_list_find_value(cmd, 0) == 'name'
 }
 if ds_list_find_value(cmd, 0) == 's_vol_sound'
 {
-  if is_real(ds_list_find_value(cmd, 1)) || string_letters(ds_list_find_value(cmd, 1)) != ''
+  if is_real(ds_list_find_value(cmd, 1))
   {
     con_add(string(FMODGroupGetVolume(2)*100));
     exit;
   } 
-  if ds_list_find_value(cmd, 1) == ''
+  if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
   {
     con_add(string(FMODGroupGetVolume(2)*100));
     exit;
   } 
-  FMODGroupSetVolume(2, real(ds_list_find_value(cmd, 1))/100);
+  FMODGroupSetVolume(2, real(string_digits(ds_list_find_value(cmd, 1)))/100);
+  FMODGroupSetVolume(1, FMODGroupGetVolume(2));
   exit;
 }
 if ds_list_find_value(cmd, 0) == 's_vol_music'
 {
-  if is_real(ds_list_find_value(cmd, 1)) || string_letters(ds_list_find_value(cmd, 1)) != ''
+  if is_real(ds_list_find_value(cmd, 1))
   {
     con_add(string(FMODGroupGetVolume(3)*100));
     exit;
   } 
-  if ds_list_find_value(cmd, 1) == ''
+  if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
   {
     con_add(string(FMODGroupGetVolume(3)*100));
     exit;
   } 
-  FMODGroupSetVolume(3, real(ds_list_find_value(cmd, 1))/100);
+  FMODGroupSetVolume(3, real(string_digits(ds_list_find_value(cmd, 1)))/100);
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'color'
@@ -204,26 +205,44 @@ if ds_list_find_value(cmd, 0) == 'r_names'
     con_add('r_names = ' + string(global.r_names));
     exit;
 }
+if ds_list_find_value(cmd, 0) == 'r_wsplash'
+{
+    if is_real(ds_list_find_value(cmd, 1))
+    {
+        con_add(string(global.r_wsplash));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(ds_list_find_value(cmd, 1)) != ''
+    {
+        con_add(string(global.r_wsplash));
+        exit;
+    }
+    global.r_wsplash = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_wsplash < 0 || global.r_wsplash > 1 {global.r_wsplash = 1;}
+    con_add('r_wsplash = ' + string(global.r_wsplash));
+    exit;
+}
 if ds_list_find_value(cmd, 0) == 'r_window'
 {
     if is_real(ds_list_find_value(cmd, 1)) 
     {
-        if window_get_fullscreen() {con_add('0');} else {con_add('1');}
+        con_add(string(global.r_window));
         exit;
     }
     if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
     {
-        if window_get_fullscreen() {con_add('0');} else {con_add('1');}
+        con_add(string(global.r_window));
         exit;
     }
-    if real(string_digits(ds_list_find_value(cmd, 1))) == 0
+    if room != rm_init && room != rm_menu
     {
-        window_set_fullscreen(true);
+        con_add('Этот параметр нельзя менять во время игры.');
+        exit;
     }
-    else
-    {
-        window_set_fullscreen(false);
-    }
+    global.r_window = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_window < 0 || global.r_window > 1 {global.r_window = 0;}
+    con_add('Изменения вступят в силу после перезапуска.');
+    con_add('r_window = ' + string(global.r_window));
     exit;
 }
 if ds_list_find_value(cmd, 0) == 'r_fskip'
@@ -240,7 +259,8 @@ if ds_list_find_value(cmd, 0) == 'r_fskip'
     }
     global.r_fskip = real(string_digits(ds_list_find_value(cmd, 1)));
     if global.r_fskip < 0 || global.r_fskip > 1 {global.r_fskip = 1;}
-    con_add('[ИЗМЕНЕНИЯ ВСТУПЯТ В СИЛУ ПОСЛЕ ПЕРЕЗАГРУЗКИ] r_fskip = ' + string(global.r_fskip));
+    con_add('Изменения вступят в силу после перезапуска.');
+    con_add('r_fskip = ' + string(global.r_fskip));
     exit;
 }
 if ds_list_find_value(cmd, 0) == 'r_scale'
@@ -257,12 +277,13 @@ if ds_list_find_value(cmd, 0) == 'r_scale'
     }
     global.r_scale = real(string_digits(ds_list_find_value(cmd, 1)));
     if global.r_scale < 0 || global.r_scale > 1 {global.r_scale = 1;}
+    con_add('Изменения вступят в силу после перезапуска.');
     con_add('r_scale = ' + string(global.r_scale));
     exit;
 }
 if ds_list_find_value(cmd, 0) == 'r_width'
 {
-    if is_real(ds_list_find_value(cmd, 1)) 
+    if is_real(ds_list_find_value(cmd, 1))
     {
         con_add(string(global.r_width));
         exit;
@@ -272,14 +293,20 @@ if ds_list_find_value(cmd, 0) == 'r_width'
         con_add(string(global.r_width));
         exit;
     }
+    if room != rm_init && room != rm_menu
+    {
+        con_add('Этот параметр нельзя менять во время игры.');
+        exit;
+    }
     global.r_width = real(string_digits(ds_list_find_value(cmd, 1)));
-    if global.r_width < 640 || global.r_width > 2048 {global.r_width = 1024;}
+    if global.r_width < 640 || global.r_width > 2048 {global.r_width = 800;}
+    con_add('Изменения вступят в силу после перезапуска.');
     con_add('r_width = ' + string(global.r_width));
     exit;
 }
 if ds_list_find_value(cmd, 0) == 'r_height'
 {
-    if is_real(ds_list_find_value(cmd, 1)) 
+    if is_real(ds_list_find_value(cmd, 1))
     {
         con_add(string(global.r_height));
         exit;
@@ -289,8 +316,14 @@ if ds_list_find_value(cmd, 0) == 'r_height'
         con_add(string(global.r_height));
         exit;
     }
+    if room != rm_init && room != rm_menu
+    {
+        con_add('Этот параметр нельзя менять во время игры.');
+        exit;
+    }
     global.r_height = real(string_digits(ds_list_find_value(cmd, 1)));
-    if global.r_height < 480 || global.r_height > 2048 {global.r_height = 768;}
+    if global.r_height < 480 || global.r_height > 2048 {global.r_height = 600;}
+    con_add('Изменения вступят в силу после перезапуска.');
     con_add('r_height = ' + string(global.r_height));
     exit;
 }
@@ -308,7 +341,8 @@ if ds_list_find_value(cmd, 0) == 'r_fps_correct'
     }
     global.r_fps_correct = real(string_digits(ds_list_find_value(cmd, 1)));
     if global.r_fps_correct < 0 || global.r_fps_correct > 1 {global.r_fps_correct = 1;}
-    con_add('[ИЗМЕНЕНИЯ ВСТУПЯТ В СИЛУ ПОСЛЕ ПЕРЕЗАГРУЗКИ] r_fps_correct = ' + string(global.r_fps_correct));
+    con_add('Изменения вступят в силу после перезапуска.');
+    con_add('r_fps_correct = ' + string(global.r_fps_correct));
     exit;
 }
 if ds_list_find_value(cmd, 0) == 'r_vsync'
@@ -325,7 +359,7 @@ if ds_list_find_value(cmd, 0) == 'r_vsync'
     }
     global.r_vsync = real(string_digits(ds_list_find_value(cmd, 1)));
     if global.r_vsync < 0 || global.r_vsync > 1 {global.r_vsync = 1;}
-    set_synchronization(global.r_vsync);
+    con_add('Изменения вступят в силу после перезапуска.');
     con_add('r_vsync = ' + string(global.r_vsync));
     exit;
 }
@@ -346,9 +380,46 @@ if ds_list_find_value(cmd, 0) == 'r_announcer'
     con_add('r_announcer = ' + string(global.r_announcer));
     exit;
 }
+if ds_list_find_value(cmd, 0) == 'r_drawhud'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.r_drawhud));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.r_drawhud));
+        exit;
+    }
+    global.r_drawhud = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_drawhud < 0 || global.r_drawhud > 1 {global.r_drawhud = 1;}
+    with o_camera {bkoffset = max(0, global.r_drawhud - global.dem_menu) * 200;}
+    with o_hud {huddraw = max(0, global.r_drawhud - global.dem_menu);}
+    con_add('r_drawhud = ' + string(global.r_drawhud));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'r_depth'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.r_depth));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.r_depth));
+        exit;
+    }
+    global.r_depth = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.r_depth != 16 && global.r_depth != 32 {global.r_depth = display_get_colordepth();}
+    con_add('Изменения вступят в силу после перезапуска.');
+    con_add('r_depth = ' + string(global.r_depth));
+    exit;
+}
 if ds_list_find_value(cmd, 0) == 'r_restart'
 {
-    r_setres(global.r_width, global.r_height);
+    r_screenset();
     exit;
 }
 if ds_list_find_value(cmd, 0) == 's_preload'
@@ -411,22 +482,32 @@ if ds_list_find_value(cmd, 0) == 'rcon'
     net_rcon();
     exit;
 }
-if ds_list_find_value(cmd, 0) == 'ГОРЕЦ'
+if ds_list_find_value(cmd, 0) == 'callvote'
+{
+    net_vote(argument0, 0);
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'vote'
+{
+    net_vote(argument0, 1);
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'горец' || ds_list_find_value(cmd, 0) == 'ГОРЕЦ'
 {
     net_cheat(1);
     exit;
 }
-if ds_list_find_value(cmd, 0) == 'БЕЛЫЙОРЕЛ'
+if ds_list_find_value(cmd, 0) == 'белыйорел' || ds_list_find_value(cmd, 0) == 'БЕЛЫЙОРЕЛ'
 {
     net_cheat(2);
     exit;
 }
-if ds_list_find_value(cmd, 0) == 'RAMBO'
+if ds_list_find_value(cmd, 0) == 'rambo'
 {
     net_cheat(3);
     exit;
 }
-if ds_list_find_value(cmd, 0) == 'IDDQD' || ds_list_find_value(cmd, 0) == 'kill'
+if ds_list_find_value(cmd, 0) == 'iddqd' || ds_list_find_value(cmd, 0) == 'kill'
 {
     net_cheat(4);
     exit;
@@ -447,6 +528,7 @@ if ds_list_find_value(cmd, 0) == 'cl_slist'
   con_add('cl_slist = ' + string(global.cl_slist));
   exit;
 }
+/*
 if ds_list_find_value(cmd, 0) == 'cl_slist_path'
 {
   if is_real(ds_list_find_value(cmd, 1))
@@ -463,6 +545,7 @@ if ds_list_find_value(cmd, 0) == 'cl_slist_path'
   con_add('cl_slist_path = ' + string(global.cl_slist_path));
   exit;
 }
+*/
 if ds_list_find_value(cmd, 0) == 'cl_rate'
 {
     if is_real(ds_list_find_value(cmd, 1)) 
@@ -497,6 +580,40 @@ if ds_list_find_value(cmd, 0) == 'cl_sync_type'
     con_add('cl_sync_type = ' + string(global.cl_sync_type));
     exit;
 }
+if ds_list_find_value(cmd, 0) == 'cl_interp'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.cl_interp));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.cl_interp));
+        exit;
+    }
+    global.cl_interp = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.cl_interp < 0 || global.cl_interp > 16 {global.cl_interp = 16;}
+    con_add('cl_interp = ' + string(global.cl_interp));
+    exit;
+}
+if ds_list_find_value(cmd, 0) == 'cl_physics'
+{
+    if is_real(ds_list_find_value(cmd, 1)) 
+    {
+        con_add(string(global.cl_physics));
+        exit;
+    }
+    if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
+    {
+        con_add(string(global.cl_physics));
+        exit;
+    }
+    global.cl_physics = real(string_digits(ds_list_find_value(cmd, 1)));
+    if global.cl_physics < 0 || global.cl_physics > 1 {global.cl_physics = 1;}
+    con_add('cl_physics = ' + string(global.cl_physics));
+    exit;
+}
 if ds_list_find_value(cmd, 0) == 'cl_dl_allow'
 {
     if is_real(ds_list_find_value(cmd, 1)) 
@@ -507,6 +624,11 @@ if ds_list_find_value(cmd, 0) == 'cl_dl_allow'
     if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
     {
         con_add(string(global.cl_dl_allow));
+        exit;
+    }
+    if global.fget_state
+    {
+        con_add('Этот параметр нельзя менять во время приема файлов.');
         exit;
     }
     global.cl_dl_allow = real(string_digits(ds_list_find_value(cmd, 1)));
@@ -524,6 +646,11 @@ if ds_list_find_value(cmd, 0) == 'cl_dl_override'
     if ds_list_find_value(cmd, 1) == '' || string_letters(string(ds_list_find_value(cmd, 1))) != ''
     {
         con_add(string(global.cl_dl_override));
+        exit;
+    }
+    if global.fget_state
+    {
+        con_add('Этот параметр нельзя менять во время приема файлов.');
         exit;
     }
     global.cl_dl_override = real(string_digits(ds_list_find_value(cmd, 1)));
