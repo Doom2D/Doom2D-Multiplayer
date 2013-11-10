@@ -57,6 +57,7 @@ st_bpk = 0; //backpack
 st_vis = 0; //invisibility
 st_talk = 0;
 st_flag = 0; //if 1, carries the red flag, 2 - the blu flag
+st_suit = 0;
 voted = false;
 
 fsend_path = '';
@@ -66,6 +67,7 @@ fsend_state = 0;
 fsend_size = 0;
 fsend_md5 = '';
 fsend_cmd5 = '';
+fsend_buf = -1;
 
 alarm[0] = 2;
 alarm[2] = 1;

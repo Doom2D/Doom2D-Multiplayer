@@ -13,9 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">//because fps updates once a second this shit is needed
-//global.fps_last = fps;
-alarm[11] = global.sv_fps_max;
+        <argument kind="STRING">sys_fps_correct();
+alarm[10] = global.sv_fps_max * 2;
 </argument>
       </arguments>
     </action>

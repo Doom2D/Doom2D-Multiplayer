@@ -21,7 +21,7 @@ cl_inst.cl_name = argument2;
 cl_inst.cl_skin = argument3;
 cl_inst.cl_color = argument4;
 cl_inst.cl_team = argument6;
-global.sv_plr[i] = cl_inst;
+global.sv_plr[argument0] = cl_inst;
 
 if global.mp_gamemode
 {

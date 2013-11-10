@@ -1,4 +1,4 @@
-//returns the number of players in correpsonding team
+//returns the number of players in corresponding team
 var c;
 c = 0;
 with o_pl

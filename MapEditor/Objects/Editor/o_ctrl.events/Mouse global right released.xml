@@ -13,42 +13,41 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">x2 = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz);
-y2 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz);
+        <argument kind="STRING">x2 = round_mouse_x();
+y2 = round_mouse_y();
 
-    if !keyboard_check(vk_shift) {exit;}
-    with par_obj
+if !keyboard_check(vk_shift) {exit;}
+with par_obj
+{
+  if other.x1 &lt; other.x2 &amp;&amp; other.y1 &lt; other.y2
+  {
+    if x &lt;= other.x2 - 1 &amp;&amp; x &gt;= other.x1 &amp;&amp; y &gt;= other.y1 &amp;&amp; y &lt;= other.y2 - 1
     {
-        if other.x1 &lt; other.x2 &amp;&amp; other.y1 &lt; other.y2
-        {
-            if x &lt;= other.x2 - 1 &amp;&amp; x &gt;= other.x1 &amp;&amp; y &gt;= other.y1 &amp;&amp; y &lt;= other.y2 - 1
-            {
-                event_user(0);
-            }
-        }
-        if other.x1 &gt; other.x2 &amp;&amp; other.y1 &lt; other.y2
-        {
-            if x &lt;= other.x1 + 1 &amp;&amp; x &gt;= other.x2 &amp;&amp; y &gt;= other.y1 &amp;&amp; y &lt;= other.y2 - 1
-            {
-                event_user(0);
-            }
-        }
-        if other.x1 &lt; other.x2 &amp;&amp; other.y1 &gt; other.y2
-        {
-            if x &lt;= other.x2 + 1 &amp;&amp; x &gt;= other.x1 &amp;&amp; y &gt;= other.y2 &amp;&amp; y &lt;= other.y1 - 1
-            {
-                event_user(0);
-            }
-        }
-        if other.x1 &gt; other.x2 &amp;&amp; other.y1 &gt; other.y2
-        {
-            if x &lt;= other.x1 - 1 &amp;&amp; x &gt;= other.x2 &amp;&amp; y &gt;= other.y2 &amp;&amp; y &lt;= other.y1 - 1
-            {
-                event_user(0);
-            }
-        }
+      event_user(0);
     }
-
+  }
+  if other.x1 &gt; other.x2 &amp;&amp; other.y1 &lt; other.y2
+  {
+    if x &lt;= other.x1 + 1 &amp;&amp; x &gt;= other.x2 &amp;&amp; y &gt;= other.y1 &amp;&amp; y &lt;= other.y2 - 1
+    {
+      event_user(0);
+    }
+  }
+  if other.x1 &lt; other.x2 &amp;&amp; other.y1 &gt; other.y2
+  {
+    if x &lt;= other.x2 + 1 &amp;&amp; x &gt;= other.x1 &amp;&amp; y &gt;= other.y2 &amp;&amp; y &lt;= other.y1 - 1
+    {
+      event_user(0);
+    }
+  }
+  if other.x1 &gt; other.x2 &amp;&amp; other.y1 &gt; other.y2
+  {
+    if x &lt;= other.x1 - 1 &amp;&amp; x &gt;= other.x2 &amp;&amp; y &gt;= other.y2 &amp;&amp; y &lt;= other.y1 - 1
+    {
+      event_user(0);
+    }
+  }
+}
 </argument>
       </arguments>
     </action>

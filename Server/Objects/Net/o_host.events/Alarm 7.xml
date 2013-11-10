@@ -13,8 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">con_parse(global.vote_str);
-net_vote_clean();
+        <argument kind="STRING">con_parse(global.vote_old);
+global.vote_old = '';
 </argument>
       </arguments>
     </action>

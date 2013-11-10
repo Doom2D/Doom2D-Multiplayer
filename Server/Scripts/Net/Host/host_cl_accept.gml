@@ -130,7 +130,6 @@ with(o_item)
 //and score
 plr_send_score();
 
-
 //done.
 //set non-blocking mode
 dysetsync(cl_sock, 1);
@@ -146,11 +145,10 @@ if global.sv_dl_allow
 {
     if file_exists('data\temp\' + global.sv_map + '.7z')
     {
-        with _cl {net_fsend_start(cl_id, 'data\temp\' + global.sv_map + '.7z');}
+        with _cl {net_fsend_start('data\temp\' + global.sv_map + '.7z');}
     }
     else
     {
-        with _cl {net_fsend_start(cl_id, 'data\maps\' + global.sv_map + '.dlv');}
+        with _cl {net_fsend_start('data\maps\' + global.sv_map + '.dlv');}
     }
 }
-

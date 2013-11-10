@@ -24,6 +24,11 @@ if argument0
     API_Window_Destroy(ui_win7);
     ui_win7 = -1;
   }
+  if ui_win8 != -1
+  {
+    API_Window_Destroy(ui_win8);
+    ui_win8 = -1;
+  }
 }
 
 if ui_win3 != -1

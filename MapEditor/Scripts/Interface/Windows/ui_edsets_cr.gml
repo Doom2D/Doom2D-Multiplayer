@@ -34,11 +34,11 @@ API_Button_SetCheck(ui_win2_cb3, global.ed_outline);
 
 if global.ed_g_szo == 16
 {
-    API_Button_SetCheck(ui_win2_rb1, true);
-    API_Button_SetCheck(ui_win2_rb2, false);
+  API_Button_SetCheck(ui_win2_rb1, true);
+  API_Button_SetCheck(ui_win2_rb2, false);
 } else {
-    API_Button_SetCheck(ui_win2_rb1, false);
-    API_Button_SetCheck(ui_win2_rb2, true);
+  API_Button_SetCheck(ui_win2_rb1, false);
+  API_Button_SetCheck(ui_win2_rb2, true);
 }
 
 API_Check_Set(3, ui_win2);

@@ -15,9 +15,15 @@
       <arguments>
         <argument kind="STRING">if global.dem_mode != 2 {exit;}
 if instance_exists(o_menu) || global.con {exit;}
+if global.cl_inst != id {exit;}
 
-global.cl_inst = instance_furthest(x, y, o_pl);
-if instance_exists(global.cl_id) {o_hud.viewing = global.cl_inst.cl_id;} else {o_hud.viewing = 0;}
+o_hud.viewing = 0; global.cl_inst = noone;
+
+var i;
+i = instance_furthest(x, y, o_pl);
+if instance_exists(i) {if i.id != id {o_hud.viewing = i.cl_id; global.cl_inst = i;}}
+
+
 </argument>
       </arguments>
     </action>

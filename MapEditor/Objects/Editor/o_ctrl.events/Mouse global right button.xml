@@ -13,8 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">x2 = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz);
-y2 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz);
+        <argument kind="STRING">x2 = round_mouse_x();
+y2 = round_mouse_y();
 </argument>
       </arguments>
     </action>

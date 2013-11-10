@@ -1,5 +1,7 @@
 //voting system
 if global.dem_mode >= 2 {exit;}
+if room != rm_game {exit;}
+
 if is_real(ds_list_find_value(cmd, 1)) && !argument1
 {
     con_add('Недопустимое значение аргумента.');

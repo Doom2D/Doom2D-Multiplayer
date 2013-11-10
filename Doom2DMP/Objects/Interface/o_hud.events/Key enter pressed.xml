@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="OTHER" id="5">
+<event category="KEYPRESS" id="13">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,7 +13,16 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">r_part_wipe();
+        <argument kind="STRING">if global.dem_mode != 2 {exit;}
+if instance_exists(o_menu) || instance_exists(o_exit) || global.con {exit;}
+
+var xx, yy;
+if instance_exists(global.cl_inst) {xx = global.cl_inst.x; yy = global.cl_inst.y;} else {xx = global.map_w/2; yy = global.map_h/2;}
+
+if !instance_exists(o_spect) {global.cl_inst = instance_create(xx, yy, o_spect); viewing = 0;} else {with o_spect instance_destroy();}
+
+net_list_clients();
+
 </argument>
       </arguments>
     </action>

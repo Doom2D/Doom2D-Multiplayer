@@ -16,27 +16,38 @@
         <argument kind="STRING">if water {exit;}
 switch p_type
 {
-    case 1:
+  case 1:
     //rocket
-        e = instance_create(x, y, o_explosion);
-        e.l_id = l_id;
-        e.l_team = l_team;
-        plr_send_xplos(l_id, 1, x, y);
-        plr_send_effect(4, x, y);
-    break;
-    case 2:
+    e = instance_create(x, y, o_explosion);
+    e.l_id = l_id;
+    e.l_team = l_team;
+    plr_send_xplos(l_id, 1, x, y);
+    plr_send_effect(4, x, y);
+  break;
+  case 2:
     //plasma
-        if (place_meeting(x, y, o_water) || place_meeting(x, y, o_acid)) &amp;&amp; global.mp_waterfrag == 2 {break;}
-        plr_send_effect(5, x, y);
-        plr_send_sound(25, x, y);
-    break;
-    case 3:
+    if !place_meeting(x, y, o_solid) &amp;&amp; !(place_meeting(x, y, o_jthr) &amp;&amp; c_jt)
+    {
+      if place_meeting(x, y, o_water) &amp;&amp; global.mp_waterfrag == 2 {break;}
+      if place_meeting(x, y, o_acid) {break;}
+    }
+    plr_send_effect(5, x, y);
+    plr_send_sound(25, x, y);
+  break;
+  case 3:
     //bfg
-        if (place_meeting(x, y, o_water) || place_meeting(x, y, o_acid)) &amp;&amp; global.mp_waterfrag == 2 {break;}
-        bfg_hit();
-        plr_send_xplos(l_id, 2, x, y);
-    break;
+    if !place_meeting(x, y, o_solid) &amp;&amp; !(place_meeting(x, y, o_jthr) &amp;&amp; c_jt)
+    {
+      if place_meeting(x, y, o_water) &amp;&amp; global.mp_waterfrag == 2 {break;}
+      if place_meeting(x, y, o_acid) {break;}
+    }
+    bfg_hit();
+    plr_send_xplos(l_id, 2, x, y);
+  break;
 }
+
+plr_send_unprojectile();
+ds_list_replace(global.sv_proj, pr_id, noone);
 </argument>
       </arguments>
     </action>

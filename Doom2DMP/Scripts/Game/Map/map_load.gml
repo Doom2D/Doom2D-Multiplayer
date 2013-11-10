@@ -21,16 +21,17 @@ for (i = 1; i < 256; i += 1)
 global.tex_n = 1;
 
 //and this shit
-if global.map_bkg != bkg_inter
+if global.map_bkg != -1
 {
-    if background_exists(global.map_bkg) {background_delete(global.map_bkg);}
-    global.map_bkg = bkg_inter;
+  if background_exists(global.map_bkg) {background_delete(global.map_bkg);}
+  global.map_bkg = -1;
 }
 
 //and this shit
 if global.map_mus != -1
 {
-    FMODSoundFree(global.map_mus);
+  FMODSoundFree(global.map_mus);
+  global.map_mus = -1;
 }
 
 ds_list_destroy(global.cl_tiles);
@@ -48,23 +49,32 @@ file_text_readln(fnum);
 global.map_h = file_text_read_real(fnum);
 file_text_readln(fnum);
 
+var _mus;
 _mus = file_text_read_string(fnum);
-if !file_exists(_mus)
+if _mus != MAP_NOMUS
 {
-    con_add(':: MAP: ERROR: Файл музыки ' + _mus + ' не найден. Установлена стандартная.');
-    _mus = 'data\music\AC.xm';
+  if file_exists(_mus)
+  {
+    global.map_mus = FMODSoundAdd(_mus);
+    FMODSoundSetGroup(global.map_mus, 3);
+  } else {
+    con_add(':: MAP: ERROR: Файл музыки ' + _mus + ' не найден.');
+  }
 }
-global.map_mus = FMODSoundAdd(_mus);
-FMODSoundSetGroup(global.map_mus, 3);
 file_text_readln(fnum);
 
+var _bkg;
 _bkg = file_text_read_string(fnum);
-if !file_exists(_bkg)
+if _bkg != MAP_NOBKG
 {
-    con_add(':: MAP: ERROR: Текстура фона ' + _bkg + ' не найдена. Установлена стандартная.');
-    _bkg = 'data\sky\D2DSKY1.png';
+  if file_exists(_bkg)
+  {
+    global.map_bkg = background_add(_bkg, 0, 0);
+    o_camera.visible = true;
+  } else {
+    con_add(':: MAP: ERROR: Текстура фона ' + _bkg + ' не найдена.');
+  }
 }
-global.map_bkg = background_add(_bkg, 0, 0);
 file_text_readln(fnum);
 
 tx_n = real(file_text_read_string(fnum));
@@ -117,6 +127,6 @@ while !file_text_eof(fnum)
 file_text_close(fnum);
 global.map_md5 = file_md5(temp_fn);
 
-mus_play(global.map_mus);
 if !global.r_gfx {instance_deactivate_object(o_bkg);}
+mus_play(global.map_mus);
 con_add(':: MAP: Загружена карта ' + argument0);

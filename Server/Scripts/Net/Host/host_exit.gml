@@ -1,7 +1,7 @@
 //send exit message
 dyclearbuffer(0);
 dywritebyte(2, 0);
-dywritestring('Server shutting down.', 0);
+dywritestring('Сервер выключен.', 0);
 with o_pl {dysendmessage(cl_tcp, 0, 0, 0)};
 //close sockets
 if variable_local_exists('sv_tcp') {dyclosesock(sv_tcp);}

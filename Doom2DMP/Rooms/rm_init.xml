@@ -36,8 +36,8 @@ r_part_init();
       <backgroundImage/>
       <offset x="0" y="0"/>
       <speed x="0" y="0"/>
-      <tileHorizontally>true</tileHorizontally>
-      <tileVertically>true</tileVertically>
+      <tileHorizontally>false</tileHorizontally>
+      <tileVertically>false</tileVertically>
       <stretch>false</stretch>
     </backgroundDef>
     <backgroundDef>

@@ -9,9 +9,8 @@ if global.r_fskip
 
 if global.r_fps_correct
 {
-    o_con.alarm[9] = 1;
+    o_con.alarm[10] = 1;
 } else {
-    o_con.alarm[9] = 0;
     o_con.alarm[10] = 0;
     room_speed = global.cl_fps_max
 }

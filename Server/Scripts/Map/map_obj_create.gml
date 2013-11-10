@@ -113,11 +113,13 @@ switch a_obj
   case 37:
   case 38:
   case 49:
+  case 50:
     i = item_find_slot();
     o = instance_create(a_x, a_y, o_item);
     o.item_id = i;
     o.item = a_obj - 10;
     if a_obj == 49 {o.item = 31;}
+    if a_obj == 50 {o.item = 32;}
     global.sv_itm[i] = o;
   break;
   case 39:

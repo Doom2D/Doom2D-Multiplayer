@@ -10,13 +10,6 @@ if !file_exists(temp_fn)
     exit;
 }
 
-//load autoexec
-if global.sv_autoexec > 0
-{
-    cfg_load('autoexec.cfg');
-    if global.sv_autoexec == 2 {cfg_load('mapcfg\' + string(argument0) + '.cfg');}
-}
-
 con_add("==== MAP LOAD START ====");
 con_add(":: MAP: Загрузка карты " + temp_fn + "...");
 
@@ -119,6 +112,14 @@ if instance_number(o_spawn) < 1
     sys_exit();
     exit;
 }
+
+//load autoexec
+if global.sv_autoexec > 0
+{
+    cfg_load('autoexec.cfg');
+    if global.sv_autoexec == 2 {cfg_load('mapcfg\' + string(argument0) + '.cfg');}
+}
+
 if global.mp_gamemode == 2 && !flag_check()
 {
     con_add(":: MAP: ERROR: На карте нет флагов. Включен TDM.");

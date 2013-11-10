@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if pt &gt; 0 || st_inv || global.mp_godmode {exit;}
+        <argument kind="STRING">if pt &gt; 0 || st_inv || global.mp_godmode || st_suit {exit;}
 plr_hurt(other.dmg);
 killer_id = 0;
 kill_type = 10;

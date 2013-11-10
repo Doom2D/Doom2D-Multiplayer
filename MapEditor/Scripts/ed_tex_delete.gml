@@ -1,4 +1,4 @@
-//a0 - texture index
+//arg0 - texture index
 
 var tx_del;
 tx_del = argument0;
@@ -6,7 +6,7 @@ tx_del = argument0;
 with par_obj
 {
   if o_id > 6 {continue;}
-  if tx_del == t_id {return false;}
+  if t_id == tx_del {return false;}
 }
 
 with par_obj
@@ -20,9 +20,9 @@ global.tex[tx_del] = -1;
 global.tex_nm[tx_del] = '';
 global.tex_n -= 1;
 
+var t_sw;
 for (i = tx_del; i < global.tex_n; i += 1)
 {
-  var t_sw;
   t_sw = global.tex[i];
   global.tex[i] = global.tex[i + 1];
   global.tex[i + 1] = t_sw;
@@ -34,5 +34,6 @@ for (i = tx_del; i < global.tex_n; i += 1)
 
 API_Combobox_SetSel(ui_tx_cb, 0);
 API_Combobox_DeleteString(ui_tx_cb, tx_del);
+if API_Window_Exists(ui_win5) {API_Listbox_DeleteString(ui_win5_lb1, tx_del - 1);}
 
 return true;

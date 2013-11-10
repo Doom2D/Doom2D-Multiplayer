@@ -26,11 +26,42 @@ switch cmd1
   case ui_mbar_m2_mapinfo:
     ui_mapinfo_cr();
   break;
+  //(embedded) texture list sorting menu
+    case ui_mbar_m2_ts1:
+      sort_tex_list(true);
+    break;
+    case ui_mbar_m2_ts2:
+      sort_tex_list(false);
+    break;
+  //end of embedded menu//
   case ui_mbar_m2_deltex:
     ui_deltex_cr();
   break;
+  //(embedded) map scheme menu
+    case ui_mbar_m2_msf:
+      map_picture();
+    break;
+    case ui_mbar_m2_ms16:
+      map_minimap(16);
+    break;
+    case ui_mbar_m2_ms8:
+      map_minimap(8);
+    break;
+    case ui_mbar_m2_ms4:
+      map_minimap(4);
+    break;
+    case ui_mbar_m2_ms2:
+      map_minimap(2);
+    break;
+    case ui_mbar_m2_alts:
+      API_Menu_SetItemChecked(ui_mbar_m2_alts, abs(API_Menu_GetItemChecked(ui_mbar_m2_alts) - MFS_CHECKED));
+    break;
+  //end of embedded menu//
   case ui_mbar_m2_moveobj:
     ui_moveobj_cr();
+  break;
+  case ui_mbar_m2_mirrobj:
+    ui_mirrobj_cr();
   break;
   case ui_mbar_m2_texopt:
     if global.tex_n == 1
@@ -61,11 +92,11 @@ switch cmd1
   break;
   
   //third menu
-  case ui_mbar_m3_edsets:
-    ui_edsets_cr();
-  break;
   case ui_mbar_m3_mapsets:
     ui_mapsets_cr();
+  break;
+  case ui_mbar_m3_edsets:
+    ui_edsets_cr();
   break;
   case ui_mbar_m3_reinit:
     ui_windows_destroy(true);

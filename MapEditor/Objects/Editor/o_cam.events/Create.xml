@@ -16,11 +16,7 @@
         <argument kind="STRING">image_speed = 0;
 
 old1 = global.ed_outline;
-old2 = global.ed_g_sz;
-old3 = global.ed_g_vis;
-bk = bk_nogrid;
-
-preview = false;
+old2 = global.ed_g_vis;
 </argument>
       </arguments>
     </action>

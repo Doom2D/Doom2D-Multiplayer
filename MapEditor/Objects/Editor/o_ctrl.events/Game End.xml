@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">API_Free();
+        <argument kind="STRING">ui_windows_destroy(true);
+API_Free();
 </argument>
       </arguments>
     </action>

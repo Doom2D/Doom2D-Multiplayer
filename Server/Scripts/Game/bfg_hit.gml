@@ -11,7 +11,7 @@ with o_pl
     if distance_to_point(other.x, other.y) > 256 {continue;}
     if collision_line(x, y, other.x, other.y, o_solid, 0, 1) {continue;}
 
-    if distance_to_point(other.x, other.y) <= 37
+    if place_meeting(x, y, other.id) //distance_to_point(other.x, other.y) <= 37
     {
         dmg = 150;
         if global.mp_knockback

@@ -15,6 +15,7 @@
       <arguments>
         <argument kind="STRING">image_speed = 0.25;
 water = 0;
+c_jt = false;
 </argument>
       </arguments>
     </action>

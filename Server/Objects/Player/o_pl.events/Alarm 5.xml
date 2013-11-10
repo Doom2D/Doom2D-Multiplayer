@@ -34,31 +34,33 @@ else
 }
 
 a4 -= 40;
-if (position_meeting(x, y, o_water) || position_meeting(x, y, o_acid)) &amp;&amp; global.mp_waterfrag
-{  
-    if !st_inv &amp;&amp; !global.mp_godmode
-    {
-        hp = -50;
-        if pt &lt; 1 {plr_send_sound(8, x, y); plr_send_sprite(cl_id, 0, 1); pt = 32;}
-        killer_id = cl_id;
-        kill_type = 7;
-        plr_send_effect(1, x, y);
-    }
+if position_meeting(x, y, o_water) &amp;&amp; global.mp_waterfrag
+{
+  if !st_inv &amp;&amp; !global.mp_godmode
+  {
+    //if pt &lt; 1 {plr_send_sound(8, x, y); plr_send_sprite(cl_id, 0, 1); pt = 32;}
+    killer_id = cl_id;
+    kill_type = 7;
+    if global.mp_waterfrag == 1 {plr_hurt(global.mp_waterbfgdmg);} else {plr_hurt(999);}
     plr_send_stat();
-    
-    if global.mp_waterfrag != 2 || !place_meeting(x, y, o_water) {exit;}
-    
+    plr_send_pain();
+    plr_send_effect(1, x, y);
+  } else {
+    plr_send_stat();
+  }
+  if global.mp_waterfrag == 2
+  {
     with instance_place(x, y, o_water)
     {
-        var s;
-        s = instance_create(x, y, o_supersplash);
-        s.dmg = global.mp_waterbfgdmg;
-        s.killer_id = other.cl_id;
-        s.kill_type = 7;
-        s.team = other.cl_team;
+      var s;
+      s = instance_create(x, y, o_supersplash);
+      s.dmg = global.mp_waterbfgdmg;
+      s.killer_id = other.cl_id;
+      s.kill_type = 7;
+      s.team = other.cl_team;
     }
-    
-    exit;
+  }
+  exit;
 }
 
 p = instance_create(x, y, o_projectile);
@@ -67,10 +69,12 @@ p.direction = b_dir;
 p.p_type = 3;
 p.p_spd = 10;
 p.l_team = cl_team;
+p.pr_id = ds_list_find_index(global.sv_proj, noone);
+ds_list_replace(global.sv_proj, p.pr_id, p.id);
 
 plr_send_stat();
 plr_send_sprite(cl_id, 1, 0); 
-plr_send_projectile(cl_id, 3, b_dir, x, y);
+with p {plr_send_projectile(3, other.b_dir, x, y);}
 </argument>
       </arguments>
     </action>

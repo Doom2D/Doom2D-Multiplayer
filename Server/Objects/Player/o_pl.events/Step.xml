@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">if !variable_local_exists('cl_is_bot') {host_process_msgs();} else {bot_ai();}
 
-if y + 32 &gt; global.map_h &amp;&amp; !dead &amp;&amp; !fsend_state
+if y - 160 &gt; global.map_h &amp;&amp; !dead &amp;&amp; !fsend_state
 {
     //if a player fell
     hp = 0;
@@ -46,7 +46,7 @@ if dt &gt;= 1800 &amp;&amp; pt &lt; 0 &amp;&amp; !st_inv &amp;&amp; !global.mp_g
     pt = 48;
 }
 
-if !variable_local_exists('cl_is_bot') {ping += 1;} //in case of timeout we kick player
+if !variable_local_exists('cl_is_bot') &amp;&amp; !fsend_state {ping += 1;} //in case of timeout we kick player
 if ping &gt; global.cl_timeout * global.sv_fps_max &amp;&amp; global.cl_timeout &gt; 0
 {
     //send a kick message to the fucker just in case

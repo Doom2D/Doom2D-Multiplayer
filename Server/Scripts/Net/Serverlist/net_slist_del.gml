@@ -3,7 +3,7 @@
 if global.sv_lan {exit;}
 var _sl_sock, _sl_host, _sl_hstr, _sl_prt;
 
-_sl_hstr = string_explode(global.sv_slist, ':', false);
+_sl_hstr = string_explode(global.sv_mastersrv, ':', false);
 _sl_host = string(ds_list_find_value(_sl_hstr, 0));
 _sl_prt = real(ds_list_find_value(_sl_hstr, 1));
 if _sl_prt == 0 {_sl_prt = 25667;}
@@ -24,7 +24,7 @@ else
     dywritestring("", global._sl_buf);
     dywritestring("", global._sl_buf);
     dywritestring("", global._sl_buf);
-    dywritedouble(0, global._sl_buf);
+    dywritedouble(global.sv_port, global._sl_buf);
     dysendmessage(_sl_sock,0,0,global._sl_buf);
 
     dyclosesock(_sl_sock);

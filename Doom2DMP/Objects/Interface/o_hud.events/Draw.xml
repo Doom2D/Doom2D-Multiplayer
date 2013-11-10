@@ -17,32 +17,7 @@
 draw_background(tex_hud, view_xview + 824, view_yview);
 if !active {exit;}
 if !instance_exists(global.cl_inst) {exit;}
-if global.cl_inst.object_index != o_pl {exit;}
-
-if global.r_gfx
-{
-    if global.r_flash
-    {
-        draw_set_alpha(pain_alpha);
-        draw_rectangle_color(view_xview, view_yview, view_xview + 824, view_yview + 768, c_maroon, c_maroon, c_maroon, c_maroon, 0);
-        draw_set_alpha(1);
-    }
-    
-    if global.r_announcer
-    {
-        for (i = 1; i &lt;= 4; i += 1)
-        {
-            if global.hud_text[i, 1] == '' {continue;}
-            draw_set_color(global.hud_text[i, 6]);
-            draw_set_halign(fa_center);
-            draw_set_font(global.hud_text[i, 3]);
-            draw_text(view_xview + global.hud_text[i, 4], view_yview + global.hud_text[i, 5], global.hud_text[i, 1]);
-            draw_set_font(-1);
-            draw_set_halign(fa_left);
-            draw_set_color(c_white);
-        }
-    }
-}
+if global.cl_inst.object_index != o_pl &amp;&amp; global.cl_inst.object_index != o_spect {exit;}
 
 draw_set_font(global.fnt_sys);
 
@@ -59,22 +34,8 @@ draw_set_halign(fa_left);
 draw_text(view_xview + 832, view_yview + 710, pingstr);
 
 draw_set_font(global.fnt_big);
-if global.cl_inst.st_inv &amp;&amp; global.r_gfx
-{
-    draw_set_blend_mode_ext(bm_inv_dest_color, bm_inv_src_color);
-    draw_set_color(c_white);
-    draw_rectangle(view_xview, view_yview, view_xview+824, view_yview+768, 0);
-    draw_set_blend_mode(bm_normal);
-    o_con.msg_color = c_black;
-    o_con.msg_color2 = c_white;
-}
-else
-{
-    o_con.msg_color = c_white;
-    o_con.msg_color2 = c_black;
-}
-
 draw_set_color(c_red);
+
 draw_text(view_xview + 936, view_yview + 22, global.cl_inst.hp);
 draw_text(view_xview + 936, view_yview + 72, global.cl_inst.ap);
 draw_text(view_xview + 936, view_yview + 72, global.cl_inst.ap);
@@ -82,23 +43,71 @@ draw_sprite(s_hud_weaps, global.cl_inst.w, view_xview + 872, view_yview + 156);
 
 if global.cl_inst.w == 1 || global.cl_inst.w == 4
 {
-    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a1);
+  draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a1);
 }
 if global.cl_inst.w == 2 || global.cl_inst.w == 3 || global.cl_inst.w == 8
 {
-    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a2);
+  draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a2);
 }
 if global.cl_inst.w == 2 || global.cl_inst.w == 3 || global.cl_inst.w == 8
 {
-    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a2);
+  draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a2);
 }
 if global.cl_inst.w == 5
 {
-    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a3);
+  draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a3);
 }
 if global.cl_inst.w == 6 || global.cl_inst.w == 7
 {
-    draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a4);
+  draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a4);
+}
+
+if global.cl_inst.st_inv &amp;&amp; global.r_gfx
+{
+  draw_set_blend_mode_ext(bm_inv_dest_color, bm_inv_src_color);
+  draw_set_color(c_white);
+  draw_rectangle(view_xview, view_yview, view_xview + 824, view_yview + 768, 0);
+  draw_set_blend_mode(bm_normal);
+  o_con.msg_color = c_black;
+  o_con.msg_color2 = c_white;
+} else {
+  o_con.msg_color = c_white;
+  o_con.msg_color2 = c_black;
+}
+
+if global.r_gfx
+{
+  if global.cl_inst.st_suit
+  {
+    draw_set_color(c_lime);
+    draw_set_alpha(0.2);
+    draw_rectangle(view_xview, view_yview, view_xview + 824, view_yview + 768, 0);
+    draw_set_alpha(1);
+    draw_set_color(-1);
+  }
+  if global.r_flash &amp;&amp; pain_alpha &gt; 0
+  {
+    draw_set_color(c_maroon);
+    draw_set_alpha(pain_alpha);
+    draw_rectangle(view_xview, view_yview, view_xview + 824, view_yview + 768, 0);
+    draw_set_alpha(1);
+    draw_set_color(-1);
+  }    
+}
+
+if global.r_announcer
+{
+  for (i = 1; i &lt;= 4; i += 1)
+  {
+    if global.hud_text[i, 1] == '' {continue;}
+    draw_set_color(global.hud_text[i, 6]);
+    draw_set_halign(fa_center);
+    draw_set_font(global.hud_text[i, 3]);
+    draw_text(view_xview + global.hud_text[i, 4], view_yview + global.hud_text[i, 5], global.hud_text[i, 1]);
+    draw_set_font(-1);
+    draw_set_halign(fa_left);
+    draw_set_color(c_white);
+  }
 }
 </argument>
       </arguments>

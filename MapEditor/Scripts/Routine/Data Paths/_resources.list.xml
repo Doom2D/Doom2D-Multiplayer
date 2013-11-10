@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="dp_textures" type="RESOURCE"/>
+  <resource name="dp_music" type="RESOURCE"/>
+  <resource name="dp_sky" type="RESOURCE"/>
+</resources>

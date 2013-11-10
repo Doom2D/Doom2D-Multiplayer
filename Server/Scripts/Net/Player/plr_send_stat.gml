@@ -14,4 +14,5 @@ dywritebyte(st_inv, 0);
 dywritebyte(st_ber, 0);
 dywritebyte(st_flag, 0);
 dywritebyte(st_vis, 0);
+dywritebyte(st_suit, 0);
 with o_pl {dysendmessage(cl_tcp, 0, 0, 0);}

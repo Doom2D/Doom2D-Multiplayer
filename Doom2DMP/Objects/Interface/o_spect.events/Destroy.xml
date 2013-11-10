@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="ALARM" id="9">
+<event category="DESTROY" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,10 +13,23 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">//because fps updates once a second this shit is needed
-//global.fps_last = fps;
-alarm[10] = global.cl_fps_max;
+        <argument kind="STRING">var i;
 
+i = noone;
+
+if variable_local_exists('cl_prev')
+{
+    i = cl_prev;
+}
+else
+{
+    i = instance_nearest(x, y, o_pl);
+}
+
+if !instance_exists(i) {i = instance_furthest(x, y, o_pl);}
+
+global.cl_inst = i;
+o_hud.viewing = i.cl_id;
 </argument>
       </arguments>
     </action>

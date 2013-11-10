@@ -34,7 +34,7 @@ if global.fget_state
   draw_set_alpha(1);
   draw_set_valign(fa_middle);
   draw_set_halign(fa_center);
-  draw_text(view_xview + view_wview/2, view_yview + view_hview/2, 'ПОЛУЧЕНИЕ ФАЙЛА:#' + global.fget_path + '#' + string(round(global.fget_pos/2)/1024) + '/' + string(global.fget_size/1024) + ' KБ');
+  draw_text(view_xview + view_wview/2, view_yview + view_hview/2, 'ПОЛУЧЕНИЕ ФАЙЛА:#' + global.fget_path + '#' + string(global.fget_pos/1024) + '/' + string(global.fget_size/1024) + ' KБ');
   draw_set_valign(fa_top);
   draw_set_halign(fa_left);
   draw_set_alpha(1);

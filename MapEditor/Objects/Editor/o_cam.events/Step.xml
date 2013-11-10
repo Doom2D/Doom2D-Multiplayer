@@ -13,42 +13,35 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if keyboard_check(ord('E'))
+        <argument kind="STRING">if keyboard_check(ord('E')) &amp;&amp; API_Window_GetFocus(window_handle())
 {
 
-  if preview {exit;}
+  if visible {exit;}
   old1 = global.ed_outline;
-  old2 = global.ed_g_sz;
-  old3 = global.ed_g_vis;
+  old2 = global.ed_g_vis;
   global.ed_outline = 0;
   global.ed_g_vis = 0;
   background_assign(bk_current, bk_nogrid);
-  
-  var bk_f;
-  if file_exists(global.map_bkg) {bk_f = global.map_bkg;} else {bk_f = 'data\sky\D2DSKY1.png';}
-  bk = background_add(bk_f, 0, 0);
-  preview = true;
+  background_showcolor = false;
+  visible = true;
 
 } else {
 
-  if !preview {exit;}
+  if !visible {exit;}
+  visible = false;
+  background_showcolor = true;
   global.ed_outline = old1;
-  global.ed_g_sz = old2;
-  global.ed_g_vis = old3;
-
-  if global.ed_g_sz == 8
+  global.ed_g_vis = old2;
+  
+  if global.ed_g_vis
   {
-    background_assign(bk_current, bk_grid8);
+    if global.ed_g_szo == 8
+      {background_assign(bk_current, bk_grid8);}
+    else
+      {background_assign(bk_current, bk_grid16);}
   } else {
-    background_assign(bk_current, bk_grid16);
-  }
-  if !global.ed_g_vis
-  {
     background_assign(bk_current, bk_nogrid);
   }
-  background_delete(bk);
-  bk = bk_nogrid;
-  preview = false;
 
 }
 </argument>

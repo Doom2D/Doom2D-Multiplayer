@@ -2,7 +2,7 @@
 var prt, ip, istr;
 global.sv_map = 'dm_superdm';
 global.sv_maxplayers = 16;
-global.sv_name = 'Server';
+global.sv_name = 'Doom2DMP Server';
 global.cl_ping = 0;
 global.cl_ping_delay = 0;
 global.cl_last_ping = 0;
@@ -16,13 +16,19 @@ global.team_score[2] = 0;
 global.debug_counter = 0;
 if global.dem_b == -1 {global.dem_b = dycreatebuffer();}
 
-for(i=0; i < 255; i+=1)
+for(i = 0; i < 255; i += 1)
 {
     global.cl_plr[i] = noone;
 }
-for(i=0; i < 8192; i+=1)
+for(i = 0; i < 8192; i += 1)
 {
     global.cl_itm[i] = noone;
+}
+
+global.cl_proj = ds_list_create();
+for(i = 0; i < 2048; i += 1)
+{
+    ds_list_add(global.cl_proj, noone);
 }
 
 ds_list_destroy(global.cl_tiles);
@@ -58,7 +64,7 @@ global.cl_tcp = dytcpconnect(ip, prt, true);
 if !dytcpconnected(global.cl_tcp)
 {
     //did not connect
-    con_add(':: NET: ERROR: Невозможно соединиться с ' + string(ip) + ':' + string(prt)); 
+    con_add(':: NET: ERROR: Не удалось соединиться с ' + string(ip) + ':' + string(prt)); 
     dyclosesock(global.cl_tcp);
     mus_play(global.mus_menu);
     room_goto(rm_menu);

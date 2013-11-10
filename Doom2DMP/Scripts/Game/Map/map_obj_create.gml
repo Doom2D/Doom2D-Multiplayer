@@ -97,3 +97,5 @@ if a_obj == 0 && instance_exists(o)
     ds_list_add(global.cl_tiles, o.id);
     o.tile_id = ds_list_size(global.cl_tiles) - 1;
 }
+
+if a_obj <= 6 && a_ext == 0 {o.visible = false;}

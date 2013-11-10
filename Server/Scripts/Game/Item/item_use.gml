@@ -59,8 +59,9 @@ switch argument0
         //invulnerability
         st_inv = 1;
         st_vis = 0;
+        st_suit = 0;
         alarm[2] = 0;
-        alarm[3] = 1800;
+        alarm[3] =  30 * global.sv_fps_max;
         plr_send_stat();
         plr_send_sound(5, x, y);
         with (other) {instance_destroy();}
@@ -68,7 +69,7 @@ switch argument0
     case 8:
         //jetpack
         st_jet = 1;
-        alarm[4] = 1800;
+        alarm[4] =  30 * global.sv_fps_max;
         plr_send_stat();
         plr_send_sound(4, x, y);
         with (other) {instance_destroy();}
@@ -427,7 +428,17 @@ switch argument0
         //invisibility
         if st_inv {break;}
         st_vis = 1;
-        alarm[2] = 1800;
+        alarm[2] =  30 * global.sv_fps_max;
+        plr_send_stat();
+        plr_send_sound(5, x, y);
+        with (other) {instance_destroy();}
+    break;
+    
+    case 32:
+        //suit
+        if st_inv {break;}
+        st_suit = 1;
+        alarm[7] = 30 * global.sv_fps_max;
         plr_send_stat();
         plr_send_sound(5, x, y);
         with (other) {instance_destroy();}

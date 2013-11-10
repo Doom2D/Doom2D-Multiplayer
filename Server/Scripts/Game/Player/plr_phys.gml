@@ -17,13 +17,13 @@ if argument1 && !argument0
 }
 if argument2 && !free && !global.mp_flymode && !st_jet
 {
-    if !collision_rectangle(x-8, y, x+8, y+16, o_water, 0, 1) && !collision_rectangle(x-8, y, x+8, y+16, o_acid, 0, 1)
+    if (collision_rectangle(x-16, y, x+16, y+16, o_water, 0, 1) || collision_rectangle(x-16, y, x+16, y+16, o_acid, 0, 1)) && !place_meeting(x, y + 1, o_solid) && !place_meeting(x, y + 1, o_jthr)
     {
-        vsp = -jspd;
+        vsp = -2.75;
     }
     else
     {
-        vsp = -2.75;
+        vsp = -jspd;
     }
 }
 if argument2 && (st_jet || global.mp_flymode)

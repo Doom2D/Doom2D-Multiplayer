@@ -24,16 +24,17 @@ if instance_exists(o) {vis = o.visible;} else {vis = true;}
 
 for (a = 0; a != w; a += sign(w))
 {
-    for (b = 0; b != h; b += sign(h))
-    {
-        if w >= 0 {ix = x1;} else {ix = x1 - tw;};
-        if h >= 0 {iy = y1;} else {iy = y1 - th;};
-        i = instance_create(ix + tw * a, iy + th * b, o);
-        i.o_id = o_id;
-        i.t_id = argument5;
-        i.sprite_index = t;
-        if o_id < 7 {i.image_single = 0;} else {i.image_single = o_id - 7;}
-        i.visible = vis;
-    }
+  for (b = 0; b != h; b += sign(h))
+  {
+    if w >= 0 {ix = x1;} else {ix = x1 - tw;};
+    if h >= 0 {iy = y1;} else {iy = y1 - th;};
+    i = instance_create(ix + tw * a, iy + th * b, o);
+    i.o_id = o_id;
+    i.t_id = argument5;
+    i.sprite_index = t;
+    if o_id < 7 {i.image_single = 0;} else {i.image_single = o_id - 7;}
+    with i {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
+    i.visible = vis;
+  }
 }
     

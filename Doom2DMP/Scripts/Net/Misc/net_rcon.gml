@@ -1,5 +1,7 @@
 //similar to echo and say but sends commands to server
 if global.dem_mode >= 2 {exit;}
+if room != rm_game {exit;}
+
 if is_real(ds_list_find_value(cmd, 1))
 {
     con_add('Недопустимое значение аргумента.');

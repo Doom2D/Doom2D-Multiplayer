@@ -233,6 +233,14 @@ switch a_obj
     o.sprite_index = s_vis;
     with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
+  case 50:
+    o = instance_create(a_x, a_y, o_item);
+    o.o_id = a_obj;
+    o.t_id = a_ext;
+    o.image_single = 0;
+    o.sprite_index = s_suit;
+    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
+  break;
   case 39:
    o = instance_create(a_x, a_y, o_spawn);
    o.o_id = a_obj;

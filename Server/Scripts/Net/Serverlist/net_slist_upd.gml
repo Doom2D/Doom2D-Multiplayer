@@ -18,7 +18,7 @@ _sl_map = _sl_mod + global.sv_map;
 _sl_plr = string(instance_number(o_pl)) + '/' + string(global.sv_maxplayers);
 _sl_ver = global.sys_ver + " (" + global.sys_bld + ")";
 
-_sl_hstr = string_explode(global.sv_slist, ':', false);
+_sl_hstr = string_explode(global.sv_mastersrv, ':', false);
 _sl_host = string(ds_list_find_value(_sl_hstr, 0));
 _sl_prt = real(ds_list_find_value(_sl_hstr, 1));
 if _sl_prt == 0 {_sl_prt = 25667;}

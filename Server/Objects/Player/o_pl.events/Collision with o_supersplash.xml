@@ -13,14 +13,14 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if pt || st_inv || global.mp_godmode || !other.alive  {exit;}
-if !global.mp_ffire &amp;&amp; cl_id != other.killer_id &amp;&amp; cl_team == other.team &amp;&amp; global.mp_gamemode {exit;}
+        <argument kind="STRING">if pt || st_inv || global.mp_godmode || !other.alive {exit;}
+if global.mp_gamemode &amp;&amp; !global.mp_ffire &amp;&amp; cl_id != other.killer_id &amp;&amp; cl_team == other.team {exit;}
 killer_id = other.killer_id; 
 kill_type = other.kill_type;
 plr_hurt(other.dmg);
 plr_send_stat();
 plr_send_pain();
-pt = 10;
+pt = 12; //10
 </argument>
       </arguments>
     </action>

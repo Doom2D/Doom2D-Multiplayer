@@ -25,8 +25,8 @@ other.killer_id = l_id;
 other.kill_type = 6;
 if global.mp_knockback
 {
-    if other.x &lt; x {other.hsp -= 1;}
-    if other.x &gt; x {other.hsp += 1;}   
+    if other.x &lt; x {other.hsp -= 1.4;}
+    if other.x &gt; x {other.hsp += 1.4;}   
     if other.y &gt; y + 8 {other.vsp += 1;} 
     if other.y &lt; y - 8 {other.vsp -= 1;} 
 }

@@ -9,5 +9,6 @@
   <resource name="con_sv_name" type="RESOURCE"/>
   <resource name="con_sv_welcome" type="RESOURCE"/>
   <resource name="con_timestamp" type="RESOURCE"/>
+  <resource name="con_shortstamp" type="RESOURCE"/>
   <resource name="con_echo" type="RESOURCE"/>
 </resources>

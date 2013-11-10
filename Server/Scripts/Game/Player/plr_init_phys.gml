@@ -12,5 +12,4 @@ deacc = 0.2;
 
 maxhspd = 5;
 maxvspd = 16;
-jspd = 6.1; //single jump height
-
+jspd = 6.27; //single jump height (old 6.1)

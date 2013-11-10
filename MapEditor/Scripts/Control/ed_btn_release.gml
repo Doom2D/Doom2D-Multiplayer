@@ -2,8 +2,8 @@ if trg != noone && instance_exists(trg)
 {
   if global.ed_mode == 1
   {
-    trg.image_xscale = (round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz) - trg.x + x_off)/16;
-    trg.image_yscale = (round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz) - trg.y + y_off)/16;
+    trg.image_xscale = (round_mouse_x() + x_off - trg.x) / 16;
+    trg.image_yscale = (round_mouse_y() + y_off - trg.y) / 16;
 
     with trg
     {
@@ -41,8 +41,8 @@ if trg != noone && instance_exists(trg)
 
   if global.ed_mode == 2
   {
-    trg.xx[2] = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz) + x_off;
-    trg.yy[2] = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz) + y_off;
+    trg.xx[2] = round_mouse_x() + x_off;
+    trg.yy[2] = round_mouse_y() + y_off;
     with trg
     {
       var txx;
@@ -79,8 +79,8 @@ if trg != noone && instance_exists(trg)
   }
 }
 
-x2 = round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz);
-y2 = round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz);
+x2 = round_mouse_x();
+y2 = round_mouse_y();
 
 var sl, obj;
 sl = API_Combobox_GetSel(ui_tl_cb);

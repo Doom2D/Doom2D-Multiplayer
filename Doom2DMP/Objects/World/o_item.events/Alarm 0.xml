@@ -106,12 +106,16 @@ switch item
         sprite_index = s_item_vis;
         image_speed = 0.07;
     break;
+    case 32:
+        sprite_index = s_item_suit;
+        image_speed = 0;
+    break;
 }
 
 item_w = item_get_w(item);
 item_h = item_get_h(item);
-visible = true;
 if anim_st {r_part_emit(10, x + item_w / 2, y + item_h / 2);}
+visible = true;
 </argument>
       </arguments>
     </action>

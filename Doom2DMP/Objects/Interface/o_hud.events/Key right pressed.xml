@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if global.dem_mode != 2 {exit;}
-if instance_exists(o_menu) || global.con {exit;}
+if instance_exists(o_menu) || instance_exists(o_exit) || global.con {exit;}
 if global.cl_fps_max &gt; 109 {exit;}
 room_speed += 5;
 global.cl_fps_max += 5;

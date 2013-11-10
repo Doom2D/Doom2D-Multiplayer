@@ -1,6 +1,6 @@
 //gets the list from the master
 var sock_id, run, size, mid, prt, str;
-str = string_explode(global.cl_slist, ':', false);
+str = string_explode(global.cl_mastersrv, ':', false);
 host = string(ds_list_find_value(str, 0));
 prt = real(string_digits(ds_list_find_value(str, 1)));
 if prt == 0 {prt = 25667;}

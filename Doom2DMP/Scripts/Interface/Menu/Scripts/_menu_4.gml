@@ -41,7 +41,7 @@ str[6, 1] = 'if global.r_flash {con_parse("r_flash 0"); str[6, 4] = "НЕТ";} e
 
 str[7, 0] = 'Отображать HUD';
 if global.r_drawhud {str[7, 4] = 'ДА';} else {str[7, 4] = 'НЕТ';}
-str[7, 1] = 'if global.r_drawhud {global.r_drawhud = 0; str[7, 4] = "НЕТ";} else {global.r_drawhud = 1; str[7, 4] = "ДА";};';
+str[7, 1] = 'if global.r_drawhud {con_parse("r_drawhud 0"); str[7, 4] = "НЕТ";} else {con_parse("r_drawhud 1"); str[7, 4] = "ДА";};';
 
 str[8, 0] = 'Frameskip';
 if global.r_fskip {str[8, 4] = 'ДА';} else {str[8, 4] = 'НЕТ';}

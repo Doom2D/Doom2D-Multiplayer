@@ -49,6 +49,7 @@ st_ber = 0;
 st_inv = 0;
 st_talk = 0;
 st_flag = 0;
+st_suit = 0;
 col = c_white;
 xto = x;
 yto = y;

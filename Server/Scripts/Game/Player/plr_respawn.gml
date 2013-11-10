@@ -36,6 +36,7 @@ st_jet = 0;
 st_ber = 0;
 st_bpk = 0;
 st_vis = 0;
+st_suit = 0;
 alarm[3] = global.mp_respawn_inv * 60;
 
 hw[0] = 1;

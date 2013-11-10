@@ -65,7 +65,7 @@ else
 {
     if global.sys_cleanup
     {
-        con_add(":: SYSTEM: Чистим папку data\temp\...");
+        con_add(":: SYSTEM: Очистка папки data\temp\...");
         var fn;
         fn = file_find_first("data\temp\*.*", 0);
         while file_exists("data\temp\" + fn)

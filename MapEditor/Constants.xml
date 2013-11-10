@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <constants>
+  <constant name="MAP_NOMUS" value="'*NO_MUSIC'"/>
+  <constant name="MAP_NOBKG" value="'*NO_BACKGROUND'"/>
   <constant name="GW_CHILD" value="5"/>
   <constant name="GW_HWNDFIRST" value="0"/>
   <constant name="GW_HWNDLAST" value="1"/>
@@ -1137,4 +1139,11 @@
   <constant name="MB_RTLREADING" value="1048576"/>
   <constant name="LWS_TRANSPARENT" value="1"/>
   <constant name="LWS_IGNORERETURN" value="2"/>
+  <constant name="IDOK" value="1"/>
+  <constant name="IDCANCEL" value="2"/>
+  <constant name="IDABORT" value="3"/>
+  <constant name="IDRETRY" value="4"/>
+  <constant name="IDIGNORE" value="5"/>
+  <constant name="IDYES" value="6"/>
+  <constant name="IDNO" value="7"/>
 </constants>

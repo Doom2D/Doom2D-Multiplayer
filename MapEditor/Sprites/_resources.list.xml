@@ -16,6 +16,7 @@
   <resource name="s_bon1" type="RESOURCE"/>
   <resource name="s_bon2" type="RESOURCE"/>
   <resource name="s_vis" type="RESOURCE"/>
+  <resource name="s_suit" type="RESOURCE"/>
   <resource name="s_flag_r" type="RESOURCE"/>
   <resource name="s_flag_b" type="RESOURCE"/>
   <resource name="s_trigger" type="RESOURCE"/>

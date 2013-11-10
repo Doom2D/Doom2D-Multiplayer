@@ -11,4 +11,5 @@ while !(irandom(10) - 7)
     fn = 'demos\' + tf;
 }
 
+file_find_close();
 return fn;

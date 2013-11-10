@@ -2,7 +2,7 @@ randomize();
 set_application_title('Doom 2D Multiplayer 0.6');
 
 global.sys_ver = '0.6';
-global.sys_bld = '127';
+global.sys_bld = '128';
 global.sys_log = 'client';
 //global.sys_log = 'client' + string(irandom(99999999)); -- uncomment this when testing 2 clients
 global.sys_error = false;
@@ -35,7 +35,7 @@ global.sv_ip = '127.0.0.1:25666';
 global.mp_fraglimit = 23;
 global.mp_gamemode = 0;
 global.mp_waterfrag = 2;
-global.cl_slist = '94.19.235.229:25667';
+global.cl_mastersrv = 'mpms.doom2d.org:25667';
 global.cl_rc_time = 7;
 global.cl_rate = 2;
 global.cl_sync_type = 0;
@@ -64,7 +64,7 @@ global.r_wsplash = 1;
 global.slist[0, 0] = 0;
 global.map_h = 320;
 global.map_w = 240;
-global.map_bkg = bkg_inter;
+global.map_bkg = -1;
 global.map_mus = -1;
 global.map_md5 = '';
 global.map_done = 0;
@@ -77,16 +77,17 @@ global.inter_text[2] = '';
 
 global.fget_path = '';
 global.fget_file = -1;
-global.fget_pos = 0;
+global.fget_buf = -1;
 global.fget_state = 0;
 global.fget_size = 0;
 global.fget_md5 = '';
+global.fget_pos = 0;
 
 global.team_score[1] = 0;
 global.team_score[2] = 0;
 
-global.dem_ver = 1;
-global.dem_mode = 0; //0 - nothing, 1 - record, 2- play
+global.dem_ver = 2;
+global.dem_mode = 0; //0 - nothing, 1 - record, 2 - play
 global.dem_will = 'НЕТ'; //future mode
 global.dem_f = -1;
 global.dem_b = -1;

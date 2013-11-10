@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">var jthr_id;
+        <argument kind="STRING">if distance_to_object(other) &gt; 24 {exit;}
+
+var jthr_id;
 jthr_id = instance_place(x, y, o_jthr);
 
 with other

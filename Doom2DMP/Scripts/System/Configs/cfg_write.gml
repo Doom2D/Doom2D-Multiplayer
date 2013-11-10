@@ -71,7 +71,7 @@ file_text_write_string(cfg, 's_vol_sound ' + string(round(FMODGroupGetVolume(2)*
 file_text_writeln(cfg);
 file_text_write_string(cfg, 's_vol_music ' + string(round(FMODGroupGetVolume(3)*100)));
 file_text_writeln(cfg);
-file_text_write_string(cfg, 'cl_slist ' + string(global.cl_slist));
+file_text_write_string(cfg, 'cl_mastersrv ' + string(global.cl_mastersrv));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'cl_sync_type ' + string(global.cl_sync_type));
 file_text_writeln(cfg);

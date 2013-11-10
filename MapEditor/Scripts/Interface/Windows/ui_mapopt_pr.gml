@@ -17,7 +17,7 @@ switch cmd8
     op_tg = API_Button_GetCheck(ui_win7_cb4);
     if !(op_tl || op_it || op_ar || op_tg)
     {
-      API_Dialog_MessageBox(argument0,
+      API_Dialog_MessageBox(ui_win7,
           'Вы должны выбрать тайлы для оптимизации.',
           'Ошибка', MB_OK|MB_ICONWARNING);
       exit;
@@ -28,7 +28,7 @@ switch cmd8
     o_out = API_Button_GetCheck(ui_win7_cb6);
     if !(o_dup || o_out)
     {
-      API_Dialog_MessageBox(argument0,
+      API_Dialog_MessageBox(ui_win7,
           'Вы должны указать способ оптимизации.',
           'Ошибка', MB_OK|MB_ICONWARNING);
       exit;
@@ -42,7 +42,7 @@ switch cmd8
     with par_obj
     {
       if o_id >= 0 && o_id <= 10 && !op_tl {continue;}
-      if (o_id >= 11 && o_id <= 38) || o_id == 49 && !op_it {continue;}
+      if (o_id >= 11 && o_id <= 38) || o_id >= 49 && !op_it {continue;}
       if o_id >= 39 && o_id <= 43 && !op_ar {continue;}
       if o_id >= 44 && o_id <= 48 && !op_tg {continue;}
       
@@ -52,7 +52,7 @@ switch cmd8
         {
           if id == other.id {continue;}
           if o_id >= 0 && o_id <= 10 && !op_tl {continue;}
-          if (o_id >= 11 && o_id <= 38) || o_id == 49 && !op_it {continue;}
+          if (o_id >= 11 && o_id <= 38) || o_id >= 49 && !op_it {continue;}
           if o_id >= 39 && o_id <= 43 && !op_ar {continue;}
           if o_id >= 44 && o_id <= 48 && !op_tg {continue;}
           
@@ -84,11 +84,11 @@ switch cmd8
     obj_num = instance_number(par_obj);
     obj_done = dup_r + out_r;
     API_Dialog_MessageBox(window_handle(),
-        'Тайлов до оптимизации: '            + string(obj_num + obj_done) + chr(10) + chr(13) +
-        'Тайлов после оптимизации: '         + string(obj_num)            + chr(10) + chr(13) +
-        'Удалено тайлов-дубликатов: '        + string(dup_r)              + chr(10) + chr(13) +
+        'Тайлов до оптимизации: '             + string(obj_num + obj_done) + chr(10) + chr(13) +
+        'Тайлов после оптимизации: '          + string(obj_num)            + chr(10) + chr(13) +
+        'Удалено тайлов-дубликатов: '         + string(dup_r)              + chr(10) + chr(13) +
         'Удалено тайлов за пределами карты: ' + string(out_r)              + chr(10) + chr(13) +
-        'Удалено всего: '                    + string(obj_done),
+        'Удалено всего: '                     + string(obj_done),
         'Оптимизация тайлов', MB_OK|MB_ICONINFORMATION);
   break;
   

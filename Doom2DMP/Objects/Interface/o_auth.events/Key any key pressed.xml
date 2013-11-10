@@ -15,7 +15,9 @@
       <arguments>
         <argument kind="STRING">snd_play(26);
 mus_play(global.mus_menu);
+FMODSoundFree(auth_mus);
 room_goto(rm_menu);
+instance_destroy();
 </argument>
       </arguments>
     </action>

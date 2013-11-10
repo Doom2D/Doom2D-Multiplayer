@@ -8,6 +8,11 @@ if real(argument1) < 0 {con_add(string(variable_global_get(argument0))); exit;}
 variable_global_set(string(argument0), real(argument1));
 con_cvar_restore();
 con_add(argument0 + ' = ' + string(variable_global_get(argument0)));
-net_say('CVAR ' + string(argument0) + ' теперь равен ' + string(argument1), 1);
+net_say('CVAR ' + string(argument0) + ' теперь равен ' + string(variable_global_get(argument0)), 1);
 
-if argument0 == 'sv_maxplayers' || argument0 == 'mp_fraglimit' || argument0 == 'mp_scorelimit' || argument0 == 'mp_caplimit' || argument0 == 'mp_waterfrag' {plr_send_cvars();}
+if global.map_w > 0
+{
+  if argument0 == 'sv_maxplayers' || argument0 == 'mp_fraglimit' || argument0 == 'mp_scorelimit' || argument0 == 'mp_caplimit' || argument0 == 'mp_waterfrag' {plr_send_cvars();}
+  if argument0 == 'sv_cycle_maps' {map_next();}
+  if argument0 == 'mp_timelimit' {alarm[0] = global.mp_timelimit * global.sv_fps_max}
+}

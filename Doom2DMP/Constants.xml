@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<constants/>
+<constants>
+  <constant name="MAP_NOMUS" value="'*NO_MUSIC'"/>
+  <constant name="MAP_NOBKG" value="'*NO_BACKGROUND'"/>
+</constants>

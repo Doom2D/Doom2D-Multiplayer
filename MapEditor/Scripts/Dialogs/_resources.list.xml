@@ -2,6 +2,9 @@
 <resources>
   <resource name="mb_confirm" type="RESOURCE"/>
   <resource name="mb_chkobj" type="RESOURCE"/>
+  <resource name="mb_chktex" type="RESOURCE"/>
+  <resource name="mb_error" type="RESOURCE"/>
+  <resource name="dlg_savefile" type="RESOURCE"/>
   <resource name="dlg_gettimer" type="RESOURCE"/>
   <resource name="dlg_clearmap" type="RESOURCE"/>
   <resource name="dlg_manual" type="RESOURCE"/>

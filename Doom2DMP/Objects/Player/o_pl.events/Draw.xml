@@ -13,14 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if x + 96 &lt;= view_xview || x - 96 &gt;= view_xview + view_wview - o_camera.bkoffset {exit;}
+        <argument kind="STRING">if dead {exit;}
+if global.fget_state {exit;}
+if x + 96 &lt;= view_xview || x - 96 &gt;= view_xview + view_wview - o_camera.bkoffset {exit;}
 if y + 96 &lt;= view_yview || y - 96 &gt;= view_yview + view_hview {exit;}
 if !sprite_exists(sprites[spr, 0]) {exit;}
 if !variable_local_exists('cl_color') {exit;}
 if !variable_global_exists('cl_inst') {exit;}
-if dead {exit;}
-if global.fget_state {exit;}
-
 
 if st_flag == 1
 {

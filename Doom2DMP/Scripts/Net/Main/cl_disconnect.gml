@@ -13,7 +13,8 @@ if room != rm_game || !variable_global_exists('pl_id')
 //check the fget process
 if global.fget_state && global.fget_file != -1
 {  
-    file_bin_close(global.fget_file);
+    if dybufferexists(global.fget_buf) {dyfreebuffer(global.fget_buf);}
+    dyfileclose(global.fget_file);
     file_delete(global.fget_path);
     net_fget_abort();
 }
@@ -31,6 +32,9 @@ if global.dem_mode < 2
 }
 sleep(15);
 
+//destroy particles
+r_part_wipe();
+
 //destroy skins
 if instance_number(o_pl) > 0
 {
@@ -46,7 +50,11 @@ if instance_number(o_pl) > 0
 }
 
 //destroy backgrounds and music
-if background_exists(global.map_bkg) {if global.map_bkg != bkg_inter {background_delete(global.map_bkg);} global.map_bkg = -1;}
+if global.map_bkg != -1
+{
+  if background_exists(global.map_bkg) {background_delete(global.map_bkg);}
+  global.map_bkg = -1;
+}
 
 //destroy sockets
 if global.dem_mode < 2 

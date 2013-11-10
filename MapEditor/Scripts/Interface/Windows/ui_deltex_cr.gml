@@ -12,12 +12,9 @@ ui_win5_lb1 = API_Listbox_Create(ui_win5, 8, 8, 218, 212,
                                  WS_VSCROLL|LBS_EXTENDEDSEL|LBS_HASSTRINGS|LBS_DISABLENOSCROLL,
                                  WS_EX_CLIENTEDGE);
 
-var tx_nm;
 for (i = 1; i < global.tex_n; i += 1)
 {
-    tx_nm = global.tex_nm[i];
-    if tx_nm != '*ERROR' {tx_nm = string_delete(tx_nm, 1, 14);}
-    API_Listbox_AddString(ui_win5_lb1, tx_nm);
+  API_Listbox_AddString(ui_win5_lb1, get_tex_str(i));
 }
 
 ui_win5_b1 = API_Button_Create(ui_win5, 18, 228, 96, 24, BS_PUSHBUTTON);

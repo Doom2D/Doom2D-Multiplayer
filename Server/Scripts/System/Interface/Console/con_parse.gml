@@ -13,8 +13,7 @@ if ds_list_find_value(cmd, 0) == 'help'
   con_add('cfg_save NAME - сохранить конфигурацию в файл NAME.cfg');
   con_add('cfg_load NAME - загрузить конфигурацию из файла NAME.cfg');
   con_add('restart - перезапустить сервер');
-  con_add('die - выключить сервер, не сохраняя конфигурацию')
-  con_add('exit/quit - выключить сервер');
+  con_add('exit/quit/die - выключить сервер');
   con_add('ban_reload - перезагрузить банлист');
   con_add('ban X - занести IP клиента из слота X в банлист');
   con_add('kick X - отключить клиента из слота X');
@@ -29,9 +28,9 @@ if ds_list_find_value(cmd, 0) == 'help'
   con_add('========================');
   exit;
 }
-if ds_list_find_value(cmd, 0) == 'exit' or ds_list_find_value(cmd, 0) == 'quit'
+if ds_list_find_value(cmd, 0) == 'exit' || ds_list_find_value(cmd, 0) == 'quit'
 {
-  sys_exit(0);
+  sys_exit();
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'die'
@@ -127,7 +126,7 @@ if ds_list_find_value(cmd, 0) == 'cl_setval'
     ar2 = real(string_digits(ds_list_find_value(cmd, 3)));
     if string_digits(ds_list_find_value(cmd, 3)) == '' {exit;}
     if ar1 == '' || ar1 == '0' {exit;}
-    if ar1 == 'help' {con_add(':: cl_setval(): Следующие параметры могут быть изменены:#hp ap frag inv ber bpk jet w2 w3 w4 w5 w6 w7 w8 w9 a1 a2 a3 a4.'); exit;}
+    if ar1 == 'help' {con_add(':: cl_setval(): Следующие параметры могут быть изменены:#hp ap frag inv vis suit ber bpk jet w2 w3 w4 w5 w6 w7 w8 w9 a1 a2 a3 a4.'); exit;}
     inst = id_to_cl(ar0);
     if !instance_exists(inst) {exit;}
     switch ar1
@@ -149,6 +148,9 @@ if ds_list_find_value(cmd, 0) == 'cl_setval'
         break;
         case 'vis':
             inst.st_vis = min(1, ar2);
+        break;
+        case 'suit':
+            inst.st_suit = min(1, ar2);
         break;
         case 'ber':
             inst.st_ber = min(1, ar2);
@@ -224,7 +226,7 @@ if ds_list_find_value(cmd, 0) == 'cl_setval'
     with (inst) {plr_send_stat();}
     exit;
 }
-if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_priority' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_slist' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'cl_setval')
+if (string_count('sv_', ds_list_find_value(cmd, 0)) > 0 || string_count('bot_', ds_list_find_value(cmd, 0)) > 0 || string_count('cl_', ds_list_find_value(cmd, 0)) > 0 || string_count('mp_', ds_list_find_value(cmd, 0)) > 0) && !(ds_list_find_value(cmd, 0) == 'sv_map' || ds_list_find_value(cmd, 0) = 'sv_password' || ds_list_find_value(cmd, 0) = 'sv_rcon_pwd' || ds_list_find_value(cmd, 0) = 'sv_name' || ds_list_find_value(cmd, 0) = 'sv_priority' || ds_list_find_value(cmd, 0) = 'sv_welcome' || ds_list_find_value(cmd, 0) = 'sv_mastersrv' || ds_list_find_value(cmd, 0) = 'sv_ip' || ds_list_find_value(cmd, 0) = 'cl_setval')
 {
   con_cvar_parse(ds_list_find_value(cmd, 0), ds_list_find_value(cmd, 1));
   exit;
@@ -275,10 +277,10 @@ if ds_list_find_value(cmd, 0) == 'sv_password'
   global.sv_password = string_delete(ds_list_find_value(cmd, 1), 9, string_length(ds_list_find_value(cmd, 1)));
   exit;
 }
-if ds_list_find_value(cmd, 0) == 'sv_slist'
+if ds_list_find_value(cmd, 0) == 'sv_mastersrv'
 {
-  if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_slist); exit;}
-  global.sv_slist = ds_list_find_value(cmd, 1);
+  if is_real(ds_list_find_value(cmd, 1)) {con_add(global.sv_mastersrv); exit;}
+  global.sv_mastersrv = ds_list_find_value(cmd, 1);
   exit;
 }
 if ds_list_find_value(cmd, 0) == 'sv_priority'
@@ -310,19 +312,10 @@ if ds_list_find_value(cmd, 0) == 'repack'
 
 if ds_list_find_value(cmd, 0) == 'restart'
 {
-    if is_real(ds_list_find_value(cmd, 1)) || string_letters(ds_list_find_value(cmd, 1)) != '' {con_parse('restart 0'); exit;}
-    var _t;
-    _t = real(ds_list_find_value(cmd, 1));
     plr_send_gameover();
     sleep(60);
-    with (o_pl) {plr_send_kick(cl_id, "Game over.");}
-//  var arg;
-//  arg = '';
-//  if o_host.quiet == 1 {arg = '-q';}
-//  if o_host.quiet == 2 {arg = '-nogui';}
-//  if file_exists(parameter_string(0)) {execute_program(parameter_string(0), arg, 0);}
-//  sys_exit(_t);
-    sys_exit(_t, true);
+    with (o_pl) {plr_send_kick(cl_id, "Перезапуск сервера.");}
+    sys_exit((string(ds_list_find_value(cmd, 1)) == '1'), true);
     exit;
 }
 

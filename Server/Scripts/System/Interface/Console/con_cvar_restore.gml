@@ -29,8 +29,8 @@ if global.sv_cycle_maps > 2 {global.sv_cycle_maps = 2;}
 if global.sv_cheats < 0 {global.sv_cheats = 0;}
 if global.sv_cheats > 1 {global.sv_cheats = 1;}
 
-if global.sv_slist_time < 5 {global.sv_slist_time = 5;}
-if global.sv_slist_time > 60 {global.sv_slist_time = 60;}
+if global.sv_slist_upd < 5 {global.sv_slist_upd = 5;}
+if global.sv_slist_upd > 60 {global.sv_slist_upd = 60;}
 
 if global.sv_sync_type < 0 {global.sv_sync_type = 0;}
 if global.sv_sync_type > 2 {global.sv_sync_type = 2;}
@@ -53,11 +53,14 @@ if global.sv_fps_correct > 1 {global.sv_fps_correct = 1;}
 if global.sv_dl_allow < 0 {global.sv_dl_allow = 0;}
 if global.sv_dl_allow > 1 {global.sv_dl_allow = 1;}
 
-if global.sv_dl_rate < 8 {global.sv_dl_rate = 8;}
-if global.sv_dl_rate > 1024 {global.sv_dl_rate = 1024;}
+if global.sv_dl_rate < 1 {global.sv_dl_rate = 1;}
+if global.sv_dl_rate > 255 {global.sv_dl_rate = 255;}
 
 if global.sv_md5check < 0 {global.sv_md5check = 0;}
 if global.sv_md5check > 1 {global.sv_md5check = 1;}
+
+if global.sv_autosave < 0 {global.sv_autosave = 0;}
+if global.sv_autosave > 1 {global.sv_autosave = 1;}
 
 if global.sv_log_update < 0 {global.sv_log_update = 0;}
 if global.sv_log_update > 1 {global.sv_log_update = 1;}

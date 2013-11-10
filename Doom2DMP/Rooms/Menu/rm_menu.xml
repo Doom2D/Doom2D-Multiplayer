@@ -23,7 +23,7 @@ if global.r_fskip
     set_automatic_draw(true);
 }
 </creationCode>
-  <backgroundColor>C0C0C0</backgroundColor>
+  <backgroundColor>000000</backgroundColor>
   <drawBackgroundColor>false</drawBackgroundColor>
   <backgrounds>
     <backgroundDef>

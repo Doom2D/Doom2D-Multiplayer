@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">net_slist_upd(global.sv_name + ' [' + string(global.sys_ver) + ' ' + string(global.sys_bld) + ']',
               global.sv_map + ' [' + string(instance_number(o_pl)) + '/' + string(global.sv_maxplayers) + ']');
-alarm[1] = global.sv_fps_max * global.sv_slist_time;
+alarm[1] = global.sv_fps_max * global.sv_slist_upd;
 </argument>
       </arguments>
     </action>

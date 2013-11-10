@@ -3,7 +3,7 @@
   <sprite>s_explosion</sprite>
   <solid>false</solid>
   <visible>true</visible>
-  <depth>-1</depth>
+  <depth>-3</depth>
   <persistent>false</persistent>
   <parent/>
   <mask>msk_expl1</mask>

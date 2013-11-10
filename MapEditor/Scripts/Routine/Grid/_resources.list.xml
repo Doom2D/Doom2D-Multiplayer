@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="set_grid_size" type="RESOURCE"/>
+  <resource name="set_grid_vis" type="RESOURCE"/>
+  <resource name="set_grid_snap" type="RESOURCE"/>
+</resources>

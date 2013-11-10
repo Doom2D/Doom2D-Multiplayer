@@ -6,11 +6,18 @@
 
 if global.dem_mode >= 2 {global.map_done = 1; exit;}
 
-con_add(":: NET: FGET: Сервер пытается прислать файл " + string(argument0) + "...");
+var f_pt, f_nm, f_sz, f_cs, d_cs, m_cs;
+f_pt = string(argument0);
+f_nm = filename_name(f_pt);
+f_sz = argument1;
+f_cs = argument2;
+d_cs = argument3;
+
+con_add(":: NET: FGET: Сервер пытается прислать файл " + f_nm + "...");
 
 if !global.cl_dl_allow
 {
-  con_add(':: NET: FGET: Прием файлов отключен.');
+  con_add(':: NET: FGET: Прием файлов отключен. Передача прервана.');
   net_fget_abort();
   sleep(10);
   cl_disconnect();
@@ -19,17 +26,16 @@ if !global.cl_dl_allow
   exit;
 }
 
-if argument3 != ''
+if d_cs != ''
 {
   var mapf;
-  mapf = string_replace('data\maps\' + filename_name(argument0), '.7z', '.dlv');
-  con_add(':: NET: FGET: ' + argument0 + ' - архив.');
+  mapf = string_replace('data\maps\' + f_nm, filename_ext(f_nm), '.dlv');
+  con_add(':: NET: FGET: ' + f_nm + ' - архив.');
   if file_exists(mapf)
   {
-    con_add(':: NET: FGET: WARNING: Карта ' + filename_name(mapf) + ' уже существует. Проверяем MD5...');
-    var m;
-    m = file_md5(mapf);
-    if m == argument3
+    con_add(':: NET: FGET: WARNING: Файл ' + mapf + ' уже существует. Проверяем MD5...');
+    m_cs = file_md5(mapf);
+    if m_cs == d_cs
     {
       con_add(':: NET: FGET: WARNING: MD5 совпадают. Передача прервана.');
       net_fget_abort();
@@ -40,7 +46,7 @@ if argument3 != ''
     {
       if global.cl_dl_override
       {
-        con_add(':: NET: FGET: WARNING: MD5 не совпадают. Карта будет перезаписана.');
+        con_add(':: NET: FGET: WARNING: MD5 не совпадают. Файл будет перезаписан.');
         file_delete(mapf);
       }
       else
@@ -51,17 +57,17 @@ if argument3 != ''
         cl_disconnect();
         mus_play(global.mus_menu);
         room_goto(rm_menu);
+        exit;
       }
     }
   }
 }
 
-if file_exists(argument0)
+if file_exists(f_pt)
 {
-  con_add(':: NET: FGET: WARNING: Файл ' + argument0 + ' уже существует. Проверяем MD5...');
-  var m;
-  m = file_md5(argument0);
-  if m == argument2
+  con_add(':: NET: FGET: WARNING: Файл ' + f_pt + ' уже существует. Проверяем MD5...');
+  m_cs = file_md5(f_pt);
+  if m_cs == f_cs
   {
     con_add(':: NET: FGET: WARNING: MD5 совпадают. Передача прервана.');
     net_fget_abort();
@@ -73,7 +79,7 @@ if file_exists(argument0)
     if global.cl_dl_override
     {
       con_add(':: NET: FGET: WARNING: MD5 не совпадают. Файл будет перезаписан.');
-      file_delete(argument0);
+      file_delete(f_pt);
     }
     else
     {
@@ -88,12 +94,19 @@ if file_exists(argument0)
   }
 }
 
-global.fget_path = string(argument0);
-global.fget_file = file_bin_open(global.fget_path, 1);
-global.fget_size = argument1;
+if dybufferexists(global.fget_buf) {dyfreebuffer(global.fget_buf);}
+global.fget_buf = dycreatebuffer();
+global.fget_path = f_pt;
+global.fget_file = dyfileopen(f_pt, 1);
+global.fget_size = f_sz;
 global.fget_md5 = '';
 global.fget_state = 1;
+global.fget_pos = 0;
 
-con_add(":: NET: FGET: Принимаем файл " + global.fget_path + "...");
-con_add(':: NET: FGET: Предполагаемый размер: ' + string(global.fget_size) + ' байт.');
-con_add(':: NET: FGET: Предполагаемый MD5 карты: ' + argument3);
+dyclearbuffer(0);
+dywritebyte(16, 0);
+dysendmessage(global.cl_tcp, 0, 0, 0);
+
+con_add(":: NET: FGET: Принимаем файл " + f_pt + "...");
+con_add(':: NET: FGET: Предполагаемый размер: ' + string(f_sz) + ' байт.');
+con_add(':: NET: FGET: Предполагаемый MD5 карты: ' + d_cs);

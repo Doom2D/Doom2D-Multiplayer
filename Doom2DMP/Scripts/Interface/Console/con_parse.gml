@@ -512,20 +512,20 @@ if ds_list_find_value(cmd, 0) == 'iddqd' || ds_list_find_value(cmd, 0) == 'kill'
     net_cheat(4);
     exit;
 }
-if ds_list_find_value(cmd, 0) == 'cl_slist'
+if ds_list_find_value(cmd, 0) == 'cl_mastersrv'
 {
   if is_real(ds_list_find_value(cmd, 1))
   {
-    con_add(string(global.cl_slist));
+    con_add(string(global.cl_mastersrv));
     exit;
   } 
   if ds_list_find_value(cmd, 1) == ''
   {
-    con_add(string(global.cl_slist));
+    con_add(string(global.cl_mastersrv));
     exit;
   } 
-  global.cl_slist = ds_list_find_value(cmd, 1);
-  con_add('cl_slist = ' + string(global.cl_slist));
+  global.cl_mastersrv = ds_list_find_value(cmd, 1);
+  con_add('cl_mastersrv = ' + string(global.cl_mastersrv));
   exit;
 }
 /*

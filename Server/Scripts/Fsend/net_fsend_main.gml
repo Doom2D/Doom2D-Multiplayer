@@ -1,28 +1,28 @@
 //the file sending process
 //a0 - client id
 
-if fsend_pos == fsend_size
+if fsend_pos >= fsend_size
 {
     net_fsend_finish(argument0);
-    break;
     exit;
 }
 
+var _step;
+_step = global.sv_dl_rate;
+if fsend_pos + global.sv_dl_rate > fsend_size {_step = fsend_size - fsend_pos;}
+
+dyclearbuffer(fsend_buf);
+dyfileread(fsend_file, _step, fsend_buf);
+
 dyclearbuffer(0);
-dywritebyte(22, 0);
-dywritebyte(global.sv_dl_rate, 0);
-dywriteint(fsend_pos, 0);
+dywritebyte(22, 0); 
+dywritebyte(_step, 0);
+dycopybuffer(0, fsend_buf);
 
-repeat global.sv_dl_rate
-{
-    if fsend_pos == fsend_size {break;}
-    file_bin_seek(fsend_file, fsend_pos);
-    dywritebyte(file_bin_read_byte(fsend_file), 0); 
-    fsend_pos += 1;
-}
+dysendmessage(cl_tcp, 0, 0, 0);
 
-with id_to_cl(argument0)
-{
-    dysendmessage(cl_tcp, 0, 0, 0);
-    if !st_inv {st_inv = 1; st_talk = 1;}
-}
+fsend_pos += _step;
+
+if !st_inv {st_inv = 1; st_talk = 1;}
+
+

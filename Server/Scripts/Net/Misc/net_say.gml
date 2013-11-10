@@ -2,7 +2,7 @@
 //a0 - string to say
 //a1 - if include the 'server' prefix
 
-if argument1 {_str = ':: SERVER: ' + argument0;} else {_str = argument0;}
+if argument1 {_str = 'СЕРВЕР: ' + argument0;} else {_str = argument0;}
 
 dyclearbuffer(0);
 dywritebyte(5, 0);

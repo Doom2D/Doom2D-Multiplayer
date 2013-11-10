@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if dmg &gt; 100 {plr_send_effect(9, x, y);} else {plr_send_effect(8, x, y);}
+        <argument kind="STRING">if kill_type = 6 {plr_send_effect(8, x, y);} else {plr_send_effect(9, x, y);}
 alive = true;
 var s;
 if place_meeting(x + 1, y, o_water) &amp;&amp; !place_meeting(x + 1, y, o_supersplash) &amp;&amp; !place_meeting(x + 1, y, o_solid)

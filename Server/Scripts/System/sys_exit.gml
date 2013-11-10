@@ -8,7 +8,7 @@
 host_exit();
 
 //write config
-if !argument0 {cfg_write('server.cfg');}
+if global.sv_autosave && !argument0 {cfg_write('server.cfg');}
 
 //add to log
 if !error_occurred 
@@ -25,9 +25,11 @@ if !o_host.quiet
     con_add(':: WINAPI: Отключение успешно.');
 }
 con_add(':: SYSTEM: Дата: ' + con_timestamp()) ;
-con_add('====SERVER SHUTDOWN====');
 
-//restarting or exiting
+var sstr;
+sstr = 'SHUTDOWN';
+
+//restart shit if necessary
 if argument1
 {
     var arg;
@@ -35,5 +37,9 @@ if argument1
     if o_host.quiet == 1 {arg = '-q';}
     if o_host.quiet == 2 {arg = '-nogui';}
     execute_program(parameter_string(0), arg, false);
+    sstr = 'RESTART';
 }
+
+con_add('====SERVER ' + sstr + '====');
+
 game_end();

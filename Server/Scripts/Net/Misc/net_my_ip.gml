@@ -1,7 +1,7 @@
 //gets your ip from the master
 if global.sv_lan {return mplay_ipaddress();}
 var sock_id, run, size, mid, prt, str;
-str = string_explode(global.sv_slist, ':', false);
+str = string_explode(global.sv_mastersrv, ':', false);
 host = string(ds_list_find_value(str, 0));
 prt = real(string_digits(ds_list_find_value(str, 1)));
 if prt == 0 {prt = 25667;}

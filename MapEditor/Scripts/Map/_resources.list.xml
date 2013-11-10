@@ -4,4 +4,6 @@
   <resource name="map_save" type="RESOURCE"/>
   <resource name="map_clear" type="RESOURCE"/>
   <resource name="map_obj_create" type="RESOURCE"/>
+  <resource name="map_picture" type="RESOURCE"/>
+  <resource name="map_minimap" type="RESOURCE"/>
 </resources>

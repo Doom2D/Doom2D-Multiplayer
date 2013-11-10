@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="net_vote_start" type="RESOURCE"/>
+  <resource name="net_vote_check" type="RESOURCE"/>
   <resource name="net_vote" type="RESOURCE"/>
   <resource name="net_vote_pass" type="RESOURCE"/>
   <resource name="net_vote_clean" type="RESOURCE"/>
-  <resource name="net_vote_check" type="RESOURCE"/>
-  <resource name="net_vote_start" type="RESOURCE"/>
 </resources>

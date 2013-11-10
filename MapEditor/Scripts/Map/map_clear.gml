@@ -19,23 +19,19 @@ if !argument0
 {
   global.map_name = 'Unnamed Map';
   global.map_desc = 'Temp Description';
-  global.map_mus = 'data\music\AC.xm';
-  global.map_bkg = 'data\sky\D2DSKY1.png';
+  global.map_mus = MAP_NOMUS;
+  global.map_bkg = MAP_NOBKG;
   global.map_w = 1600;
   global.map_h = 1600;
   global.map_proc = false;
   global.map_file = working_directory + '\data\maps\*.dlv';
   room_caption = global.ed_apptitle;
+  ed_bkg_change();
 } else {
   global.map_proc = true;
-};
-  
-//ed_tools_reset();
-API_Combobox_ResetContent(ui_tx_cb);
-API_Combobox_AddString(ui_tx_cb, 'Нет текстуры'); //0
-API_Combobox_SetSel(ui_tx_cb, 0);
+}
 
-//global.ed_g_sz = 16;
-//background_assign(bk_current, bk_grid16);
+tb_tex_reset(true);
+
 view_xview = 0;
 view_yview = 0;

@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if keyboard_check(ord('E')) {exit;}
+        <argument kind="STRING">if o_cam.visible {exit;}
 draw_set_font(fnt_sys);
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, 1);
 draw_text_color(x + 2, y + 2, string(image_index), c_white, c_white, c_white, c_white, 1);

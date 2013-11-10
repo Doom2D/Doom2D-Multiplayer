@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="COLLISION" with="o_explosion">
+<event category="ALARM" id="7">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,9 +13,10 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">with (other) {if !variable_local_exists('l_id') {exit;}}
-if other.l_id != l_id {exit;}
-instance_destroy();
+        <argument kind="STRING">//clear suit
+if st_suit == 0 {exit;}
+st_suit = 0;
+plr_send_stat();
 </argument>
       </arguments>
     </action>

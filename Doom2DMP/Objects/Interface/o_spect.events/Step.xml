@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="COLLISION" with="o_pl">
+<event category="STEP" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,9 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if !variable_local_exists('l_id') {exit;}
-if other.cl_id == l_id {exit;}
-instance_destroy();
+        <argument kind="STRING">if !instance_exists(o_camera) || global.con || instance_exists(o_menu) || instance_exists(o_exit) {exit;}
+x += (keyboard_check(ord('D')) * (view_xview &lt; (global.map_w - view_wview + o_camera.bkoffset)) - keyboard_check(ord('A')) * (view_xview &gt; 0)) * 8;
+y += (keyboard_check(ord('S')) * (view_yview &lt; (global.map_h - view_hview)) - keyboard_check(ord('W')) * (view_yview &gt; 0)) * 8;
 </argument>
       </arguments>
     </action>

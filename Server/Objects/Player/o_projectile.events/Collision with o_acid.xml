@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.mp_waterfrag != 2 {exit;}
+        <argument kind="STRING">//if global.mp_waterfrag != 2 {exit;}
 if p_type &lt; 2 {exit;}
 instance_destroy();
 </argument>

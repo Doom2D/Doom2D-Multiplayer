@@ -113,22 +113,23 @@ switch w
         p.p_type = 1;
         p.p_spd = 7;
         p.l_team = cl_team;
+        p.pr_id = ds_list_find_index(global.sv_proj, noone);
+        ds_list_replace(global.sv_proj, p.pr_id, p.id);
         a3 -= 1;
         plr_send_stat();
         plr_send_sprite(cl_id, 1, 0);
-        plr_send_projectile(cl_id, 1, b_dir, x, y);
+        with p {plr_send_projectile(1, other.b_dir, x, y);}
         plr_send_sound(14, x, y);
         cd = 40;
     break;
     case 6:
         //plasmagun
         if a4 < 1 {exit;}
-        if (position_meeting(x, y, o_water) || position_meeting(x, y, o_acid)) && global.mp_waterfrag == 1
+        if position_meeting(x, y, o_water) && global.mp_waterfrag == 1
         {
             killer_id = cl_id; 
             kill_type = 6;
             plr_hurt(10);
-            plr_send_stat();
             plr_send_pain();
         }
         else
@@ -139,7 +140,9 @@ switch w
             p.p_type = 2;
             p.p_spd = 9;
             p.l_team = cl_team;
-            plr_send_projectile(cl_id, 2, b_dir, x, y);
+            p.pr_id = ds_list_find_index(global.sv_proj, noone);
+            ds_list_replace(global.sv_proj, p.pr_id, p.id);
+            with p {plr_send_projectile(2, other.b_dir, x, y);}
         }
         plr_send_sprite(cl_id, 1, 0);
         a4 -= 1;

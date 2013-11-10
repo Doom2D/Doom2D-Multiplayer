@@ -34,7 +34,7 @@ while 1
     {
         case 1:
             if global.map_w {break;}    
-        
+
             var _candl;
             //receive mah id and server info
             global.pl_id = dyreadbyte(0);
@@ -51,7 +51,7 @@ while 1
             _welcome = '';
             _welcome = dyreadstring(0);
             con_add(':: NET: Получена информация о сервере.');
-            
+
             if !global.sv_dlallow || global.dem_mode == 2
             {
                 event_user(0);
@@ -60,11 +60,11 @@ while 1
             {
                 global.map_done = 0;
             }
-            
+
             room_speed = global.cl_fps_max;
             alarm[0] = 5;
         break;
-        
+
         case 2:
             //got kicked
             var msg_reason;
@@ -124,7 +124,7 @@ while 1
         
         case 6:
             //received pong
-            global.cl_ping = round(_timer/0.06);
+            global.cl_ping = round( _timer / (global.cl_fps_max / 1000) );
             _timer = 0;
             if global.dem_mode == 2 {global.cl_ping = 0;}
             //con_add("Received pong from server in " + _str + ".");
@@ -235,7 +235,6 @@ while 1
                 break;
                 default:
                     con_add(victim_name + " умер.");
-                break;
             }
             if instance_exists(o_hud)
             {
@@ -262,11 +261,12 @@ while 1
             global.cl_plr[_id].st_ber = dyreadbyte(0);
             global.cl_plr[_id].st_flag = dyreadbyte(0);
             global.cl_plr[_id].st_vis = dyreadbyte(0);
+            global.cl_plr[_id].st_suit = dyreadbyte(0);
             global.cl_plr[_id].alarm[2] = 1;
             
             //pain splash
             if !instance_exists(o_hud) {break;}
-            if _id == o_hud.viewing && _oh > 10 {o_hud.pain_alpha += max(0, (_oh - global.cl_inst.hp)/100);}
+            if _id == o_hud.viewing && _oh > 10 {o_hud.pain_alpha += max( 0, (_oh - global.cl_inst.hp) / 100 );}
             with o_hud if !alarm[0] net_list_clients();
         break;
         
@@ -292,7 +292,7 @@ while 1
             var d_id;
             d_id = dyreadshort(0);
             if !instance_exists(global.cl_itm[d_id]) {break;}
-            with global.cl_itm[d_id] {instance_destroy();}
+            global.cl_itm[d_id].alarm[1] = 1; //with global.cl_itm[d_id] {instance_destroy();}
             global.cl_itm[d_id] = noone;
             //con_add("Destroyed item");
         break;
@@ -336,7 +336,7 @@ while 1
         
         case 16:
             //projectile
-            r_projectile(dyreadbyte(0), dyreadbyte(0), dyreadshort(0), dyreadshort(0), dyreadshort(0));
+            r_projectile(dyreadshort(0), dyreadbyte(0), dyreadshort(0), dyreadshort(0), dyreadshort(0));
         break;
         
         case 17:
@@ -394,7 +394,7 @@ while 1
             //fsend state
             var _state, _file, _size, _md5, _cmd5;
             _state = dyreadbyte(0);
-            _size = dyreadint(0);
+            _size = dyreaduint(0);
             _file = dyreadstring(0);
             _md5 = dyreadstring(0);
             _cmd5 = dyreadstring(0);
@@ -415,7 +415,7 @@ while 1
         
         case 22:
             //fsend inbyte
-            net_fget_inb(dyreadbyte(0), dyreadint(0));
+            net_fget_inb();
         break;
         
         case 23:
@@ -518,6 +518,18 @@ while 1
             global.sv_maxplayers = dyreadbyte(0);
             global.mp_fraglimit = dyreadbyte(0);
             global.mp_waterfrag = dyreadbyte(0);
+        break;
+        
+        case 28:
+            //projectile destroy
+            var proj, prin;
+            proj = dyreadshort(0);
+            prin = ds_list_find_value(global.cl_proj, proj);
+            
+            if !instance_exists(prin) {break;}
+            
+            with prin {instance_destroy();}
+            ds_list_replace(global.cl_proj, proj, noone);
         break;
         
         default:

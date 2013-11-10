@@ -13,9 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.r_fskip {alarm[11] = 1;}
-if global.r_fps_correct {alarm[9] = global.cl_fps_max;}
-if !room == rm_game {global.cl_fps_max = 60;}
+        <argument kind="STRING">if room != rm_game {global.cl_fps_max = 60;}
+if global.r_fskip {alarm[11] = 1;} else {alarm[11] = 0;}
+if global.r_fps_correct {alarm[10] = 1;} else {alarm[10] = 0; room_speed = global.cl_fps_max;}
 </argument>
       </arguments>
     </action>

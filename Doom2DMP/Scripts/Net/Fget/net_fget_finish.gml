@@ -13,9 +13,9 @@ if !global.fget_state
     exit;
 }
 
-con_add(":: NET: FGET: Приняли файл " + global.fget_path + ".");
-con_add(":: NET: FGET: Размер: " + string(file_bin_size(global.fget_file)) + " байт.");
-file_bin_close(global.fget_file);
+con_add(":: NET: FGET: Принят файл " + global.fget_path + ".");
+con_add(":: NET: FGET: Размер: " + string(dyfilesize(global.fget_file)) + " байт.");
+dyfileclose(global.fget_file);
 sleep(30);
 
 global.fget_md5 = file_md5(global.fget_path);
@@ -29,12 +29,14 @@ if global.fget_size != argument0 || global.fget_md5 != argument1
     _err = 1;
 }
 
+if dybufferexists(global.fget_buf) {dyfreebuffer(global.fget_buf);}
 global.map_done = 1;
 global.fget_path = '';
 global.fget_file = -1;
-global.fget_pos = 0;
+global.fget_buf = -1;
 global.fget_size = 0;
 global.fget_md5 = '';
+global.fget_pos = 0;
 
 //temporary patch to avoid bugs
 cl_disconnect();

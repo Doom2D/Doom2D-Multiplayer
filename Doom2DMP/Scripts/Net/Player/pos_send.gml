@@ -1,7 +1,7 @@
 //checks if one of controls is pressed and sends its state
 if !variable_global_exists('pl_id') {exit;}
 if global.dem_mode >= 2 {exit;}
-if global.con || o_con.saymode || instance_exists(o_menu) || !window_has_focus(window_handle())
+if global.con || o_con.saymode || instance_exists(o_menu) || !window_get_focus(window_handle())
 {
     dyclearbuffer(0);
     dywritebyte(5, 0);

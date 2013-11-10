@@ -23,25 +23,24 @@ if (mouse_check_button(mb_left) || keyboard_check(vk_space)) &amp;&amp; keyboard
 }
 else
 {
-  draw_sprite_ext(spr, im, round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off), round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off), 1, 1, 0, c_white, 0.73);  
+  draw_sprite_ext(spr, im, round_mouse_x() + x_off - ix_off, round_mouse_y() + y_off - iy_off, 1, 1, 0, c_white, 0.73);  
   if API_Combobox_GetSel(ui_tl_cb) &lt; 11 &amp;&amp; !mouse_check_button(mb_right)
   {
     draw_set_color(col);
     draw_set_alpha(0.73);
-    draw_rectangle(round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off),
-                   round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off),
-                   round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off) + sprite_get_width(spr) - 1,
-                   round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off) + sprite_get_height(spr) - 1, 1);
+    draw_rectangle(round_mouse_x() + x_off, round_mouse_y() + y_off,
+                   round_mouse_x() + x_off + sprite_get_width(spr) - 1,
+                   round_mouse_y() + y_off + sprite_get_height(spr) - 1, 1);
     draw_set_alpha(1);
     draw_set_color(c_white);
   }
 }
 if mouse_check_button(mb_right) &amp;&amp; keyboard_check(vk_shift) 
 {
-    draw_set_color(col);
-    draw_rectangle(x1, y1, x2, y2, 1);
-    draw_set_color(c_white);
-    draw_rectangle_color(x2 - 3, y2 - 3, x2 + 3, y2 + 3, c_blue, c_blue, c_blue, c_blue, 0);
+  draw_set_color(col);
+  draw_rectangle(x1, y1, x2, y2, 1);
+  draw_set_color(c_white);
+  draw_rectangle_color(x2 - 3, y2 - 3, x2 + 3, y2 + 3, c_blue, c_blue, c_blue, c_blue, 0);
 }
 
 var mx, my;
@@ -49,15 +48,17 @@ if mouse_x &gt; view_xview + view_wview - 64 {mx = -40;} else {mx = 16;}
 if mouse_y &gt; view_yview + view_hview - 64 {my = -32;} else {my = 0;}
 
 draw_set_alpha(0.75);
-draw_text(mouse_x + mx, mouse_y + my, string(round(floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off)) + "#" + string(round(floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off)));
+draw_text(mouse_x + mx, mouse_y + my,
+          string(round_mouse_x() + x_off - ix_off) + "#" +
+          string(round_mouse_y() + y_off - iy_off));
 draw_set_alpha(1);
 
 if global.ed_mode != 2 {exit;}
 if !instance_exists(trg) {exit;}
-draw_line_color(trg.x, trg.y, floor(mouse_x/global.ed_g_sz)*global.ed_g_sz + x_off, floor(mouse_y/global.ed_g_sz)*global.ed_g_sz + y_off, c_lime, c_lime);
+draw_line_color(trg.x, trg.y, round_mouse_x() + x_off, round_mouse_y() + y_off, c_lime, c_lime);
 if trg.t_id == 7 &amp;&amp; global.ed_mode == 2
 {
-    draw_sprite_ext(s_spawn, 0, floor(mouse_x/global.ed_g_sz)*global.ed_g_sz - 16 + x_off, floor(mouse_y/global.ed_g_sz)*global.ed_g_sz - 32 + y_off, 1, 1, 0, c_lime, 0.57);
+  draw_sprite_ext(s_spawn, 0, round_mouse_x() + x_off - 16, round_mouse_y() + y_off - 32, 1, 1, 0, c_lime, 0.57);
 }
 </argument>
       </arguments>

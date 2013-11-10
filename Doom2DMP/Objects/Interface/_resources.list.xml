@@ -8,4 +8,5 @@
   <resource name="o_hud" type="RESOURCE"/>
   <resource name="o_inter" type="RESOURCE"/>
   <resource name="o_slist" type="RESOURCE"/>
+  <resource name="o_spect" type="RESOURCE"/>
 </resources>

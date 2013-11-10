@@ -1,5 +1,5 @@
 //emits particles with type arg0 from (arg1, arg2)
-if !global.r_gfx {exit;}
+if !global.r_gfx || global.fget_state {exit;}
 
 var inst;
 switch argument0

@@ -14,9 +14,7 @@ if global.map_w != 0 || global.dem_mode == 2
     exit;
 }
 
-global.dem_fn = 'demos\' + string(current_day) + '-' + string(current_month) + '-' + string(current_year) + '_' +
-                           string(current_hour) + '-' + string(current_minute) + '-' + string(current_second) +
-                           '.dgp';
+global.dem_fn = 'demos\' + get_timestamp() + '.dgp';
 if file_exists(global.dem_fn) {file_delete(global.dem_fn);}
 
 global.dem_f = dyfileopen(global.dem_fn, 1);

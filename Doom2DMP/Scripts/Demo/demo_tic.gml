@@ -2,7 +2,7 @@ if global.dem_mode != 2 {exit;}
 
 if dyfilepos(global.dem_f) >= dyfilesize(global.dem_f) - 1
 {
-    con_parse('disconnect');;
+    con_parse('disconnect');
     exit;
 }
 

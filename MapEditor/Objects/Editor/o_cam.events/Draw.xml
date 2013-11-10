@@ -13,10 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if keyboard_check(ord('E'))
-{
-    draw_background_stretched(bk, view_xview, view_yview, view_wview, view_hview);
-}
+        <argument kind="STRING">if global.mbk_ind == -1 {exit;}
+draw_background_stretched(global.mbk_ind, view_xview, view_yview, view_wview, view_hview);
 </argument>
       </arguments>
     </action>

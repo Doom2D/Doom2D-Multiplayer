@@ -12,12 +12,9 @@ tb_tex_cr();
 tb_trig_cr();
 API_Check_Set (2, ui_win1);
 
-var tx_nm;
 for (i = 1; i < global.tex_n; i += 1)
 {
-    tx_nm = global.tex_nm[i];
-    if tx_nm != '*ERROR' {tx_nm = string_delete(tx_nm, 1, 14);}
-    API_Combobox_AddString(ui_tx_cb, tx_nm);
+  API_Combobox_AddString(ui_tx_cb, get_tex_str(i));
 }
 
 API_Window_SetFocus(window_handle());

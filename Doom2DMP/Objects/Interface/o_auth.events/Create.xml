@@ -15,9 +15,9 @@
       <arguments>
         <argument kind="STRING">image_speed = 0;
 
-global.map_mus = FMODSoundAdd('data\gui\music\scores.xm');
-FMODSoundSetGroup(global.map_mus, 3);
-mus_play(global.map_mus);
+auth_mus = FMODSoundAdd('data\gui\music\inter.xm');
+FMODSoundSetGroup(auth_mus, 3);
+mus_play(auth_mus);
 str[0] = 'Doom 2D Multiplayer#Версия ' + global.sys_ver + ' (Сборка ' + global.sys_bld + ')';
 
 str[1] = '';

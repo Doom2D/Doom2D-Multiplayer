@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<event category="COLLISION" with="o_liq">
+<event category="CREATE" id="0">
   <actions>
     <action id="603" library="1">
       <!--action name: Code-->
@@ -13,8 +13,19 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.mp_waterfrag != 2 || image_single == 0 {exit;}
-instance_destroy();
+        <argument kind="STRING">dead = 0;
+hp = 0;
+ap = 0;
+w = 0;
+a1 = 0;
+a2 = 0;
+a3 = 0;
+a4 = 0;
+frag = 0;
+cl_id = 0;
+cl_team = 0;
+st_inv = 0;
+st_suit = 0;
 </argument>
       </arguments>
     </action>

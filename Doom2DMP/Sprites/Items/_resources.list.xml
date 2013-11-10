@@ -12,6 +12,7 @@
   <resource name="s_item_bon1" type="RESOURCE"/>
   <resource name="s_item_bon2" type="RESOURCE"/>
   <resource name="s_item_vis" type="RESOURCE"/>
+  <resource name="s_item_suit" type="RESOURCE"/>
   <resource name="s_flag_b" type="RESOURCE"/>
   <resource name="s_flag_r" type="RESOURCE"/>
 </resources>

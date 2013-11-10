@@ -17,7 +17,7 @@
 net_ping();
 global.cl_tcpdelay = _delay;
 
-alarm[1] = 120;
+alarm[1] = 2 * global.cl_fps_max;
 </argument>
       </arguments>
     </action>

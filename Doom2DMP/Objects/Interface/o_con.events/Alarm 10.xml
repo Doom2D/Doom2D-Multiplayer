@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">sys_fps_correct();
-alarm[9] = global.cl_fps_max;
+alarm[10] = global.cl_fps_max * 2;
 </argument>
       </arguments>
     </action>

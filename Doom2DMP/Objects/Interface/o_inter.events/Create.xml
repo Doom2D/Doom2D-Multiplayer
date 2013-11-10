@@ -15,12 +15,12 @@
       <arguments>
         <argument kind="STRING">image_speed = 0;
 
-global.map_mus = FMODSoundAdd('data\gui\music\scores.xm');
-FMODSoundSetGroup(global.map_mus, 3);
-mus_play(global.map_mus);
+inter_mus = FMODSoundAdd('data\gui\music\inter.xm');
+FMODSoundSetGroup(inter_mus, 3);
+mus_play(inter_mus);
 snd_play(26);
 global.menu_id = 0;
-if global._inter_reconnect {alarm[0] = 60*global.cl_rc_time;}
+if global._inter_reconnect {alarm[0] = 60 * global.cl_rc_time;}
 </argument>
       </arguments>
     </action>

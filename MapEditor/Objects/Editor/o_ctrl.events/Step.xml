@@ -27,6 +27,7 @@ ui_mapinfo_pr();
 ui_deltex_pr();
 ui_moveobj_pr();
 ui_mapopt_pr();
+ui_mirrobj_pr();
 </argument>
       </arguments>
     </action>

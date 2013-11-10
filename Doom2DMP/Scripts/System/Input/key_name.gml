@@ -1,6 +1,7 @@
 //key names script
 //argument0 = key code
 //returns = key name
+var _name;
 _name = -1;
 switch argument0
 {
@@ -48,7 +49,7 @@ switch argument0
   case 222: _name = "'"; break;
   case 190: _name = '.'; break;
   case 188: _name = ','; break;
-  case 59: _name = ';'; break;
+  case ord(';'): _name = ';'; break;
   case 219: _name = '['; break;
   case 221: _name = ']'; break;
   case 191: _name = '/'; break;
@@ -69,6 +70,11 @@ switch argument0
   case vk_numpad7: _name = 'Num7'; break;
   case vk_numpad8: _name = 'Num8'; break;
   case vk_numpad9: _name = 'Num9'; break;
+  case vk_multiply: _name = 'Num *'; break;
+  case vk_divide: _name = 'Num /'; break;
+  case vk_add: _name = 'Num +'; break;
+  case vk_subtract: _name = 'Num -'; break;
+  case vk_decimal: _name = 'Num .'; break;
   case vk_up: _name = 'Вверх'; break;
   case vk_down: _name = 'Вниз'; break;
   case vk_left: _name = 'Влево'; break;
@@ -86,11 +92,9 @@ switch argument0
   case vk_f10: _name = 'F10'; break;
   case vk_f11: _name = 'F11'; break;
   case vk_f12: _name = 'F12'; break;
-  case vk_printscreen: _name = 'PrtScrn'; break;
+  case vk_printscreen: _name = 'PrtScr'; break;
   
   default: _name = '???';
 }
 return _name;
-
-
 

@@ -158,11 +158,34 @@ switch sl
     spr = s_vis;
     im = 0;
   break;
+  
+  case 50:
+    spr = s_suit;
+    im = 0;
+  break;
 }
 
 if sl < 7 {API_Control_Enable(ui_tx_cb, true); API_Control_Enable(ui_tg_cb, false);}
 if sl > 43 && sl < 49 {API_Control_Enable(ui_tg_cb, true); API_Control_Enable(ui_tx_cb, false);}
-if (sl > 6 && sl < 44) || sl == 49 {API_Control_Enable(ui_tx_cb, false); API_Control_Enable(ui_tg_cb, false);}
+if (sl > 6 && sl < 44) || sl > 48
+{
+  API_Control_Enable(ui_tx_cb, false); API_Control_Enable(ui_tg_cb, false);
+  if keyboard_check(ord('V'))
+  {
+    var obj_w;
+    obj_w = obj_get_w(sl);
+    if !keyboard_check(ord('C')) || !keyboard_check(ord('B')) {ix_off = round(obj_w / 2);}
+    if keyboard_check(ord('C')) {ix_off = ceil( ceil(obj_w / global.ed_g_sz) / 2 ) * global.ed_g_sz;}
+    if keyboard_check(ord('B')) {ix_off = obj_w - ceil( ceil(obj_w / global.ed_g_sz) / 2 ) * global.ed_g_sz;}
+    iy_off = obj_get_h(sl) mod global.ed_g_sz;
+  } else {
+    ix_off = 0;
+    iy_off = 0;
+  }
+} else {
+  ix_off = 0;
+  iy_off = 0;
+}
 if global.ed_mode == 0
 {
   API_Control_Enable(ui_tl_cb, true);

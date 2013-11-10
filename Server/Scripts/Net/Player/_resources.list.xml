@@ -9,6 +9,7 @@
   <resource name="plr_send_corpse" type="RESOURCE"/>
   <resource name="plr_send_kick" type="RESOURCE"/>
   <resource name="plr_send_projectile" type="RESOURCE"/>
+  <resource name="plr_send_unprojectile" type="RESOURCE"/>
   <resource name="plr_send_speed" type="RESOURCE"/>
   <resource name="plr_send_xplos" type="RESOURCE"/>
   <resource name="plr_send_pain" type="RESOURCE"/>

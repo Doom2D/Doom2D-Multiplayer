@@ -25,7 +25,8 @@ dyclosesock(cl_tcp);
 //close map loading stuff
 if fsend_state &amp;&amp; fsend_file != -1
 {
-    file_bin_close(fsend_file);
+    if dybufferexists(fsend_buf) {dyfreebuffer(fsend_buf);}
+    dyfileclose(fsend_file);
     fsend_state = 0;
 }
 

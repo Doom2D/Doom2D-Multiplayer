@@ -1,6 +1,7 @@
 //key codes script
 //argument0 = key name
 //returns = key code
+var _code;
 _code = -1;
 switch argument0
 {
@@ -48,7 +49,7 @@ switch argument0
   case "'": _code = 222; break;
   case '.': _code = 190; break;
   case ',': _code = 188; break;
-  case ';': _code = 59; break;
+  case ';': case 'Ж': case ':': _code = 59; break;
   case '[': _code = 219; break;
   case ']': _code = 221; break;
   case '/': _code = 191; break;
@@ -69,6 +70,11 @@ switch argument0
   case 'Num7': _code = vk_numpad7; break;
   case 'Num8': _code = vk_numpad8; break;
   case 'Num9': _code = vk_numpad9; break;
+  case 'Num *': _code = vk_multiply; break;
+  case 'Num /': _code = vk_divide; break;
+  case 'Num +': _code = vk_add; break;
+  case 'Num -': _code = vk_subtract; break;
+  case 'Num .': _code = vk_decimal; break;
   case 'Up': case 'Вверх': _code = vk_up; break;
   case 'Down': case 'Вниз': _code = vk_down; break;
   case 'Left': case 'Влево': _code = vk_left; break;
@@ -88,7 +94,7 @@ switch argument0
   case 'F12': _code = vk_f12 break;
   case 'PrtScr': case 'PrintScreen': _code = vk_printscreen; break;
     
-  default: _code = 1;
+  default: _code = -1;
 }
 return _code;
 

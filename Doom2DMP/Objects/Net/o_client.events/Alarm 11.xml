@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">global.debug_counter = 0;
-alarm[11] = 45 * 60;
+alarm[11] = 45 * global.cl_fps_max;
 </argument>
       </arguments>
     </action>

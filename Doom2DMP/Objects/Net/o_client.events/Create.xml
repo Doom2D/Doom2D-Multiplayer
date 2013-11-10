@@ -23,7 +23,7 @@ _dem_delay = 0;
 _dem_time = 0;
 global.cl_tcpdelay = 0;
 uset = 0;
-alarm[11] = 45 * 60;
+alarm[11] = 45 * global.cl_fps_max;
 
 FMODGroupSetMuted(2, false);
 

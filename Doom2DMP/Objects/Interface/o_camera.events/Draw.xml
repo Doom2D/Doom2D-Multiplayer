@@ -15,6 +15,7 @@
       <arguments>
         <argument kind="STRING">//draw the background
 if !variable_global_exists('map_bkg') {exit;}
+if global.map_bkg == -1 {exit;}
 if !background_exists(global.map_bkg) {exit;}
 draw_background_stretched(global.map_bkg, view_xview, view_yview, 1024 - bkoffset, 768);
 </argument>

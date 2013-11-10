@@ -22,7 +22,11 @@ if instance_number(o_pl) > 0
 }
 
 //destroy backgrounds and music
-if background_exists(global.map_bkg) {if global.map_bkg != bkg_inter {background_delete(global.map_bkg);} global.map_bkg = -1;}
+if global.map_bkg != -1
+{
+  if background_exists(global.map_bkg) {background_delete(global.map_bkg);}
+  global.map_bkg = -1;
+}
 
 con_add(":: DEMO: Завершено.");
 global.dem_mode = 3;

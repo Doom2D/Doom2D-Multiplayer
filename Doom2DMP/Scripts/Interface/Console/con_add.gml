@@ -9,8 +9,13 @@ with o_con
   con_str += s + '#';
   if !argument1 {msg_add(s);}
   log_add(global.sys_log, s);
-  if string_length(con_str) > 1600 
+  var t_cnt;
+  t_cnt = string_count('#', con_str);
+  if t_cnt > 20
   {
-    con_str = string_delete(con_str, 1, string_pos('#', con_str));
+    repeat t_cnt - 20
+    {
+      con_str = string_delete(con_str, 1, string_pos('#', con_str));
+    }
   }
 }

@@ -15,14 +15,18 @@ while(1)
     {
         case 2:
             //client disconnected
-            var c_id;
+            var c_id, c_nm;
             //con_add("DEBUG: Received disconnect message");
             c_id = dyreadbyte(0);
             if !instance_exists(global.sv_plr[c_id]) {break;}
-            
-            con_add(":: NET: Клиент " + string(global.sv_plr[c_id].cl_name) + "[" + string(c_id) + "] вышел.");
-            with global.sv_plr[c_id] {instance_destroy();}      
+            c_nm = string(global.sv_plr[c_id].cl_name);
+            with global.sv_plr[c_id]
+            {
+              if global.vote_now && !variable_local_exists('cl_is_bot') && !fsend_state && voted {net_vote();}
+              instance_destroy();
+            }      
             global.sv_plr[c_id] = noone;
+            con_add(":: NET: Клиент " + c_nm + "[" + string(c_id) + "] вышел.");
             
             //send this to other clients
             dyclearbuffer(0);
@@ -124,7 +128,7 @@ while(1)
                     //insta-death
                     killer_id = cl_id;
                     kill_type = 1;
-                    hp = -50;
+                    plr_hurt(999);
                 break;
             }
         plr_send_stat();
@@ -142,7 +146,7 @@ while(1)
         
         case 11:
         con_add(':: NET: FSEND: Передача прервана клиентом.');
-        if fsend_state && fsend_file != -1 {file_bin_close(fsend_file);}
+        if fsend_state && fsend_file != -1 {dyfileclose(fsend_file); if dybufferexists(fsend_buf) {dyfreebuffer(fsend_buf);}}
         fsend_state = 0;
         fsend_path = '';
         fsend_file = -1;
@@ -199,11 +203,17 @@ while(1)
         
         case 15:
         //voting
+        if fsend_state {exit;}
         var t, s;
         t = dyreadbyte(0);
         s = dyreadstring(0);
         if t == 0 {net_vote_start(s); break;}
         if t == 1 {net_vote();}
+        break;
+        
+        case 16:
+        //fsend inb req
+        if fsend_state {net_fsend_main();}
         break;
         }
 }

@@ -18,7 +18,6 @@
 sys_init(); //inits all engine shit
 if global.sys_error {exit;}
 cfg_load('game.cfg');
-//global.fps_last = global.cl_fps_max;
 r_screenset();
 if global.s_preload
 {

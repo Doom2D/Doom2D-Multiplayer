@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">if at {exit;}
 if !alive {exit;}
-at = round(global.sv_fps_max / 2);
+at = 1 + round(global.sv_fps_max / 2);
 
 var sw, m;
 if tt == -1 {sw = t; m = true;} else {sw = tt; m = false; tt = -1;}
@@ -32,7 +32,7 @@ switch sw
     {
       inst = ds_list_find_value(tiles, i);
       if !instance_exists(inst) {continue;}
-      if inst.active {break;}
+      if inst.active {continue;}
       with inst
       {
         active = true;
@@ -59,7 +59,7 @@ switch sw
     {
       inst = ds_list_find_value(tiles, i);
       if !instance_exists(inst) {continue;}
-      if !inst.active {break;}
+      if !inst.active {continue;}
       with inst
       {
         active = false;
@@ -130,22 +130,25 @@ switch sw
   case 3:
     //random activator
     //actually, this is just a placeholder trigger, it's pointless
-    var f;
+    var f, d;
     f = false;
+    d = false;
     while !f
     {
       with par_trigger
       {
         if f {break;}
         if id == other.id {continue;}
+        if !alive || at &gt; 0 {continue;}
         if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
                                 other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+        d = true;
         if !(irandom(10) - 7) {continue;}
         if t == 7 {act_t = other.id;}
-        at = 0;
-        event_user(0);
+        if alarm[0] &lt; 1 {alarm[0] = 1;} 
         f = true;
       }
+      if !d {break;}
     }
   break;
   case 4:
@@ -162,11 +165,11 @@ switch sw
     with par_trigger
     {
       if id == other.id {continue;}
+      if !alive || at &gt; 0 {continue;}
       if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
                               other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
       if t == 7 {act_t = other.id;}
-      at = 0;
-      event_user(0);
+      if alarm[0] &lt; 1 {alarm[0] = 1;} 
     }
   break;
   case 5:
@@ -178,6 +181,9 @@ switch sw
       if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
                               other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
       at = 0;
+      m = true;
+      tt = -1;
+      alarm[0] = 0;
       alive *= -1;
     }
   break;

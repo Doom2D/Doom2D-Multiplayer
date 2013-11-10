@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">if x + sprite_width &lt;= view_xview || x &gt;= view_xview + view_wview {exit;}
 if y + sprite_height &lt;= view_yview || y &gt;= view_yview + view_hview {exit;}
-if keyboard_check(ord('E')) {exit;}
+if o_cam.visible {exit;}
 draw_sprite(sprite_index, image_index, x, y);
 </argument>
       </arguments>

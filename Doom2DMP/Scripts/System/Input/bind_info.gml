@@ -11,4 +11,4 @@ con_add('+use: '+key_name(global.key_use));
 con_add('+nextweapon: '+key_name(global.key_chw));
 con_add('+prevweapon: '+key_name(global.key_chw2));
 con_add('+screenshot: '+key_name(global.key_scr));
-con_add('==BIND INFO END==');
+con_add('===BIND INFO END===');

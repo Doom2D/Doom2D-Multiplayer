@@ -18,7 +18,7 @@ net_say(":: " + cl_name + " начал голосование: " + tell_cmd + ".
 
 with o_pl
 {
-    plr_send_text(cl_id, "Идет голосование: 0/" + string(ceil(instance_number(o_pl)/2)), global.sv_voting_time * global.sv_fps_max, 2, c_orange, 412, 700, 4);
+    plr_send_text(cl_id, "Идет голосование", global.sv_voting_time, 2, c_orange, 412, 700, 4);
 }
 
 o_host.alarm[6] = global.sv_voting_time * global.sv_fps_max;

@@ -38,9 +38,11 @@ if tx_n > 256
   exit;
 }
 
+var err_l;
+err_l = false;
 for (j = 1; j < tx_n; j += 1)
 {
-  ed_tex_load(file_text_read_string(fnum));
+  if !ed_tex_load(file_text_read_string(fnum)) {err_l = true;}
   file_text_readln(fnum);
 }
 
@@ -87,3 +89,11 @@ while !file_text_eof(fnum)
 
 file_text_close(fnum);
 alarm[0] = 5;
+ed_bkg_change();
+
+if err_l
+{
+  API_Dialog_MessageBox(window_handle(),
+      'Некоторые текстуры не были загружены.',
+      'Ошибка', MB_OK|MB_ICONWARNING);
+}

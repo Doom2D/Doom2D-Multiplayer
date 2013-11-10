@@ -1,21 +1,12 @@
 //saves current map
 //a0 - checking call from "save as"
 
-if argument0 || global.map_file == working_directory + '\data\maps\*.dlv'
+if argument0 || !file_exists(global.map_file)
 {
-    var temp_fn;
-    temp_fn = get_save_filename('Карты Doom2DMP 0.6 (*.DLV)|*.dlv', global.map_file);
-    if temp_fn == '' {exit;}
-    if string_lower(string_copy(temp_fn, string_length(temp_fn)-3, 4)) != '.dlv' {temp_fn += '.dlv';}
-    if file_exists(temp_fn)
-    {
-        if API_Dialog_MessageBox(window_handle(),
-               'Файл "' + filename_name(temp_fn) + '" уже существует.'
-               + chr(13) + chr(10) +
-               'Перезаписать?',
-               '', MB_YESNO|MB_ICONWARNING) == 7 {exit;}
-    }
-    global.map_file = temp_fn;
+  var get_fn;
+  get_fn = dlg_savefile('Карты Doom2DMP 0.6 (*.DLV)|*.dlv', global.map_file, '.dlv');
+  if get_fn == '' {exit;}
+  global.map_file = get_fn;
 }
 
 var fnum;

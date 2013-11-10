@@ -23,7 +23,7 @@ _dem_delay += 1;
 _dem_time -= 1 - global.dem_pause;
 uset -= 1;
 
-if _timer &gt; 600 &amp;&amp; global.dem_mode &lt; 2
+if _timer &gt; 10 * global.cl_fps_max &amp;&amp; global.dem_mode &lt; 2
 {
     //if the server fucked up and doesnt send anything for half a minute
     con_add(':: NET: Слишком большой пинг (&gt;10 сек). Возможно, соединение потеряно.');

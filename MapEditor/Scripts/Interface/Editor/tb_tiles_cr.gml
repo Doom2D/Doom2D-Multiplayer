@@ -55,4 +55,5 @@ API_Combobox_AddString(ui_tl_cb, 'Триггер (выстрел)');
 API_Combobox_AddString(ui_tl_cb, 'Триггер (начало игры)'); //47
 API_Combobox_AddString(ui_tl_cb, 'Триггер (расширитель)');
 API_Combobox_AddString(ui_tl_cb, 'Невидимость');
+API_Combobox_AddString(ui_tl_cb, 'Костюм');
 API_Combobox_SetSel(ui_tl_cb, 0);

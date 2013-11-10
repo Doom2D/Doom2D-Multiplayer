@@ -1,12 +1,12 @@
 var tx_f, transp;
 tx_f = argument0;
 
-for (i = 0; i < 256; i += 1)
+for (i = 1; i < 256; i += 1)
 {
   if global.tex[i] == -1 {break;}
 }
 
-if tx_f != '*ERROR' && file_exists(tx_f) 
+if file_exists(tx_f) 
 {
   transp = 0;
   if string_lower(filename_ext(tx_f)) == '.gif' {transp = 1;}

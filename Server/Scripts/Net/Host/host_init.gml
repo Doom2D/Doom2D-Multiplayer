@@ -9,6 +9,11 @@ for(i = 0; i < 8192; i += 1)
 {
     global.sv_itm[i] = noone;
 }
+global.sv_proj = ds_list_create();
+for(i = 0; i < 2048; i += 1)
+{
+    ds_list_add(global.sv_proj, noone);
+}
 global.sv_tiles = ds_list_create();
 
 //init server shit
