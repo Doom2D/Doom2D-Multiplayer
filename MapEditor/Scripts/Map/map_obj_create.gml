@@ -6,16 +6,15 @@
 
 var a_obj, a_ext, a_x, a_y, o;
 a_obj = argument0;
-a_ext = argument1;
 a_x = argument2;
 a_y = argument3;
 o = noone;
 
-if !global.map_proc && a_obj > 43 && a_obj < 49 {a_ext = API_Combobox_GetSel(ui_tg_cb);}
+if !global.map_proc && obj_trig(a_obj) {a_ext = trg_sel;} else {a_ext = argument1;}
 
 switch a_obj
 {
-  case 0:
+  case BLOCK_SOLID:
    o = instance_create(a_x, a_y, o_solid);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -23,7 +22,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 1:
+  case BLOCK_JTHR:
    o = instance_create(a_x, a_y, o_jthr);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -31,7 +30,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 2:
+  case BLOCK_BKG:
    o = instance_create(a_x, a_y, o_bkg);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -39,7 +38,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 3:
+  case BLOCK_FRG:
    o = instance_create(a_x, a_y, o_frg);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -47,7 +46,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 4:
+  case BLOCK_WATER:
    o = instance_create(a_x, a_y, o_liquid);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -55,7 +54,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 5:
+  case BLOCK_ACID1:
    o = instance_create(a_x, a_y, o_liquid);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -63,7 +62,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 6:
+  case BLOCK_ACID2:
    o = instance_create(a_x, a_y, o_liquid);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -71,7 +70,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 7:
+  case BLOCK_LIFTU:
    o = instance_create(a_x, a_y, o_lift);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -79,7 +78,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 8:
+  case BLOCK_LIFTD:
    o = instance_create(a_x, a_y, o_lift);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -87,7 +86,7 @@ switch a_obj
    o.image_single = 1;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 9:
+  case BLOCK_LIFTL:
    o = instance_create(a_x, a_y, o_lift);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -95,7 +94,7 @@ switch a_obj
    o.image_single = 2;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 10:
+  case BLOCK_LIFTR:
    o = instance_create(a_x, a_y, o_lift);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -103,7 +102,7 @@ switch a_obj
    o.image_single = 3;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 11:
+  case ITEM_STIMPACK:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -111,7 +110,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 12:
+  case ITEM_MEDKIT:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -119,7 +118,7 @@ switch a_obj
    o.image_single = 1;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 13:
+  case ITEM_ARMOR1:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -127,7 +126,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 14:
+  case ITEM_ARMOR2:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -135,7 +134,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 15:
+  case ITEM_SOULSPHR:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -143,7 +142,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 16:
+  case ITEM_MEGASPHR:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -151,7 +150,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 17:
+  case ITEM_INVUL:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -159,7 +158,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 18:
+  case ITEM_JETPACK:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -167,7 +166,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 19:
+  case ITEM_BERSERK:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -176,7 +175,7 @@ switch a_obj
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
   
-  case 25:
+  case ITEM_BONUSHP:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -184,7 +183,7 @@ switch a_obj
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 26:
+  case ITEM_BONUSAP:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -193,31 +192,31 @@ switch a_obj
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
   
-  case 20:
-  case 21:
-  case 22:
-  case 23:
-  case 24:
-  case 27:
-  case 28:
-  case 29:
-  case 30:
+  case ITEM_BACKPACK:
+  case ITEM_CLIP:
+  case ITEM_BULLETS:
+  case ITEM_SHELLS4:
+  case ITEM_SHELLS25:
+  case ITEM_ROCKET:
+  case ITEM_ROCKETS:
+  case ITEM_CELL:
+  case ITEM_CELLPACK:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
    o.sprite_index = s_ammo;
-   o.image_single = a_obj-20;
+   o.image_single = a_obj - 20;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
   
-  case 31:
-  case 32:
-  case 33:
-  case 34:
-  case 35:
-  case 36:
-  case 37:
-  case 38:
+  case ITEM_SHOTGUN:
+  case ITEM_DSHOTGUN:
+  case ITEM_CHAINGUN:
+  case ITEM_CHAINSAW:
+  case ITEM_RKTLAUNCH:
+  case ITEM_PLASMAGUN:
+  case ITEM_BFG9000:
+  case ITEM_SCHAINGUN:
    o = instance_create(a_x, a_y, o_item);
    o.o_id = a_obj;
    o.t_id = a_ext;
@@ -225,7 +224,7 @@ switch a_obj
    o.image_single = a_obj-31;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 49:
+  case ITEM_INVIS:
     o = instance_create(a_x, a_y, o_item);
     o.o_id = a_obj;
     o.t_id = a_ext;
@@ -233,7 +232,7 @@ switch a_obj
     o.sprite_index = s_vis;
     with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 50:
+  case ITEM_SUIT:
     o = instance_create(a_x, a_y, o_item);
     o.o_id = a_obj;
     o.t_id = a_ext;
@@ -241,48 +240,52 @@ switch a_obj
     o.sprite_index = s_suit;
     with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 39:
+  case AREA_DMPOINT:
    o = instance_create(a_x, a_y, o_spawn);
    o.o_id = a_obj;
    o.t_id = a_ext;
    o.image_single = 0;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 40:
+  case AREA_DMPOINTR:
    o = instance_create(a_x, a_y, o_spawn);
    o.o_id = a_obj;
    o.t_id = a_ext;
    o.image_single = 1;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 41:
+  case AREA_DMPOINTB:
    o = instance_create(a_x, a_y, o_spawn);
    o.o_id = a_obj;
    o.t_id = a_ext;
    o.image_single = 2;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 42:
+  case FLAG_RED:
    o = instance_create(a_x, a_y, o_spawn);
    o.o_id = a_obj;
    o.t_id = a_ext;
    o.sprite_index = s_flag_r;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 43:
+  case FLAG_BLUE:
    o = instance_create(a_x, a_y, o_spawn);
    o.o_id = a_obj;
    o.t_id = a_ext;
    o.sprite_index = s_flag_b;
    with o {o_w = obj_get_w(o_id); o_h = obj_get_h(o_id);}
   break;
-  case 44: case 45: case 46: case 47: case 48:
+  case TRIG_TOUCH:
+  case TRIG_USE:
+  case TRIG_FIRE:
+  case TRIG_START:
+  case TRIG_ACTIV:
    o = instance_create(a_x, a_y, o_trigger);
    o.o_id = a_obj;
    o.t_id = a_ext;
    o.timer = 0;
-   if o.t_id > 500 {o.timer = o.t_id - 500; o.t_id = 4;}
-   if o.t_id > 100 {o.timer = o.t_id - 100; o.t_id = 2;}
+   if o.t_id > 500 {o.timer = o.t_id - 500; o.t_id = TRAC_ACTTRIG;}
+   if o.t_id > 100 {o.timer = o.t_id - 100; o.t_id = TRAC_TGLSOLID;}
    o.image_single = a_obj - 44;
    o.image_xscale = argument4;
    o.image_yscale = argument5;
@@ -294,9 +297,10 @@ switch a_obj
    if !global.map_proc
    {
      trg = o;
-     global.ed_mode = 1;
+     global.ed_mode = MODE_TRIGZONE;
    }
   break;
 }
 
 with (o.object_index) { if id != o.id {o.visible = visible; break;} }
+

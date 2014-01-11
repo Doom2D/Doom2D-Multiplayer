@@ -13,10 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if image_index &lt; image_number - 1.175 {image_index += 0.175;}
+        <argument kind="STRING">if image_index &gt;= image_number - 1 {image_speed = 0;}
+
 if place_meeting(x, y + vspeed / 2, o_solid) || place_meeting(x, y + vspeed / 2, o_jthr) {gravity = 0; vspeed = 0; hspeed = hspeed/1.5;} else {gravity = 0.3;}
 if place_meeting(x, y, o_liq) &amp;&amp; vspeed &gt; 2 {vspeed = 2;}
-if place_meeting(x, y - vspeed, o_solid) {vspeed = +vspeed;}
+if place_meeting(x, y - vspeed, o_solid) {vspeed = abs(vspeed);}
 if place_meeting(x + hspeed, y, o_solid) {hspeed = 0;}
 if x &lt; 0 || y &lt; 0 || x &gt; global.map_w || y &gt; global.map_h {instance_destroy();}
 if place_meeting(x, y, o_lift_up) {vspeed -= 0.5;}

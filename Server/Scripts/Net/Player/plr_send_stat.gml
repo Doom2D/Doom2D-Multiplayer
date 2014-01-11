@@ -1,18 +1,15 @@
 //sends stats
-dyclearbuffer(0);
-dywritebyte(9, 0);
-dywritebyte(cl_id, 0);
-dywritebyte(max(0, hp), 0);
-dywritebyte(ap, 0);
-dywriteshort(a1, 0);
-dywriteshort(a2, 0);
-dywriteshort(a3, 0);
-dywriteshort(a4, 0);
-dywritebyte(w, 0);
-dywritebyte(frag, 0);
-dywritebyte(st_inv, 0);
-dywritebyte(st_ber, 0);
-dywritebyte(st_flag, 0);
-dywritebyte(st_vis, 0);
-dywritebyte(st_suit, 0);
-with o_pl {dysendmessage(cl_tcp, 0, 0, 0);}
+dll39_buffer_clear(0);
+dll39_write_byte(9, 0);
+dll39_write_byte(cl_id, 0);
+dll39_write_byte(max(0, hp), 0);
+dll39_write_byte(ap, 0);
+dll39_write_short(a1, 0);
+dll39_write_short(a2, 0);
+dll39_write_short(a3, 0);
+dll39_write_short(a4, 0);
+dll39_write_byte(w, 0);
+dll39_write_byte(frag, 0);
+dll39_write_byte( build_byte( st_inv, st_vis, st_ber, st_suit, 0,0,0,0 ), 0);
+dll39_write_byte(st_flag, 0);
+with o_pl {dll39_message_send(cl_tcp, 0, 0, 0);}

@@ -47,6 +47,7 @@ switch sw
     {
       if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
                               other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+      if !place_meeting(x, y, o_solid) {continue;}
       kill_type = 16;
       killer_id = 0;
       plr_hurt(999);
@@ -106,6 +107,7 @@ switch sw
       {
         if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
                                 other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+        if !place_meeting(x, y, o_solid) {continue;}
         kill_type = 16;
         killer_id = 0;
         plr_hurt(999);

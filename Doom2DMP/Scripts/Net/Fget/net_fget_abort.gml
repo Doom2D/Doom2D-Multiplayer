@@ -3,13 +3,12 @@ if global.dem_mode >= 2 {exit;}
 if room != rm_game {exit;}
 if !variable_global_exists('pl_id') {exit;}
 
-dyclearbuffer(0);
-dywritebyte(11, 0);
-dywritebyte(global.pl_id, 0);
-dysendmessage(global.cl_tcp, 0, 0, 0);
+dll39_write_byte(11, global.send_buf);
+dll39_write_byte(global.pl_id, global.send_buf);
+tcp_send(global.cl_tcp, global.send_buf);
 
-if dybufferexists(global.fget_buf) {dyfreebuffer(global.fget_buf);}
-if global.fget_file != -1 {dyfileclose(global.fget_file);}
+if dll39_buffer_exists(global.fget_buf) {dll39_buffer_free(global.fget_buf);}
+if global.fget_file != -1 {dll39_file_close(global.fget_file);}
 global.fget_path = '';
 global.fget_file = -1;
 global.fget_pos = 0;

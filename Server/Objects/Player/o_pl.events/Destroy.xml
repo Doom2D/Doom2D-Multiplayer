@@ -20,13 +20,13 @@ ds_list_delete(global.name_taken, list_get_ind('name_taken', cl_name));
 plr_send_effect(3, x, y);
 plr_send_sound(20, x, y);
 item_drop();
-dyclosesock(cl_tcp);
+dll39_socket_close(cl_tcp);
 
 //close map loading stuff
 if fsend_state &amp;&amp; fsend_file != -1
 {
-    if dybufferexists(fsend_buf) {dyfreebuffer(fsend_buf);}
-    dyfileclose(fsend_file);
+    if dll39_buffer_exists(fsend_buf) {dll39_buffer_free(fsend_buf);}
+    dll39_file_close(fsend_file);
     fsend_state = 0;
 }
 

@@ -1,5 +1,5 @@
 //processes objects mirroring window
-if ui_win8 == -1 {exit;}
+if ui_win8 == noval {exit;}
 
 var cmd9;
 cmd9 = API_Check_Command(9);
@@ -35,19 +35,25 @@ switch cmd9
         if mr_h
         {
           x = global.map_w - x - o_w;
-          if o_id > 43 && o_id < 49
+          if obj_trig(o_id)
           {
-            if t_id != 8 {xx[1] = global.map_w - xx[1];}
-            if t_id < 7 {xx[2] = global.map_w - xx[2];}
+            if t_id != TRAC_ENDROUND
+            {
+              xx[1] = global.map_w - xx[1];
+              if t_id != TRAC_TELEPORT {xx[2] = global.map_w - xx[2];}
+            }
           }
         }
         if mr_v
         {
           y = global.map_h - y - o_h;
-          if o_id > 43 && o_id < 49
+          if obj_trig(o_id)
           {
-            if t_id != 8 {yy[1] = global.map_h - yy[1];}
-            if t_id < 7 {yy[2] = global.map_h - yy[2];}
+            if t_id != TRAC_ENDROUND
+            {
+              yy[1] = global.map_h - yy[1];
+              if t_id != TRAC_TELEPORT {yy[2] = global.map_h - yy[2];}
+            }
           }
         }
       }
@@ -58,6 +64,6 @@ switch cmd9
   
   case ui_win8_b2:
     API_Window_Destroy(ui_win8);
-    ui_win8 = -1;
+    ui_win8 = noval;
   break;
 }

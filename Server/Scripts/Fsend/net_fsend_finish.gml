@@ -1,13 +1,13 @@
 //finishes the file sending process
 //a0 - client id
-if fsend_state && fsend_file != -1 {dyfileclose(fsend_file);}
+if fsend_state && fsend_file != -1 {dll39_file_close(fsend_file);}
 
 con_add(':: NET: FSEND: Клиенту ' + cl_name + ' отослан файл ' + fsend_path + '.');
 
 fsend_state = 0;
 net_fsend_state();
 
-if dybufferexists(fsend_buf) {dyfreebuffer(fsend_buf);}
+if dll39_buffer_exists(fsend_buf) {dll39_buffer_free(fsend_buf);}
 fsend_path = '';
 fsend_file = -1;
 fsend_pos = 0;

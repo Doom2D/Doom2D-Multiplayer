@@ -1,5 +1,5 @@
 //processes map settings window
-if ui_win3 == -1 {exit;}
+if ui_win3 == noval {exit;}
 
 var cmd4;
 cmd4 = API_Check_Command(4);
@@ -65,10 +65,10 @@ switch cmd4
     ed_bkg_change();
     ui_upd_title();
     API_Window_Destroy(ui_win3);
-    ui_win3 = -1;
+    ui_win3 = noval;
   break;
   case ui_win3_b6:
     API_Window_Destroy(ui_win3);
-    ui_win3 = -1;
+    ui_win3 = noval;
   break;
 }

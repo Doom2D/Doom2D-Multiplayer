@@ -1,6 +1,6 @@
 //creates map optimization window
-if !API_Window_Exists(ui_win7) {ui_win7 = -1;}
-if ui_win7 != -1 {API_Window_SetFocus(ui_win7); exit;}
+if !API_Window_Exists(ui_win7) {ui_win7 = noval;}
+if ui_win7 != noval {API_Window_SetFocus(ui_win7); exit;}
 
 ui_win7 = API_Window_Create(window_handle(),
                             640, 480,
@@ -9,8 +9,7 @@ ui_win7 = API_Window_Create(window_handle(),
 ui_win7_title = 'Удалить лишние тайлы'
 API_Window_SetText(ui_win7, ui_win7_title);
 
-ui_win7_g1 = API_Button_Create(ui_win7, 4, 2, 208, 92, BS_GROUPBOX)
-API_Control_SetText(ui_win7_g1, 'Оптимизировать:');
+API_Control_SetText( API_Button_Create(ui_win7, 4, 2, 208, 92, BS_GROUPBOX) , 'Оптимизировать:');
 
 ui_win7_cb1 = API_Button_Create(ui_win7, 12, 20, 128, 16, BS_AUTOCHECKBOX);
 API_Control_SetText(ui_win7_cb1, 'Тайлы окружения');

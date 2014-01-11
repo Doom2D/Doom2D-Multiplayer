@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="obj_block" type="RESOURCE"/>
+  <resource name="obj_wblock" type="RESOURCE"/>
+  <resource name="obj_lift" type="RESOURCE"/>
+  <resource name="obj_item" type="RESOURCE"/>
+  <resource name="obj_area" type="RESOURCE"/>
+  <resource name="obj_flag" type="RESOURCE"/>
+  <resource name="obj_trig" type="RESOURCE"/>
+</resources>

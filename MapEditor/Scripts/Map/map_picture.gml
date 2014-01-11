@@ -21,21 +21,21 @@ if !surface_exists(out_sf) {mb_error(window_handle()); exit;}
 surface_set_target(out_sf);
 
 draw_clear(c_black);
-if global.mbk_ind != -1 {draw_background_stretched(global.mbk_ind, 0, 0, global.map_w, global.map_h);}
+if global.mbk_ind != noval {draw_background_stretched(global.mbk_ind, 0, 0, global.map_w, global.map_h);}
 
-with o_bkg                                 {draw_sprite(sprite_index, image_index, x, y);}
-with o_solid                               {draw_sprite(sprite_index, image_index, x, y);}
-with o_jthr                                {draw_sprite(sprite_index, image_index, x, y);}
-with o_item                                {draw_sprite(sprite_index, image_index, x, y);}
-with o_spawn { if o_id == 42 || o_id == 43 {draw_sprite(sprite_index, image_index, x, y);} }
-with o_liquid                              {draw_sprite(sprite_index, image_index, x, y);}
-with o_frg                                 {draw_sprite(sprite_index, image_index, x, y);}
+with o_bkg                       {draw_sprite(sprite_index, image_index, x, y);}
+with o_solid                     {draw_sprite(sprite_index, image_index, x, y);}
+with o_jthr                      {draw_sprite(sprite_index, image_index, x, y);}
+with o_item                      {draw_sprite(sprite_index, image_index, x, y);}
+with o_spawn { if obj_flag(o_id) {draw_sprite(sprite_index, image_index, x, y);} }
+with o_liquid                    {draw_sprite(sprite_index, image_index, x, y);}
+with o_frg                       {draw_sprite(sprite_index, image_index, x, y);}
 
 //to avoid bug with incorrect blending on surfaces in GM
 draw_set_blend_mode_ext(bm_dest_alpha, bm_src_alpha);
 draw_set_color(c_black);
 draw_set_alpha(1);
-draw_rectangle(0, 0, global.map_w, global.map_h, 0);
+draw_rectangle(0, 0, global.map_w, global.map_h, false);
 draw_set_blend_mode(bm_normal);
 
 surface_reset_target();
@@ -48,3 +48,4 @@ if alt_s
 surface_free(out_sf);
 
 if !file_exists(get_fn) {mb_error(window_handle());}
+

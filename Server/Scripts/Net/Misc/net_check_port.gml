@@ -1,56 +1,55 @@
 /*
 argument0  = port
 return:  0 = Blocked
-                 1 = Open
-                -1 = Error
+         1 = Open
+        -1 = Error
 */                
 var port, tcp, data, a, b;
 port = argument0;
 
-
 // make post request
 data = "IP=" + global.sv_ip + "&port=" + string(port) + "&submit=Check";
 
-tcp = dytcpconnect("canyouseeme.org", 80, 0);
+tcp = dll39_tcp_connect("canyouseeme.org", 80, 0);
 if (!tcp) return -1;
-dysetformat(tcp, 1, "<br>"); //set format to html mode to receive <br> lines
+dll39_set_format(tcp, 1, "<br>"); //set format to html mode to receive <br> lines
 
 //send post request
-dyclearbuffer(global._sl_buf);
-dywritechars("POST / HTTP/1.1" + chr(13) + chr(10), global._sl_buf);
-dywritechars("Host: canyouseeme.org" + chr(13) + chr(10), global._sl_buf);
-dywritechars("Keep-Alive: 300" + chr(13) + chr(10), global._sl_buf);
-dywritechars("Connection: keep-alive" + chr(13) + chr(10), global._sl_buf);
-dywritechars("User-Agent: Mozilla/4.0" + chr(13) + chr(10), global._sl_buf);
-dywritechars("Content-Type: application/x-www-form-urlencoded" + chr(13) + chr(10), global._sl_buf);
-dywritechars("Content-Length: " + string(string_length(data)) + chr(13) + chr(10), global._sl_buf);
-dywritechars(chr(13) + chr(10), global._sl_buf);
-dywritechars(data, global._sl_buf);
-dywritechars(tcp, global._sl_buf);
-dysendmessage(tcp, 0, 0, global._sl_buf);
+dll39_buffer_clear(global._sl_buf);
+dll39_write_chars("POST / HTTP/1.1" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Host: canyouseeme.org" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Keep-Alive: 300" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Connection: keep-alive" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("User-Agent: Mozilla/4.0" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Content-Type: application/x-www-form-urlencoded" + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("Content-Length: " + string(string_length(data)) + chr(13) + chr(10), global._sl_buf);
+dll39_write_chars(chr(13) + chr(10), global._sl_buf);
+dll39_write_chars(data, global._sl_buf);
+dll39_write_chars(tcp, global._sl_buf);
+dll39_message_send(tcp, 0, 0, global._sl_buf);
 
 while (true)    // infinite loop
 {
-        a = dyreceivemessage(tcp, 0, global._sl_buf);  // receive data
-        b = dyreadchars(dybytesleft(global._sl_buf), global._sl_buf)
-        if string_count("Success", b) // until Keyword "Success" is found
-        {
-                dyclosesock(tcp);
-                return 1
-                break;
-        }
-        if string_count("Error", b) // or Keyword "Error" is found
-        {
-                dyclosesock(tcp);
-                return 0
-                break;
-        }
-        if b == ""        // Error if nothing found
-        {
-                dyclosesock(tcp);
-                return -1
-                break;
-        }
-        sleep(60);
+  a = dll39_message_receive(tcp, 0, global._sl_buf);  // receive data
+  b = dll39_read_chars(dll39_bytes_left(global._sl_buf), global._sl_buf)
+  if string_count("Success", b) // until Keyword "Success" is found
+  {
+    dll39_socket_close(tcp);
+    return 1
+    break;
+  }
+  if string_count("Error", b) // or Keyword "Error" is found
+  {
+    dll39_socket_close(tcp);
+    return 0
+    break;
+  }
+  if b == "" // Error if nothing found
+  {
+    dll39_socket_close(tcp);
+    return -1
+    break;
+  }
+  sleep(60);
 }
-dyclosesock(tcp);
+dll39_socket_close(tcp);

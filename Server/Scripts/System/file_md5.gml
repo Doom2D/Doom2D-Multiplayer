@@ -1,19 +1,18 @@
-//gets a textfile's md5
-//a0 - file
-var _str, _f, _md5;
-_md5 = '';
-_str = '';
+//returns MD5-hash of a file
+//arg0 - file
 
-if !file_exists(argument0) {return '';}
-_f = file_text_open_read(argument0);
+var file_nm, file_id, data_buf, data_md5;
+file_nm = argument0;
 
-while !file_text_eof(_f)
-{
-    _str += file_text_read_string(_f);
-    file_text_readln(_f);
-}
+if !file_exists(file_nm) { return ''; }
 
-file_text_close(_f);
+file_id = dll39_file_open(file_nm, dll39_access_read);
+data_buf = dll39_buffer_create();
+dll39_file_read(file_id, dll39_file_size(file_id), data_buf);
+dll39_file_close(file_id);
 
-_md5 = dymd5string(_str);
-return _md5;
+data_md5 = dll39_md5_buffer(data_buf);
+dll39_buffer_free(data_buf);
+
+return data_md5;
+

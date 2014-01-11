@@ -11,16 +11,14 @@ if global.mp_gamemode == 0
 
 if global.cl_inst.cl_team == 1
 {
-        dyclearbuffer(0);
-        dywritebyte(12, 0);
-        dywritebyte(2, 0);
-        dysendmessage(global.cl_tcp, 0, 0, 0);
+  dll39_write_byte(12, global.send_buf);
+  dll39_write_byte(2, global.send_buf);
+  tcp_send(global.cl_tcp, global.send_buf);
 }
 if global.cl_inst.cl_team == 2
 {
-        dyclearbuffer(0);
-        dywritebyte(12, 0);
-        dywritebyte(1, 0);
-        dysendmessage(global.cl_tcp, 0, 0, 0);
+  dll39_write_byte(12, global.send_buf);
+  dll39_write_byte(1, global.send_buf);
+  tcp_send(global.cl_tcp, global.send_buf);
 }
 

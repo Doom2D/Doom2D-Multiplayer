@@ -2,6 +2,8 @@
 <resources>
   <resource name="plr_init_phys" type="RESOURCE"/>
   <resource name="plr_phys" type="RESOURCE"/>
+  <resource name="plr_speed_add" type="RESOURCE"/>
+  <resource name="plr_speed_inv" type="RESOURCE"/>
   <resource name="plr_changewpn" type="RESOURCE"/>
   <resource name="plr_respawn" type="RESOURCE"/>
   <resource name="plr_shoot" type="RESOURCE"/>

@@ -1,6 +1,6 @@
 //starts up a vote on arg0 command
 if !global.sv_voting {net_tell(":: Голосования отключены."); exit;}
-if !net_vote_check(argument0)
+if !net_vote_check(string_lower(argument0))
 {
     net_tell(":: Голосовать за эту команду запрещено.");
     exit;

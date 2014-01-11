@@ -17,7 +17,7 @@ if room == rm_game
 } 
 if !skin_check('data\skins\' + string(ds_list_find_value(cmd, 1)))
 {
-  con_add(':: ERROR: Скин ' + string(ds_list_find_value(cmd, 1)) + ' не найден, либо он поврежден.');
+  con_add(':: ERROR: Скин "' + string(ds_list_find_value(cmd, 1)) + '" не найден, либо он поврежден.');
   exit;
 }
 global.pl_skin = string(ds_list_find_value(cmd, 1));

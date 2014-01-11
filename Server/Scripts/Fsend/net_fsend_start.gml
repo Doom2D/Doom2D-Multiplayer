@@ -9,18 +9,21 @@ if !file_exists(f_pt)
   exit;
 }
 
-if dybufferexists(fsend_buf) {dyfreebuffer(fsend_buf);}
-fsend_buf = dycreatebuffer();
+if dll39_buffer_exists(fsend_buf) {dll39_buffer_free(fsend_buf);}
+fsend_buf = dll39_buffer_create();
 fsend_path = f_pt;
-fsend_file = dyfileopen(f_pt, 0);
-fsend_size = dyfilesize(fsend_file);
+fsend_md5 = file_md5(f_pt);
+fsend_file = dll39_file_open(f_pt, dll39_access_read);
+fsend_size = dll39_file_size(fsend_file);
 fsend_pos = 0;
-fsend_md5 = file_md5(f_pt); //file's md5
 
-var f_ex, m_pt;
-f_ex = filename_ext(f_pt);
-m_pt = string_replace('data\maps\' + filename_name(f_pt), f_ex, '.dlv')
-if string_lower(f_ex) == '.7z' && file_exists(m_pt) {fsend_cmd5 = file_md5(m_pt);} else {fsend_cmd5 = '';} //md5 of file's contents if it is a 7z
+//md5 of file's contents if it is a 7z
+if string_lower( filename_ext(f_pt) ) == '.7z'
+{
+  fsend_cmd5 = file_md5( 'data\maps\' + filename_change_ext( filename_name(f_pt), '.dlv' ) );
+} else {
+  fsend_cmd5 = '';
+}
 
 fsend_state = 1;
 

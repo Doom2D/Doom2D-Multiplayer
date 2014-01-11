@@ -1,7 +1,6 @@
 //sends a ping message to server, server sends pong message
 if global.dem_mode >= 2 {exit;}
-dyclearbuffer(0);
-dywritebyte(4, 0);
-dysendmessage(global.cl_tcp, 0, 0, 0);
+dll39_write_byte(4, global.send_buf);
+tcp_send(global.cl_tcp, global.send_buf);
 _timer = 0;
-//con_add("Sent ping to server.");
+

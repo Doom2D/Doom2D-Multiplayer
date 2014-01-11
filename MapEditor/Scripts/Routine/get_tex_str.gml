@@ -1,4 +1,4 @@
-//returns texture string preparing to adding into list
+//returns texture string prepared to adding into list
 //arg0 - texture index
 
 var tx_i, tx_nm;

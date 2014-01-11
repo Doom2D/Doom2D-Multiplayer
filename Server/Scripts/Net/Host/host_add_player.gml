@@ -30,18 +30,18 @@ if global.mp_gamemode
 }
 
 //let everyone know about this fucker
-dyclearbuffer(0);
-dywritebyte(3, 0);
-dywritebyte(argument0, 0);
-dywritebyte(argument6, 0);
-dywritestring(argument2, 0);
-dywritestring(argument3, 0);
-dywriteint(cl_inst.cl_color, 0);
+dll39_buffer_clear(0);
+dll39_write_byte(3, 0);
+dll39_write_byte(argument0, 0);
+dll39_write_byte(argument6, 0);
+dll39_write_string(argument2, 0);
+dll39_write_string(argument3, 0);
+dll39_write_int(cl_inst.cl_color, 0);
 with(o_pl)
 {
     if id != cl_inst
     {
-        dysendmessage(cl_tcp, 0, 0, 0);
+        dll39_message_send(cl_tcp, 0, 0, 0);
     }
 }
 

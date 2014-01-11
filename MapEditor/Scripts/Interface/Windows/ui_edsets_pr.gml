@@ -1,6 +1,5 @@
 //processes editor settings window
-if ui_win2 == -1 {exit;}
-if !API_Window_GetFocus(ui_win2) {exit;}
+if ui_win2 == noval {exit;}
 
 var cmd3;
 cmd3 = API_Check_Command(3);
@@ -9,14 +8,14 @@ if cmd3 == 0 {exit;}
 switch cmd3
 {
   case ui_win2_b1:
-    var color_temp;
-    color_temp = get_color(background_color);
-    if color_temp != -1 {background_color = color_temp;}
+    var col_t;
+    col_t = get_color(background_color);
+    if col_t != noval {background_color = col_t;}
   break;
   
   case ui_win2_b2:
     API_Window_Destroy(ui_win2);
-    ui_win2 = -1;
+    ui_win2 = noval;
   break;
 
   case ui_win2_rb1:

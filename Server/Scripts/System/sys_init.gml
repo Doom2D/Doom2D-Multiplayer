@@ -11,7 +11,7 @@ if parameter_count() > 0
 
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '128';
+global.sys_bld = '129';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -67,6 +67,7 @@ global.mp_penalty = 1;
 global.mp_autobalance = 1;
 global.mp_announcer = 1;
 global.mp_drop_clear = 30;
+global.mp_shootjthr = 0;
 global.mp_telefrag = 0;
 global.mp_waterfrag = 2;
 global.mp_waterbfgdmg = 250;
@@ -150,5 +151,5 @@ map_tex_init();
 map_next();
 
 //additional buffer for serverlist and other shit
-global._sl_buf = dycreatebuffer();
+global._sl_buf = dll39_buffer_create();
 

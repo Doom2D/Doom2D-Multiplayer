@@ -3,7 +3,7 @@ if global.sv_port < 10000 {global.sv_port = 10000;}
 if global.sv_port > 65535 {global.sv_port = 65535;}
 
 if global.sv_maxplayers < 1 {global.sv_maxplayers = 1;}
-if global.sv_maxplayers > 24 {global.sv_maxplayers = 24;}
+if global.sv_maxplayers > MAX_PLAYERS {global.sv_maxplayers = MAX_PLAYERS;}
 
 if global.sv_clalert < 0 {global.sv_clalert = 0;}
 if global.sv_clalert > 1 {global.sv_clalert = 1;}
@@ -136,6 +136,9 @@ if global.mp_announcer > 1 {global.mp_announcer = 1;}
 
 if global.mp_drop_clear < 0 {global.mp_drop_clear = 0;}
 if global.mp_drop_clear > 300 {global.mp_drop_clear = 300;}
+
+if global.mp_shootjthr < 0 {global.mp_shootjthr = 0;}
+if global.mp_shootjthr > 1 {global.mp_shootjthr = 1;}
 
 if global.mp_telefrag < 0 {global.mp_telefrag = 0;}
 if global.mp_telefrag > 1 {global.mp_telefrag = 1;}

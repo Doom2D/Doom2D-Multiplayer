@@ -7,9 +7,9 @@ if is_real(v) {exit;}
 
 phrase = string(v);
 
-dyclearbuffer(0);
-dywritebyte(5, 0);
-dywritestring(cl_name + ': ' + phrase, 0);
-with (o_pl) {dysendmessage(cl_tcp, 0, 0, 0)};
+dll39_buffer_clear(0);
+dll39_write_byte(5, 0);
+dll39_write_string(cl_name + ': ' + phrase, 0);
+with (o_pl) {dll39_message_send(cl_tcp, 0, 0, 0)};
 
 con_add(cl_name + ': ' + phrase);

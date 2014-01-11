@@ -55,24 +55,24 @@ if keyboard_check(vk_numpad6) {x_off += 1; keyboard_clear(vk_numpad6);}
 if keyboard_check(vk_numpad5) {x_off = 0; y_off = 0; keyboard_clear(vk_numpad5);}
 
 //layers switching controls
-if keyboard_check_pressed(ord('1')) {with o_solid   {visible = abs(visible - 1);} }
-if keyboard_check_pressed(ord('2')) {with o_jthr    {visible = abs(visible - 1);} }
-if keyboard_check_pressed(ord('3')) {with o_bkg     {visible = abs(visible - 1);} }
-if keyboard_check_pressed(ord('4')) {with o_frg     {visible = abs(visible - 1);} }
-if keyboard_check_pressed(ord('5')) {with o_liquid  {visible = abs(visible - 1);} }
-if keyboard_check_pressed(ord('6')) {with o_lift    {visible = abs(visible - 1);} }
-if keyboard_check_pressed(ord('7')) {with o_item    {visible = abs(visible - 1);} }
-if keyboard_check_pressed(ord('8')) {with o_spawn   {visible = abs(visible - 1);} }
-if keyboard_check_pressed(ord('9')) {with o_trigger {visible = abs(visible - 1);} }
+if keyboard_check_pressed(ord('1')) {with o_solid   {visible = !visible;} }
+if keyboard_check_pressed(ord('2')) {with o_jthr    {visible = !visible;} }
+if keyboard_check_pressed(ord('3')) {with o_bkg     {visible = !visible;} }
+if keyboard_check_pressed(ord('4')) {with o_frg     {visible = !visible;} }
+if keyboard_check_pressed(ord('5')) {with o_liquid  {visible = !visible;} }
+if keyboard_check_pressed(ord('6')) {with o_lift    {visible = !visible;} }
+if keyboard_check_pressed(ord('7')) {with o_item    {visible = !visible;} }
+if keyboard_check_pressed(ord('8')) {with o_spawn   {visible = !visible;} }
+if keyboard_check_pressed(ord('9')) {with o_trigger {visible = !visible;} }
 if keyboard_check_pressed(ord('0'))
 {
-  allvis = abs(allvis - 1);
-  with par_obj {visible = o_ctrl.allvis;}
+  allvis = !allvis;
+  with par_obj {visible = other.allvis;}
 }
 
 //hotkeys
 if keyboard_check_pressed(vk_f1) {dlg_manual();}
-if keyboard_check_pressed(vk_f2) {map_load();}
+if keyboard_check_pressed(vk_f2) {map_load('');}
 if keyboard_check_pressed(vk_f3) {map_save(true);}
 if keyboard_check_pressed(vk_f4) {dlg_clearmap();}
 if keyboard_check_pressed(vk_f5) {ui_mapinfo_cr();}

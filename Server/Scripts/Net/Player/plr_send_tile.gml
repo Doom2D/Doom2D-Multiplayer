@@ -2,8 +2,8 @@
 //a0 - tile id
 //a1 - if active (2 means lift toggle)
 
-dyclearbuffer(0);
-dywritebyte(26, 0);
-dywriteushort(argument0, 0);
-dywritebyte(argument1, 0);
-with o_pl {dysendmessage(cl_tcp, 0, 0, 0);}
+dll39_buffer_clear(0);
+dll39_write_byte(26, 0);
+dll39_write_ushort(argument0, 0);
+dll39_write_byte(argument1, 0);
+with o_pl {dll39_message_send(cl_tcp, 0, 0, 0);}

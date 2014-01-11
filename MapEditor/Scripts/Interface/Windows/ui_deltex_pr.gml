@@ -1,5 +1,5 @@
 //processes textures deleting window
-if ui_win5 == -1 {exit;}
+if ui_win5 == noval {exit;}
 
 var cmd6;
 cmd6 = API_Check_Command(6);
@@ -39,6 +39,6 @@ switch cmd6
   
   case ui_win5_b2:
     API_Window_Destroy(ui_win5);
-    ui_win5 = -1;
+    ui_win5 = noval;
   break;
 }

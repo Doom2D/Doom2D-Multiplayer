@@ -5,28 +5,22 @@ io_clear();
 ui_windows_destroy(false);
 with par_obj {instance_destroy();}
 
-for (i = 1; i < 256; i += 1)
+for (i = 1; i < MAX_TXRS_NUM; i += 1)
 {
   if global.tex[i] != tex_error && sprite_exists(global.tex[i]) {sprite_delete(global.tex[i]);}
-  global.tex[i] = -1;
+  global.tex[i] = noval;
   global.tex_nm[i] = '';
 }
 
 global.tex_n = 1;
-global.ed_mode = 0;
+global.ed_mode = MODE_NORMAL;
 
 if !argument0
 {
-  global.map_name = 'Unnamed Map';
-  global.map_desc = 'Temp Description';
-  global.map_mus = MAP_NOMUS;
-  global.map_bkg = MAP_NOBKG;
-  global.map_w = 1600;
-  global.map_h = 1600;
-  global.map_proc = false;
-  global.map_file = working_directory + '\data\maps\*.dlv';
+  map_init()
   room_caption = global.ed_apptitle;
   ed_bkg_change();
+  global.map_proc = false;
 } else {
   global.map_proc = true;
 }

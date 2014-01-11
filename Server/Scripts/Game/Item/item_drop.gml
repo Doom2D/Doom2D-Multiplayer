@@ -9,7 +9,7 @@ if st_flag == 1 && global.mp_gamemode == 2
     global.sv_itm[i] = o;
     if x < global.map_w && x > 0 && y < global.map_h && y > 0 && kill_type != 12
     {
-         o.alarm[1] = global.mp_drop_clear * 60 + (!global.mp_drop_clear && kill_type > 15);
+         o.alarm[1] = global.mp_drop_clear * global.sv_fps_max + (!global.mp_drop_clear && kill_type > 15);
     } else {
          o.alarm[1] = 1;
     }
@@ -29,7 +29,7 @@ if st_flag == 2 && global.mp_gamemode == 2
     global.sv_itm[i] = o;
     if x < global.map_w && x > 0 && y < global.map_h && y > 0 && kill_type != 12
     {
-         o.alarm[1] = global.mp_drop_clear * 60 + (!global.mp_drop_clear && kill_type > 15);
+         o.alarm[1] = global.mp_drop_clear * global.sv_fps_max + (!global.mp_drop_clear && kill_type > 15);
     } else {
          o.alarm[1] = 1;
     }
@@ -40,7 +40,7 @@ if st_flag == 2 && global.mp_gamemode == 2
     st_flag = 0;
 }
 
-if kill_type == 12 || global.mp_itemdrop == 0 || global.mp_weaponstay {exit;}
+if kill_type == 12 || global.mp_itemdrop == 0 {exit;}
 
 if w < 2 {plr_changewpn(1);}
 
@@ -55,7 +55,7 @@ if global.mp_itemdrop = 1
             o.item = 21;
             o.drop = 1;
             global.sv_itm[i] = o;
-            if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+            o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
             item_send_create(i, o.item, x - 32, y - 16, false);
         break;
         case 3:
@@ -65,7 +65,7 @@ if global.mp_itemdrop = 1
             o.item = 22;
             o.drop = 1;
             global.sv_itm[i] = o;
-            if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+            o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
             item_send_create(i, o.item, x - 32, y - 16, false);
         break;           
         case 4:
@@ -75,7 +75,7 @@ if global.mp_itemdrop = 1
             o.item = 23;
             o.drop = 1;
             global.sv_itm[i] = o;
-            if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+            o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
             item_send_create(i, o.item, x - 32, y - 16, false);
         break;            
         case 9:
@@ -85,7 +85,7 @@ if global.mp_itemdrop = 1
             o.item = 24;
             o.drop = 1;
             global.sv_itm[i] = o;
-            if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+            o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
             item_send_create(i, o.item, x - 32, y - 16, false);
         break;            
         case 5:
@@ -95,7 +95,7 @@ if global.mp_itemdrop = 1
             o.item = 25;
             o.drop = 1;
             global.sv_itm[i] = o;
-            if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+            o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
             item_send_create(i, o.item, x - 32, y - 16, false);
         break;            
         case 6:
@@ -105,7 +105,7 @@ if global.mp_itemdrop = 1
             o.item = 26;
             o.drop = 1;
             global.sv_itm[i] = o;
-            if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+            o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
             item_send_create(i, o.item, x - 32, y - 16, false);
         break;            
         case 7:
@@ -115,7 +115,7 @@ if global.mp_itemdrop = 1
             o.item = 27;
             o.drop = 1;
             global.sv_itm[i] = o;
-            if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+            o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
             item_send_create(i, o.item, x - 32, y - 16, false);
         break;
         case 8:
@@ -125,7 +125,7 @@ if global.mp_itemdrop = 1
             o.item = 28;
             o.drop = 1;
             global.sv_itm[i] = o;
-            if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+            o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
             item_send_create(i, o.item, x - 32, y - 16, false);
         break;
     }
@@ -140,7 +140,7 @@ if hw[2]
     o.item = 21;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
     item_send_create(i, o.item, x - 32, y - 16, false);
 }
 if hw[3]
@@ -151,7 +151,7 @@ if hw[3]
     o.item = 22;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
     item_send_create(i, o.item, x - 32, y - 16, false);
 }
 if hw[4]
@@ -162,7 +162,7 @@ if hw[4]
     o.item = 23;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
     item_send_create(i, o.item, x - 32, y - 16, false);
 }
 if hw[9]
@@ -173,7 +173,7 @@ if hw[9]
     o.item = 24;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
     item_send_create(i, o.item, x - 32, y - 16, false);
 }
 if hw[5]
@@ -184,7 +184,7 @@ if hw[5]
     o.item = 25;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
     item_send_create(i, o.item, x - 32, y - 16, false);
 }
 if hw[6]
@@ -195,7 +195,7 @@ if hw[6]
     o.item = 26;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
     item_send_create(i, o.item, x - 32, y - 16, false);
 }
 if hw[7]
@@ -206,7 +206,7 @@ if hw[7]
     o.item = 27;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
     item_send_create(i, o.item, x - 32, y - 16, false);
 }
 if hw[8]
@@ -217,7 +217,7 @@ if hw[8]
     o.item = 28;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
     item_send_create(i, o.item, x - 32, y - 16, false);
 }
 if st_bpk
@@ -228,6 +228,6 @@ if st_bpk
     o.item = 10;
     o.drop = 1;
     global.sv_itm[i] = o;
-    if global.mp_drop_clear > 0 {o.alarm[1] = global.mp_drop_clear * 60;}
+    o.alarm[1] = global.mp_drop_clear * global.sv_fps_max;
     item_send_create(i, o.item, x - 32, y - 16, false);
 }

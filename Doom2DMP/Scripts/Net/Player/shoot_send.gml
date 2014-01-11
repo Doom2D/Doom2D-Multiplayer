@@ -3,16 +3,14 @@ if !variable_global_exists('pl_id') {exit;}
 if global.dem_mode >= 2 {exit;}
 if global.con || instance_exists(o_menu) || o_con.saymode {exit;}
 
-if keyboard_check(global.key_atk) && !global.con
+if keyboard_check(global.key_atk)
 {
-    dyclearbuffer(0);
-    dywritebyte(6, 0);
-    dysendmessage(global.cl_tcp, 0, 0, 0);
+  dll39_write_byte(6, global.send_buf);
+  tcp_send(global.cl_tcp, global.send_buf);
 }
-if keyboard_check(global.key_use) && !global.con && !uset
+if keyboard_check(global.key_use) && !uset
 {
-    dyclearbuffer(0);
-    dywritebyte(14, 0);
-    dysendmessage(global.cl_tcp, 0, 0, 0);
-    uset = 30;
+  dll39_write_byte(14, global.send_buf);
+  tcp_send(global.cl_tcp, global.send_buf);
+  uset = 30;
 }

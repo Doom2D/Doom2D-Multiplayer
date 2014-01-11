@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="tcp_send" type="RESOURCE"/>
+  <resource name="get_seconds" type="RESOURCE"/>
+  <resource name="byte_sign" type="RESOURCE"/>
+  <resource name="dir_create" type="RESOURCE"/>
+</resources>

@@ -37,7 +37,7 @@ with par_obj
 {
   file_text_write_string(fnum, string(o_id));
   file_text_writeln(fnum);
-  if o_id > 43 && o_id < 49
+  if obj_trig(o_id)
   {
     if timer > 0 {file_text_write_string(fnum, string(500 + timer - (t_id != 4) * 400));} else {file_text_write_string(fnum, string(t_id));}
   }
@@ -50,19 +50,19 @@ with par_obj
   file_text_writeln(fnum);
   file_text_write_string(fnum, string(y));
   file_text_writeln(fnum);
-  if o_id > 43 && o_id < 49
+  if obj_trig(o_id)
   {
     file_text_write_string(fnum, string(image_xscale));
     file_text_writeln(fnum);
     file_text_write_string(fnum, string(image_yscale));
     file_text_writeln(fnum);
-    if t_id != 8
+    if t_id != TRAC_ENDROUND
     {
       file_text_write_string(fnum, string(xx[1]));
       file_text_writeln(fnum);
       file_text_write_string(fnum, string(yy[1]));
       file_text_writeln(fnum);
-      if t_id != 7
+      if t_id != TRAC_TELEPORT
       {
         file_text_write_string(fnum, string(xx[2]));
         file_text_writeln(fnum);

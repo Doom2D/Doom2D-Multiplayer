@@ -5,4 +5,5 @@
   <resource name="file_md5" type="RESOURCE"/>
   <resource name="path_relative" type="RESOURCE"/>
   <resource name="get_timestamp" type="RESOURCE"/>
+  <resource name="get_datestamp" type="RESOURCE"/>
 </resources>

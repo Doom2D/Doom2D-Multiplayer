@@ -2,7 +2,7 @@ randomize();
 set_application_title('Doom 2D Multiplayer 0.6');
 
 global.sys_ver = '0.6';
-global.sys_bld = '128';
+global.sys_bld = '129';
 global.sys_log = 'client';
 //global.sys_log = 'client' + string(irandom(99999999)); -- uncomment this when testing 2 clients
 global.sys_error = false;
@@ -61,9 +61,11 @@ global.r_drawhud = 1;
 global.r_depth = display_get_colordepth();
 global.r_wsplash = 1;
 
+global.send_buf = dll39_buffer_create();
+
 global.slist[0, 0] = 0;
-global.map_h = 320;
-global.map_w = 240;
+global.map_h = 0;
+global.map_w = 0;
 global.map_bkg = -1;
 global.map_mus = -1;
 global.map_md5 = '';
@@ -86,7 +88,7 @@ global.fget_pos = 0;
 global.team_score[1] = 0;
 global.team_score[2] = 0;
 
-global.dem_ver = 2;
+global.dem_ver = 3;
 global.dem_mode = 0; //0 - nothing, 1 - record, 2 - play
 global.dem_will = 'НЕТ'; //future mode
 global.dem_f = -1;
@@ -109,10 +111,12 @@ global.tex[0] = tex_none;
 
 global.cl_tiles = ds_list_create();
 
+global.date_run = get_datestamp();
+
 //init sound and font shit and thread stuff
 snd_init();
 fnt_load();
 con_add(':: SYSTEM: Ошибок не обнаружено.');
 con_add('==========================================');
-con_add('Doom 2D Multiplayer '+string(global.sys_ver)+' (Cборка '+string(global.sys_bld) + ') запущен.');
+con_add('Doom 2D Multiplayer ' + string(global.sys_ver) + ' (Cборка ' + string(global.sys_bld) + ') запущен.');
 con_add('==========================================');

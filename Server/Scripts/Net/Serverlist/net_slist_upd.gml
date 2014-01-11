@@ -3,12 +3,12 @@ if global.sv_lan {exit;}
 var _sl_sock, _sl_str, _sl_name, _sl_map, _sl_host, _sl_hstr, _sl_prt, _sl_mod;
 _sl_name = '';
 
-_sl_mod = '[MOD]';
 switch global.mp_gamemode
 {
-    case 0: _sl_mod = '[DM]'; break;
-    case 1: _sl_mod = '[TDM]'; break;
-    case 2: _sl_mod = '[CTF]'; break;
+  case GAME_DM:  _sl_mod = '[DM]';  break;
+  case GAME_TDM: _sl_mod = '[TDM]'; break;
+  case GAME_CTF: _sl_mod = '[CTF]'; break;
+  default: _sl_mod = '[MOD]';
 }
 
 if global.sv_use_pwd {_sl_name = '*';}
@@ -24,32 +24,21 @@ _sl_prt = real(ds_list_find_value(_sl_hstr, 1));
 if _sl_prt == 0 {_sl_prt = 25667;}
 ds_list_destroy(_sl_hstr);
 
-_sl_mod = 'MOD';
-switch global.mp_gamemode
-{
-    case 0: _sl_mod = 'DM'; break;
-    case 1: _sl_mod = 'TDM'; break;
-    case 2: _sl_mod = 'CTF'; break;
-}
-
-_sl_sock = dytcpconnect(_sl_host, _sl_prt, 1);
+_sl_sock = dll39_tcp_connect(_sl_host, _sl_prt, 1);
 if (!_sl_sock) {
-    con_add(":: NET: SLIST: WARNING: Не удалось получить доступ к мастерсерверу. sv_lan -> 1."); 
-    global.sv_lan = 1; 
-}
-else
-{
-    //dll39_set_nagle(_sl_sock, 1);
-    dyclearbuffer(global._sl_buf);
-    dywritebyte(1, global._sl_buf);
-    dywritestring(_sl_name, global._sl_buf);
-    dywritestring(_sl_map, global._sl_buf);
-    dywritestring(_sl_plr, global._sl_buf);
-    dywritestring(_sl_ver, global._sl_buf);
-    dywritedouble(global.sv_port, global._sl_buf);
-    dysendmessage(_sl_sock, 0, 0, global._sl_buf);
+  con_add(":: NET: SLIST: WARNING: Не удалось получить доступ к мастерсерверу. sv_lan -> 1."); 
+  global.sv_lan = 1; 
+} else {
+  dll39_buffer_clear(global._sl_buf);
+  dll39_write_byte(1, global._sl_buf);
+  dll39_write_string(_sl_name, global._sl_buf);
+  dll39_write_string(_sl_map, global._sl_buf);
+  dll39_write_string(_sl_plr, global._sl_buf);
+  dll39_write_string(_sl_ver, global._sl_buf);
+  dll39_write_double(global.sv_port, global._sl_buf);
+  dll39_message_send(_sl_sock, 0, 0, global._sl_buf);
 
-    dyclosesock(_sl_sock);
+  dll39_socket_close(_sl_sock);
 
-    con_add(':: NET: SLIST: Синхронизировались с мастерсервером.');
+  con_add(':: NET: SLIST: Синхронизировались с мастерсервером.');
 }

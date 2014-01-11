@@ -14,8 +14,8 @@ if !global.fget_state
 }
 
 con_add(":: NET: FGET: Принят файл " + global.fget_path + ".");
-con_add(":: NET: FGET: Размер: " + string(dyfilesize(global.fget_file)) + " байт.");
-dyfileclose(global.fget_file);
+con_add(":: NET: FGET: Размер: " + string(dll39_file_size(global.fget_file)) + " байт.");
+dll39_file_close(global.fget_file);
 sleep(30);
 
 global.fget_md5 = file_md5(global.fget_path);
@@ -29,7 +29,7 @@ if global.fget_size != argument0 || global.fget_md5 != argument1
     _err = 1;
 }
 
-if dybufferexists(global.fget_buf) {dyfreebuffer(global.fget_buf);}
+if dll39_buffer_exists(global.fget_buf) {dll39_buffer_free(global.fget_buf);}
 global.map_done = 1;
 global.fget_path = '';
 global.fget_file = -1;

@@ -2,6 +2,8 @@
 <resources>
   <resource name="Grid" type="GROUP"/>
   <resource name="Data Paths" type="GROUP"/>
+  <resource name="Objects Types" type="GROUP"/>
+  <resource name="create_text" type="RESOURCE"/>
   <resource name="path_relative" type="RESOURCE"/>
   <resource name="get_timestamp" type="RESOURCE"/>
   <resource name="get_tex_str" type="RESOURCE"/>
@@ -10,5 +12,6 @@
   <resource name="obj_get_h" type="RESOURCE"/>
   <resource name="round_mouse_x" type="RESOURCE"/>
   <resource name="round_mouse_y" type="RESOURCE"/>
+  <resource name="opt_tex_list" type="RESOURCE"/>
   <resource name="sort_tex_list" type="RESOURCE"/>
 </resources>

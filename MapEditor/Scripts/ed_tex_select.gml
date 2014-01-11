@@ -1,5 +1,5 @@
 //texture selector
-if global.tex_n == 256
+if global.tex_n == MAX_TXRS_NUM
 {
   API_Dialog_MessageBox(window_handle(),
       'Достигнут лимит количества текстур.',
@@ -47,16 +47,17 @@ switch txnum
           'Ошибка', MB_OK|MB_ICONWARNING);
       exit;
     }
-    if global.tex_n + txnum > 256
+    if global.tex_n + txnum > MAX_TXRS_NUM
     {
-      txnum -= global.tex_n + txnum - 256;
+      txnum -= global.tex_n + txnum - MAX_TXRS_NUM;
       API_Dialog_MessageBox(window_handle(),
           'Вы выбрали количество текстур, превышающее общий лимит. Лишние текстуры добавлены не будут.',
           'Ошибка', MB_OK|MB_ICONWARNING);
     }
-    for (j = 1; j <= txnum; j += 1)
+    var i;
+    for (i = 1; i <= txnum; i += 1)
     {
-      txadd = txdir + API_FileDialog_GetFile(j);
+      txadd = txdir + API_FileDialog_GetFile(i);
       if mb_chktex(window_handle(), txadd) {ed_tex_load(txadd);}
     }
 }

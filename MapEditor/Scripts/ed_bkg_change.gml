@@ -1,7 +1,7 @@
 //changes current map background
 
 if background_exists(global.mbk_ind) {background_delete(global.mbk_ind);}
-global.mbk_ind = -1;
+global.mbk_ind = noval;
 
 if global.map_bkg == MAP_NOBKG {exit;}
 
@@ -13,4 +13,4 @@ if !file_exists(global.map_bkg)
   exit;
 }
 
-global.mbk_ind = background_add(global.map_bkg, 0, 0);
+global.mbk_ind = background_add(global.map_bkg, false, false);

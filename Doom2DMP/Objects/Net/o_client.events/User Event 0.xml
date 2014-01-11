@@ -19,11 +19,11 @@ con_add(':: MAP: MD5 карты клиента: ' + global.map_md5);
 con_add(':: MAP: MD5 карты сервера: ' + global.sv_map_md5);
 if global.map_md5 != global.sv_map_md5 &amp;&amp; global.sv_map_md5 != '-255'
 {
-    con_add(':: MAP: ERROR: MD5 не сходятся.');
-    cl_disconnect();
-    mus_play(global.mus_menu);
-    room_goto(rm_menu);
-    exit;
+  con_add(':: MAP: ERROR: MD5 не сходятся.');
+  cl_disconnect();
+  mus_play(global.mus_menu);
+  room_goto(rm_menu);
+  exit;
 }
 con_add(_welcome);
 instance_create(0, 0, o_hud);

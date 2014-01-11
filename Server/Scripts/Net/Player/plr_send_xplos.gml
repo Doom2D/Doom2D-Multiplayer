@@ -4,10 +4,10 @@
 //arg2 - x
 //arg3 - y
 
-dyclearbuffer(0);
-dywritebyte(18, 0);
-dywritebyte(argument0, 0);
-dywritebyte(argument1, 0);
-dywriteshort(argument2, 0);
-dywriteshort(argument3, 0);
-with (o_pl) {dysendmessage(cl_tcp, 0, 0, 0);}
+dll39_buffer_clear(0);
+dll39_write_byte(18, 0);
+dll39_write_byte(argument0, 0);
+dll39_write_byte(argument1, 0);
+dll39_write_short(argument2, 0);
+dll39_write_short(argument3, 0);
+with (o_pl) {dll39_message_send(cl_tcp, 0, 0, 0);}

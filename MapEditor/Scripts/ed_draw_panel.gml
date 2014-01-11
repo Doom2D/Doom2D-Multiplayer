@@ -1,9 +1,10 @@
 //draws the temp shit
+
 draw_set_color(c_white);
 draw_set_alpha(1);
 
-w = round((x2 - x1)/tw);
-h = round((y2 - y1)/th);
+w = round((x2 - x1) / tw);
+h = round((y2 - y1) / th);
 
 for (a = 0; a != w; a += sign(w))
 {
@@ -16,5 +17,5 @@ for (a = 0; a != w; a += sign(w))
 }
 
 draw_set_color(col);
-draw_rectangle(x1, y1, x2, y2, 1);
+draw_rectangle(x1, y1, x2, y2, true);
 draw_set_color(c_white);

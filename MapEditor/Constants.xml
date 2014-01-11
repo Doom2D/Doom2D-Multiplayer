@@ -1,7 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <constants>
+  <constant name="noval" value="-1"/>
+  <constant name="EOL" value="chr(13)+chr(10)"/>
   <constant name="MAP_NOMUS" value="'*NO_MUSIC'"/>
   <constant name="MAP_NOBKG" value="'*NO_BACKGROUND'"/>
+  <constant name="NO_TEXTURE" value="0"/>
+  <constant name="MAX_TXRS_NUM" value="256"/>
+  <constant name="MODE_NORMAL" value="0"/>
+  <constant name="MODE_TRIGZONE" value="1"/>
+  <constant name="MODE_TRIGACT" value="2"/>
+  <constant name="BLOCK_SOLID" value="0"/>
+  <constant name="BLOCK_JTHR" value="1"/>
+  <constant name="BLOCK_BKG" value="2"/>
+  <constant name="BLOCK_FRG" value="3"/>
+  <constant name="BLOCK_WATER" value="4"/>
+  <constant name="BLOCK_ACID1" value="5"/>
+  <constant name="BLOCK_ACID2" value="6"/>
+  <constant name="BLOCK_LIFTU" value="7"/>
+  <constant name="BLOCK_LIFTD" value="8"/>
+  <constant name="BLOCK_LIFTL" value="9"/>
+  <constant name="BLOCK_LIFTR" value="10"/>
+  <constant name="ITEM_STIMPACK" value="11"/>
+  <constant name="ITEM_MEDKIT" value="12"/>
+  <constant name="ITEM_ARMOR1" value="13"/>
+  <constant name="ITEM_ARMOR2" value="14"/>
+  <constant name="ITEM_SOULSPHR" value="15"/>
+  <constant name="ITEM_MEGASPHR" value="16"/>
+  <constant name="ITEM_INVUL" value="17"/>
+  <constant name="ITEM_JETPACK" value="18"/>
+  <constant name="ITEM_BERSERK" value="19"/>
+  <constant name="ITEM_BACKPACK" value="20"/>
+  <constant name="ITEM_CLIP" value="21"/>
+  <constant name="ITEM_BULLETS" value="22"/>
+  <constant name="ITEM_SHELLS4" value="23"/>
+  <constant name="ITEM_SHELLS25" value="24"/>
+  <constant name="ITEM_BONUSHP" value="25"/>
+  <constant name="ITEM_BONUSAP" value="26"/>
+  <constant name="ITEM_ROCKET" value="27"/>
+  <constant name="ITEM_ROCKETS" value="28"/>
+  <constant name="ITEM_CELL" value="29"/>
+  <constant name="ITEM_CELLPACK" value="30"/>
+  <constant name="ITEM_SHOTGUN" value="31"/>
+  <constant name="ITEM_DSHOTGUN" value="32"/>
+  <constant name="ITEM_CHAINGUN" value="33"/>
+  <constant name="ITEM_CHAINSAW" value="34"/>
+  <constant name="ITEM_RKTLAUNCH" value="35"/>
+  <constant name="ITEM_PLASMAGUN" value="36"/>
+  <constant name="ITEM_BFG9000" value="37"/>
+  <constant name="ITEM_SCHAINGUN" value="38"/>
+  <constant name="ITEM_INVIS" value="49"/>
+  <constant name="ITEM_SUIT" value="50"/>
+  <constant name="AREA_DMPOINT" value="39"/>
+  <constant name="AREA_DMPOINTR" value="40"/>
+  <constant name="AREA_DMPOINTB" value="41"/>
+  <constant name="FLAG_RED" value="42"/>
+  <constant name="FLAG_BLUE" value="43"/>
+  <constant name="TRIG_TOUCH" value="44"/>
+  <constant name="TRIG_USE" value="45"/>
+  <constant name="TRIG_FIRE" value="46"/>
+  <constant name="TRIG_START" value="47"/>
+  <constant name="TRIG_ACTIV" value="48"/>
+  <constant name="TRAC_ENBSOLID" value="0"/>
+  <constant name="TRAC_DSBSOLID" value="1"/>
+  <constant name="TRAC_TGLSOLID" value="2"/>
+  <constant name="TRAC_ACTTRIGR" value="3"/>
+  <constant name="TRAC_ACTTRIG" value="4"/>
+  <constant name="TRAC_TGLTRIG" value="5"/>
+  <constant name="TRAC_KILLPLR" value="6"/>
+  <constant name="TRAC_TELEPORT" value="7"/>
+  <constant name="TRAC_ENDROUND" value="8"/>
   <constant name="GW_CHILD" value="5"/>
   <constant name="GW_HWNDFIRST" value="0"/>
   <constant name="GW_HWNDLAST" value="1"/>
@@ -10,7 +77,6 @@
   <constant name="GW_OWNER" value="4"/>
   <constant name="GW_MAX" value="6"/>
   <constant name="GW_ENABLEDPOPUP" value="6"/>
-  <constant name="GW_MAX" value="6"/>
   <constant name="CB_CLICKED" value="0"/>
   <constant name="CB_DBLCLK" value="1"/>
   <constant name="ACS_AUTOPLAY" value="4"/>
@@ -481,7 +547,7 @@
   <constant name="SBARS_TOOLTIPS" value="2048"/>
   <constant name="NM_OUTOFMEMORY" value="4294967295"/>
   <constant name="NM_CLICK" value="4294967294"/>
-  <constant name="NM_DBLCLK" value="4294967293"/>
+  <constant name="NM_DBLCLK" value="4294967182"/>
   <constant name="NM_RETURN" value="4294967292"/>
   <constant name="NM_RCLICK" value="4294967291"/>
   <constant name="NM_RDBLCLK" value="4294967290"/>

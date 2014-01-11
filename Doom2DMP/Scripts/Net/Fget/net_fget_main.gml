@@ -29,7 +29,7 @@ if !global.cl_dl_allow
 if d_cs != ''
 {
   var mapf;
-  mapf = string_replace('data\maps\' + f_nm, filename_ext(f_nm), '.dlv');
+  mapf = 'data\maps\' + filename_change_ext(f_nm, '.dlv');
   con_add(':: NET: FGET: ' + f_nm + ' - архив.');
   if file_exists(mapf)
   {
@@ -94,18 +94,17 @@ if file_exists(f_pt)
   }
 }
 
-if dybufferexists(global.fget_buf) {dyfreebuffer(global.fget_buf);}
-global.fget_buf = dycreatebuffer();
+if dll39_buffer_exists(global.fget_buf) {dll39_buffer_free(global.fget_buf);}
+global.fget_buf = dll39_buffer_create();
 global.fget_path = f_pt;
-global.fget_file = dyfileopen(f_pt, 1);
+global.fget_file = dll39_file_open(f_pt, dll39_access_write);
 global.fget_size = f_sz;
 global.fget_md5 = '';
 global.fget_state = 1;
 global.fget_pos = 0;
 
-dyclearbuffer(0);
-dywritebyte(16, 0);
-dysendmessage(global.cl_tcp, 0, 0, 0);
+dll39_write_byte(16, global.send_buf);
+tcp_send(global.cl_tcp, global.send_buf);
 
 con_add(":: NET: FGET: Принимаем файл " + f_pt + "...");
 con_add(':: NET: FGET: Предполагаемый размер: ' + string(f_sz) + ' байт.');

@@ -18,8 +18,8 @@ if keyboard_check(ord('X')) {exit;}
 if keyboard_check(ord('Z')) &amp;&amp; o_id != API_Combobox_GetSel(o_ctrl.ui_tl_cb) {exit;}
 if o_ctrl.trg == id
 {
-    global.ed_mode = 0;
-    o_ctrl.trg = noone;
+  global.ed_mode = MODE_NORMAL;
+  o_ctrl.trg = noone;
 }
 instance_destroy();
 mouse_clear(mb_right);

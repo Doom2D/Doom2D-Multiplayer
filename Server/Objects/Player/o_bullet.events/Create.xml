@@ -14,8 +14,8 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">image_speed = 0;
-spd = 32;
-alarm[0] = 20;
+spd = 16;
+alarm[0] = 60;
 </argument>
       </arguments>
     </action>

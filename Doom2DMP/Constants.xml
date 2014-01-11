@@ -2,4 +2,6 @@
 <constants>
   <constant name="MAP_NOMUS" value="'*NO_MUSIC'"/>
   <constant name="MAP_NOBKG" value="'*NO_BACKGROUND'"/>
+  <constant name="PLAYER_WIDTH" value="33"/>
+  <constant name="PLAYER_HEIGHT" value="52"/>
 </constants>

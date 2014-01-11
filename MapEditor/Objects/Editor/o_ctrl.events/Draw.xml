@@ -13,24 +13,24 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">draw_set_font(-1);
+        <argument kind="STRING">draw_set_font(noval);
 ed_spr_select();
 draw_set_color(c_white);
-if (mouse_check_button(mb_left) || keyboard_check(vk_space)) &amp;&amp; keyboard_check(vk_shift) &amp;&amp; API_Combobox_GetSel(ui_tl_cb) &lt; 11
+if (mouse_check_button(mb_left) || keyboard_check(vk_space)) &amp;&amp; keyboard_check(vk_shift) &amp;&amp; obj_block(obj_sel)
 {
   ed_draw_panel();
-  draw_rectangle_color(x2 - 3, y2 - 3, x2 + 3, y2 + 3, c_blue, c_blue, c_blue, c_blue, 0);
+  draw_rectangle_color(x2 - 3, y2 - 3, x2 + 3, y2 + 3, c_blue, c_blue, c_blue, c_blue, false);
 }
 else
 {
   draw_sprite_ext(spr, im, round_mouse_x() + x_off - ix_off, round_mouse_y() + y_off - iy_off, 1, 1, 0, c_white, 0.73);  
-  if API_Combobox_GetSel(ui_tl_cb) &lt; 11 &amp;&amp; !mouse_check_button(mb_right)
+  if obj_block(obj_sel) &amp;&amp; !mouse_check_button(mb_right)
   {
     draw_set_color(col);
     draw_set_alpha(0.73);
     draw_rectangle(round_mouse_x() + x_off, round_mouse_y() + y_off,
                    round_mouse_x() + x_off + sprite_get_width(spr) - 1,
-                   round_mouse_y() + y_off + sprite_get_height(spr) - 1, 1);
+                   round_mouse_y() + y_off + sprite_get_height(spr) - 1, true);
     draw_set_alpha(1);
     draw_set_color(c_white);
   }
@@ -38,9 +38,9 @@ else
 if mouse_check_button(mb_right) &amp;&amp; keyboard_check(vk_shift) 
 {
   draw_set_color(col);
-  draw_rectangle(x1, y1, x2, y2, 1);
+  draw_rectangle(x1, y1, x2, y2, true);
   draw_set_color(c_white);
-  draw_rectangle_color(x2 - 3, y2 - 3, x2 + 3, y2 + 3, c_blue, c_blue, c_blue, c_blue, 0);
+  draw_rectangle_color(x2 - 3, y2 - 3, x2 + 3, y2 + 3, c_blue, c_blue, c_blue, c_blue, false);
 }
 
 var mx, my;
@@ -53,10 +53,10 @@ draw_text(mouse_x + mx, mouse_y + my,
           string(round_mouse_y() + y_off - iy_off));
 draw_set_alpha(1);
 
-if global.ed_mode != 2 {exit;}
+if global.ed_mode != MODE_TRIGACT {exit;}
 if !instance_exists(trg) {exit;}
 draw_line_color(trg.x, trg.y, round_mouse_x() + x_off, round_mouse_y() + y_off, c_lime, c_lime);
-if trg.t_id == 7 &amp;&amp; global.ed_mode == 2
+if trg.t_id == TRAC_TELEPORT
 {
   draw_sprite_ext(s_spawn, 0, round_mouse_x() + x_off - 16, round_mouse_y() + y_off - 32, 1, 1, 0, c_lime, 0.57);
 }

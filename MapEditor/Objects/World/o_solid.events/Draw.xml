@@ -18,7 +18,7 @@ if y + sprite_height &lt;= view_yview || y &gt;= view_yview + view_hview {exit;}
 if sprite_index == tex_none &amp;&amp; o_cam.visible {exit;}
 draw_sprite(sprite_index, image_index, x, y);
 if !global.ed_outline &amp;&amp; sprite_index != tex_none {exit;}
-draw_rectangle_color(x, y, x + sprite_width - 1, y + sprite_height - 1, c_white, c_white, c_white, c_white, 1);
+draw_rectangle_color(x, y, x + sprite_width - 1, y + sprite_height - 1, c_white, c_white, c_white, c_white, true);
 </argument>
       </arguments>
     </action>

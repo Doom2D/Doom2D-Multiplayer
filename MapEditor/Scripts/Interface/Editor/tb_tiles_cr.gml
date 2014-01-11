@@ -1,7 +1,7 @@
 //creates list of the tiles at the toolbox window
-ui_tl_txt = API_Static_Create(ui_win1, 8, 4, 64, 12, 0, 0);
-API_Control_SetText(ui_tl_txt, 'Тайл');
-ui_tl_cb = API_Combobox_Create(ui_win1, 8, 20, 200, 20, CBS_HASSTRINGS|CBS_DROPDOWNLIST|WS_VSCROLL, 0);
+
+create_text(ui_win1, 8, 4, 64, 12, 'Тайл');
+ui_tl_cb = API_Combobox_Create(ui_win1, 8, 20, 200, 20, CBS_HASSTRINGS|CBS_DROPDOWNLIST|WS_VSCROLL);
 
 //strings//
 //tiles
@@ -57,3 +57,4 @@ API_Combobox_AddString(ui_tl_cb, 'Триггер (расширитель)');
 API_Combobox_AddString(ui_tl_cb, 'Невидимость');
 API_Combobox_AddString(ui_tl_cb, 'Костюм');
 API_Combobox_SetSel(ui_tl_cb, 0);
+

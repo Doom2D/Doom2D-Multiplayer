@@ -13,10 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">//processing keyboard
-ed_kbd_proc();
-
-//processing editor interface
+        <argument kind="STRING">//processing editor interface
 ui_menu_pr();
 ed_tbox_proc();
 
@@ -28,6 +25,9 @@ ui_deltex_pr();
 ui_moveobj_pr();
 ui_mapopt_pr();
 ui_mirrobj_pr();
+
+//processing keyboard
+ed_kbd_proc();
 </argument>
       </arguments>
     </action>

@@ -25,6 +25,7 @@ if global.map_bkg != -1
 {
   if background_exists(global.map_bkg) {background_delete(global.map_bkg);}
   global.map_bkg = -1;
+  o_camera.visible = false;
 }
 
 //and this shit
@@ -40,17 +41,13 @@ global.cl_tiles = ds_list_create();
 var fnum;
 fnum = file_text_open_read(temp_fn);
 
-global.map_name = file_text_read_string(fnum);
-file_text_readln(fnum);
-global.map_desc = file_text_read_string(fnum);
-file_text_readln(fnum);
-global.map_w = file_text_read_real(fnum);
-file_text_readln(fnum);
-global.map_h = file_text_read_real(fnum);
-file_text_readln(fnum);
+global.map_name = file_text_read_string(fnum); file_text_readln(fnum);
+global.map_desc = file_text_read_string(fnum); file_text_readln(fnum);
+global.map_w = file_text_read_real(fnum); file_text_readln(fnum);
+global.map_h = file_text_read_real(fnum); file_text_readln(fnum);
 
 var _mus;
-_mus = file_text_read_string(fnum);
+_mus = file_text_read_string(fnum); file_text_readln(fnum);
 if _mus != MAP_NOMUS
 {
   if file_exists(_mus)
@@ -61,10 +58,9 @@ if _mus != MAP_NOMUS
     con_add(':: MAP: ERROR: Файл музыки ' + _mus + ' не найден.');
   }
 }
-file_text_readln(fnum);
 
 var _bkg;
-_bkg = file_text_read_string(fnum);
+_bkg = file_text_read_string(fnum); file_text_readln(fnum);
 if _bkg != MAP_NOBKG
 {
   if file_exists(_bkg)
@@ -75,33 +71,24 @@ if _bkg != MAP_NOBKG
     con_add(':: MAP: ERROR: Текстура фона ' + _bkg + ' не найдена.');
   }
 }
-file_text_readln(fnum);
 
-tx_n = real(file_text_read_string(fnum));
-file_text_readln(fnum);
+tx_n = file_text_read_real(fnum); file_text_readln(fnum);
 for (i = 1; i < tx_n; i += 1)
 {
   map_tex_load(file_text_read_string(fnum));
   file_text_readln(fnum);
 }
 
-var obj_id, ext_id, o_x, o_y;
-obj_id = -1; ext_id = -1;
-o_x = -1; o_y = -1;
-
+var obj_id, ext_id, obj_x, obj_y;
 while !file_text_eof(fnum)
 {
-  obj_id = real(file_text_read_string(fnum));
-  file_text_readln(fnum);
-  ext_id = real(file_text_read_string(fnum));
-  file_text_readln(fnum);
+  obj_id = file_text_read_real(fnum); file_text_readln(fnum);
+  ext_id = file_text_read_real(fnum); file_text_readln(fnum);
   if obj_id >= 0 && obj_id <= 10
   {
-    o_x = real(file_text_read_string(fnum));
-    file_text_readln(fnum);
-    o_y = real(file_text_read_string(fnum));
-    file_text_readln(fnum);
-    map_obj_create(obj_id, ext_id, o_x, o_y);
+    obj_x = file_text_read_real(fnum); file_text_readln(fnum);
+    obj_y = file_text_read_real(fnum); file_text_readln(fnum);
+    map_obj_create(obj_id, ext_id, obj_x, obj_y);
     continue;
   }
   //skipping data that we don't need
@@ -130,3 +117,4 @@ global.map_md5 = file_md5(temp_fn);
 if !global.r_gfx {instance_deactivate_object(o_bkg);}
 mus_play(global.map_mus);
 con_add(':: MAP: Загружена карта ' + argument0);
+

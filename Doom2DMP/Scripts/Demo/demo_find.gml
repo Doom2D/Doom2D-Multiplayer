@@ -1,5 +1,6 @@
 //selects a random demo
 var fn;
+
 fn = 'demos\' + file_find_first("demos\*.dgp", 0);
 
 while !(irandom(10) - 7)

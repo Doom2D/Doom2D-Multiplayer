@@ -118,6 +118,8 @@ file_text_write_string(cfg, 'mp_announcer ' + string(global.mp_announcer));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_drop_clear ' + string(global.mp_drop_clear));
 file_text_writeln(cfg);
+file_text_write_string(cfg, 'mp_shootjthr ' + string(global.mp_shootjthr));
+file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_telefrag ' + string(global.mp_telefrag));
 file_text_writeln(cfg);
 file_text_write_string(cfg, 'mp_waterfrag ' + string(global.mp_waterfrag));

@@ -1,25 +1,18 @@
 //checks if one of controls is pressed and sends its state
 if !variable_global_exists('pl_id') {exit;}
 if global.dem_mode >= 2 {exit;}
-if global.con || o_con.saymode || instance_exists(o_menu) || !window_get_focus(window_handle())
+
+dll39_write_byte(5, global.send_buf);
+if global.con || o_con.saymode || instance_exists(o_menu) || !window_get_focus( window_handle() )
 {
-    dyclearbuffer(0);
-    dywritebyte(5, 0);
-    dywritebyte(0, 0);
-    dywritebyte(0, 0);
-    dywritebyte(0, 0);
-    dywritebyte(0, 0);
-    dywritebyte(0, 0);
-    dywritebyte(1, 0);
-    dysendmessage(global.cl_tcp, 0, 0, 0);
-    exit;
+  dll39_write_byte(1, global.send_buf); //$b00000001
+} else {
+  dll39_write_byte( build_byte( keyboard_check(global.key_left),
+                                keyboard_check(global.key_right),
+                                keyboard_check(global.key_jmp),
+                                keyboard_check(global.key_up),
+                                keyboard_check(global.key_dn),
+                                0, 0, false ), global.send_buf ); //in case we are downloading something
 }
-dyclearbuffer(0);
-dywritebyte(5, 0);
-dywritebyte(keyboard_check(global.key_left), 0);
-dywritebyte(keyboard_check(global.key_right), 0);
-dywritebyte(keyboard_check(global.key_jmp), 0);
-dywritebyte(keyboard_check(global.key_up), 0);
-dywritebyte(keyboard_check(global.key_dn), 0);
-dywritebyte(0, 0); //in case we are downloading something
-dysendmessage(global.cl_tcp, 0, 0, 0);
+
+tcp_send(global.cl_tcp, global.send_buf);

@@ -1,28 +1,16 @@
 //creates map information window
-if !API_Window_Exists(ui_win4) {ui_win4 = -1;}
-if ui_win4 != -1 {API_Window_SetFocus(ui_win4); exit;}
+if !API_Window_Exists(ui_win4) {ui_win4 = noval;}
+if ui_win4 != noval {API_Window_SetFocus(ui_win4); exit;}
 
 ui_win4 = API_Window_Create(window_handle(),
                             640, 480,
                             155, 137,
-                            WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU, 0);
+                            WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU);
 API_Window_SetText(ui_win4, 'Статистика');
-API_Window_SetIcon(ui_win4, API_Window_GetIcon(window_handle()));
+API_Window_SetIcon( ui_win4, API_Window_GetIcon( window_handle() ) );
 
-ui_win4_t1 = API_Static_Create(ui_win4, 7, 7, 142, 88, 0, 0);
-API_Control_SetText(ui_win4_t1, 
-                    'Текстур: ' + string(global.tex_n - 1) + chr(13) + chr(10) +
-                    'Тайлов окружения: ' + string(instance_number(o_solid) + 
-                                                  instance_number(o_jthr) +
-                                                  instance_number(o_bkg) +
-                                                  instance_number(o_frg) +
-                                                  instance_number(o_liquid) +
-                                                  instance_number(o_lift)) + chr(13) + chr(10) +
-                    'Предметов: ' + string(instance_number(o_item)) + chr(13) + chr(10) +
-                    'Областей: ' + string(instance_number(o_spawn)) + chr(13) + chr(10) +
-                    'Триггеров: ' + string(instance_number(o_trigger)));        
-
-ui_win4_bt = API_Button_Create(ui_win4, 6, 78, 137, 23, 0);
-API_Control_SetText(ui_win4_bt, 'Обновить статистику');
+ui_win4_t1 = API_Static_Create(ui_win4, 7, 7, 142, 88);
+ui_win4_bt = API_Button_Create(ui_win4, 6, 78, 137, 23);
+ui_mapinfo_set();
 
 API_Check_Set(5, ui_win4);

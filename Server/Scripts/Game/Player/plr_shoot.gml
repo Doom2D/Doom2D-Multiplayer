@@ -27,7 +27,7 @@ switch w
         b.p_t = 0;
         b.p_team = cl_team;
         b.image_angle = b_dir;
-        b.dmg = 10 + st_ber * 20;
+        b.dmg = 10 + 20 * st_ber;
         b.kb = st_ber;
         b.alarm[0] = 1;
         plr_send_stat();
@@ -41,7 +41,7 @@ switch w
         b.a_id = cl_id;
         b.a_i_id = id;
         b.a_team = cl_team;
-        b.direction = b_dir + random(3) - random(3);
+        b.direction = b_dir + irandom_range(-2, 2);
         b.dmg = 9;
         b.k_t = 1;
         a1 -= 1;
@@ -60,7 +60,7 @@ switch w
             b.a_i_id = id;
             b.a_team = cl_team;
             b.dmg = 8;
-            b.direction = b_dir + random(6) - random(6);
+            b.direction = b_dir + irandom_range(-5, 5);
             b.k_t = 2;
         }
         a2 -= 1;
@@ -79,7 +79,7 @@ switch w
             b.a_i_id = id;
             b.a_team = cl_team;
             b.dmg = 10 + irandom(2);
-            b.direction = b_dir + random(20) - random(20);
+            b.direction = b_dir + irandom_range(-13, 13);
             b.k_t = 3;
         }
         a2 -= 2;
@@ -95,7 +95,7 @@ switch w
         b.a_id = cl_id;
         b.a_i_id = id;
         b.a_team = cl_team;
-        b.direction = b_dir + random(4) - random(4);
+        b.direction = b_dir + irandom_range(-3, 3);
         b.dmg = 6;
         b.k_t  = 4;
         a1 -= 1;
@@ -167,7 +167,7 @@ switch w
             b.a_i_id = id;
             b.a_team = cl_team;
             b.dmg = 15;
-            b.direction = b_dir + random(5) - random(5);
+            b.direction = b_dir + irandom_range(-4, 4);
             b.k_t = 8;
         }
         a2 -= 1;

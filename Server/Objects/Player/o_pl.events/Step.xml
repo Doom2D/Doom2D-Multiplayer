@@ -54,10 +54,10 @@ if ping &gt; global.cl_timeout * global.sv_fps_max &amp;&amp; global.cl_timeout 
     con_add(":: Клиент " + string(cl_name) + "[" + string(cl_id) + "] кикнут за простой.");
     
     //send this to other clients
-    dyclearbuffer(0);
-    dywritebyte(4, 0);
-    dywritebyte(cl_id, 0);
-    with (o_pl) {dysendmessage(cl_tcp, 0, 0, 0);}
+    dll39_buffer_clear(0);
+    dll39_write_byte(4, 0);
+    dll39_write_byte(cl_id, 0);
+    with (o_pl) {dll39_message_send(cl_tcp, 0, 0, 0);}
     global.sv_plr[cl_id] = noone;
     instance_destroy();      
 }

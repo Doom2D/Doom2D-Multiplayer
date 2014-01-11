@@ -1,11 +1,11 @@
 //creates editor settings window
-if !API_Window_Exists(ui_win2) {ui_win2 = -1;}
-if ui_win2 != -1 {API_Window_SetFocus(ui_win2); exit;}
+if !API_Window_Exists(ui_win2) {ui_win2 = noval;}
+if ui_win2 != noval {API_Window_SetFocus(ui_win2); exit;}
 
 ui_win2 = API_Window_Create(window_handle(),
                             640, 480,
                             240, 132,
-                            WS_OVERLAPPED|WS_CAPTION, 0);
+                            WS_OVERLAPPED|WS_CAPTION);
 API_Window_SetText(ui_win2, 'Настройки редактора');
 
 ui_win2_b1 = API_Button_Create(ui_win2, 4, 8, 96, 24, BS_PUSHBUTTON);

@@ -1,6 +1,6 @@
 //creates objects mirroring window
-if !API_Window_Exists(ui_win8) {ui_win8 = -1;}
-if ui_win8 != -1 {API_Window_SetFocus(ui_win8); exit;}
+if !API_Window_Exists(ui_win8) {ui_win8 = noval;}
+if ui_win8 != noval {API_Window_SetFocus(ui_win8); exit;}
 
 ui_win8 = API_Window_Create(window_handle(),
                             640, 480,

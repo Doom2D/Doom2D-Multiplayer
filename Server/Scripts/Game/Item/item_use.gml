@@ -1,5 +1,9 @@
 //describes item's effect on player
 //argument0 - item type
+
+var is_drop;
+with other { is_drop = variable_local_exists('drop'); }
+
 switch argument0
 {
     case 1:
@@ -180,7 +184,7 @@ switch argument0
     case 20:
         //super cell
         if a4 >= 300 + 300*st_bpk {exit;}
-        a4 += 80;
+        a4 += 100;
         if a4 > 300 + 300*st_bpk {a4 = 300 + 300*st_bpk;}
         plr_send_stat();
         plr_send_sound(3, x, y);
@@ -188,36 +192,45 @@ switch argument0
     break;
     case 21:
         //shotgun
-        if hw[2] && global.mp_weaponstay {exit;}
+        if hw[2] && global.mp_weaponstay && !is_drop {exit;}
         if a2 >= 50 + 50*st_bpk && hw[2] == 1 {exit;}
         hw[2] = 1;
         a2 += 4;
         if a2 > 50 + 50*st_bpk {a2 = 50 + 50*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
-        if !global.mp_weaponstay {with (other) {instance_destroy();}}
+        with (other)
+        {
+          if !global.mp_weaponstay || variable_local_exists('drop') {instance_destroy();}
+        }
     break;
     case 22:
         //supershotgun
-        if hw[3] && global.mp_weaponstay {exit;}
+        if hw[3] && global.mp_weaponstay && !is_drop {exit;}
         if a2 >= 50 + 50*st_bpk && hw[3] == 1 {exit;}
         hw[3] = 1;
         a2 += 4;
         if a2 > 50 + 50*st_bpk {a2 = 50 + 50*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
-        if !global.mp_weaponstay {with (other) {instance_destroy();}}
+        with (other)
+        {
+          if !global.mp_weaponstay || variable_local_exists('drop') {instance_destroy();}
+        }
     break;
     case 23:
         //chaingun
-        if hw[4] && global.mp_weaponstay {exit;}
+        if hw[4] && global.mp_weaponstay && !is_drop {exit;}
         if a1 >= 200 + 200*st_bpk && hw[4] == 1 {exit;}
         hw[4] = 1;
         a1 += 50;
         if a1 > 200 + 200*st_bpk {a1 = 200 + 200*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
-        if !global.mp_weaponstay {with (other) {instance_destroy();}}
+        with (other)
+        {
+          if !global.mp_weaponstay || variable_local_exists('drop') {instance_destroy();}
+        }
     break;
     case 24:
         //chainsaw
@@ -226,51 +239,66 @@ switch argument0
         plr_send_stat();
         plr_send_sound(4, x, y);
         alarm[6] = 1;
-        if !global.mp_weaponstay {with (other) {instance_destroy();}}
+        with (other)
+        {
+          if !global.mp_weaponstay || variable_local_exists('drop') {instance_destroy();}
+        }
     break;
     case 25:
         //rocketlauncher
-        if hw[5] && global.mp_weaponstay {exit;}
+        if hw[5] && global.mp_weaponstay && !is_drop {exit;}
         if a3 >= 50 + 50*st_bpk && hw[5] == 1 {exit;}
         hw[5] = 1;
         a3 += 2;
         if a3 > 50 + 50*st_bpk {a3 = 50 + 50*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
-        if !global.mp_weaponstay {with (other) {instance_destroy();}}
+        with (other)
+        {
+          if !global.mp_weaponstay || variable_local_exists('drop') {instance_destroy();}
+        }
     break;
     case 26:
         //plasmagun
-        if hw[6] && global.mp_weaponstay {exit;}
+        if hw[6] && global.mp_weaponstay && !is_drop {exit;}
         if a4 >= 300 + 300*st_bpk && hw[6] == 1 {exit;}
         hw[6] = 1;
         a4 += 40;
         if a4 > 300 + 300*st_bpk {a4 = 300 + 300*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
-        if !global.mp_weaponstay {with (other) {instance_destroy();}}
+        with (other)
+        {
+          if !global.mp_weaponstay || variable_local_exists('drop') {instance_destroy();}
+        }
     break;
     case 27:
         //bfg
-        if hw[7] && global.mp_weaponstay {exit;}
+        if hw[7] && global.mp_weaponstay && !is_drop {exit;}
         if a4 >= 300 + 300*st_bpk && hw[7] == 1 {exit;}
         hw[7] = 1;
         a4 += 40;
         if a4 > 300 + 300*st_bpk {a4 = 300 + 300*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
-        if !global.mp_weaponstay {with (other) {instance_destroy();}}
+        with (other)
+        {
+          if !global.mp_weaponstay || variable_local_exists('drop') {instance_destroy();}
+        }
     break;
     case 28:
-        if hw[8] && global.mp_weaponstay {exit;}
         //superchaingun
+        if hw[8] && global.mp_weaponstay && !is_drop {exit;}
         if a2 >= 50 + 50*st_bpk && hw[8] == 1 {exit;}
         hw[8] = 1;
-        a2 += 25;
+        a2 += 10;
         if a2 > 50 + 50*st_bpk {a2 = 50 + 50*st_bpk;}
         plr_send_stat();
         plr_send_sound(4, x, y);
-        if !global.mp_weaponstay {with (other) {instance_destroy();}}
+        with (other)
+        {
+          if !global.mp_weaponstay || variable_local_exists('drop') {instance_destroy();}
+        }
     break;
     case 29:
         //red flag

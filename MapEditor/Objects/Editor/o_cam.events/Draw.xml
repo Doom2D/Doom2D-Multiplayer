@@ -13,7 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.mbk_ind == -1 {exit;}
+        <argument kind="STRING">if global.mbk_ind == noval {exit;}
 draw_background_stretched(global.mbk_ind, view_xview, view_yview, view_wview, view_hview);
 </argument>
       </arguments>

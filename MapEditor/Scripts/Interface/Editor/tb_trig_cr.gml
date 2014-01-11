@@ -1,7 +1,7 @@
 //creates list of the triggers at the toolbox window
-ui_tg_txt = API_Static_Create(ui_win1, 8, 92, 100, 12, 0, 0);
-API_Control_SetText(ui_tg_txt, 'Триггер');
-ui_tg_cb = API_Combobox_Create(ui_win1, 8, 108, 200, 20, CBS_HASSTRINGS|CBS_DROPDOWNLIST|WS_VSCROLL, 0);
+
+create_text(ui_win1, 8, 92, 100, 12, 'Триггер');
+ui_tg_cb = API_Combobox_Create(ui_win1, 8, 108, 200, 20, CBS_HASSTRINGS|CBS_DROPDOWNLIST|WS_VSCROLL);
 
 API_Combobox_AddString(ui_tg_cb, 'Включить стену'); //0
 API_Combobox_AddString(ui_tg_cb, 'Выключить стену'); //1

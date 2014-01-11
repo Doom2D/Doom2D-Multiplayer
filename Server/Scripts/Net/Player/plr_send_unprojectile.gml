@@ -1,6 +1,6 @@
 //destroys a projectile
 
-dyclearbuffer(0);
-dywritebyte(28, 0);
-dywriteshort(pr_id, 0);
-with (o_pl) {dysendmessage(cl_tcp, 0, 0, 0);}
+dll39_buffer_clear(0);
+dll39_write_byte(28, 0);
+dll39_write_short(pr_id, 0);
+with (o_pl) {dll39_message_send(cl_tcp, 0, 0, 0);}

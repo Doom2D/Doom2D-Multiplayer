@@ -10,7 +10,7 @@ switch cmd1
     dlg_clearmap();
   break;
   case ui_mbar_m1_open:
-    map_load();
+    map_load('');
   break;
   case ui_mbar_m1_save:
     map_save(false);
@@ -64,28 +64,7 @@ switch cmd1
     ui_mirrobj_cr();
   break;
   case ui_mbar_m2_texopt:
-    if global.tex_n == 1
-    {
-      API_Dialog_MessageBox(window_handle(),
-          'Список текстур пуст.',
-          'Ошибка', MB_OK|MB_ICONWARNING);
-      exit;
-    }
-
-    if !mb_confirm(window_handle()) {exit;}
-
-    var tx_proc, tx_done;
-    tx_proc = 1; tx_done = 0;
-    while tx_proc < global.tex_n
-    {
-      if ed_tex_delete(tx_proc) {tx_done += 1;} else {tx_proc += 1;}
-    }
-
-    API_Dialog_MessageBox(window_handle(),
-        'Текстур до оптимизации: ' + string(global.tex_n + tx_done - 1) + chr(10) + chr(13) +
-        'Текстур после оптимизации: ' + string(global.tex_n - 1) + chr(10) + chr(13) +
-        'Удалено текстур: ' + string(tx_done),
-        'Оптимизация текстур', MB_OK|MB_ICONINFORMATION);
+    opt_tex_list();
   break;
   case ui_mbar_m2_mapopt:
     ui_mapopt_cr();
@@ -109,9 +88,9 @@ switch cmd1
   break;
   case ui_mbar_m4_about:
     API_Dialog_MessageBox(window_handle(),
-        'Редактор карт для Doom 2D Multiplayer 0.6' + chr(13) + chr(10) +
-        '© PrimuS, Черный Думер' + chr(13) + chr(10) +
-        'www.doom2d.org, 2011-2013',
+        'Редактор карт для Doom 2D Multiplayer 0.6' + EOL +
+        '© PrimuS, Черный Думер' + EOL +
+        'www.doom2d.org, 2011-2014',
         'О программе', MB_OK|MB_ICONINFORMATION);
   break;
 }

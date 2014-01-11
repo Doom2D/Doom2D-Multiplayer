@@ -23,9 +23,8 @@ for (i = 1; i < c + 1; i += 1)
     if !is_real(ds_list_find_value(cmd, i)) {_str += string(ds_list_find_value(cmd, i)) + ' ';}
 }
 
-dyclearbuffer(0);
-dywritebyte(15, 0);
-dywritebyte(argument1, 0);
-dywritestring(_str, 0);
-dysendmessage(global.cl_tcp, 0, 0, 0);
+dll39_write_byte(15, global.send_buf);
+dll39_write_byte(argument1, global.send_buf);
+dll39_write_string(_str, global.send_buf);
+tcp_send(global.cl_tcp, global.send_buf);
 

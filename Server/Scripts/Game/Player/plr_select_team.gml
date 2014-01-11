@@ -7,7 +7,7 @@ blu = team_count(2);
 
 if !global.mp_autobalance || red == blu
 {
-    if !argument0 {return choose(1, 2);} else {return argument0;}
+  if !argument0 { return choose(1, 2); } else {return argument0;}
 }
 
 if red > blu {return 2;} else {return 1;}

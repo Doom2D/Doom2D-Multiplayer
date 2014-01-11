@@ -13,8 +13,8 @@ if room != rm_game || !variable_global_exists('pl_id')
 //check the fget process
 if global.fget_state && global.fget_file != -1
 {  
-    if dybufferexists(global.fget_buf) {dyfreebuffer(global.fget_buf);}
-    dyfileclose(global.fget_file);
+    if dll39_buffer_exists(global.fget_buf) {dll39_buffer_free(global.fget_buf);}
+    dll39_file_close(global.fget_file);
     file_delete(global.fget_path);
     net_fget_abort();
 }
@@ -25,12 +25,13 @@ if global.dem_mode == 1 {demo_rec();}
 if global.dem_mode < 2
 {
     con_add(":: NET: Отправляем сообщение об отключении...");
-    dyclearbuffer(0);
-    dywritebyte(2, 0);
-    dywritebyte(global.pl_id, 0);
-    dysendmessage(global.cl_tcp, 0, 0, 0);
+    dll39_write_byte(2, global.send_buf);
+    dll39_write_byte(global.pl_id, global.send_buf);
+    tcp_send(global.cl_tcp, global.send_buf);
 }
 sleep(15);
+
+global.map_done = false;
 
 //destroy particles
 r_part_wipe();
@@ -59,7 +60,7 @@ if global.map_bkg != -1
 //destroy sockets
 if global.dem_mode < 2 
 {
-    dyclosesock(global.cl_tcp);
+    dll39_socket_close(global.cl_tcp);
     con_add(":: NET: Закрываем сокеты...");
     con_add(":: NET: Отключено.");
 }
@@ -67,5 +68,4 @@ if global.dem_mode == 2
 {
     con_add(":: DEMO: Завершено.");
     global.dem_mode = 3;
-    exit;
 }

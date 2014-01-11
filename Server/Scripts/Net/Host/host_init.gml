@@ -23,14 +23,14 @@ global.sv_ip = net_my_ip();
 con_add(':: IP: ' + global.sv_ip);
 
 //open tcp socket
-sv_tcp = dytcplisten(global.sv_port, 16, 1);
+sv_tcp = dll39_tcp_listen(global.sv_port, MAX_PLAYERS, 1);
 if (sv_tcp)
 {
   con_add(":: NET: Открыт TCP-сокет на " + string(global.sv_ip) + ':' + string(global.sv_port));
 }
 else
 {
-  dyclosesock(sv_tcp);
+  dll39_socket_close(sv_tcp);
   con_add(":: NET: FATAL ERROR: Не могу открыть TCP-сокет на  " + string(global.sv_ip) + ':' + string(global.sv_port) + '!');
   game_end();
   exit;

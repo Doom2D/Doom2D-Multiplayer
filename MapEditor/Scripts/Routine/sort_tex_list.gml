@@ -27,7 +27,7 @@ ds_list_sort(new_l, argument0);
 
 with par_obj
 {
-  if o_id > 6 || t_id == 0 {continue;}
+  if !obj_wblock(o_id) || t_id == NO_TEXTURE {continue;}
   t_id = ds_list_find_index(new_l, ds_list_find_value(src_l, t_id - 1)) + 1;
 }
 

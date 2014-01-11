@@ -38,7 +38,6 @@ draw_set_color(c_red);
 
 draw_text(view_xview + 936, view_yview + 22, global.cl_inst.hp);
 draw_text(view_xview + 936, view_yview + 72, global.cl_inst.ap);
-draw_text(view_xview + 936, view_yview + 72, global.cl_inst.ap);
 draw_sprite(s_hud_weaps, global.cl_inst.w, view_xview + 872, view_yview + 156);
 
 if global.cl_inst.w == 1 || global.cl_inst.w == 4

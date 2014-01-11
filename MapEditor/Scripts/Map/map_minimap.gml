@@ -25,7 +25,7 @@ draw_clear(c_black);
 //to avoid bug with draw_rectangle() on various video cards
 var dr_f;
 draw_set_color(c_white);
-draw_rectangle(0, 0, img_w - 1, img_h - 1, 0);
+draw_rectangle(0, 0, img_w - 1, img_h - 1, false);
 dr_f = surface_getpixel(out_sf, img_w - 1, img_h - 1);
 if dr_f != 0 {dr_f = 1;}
 
@@ -37,12 +37,12 @@ with o_lift
 {
   switch o_id
   {
-    case 7: case 8:  draw_set_color(c_orange); break; //old: c_olive
-    case 9: case 10: draw_set_color(c_teal); break;
+    case BLOCK_LIFTU: case BLOCK_LIFTD: draw_set_color(c_orange); break; //old: c_olive
+    case BLOCK_LIFTL: case BLOCK_LIFTR: draw_set_color(c_teal); break;
   }
   rx1 = round( x / img_sc ); rx2 = round( (x + o_w) / img_sc - dr_f );
   ry1 = round( y / img_sc ); ry2 = round( (y + o_h) / img_sc - dr_f );
-  draw_rectangle(rx1, ry1, rx2, ry2, 0);
+  draw_rectangle(rx1, ry1, rx2, ry2, false);
 }
 
 with o_liquid
@@ -50,13 +50,13 @@ with o_liquid
   if (o_w <= img_sc / 2) || (o_h <= img_sc / 2) {continue;}
   switch o_id
   {
-    case 4:  draw_set_color(c_blue); break; //old: c_navy
-    case 5:  draw_set_color(c_lime); break; //old: c_green
-    case 6:  draw_set_color(c_red);  break; //old: c_maroon
+    case BLOCK_WATER: draw_set_color(c_blue); break; //old: c_navy
+    case BLOCK_ACID1: draw_set_color(c_lime); break; //old: c_green
+    case BLOCK_ACID2: draw_set_color(c_red);  break; //old: c_maroon
   }
   rx1 = round( x / img_sc ); rx2 = round( (x + o_w) / img_sc - dr_f );
   ry1 = round( y / img_sc ); ry2 = round( (y + o_h) / img_sc - dr_f );
-  draw_rectangle(rx1, ry1, rx2, ry2, 0);
+  draw_rectangle(rx1, ry1, rx2, ry2, false);
 }
 
 draw_set_color(c_gray); //old: c_ltgray
@@ -65,7 +65,7 @@ with o_jthr
   if (o_w <= img_sc / 2) || (o_h <= img_sc / 2) {continue;}
   rx1 = round( x / img_sc ); rx2 = round( (x + o_w) / img_sc - dr_f );
   ry1 = round( y / img_sc ); ry2 = round( (y + o_h) / img_sc - dr_f );
-  draw_rectangle(rx1, ry1, rx2, ry2, 0);
+  draw_rectangle(rx1, ry1, rx2, ry2, false);
 }
 
 draw_set_color(c_white);
@@ -74,7 +74,7 @@ with o_solid
   if (o_w <= img_sc / 2) || (o_h <= img_sc / 2) {continue;}
   rx1 = round( x / img_sc ); rx2 = round( (x + o_w) / img_sc - dr_f );
   ry1 = round( y / img_sc ); ry2 = round( (y + o_h) / img_sc - dr_f );
-  draw_rectangle(rx1, ry1, rx2, ry2, 0);
+  draw_rectangle(rx1, ry1, rx2, ry2, false);
 }
 
 surface_reset_target();

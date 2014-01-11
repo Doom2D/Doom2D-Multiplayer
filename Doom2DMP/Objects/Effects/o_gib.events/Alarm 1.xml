@@ -14,7 +14,7 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">r_part_emit(1, x, y);
-alarm[1] = 16;
+alarm[1] = gibtime - alarm[0];
 </argument>
       </arguments>
     </action>

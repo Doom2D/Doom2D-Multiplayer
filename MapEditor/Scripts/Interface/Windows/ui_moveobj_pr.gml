@@ -1,5 +1,5 @@
 //processes objects moving window
-if ui_win6 == -1 {exit;}
+if ui_win6 == noval {exit;}
 
 var cmd7;
 cmd7 = API_Check_Command(7);
@@ -32,11 +32,11 @@ switch cmd7
     {
       if x_type {x += move_x;} else {x -= move_x;}
       if y_type {y += move_y;} else {y -= move_y;}
-      if o_id > 43 && o_id < 49 && t_id != 8
+      if obj_trig(o_id) && t_id != TRAC_ENDROUND
       {
         if x_type {xx[1] += move_x;} else {xx[1] -= move_x;}
         if y_type {yy[1] += move_y;} else {yy[1] -= move_y;}
-        if t_id != 7
+        if t_id != TRAC_TELEPORT
         {
           if x_type {xx[2] += move_x;} else {xx[2] -= move_x;}
           if y_type {yy[2] += move_y;} else {yy[2] -= move_y;}
@@ -49,6 +49,6 @@ switch cmd7
   
   case ui_win6_b2:
     API_Window_Destroy(ui_win6);
-    ui_win6 = -1;
+    ui_win6 = noval;
   break;
 }

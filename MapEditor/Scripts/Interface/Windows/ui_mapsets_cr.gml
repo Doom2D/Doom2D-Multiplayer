@@ -1,11 +1,11 @@
 //creates map settings window
-if !API_Window_Exists(ui_win3) {ui_win3 = -1;}
-if ui_win3 != -1 {API_Window_SetFocus(ui_win3); exit;}
+if !API_Window_Exists(ui_win3) {ui_win3 = noval;}
+if ui_win3 != noval {API_Window_SetFocus(ui_win3); exit;}
 
 ui_win3 = API_Window_Create(window_handle(),
                             640, 480,
                             244, 192,
-                            WS_OVERLAPPED|WS_CAPTION, 0);
+                            WS_OVERLAPPED|WS_CAPTION);
 API_Window_SetText(ui_win3, 'Параметры карты');
 
 var mus_s;
@@ -28,13 +28,11 @@ ui_win3_b4 = API_Button_Create(ui_win3, 210, 30, 24, 24, BS_PUSHBUTTON);
 API_Control_SetText(ui_win3_b4, 'X');
 t_new_bkg = global.map_bkg;
 
-ui_win3_t3 = API_Static_Create(ui_win3, 16, 60, 52, 16, 0, 0);
-API_Control_SetText(ui_win3_t3, 'Ширина:' );
+create_text(ui_win3, 16, 60, 52, 16, 'Ширина:');
 ui_win3_e1 = API_Edit_Create(ui_win3, 72, 58, 40, 20, ES_NUMBER, WS_EX_CLIENTEDGE);
 API_Control_SetText(ui_win3_e1, string(global.map_w));
 
-ui_win3_t4 = API_Static_Create(ui_win3, 126, 60, 52, 16, 0, 0);
-API_Control_SetText(ui_win3_t4, 'Высота:' );
+create_text(ui_win3, 126, 60, 52, 16, 'Высота:');
 ui_win3_e2 = API_Edit_Create(ui_win3, 182, 58, 40, 20, ES_NUMBER, WS_EX_CLIENTEDGE);
 API_Control_SetText(ui_win3_e2, string(global.map_h));
 

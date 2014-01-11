@@ -8,8 +8,7 @@ for (i = 1; i < 256; i += 1)
 
 if file_exists(tx_f) 
 {
-  transp = 0;
-  if string_lower(filename_ext(tx_f)) == '.gif' {transp = 1;}
+  transp = string_lower(filename_ext(tx_f)) == '.gif';
   global.tex[i] = sprite_add(tx_f, -1, transp, 0, 0, 0);
   sprite_collision_mask(global.tex[i], 0, 1, 0, 0, 0, 0, 1, 0);
 } else {

@@ -1,19 +1,18 @@
-if global.tex_n == 256 {exit;}
+if global.tex_n == MAX_TXRS_NUM {exit;}
 
-var tx_f, transp, tx_nm, t_err;
+var tx_f, transp, tx_nm, t_err, i;
 tx_f = argument0;
 
-for (i = 1; i < 256; i += 1)
+for (i = 1; i < MAX_TXRS_NUM; i += 1)
 {
-  if global.tex[i] == -1 {break;}
+  if global.tex[i] == noval {break;}
 }
 
 if file_exists(tx_f)
 {
-  transp = 0;
-  if string_lower(filename_ext(tx_f)) == '.gif' {transp = 1;}
-  global.tex[i] = sprite_add(tx_f, -1, transp, 0, 0, 0);
-  //sprite_collision_mask(global.tex[i], 0, 1, 0, 0, 0, 0, 1, 0);
+  transp = string_lower(filename_ext(tx_f)) == '.gif';
+  global.tex[i] = sprite_add(tx_f, noval, transp, false, 0, 0);
+  sprite_collision_mask(global.tex[i], false, 1, 0, 0, 0, 0, 1, 0);
   t_err = false;
 } else {
   global.tex[i] = tex_error;

@@ -15,10 +15,9 @@
       <arguments>
         <argument kind="STRING">if global.dem_mode &lt; 2
 {
-    //request tile update
-    dyclearbuffer(0);
-    dywritebyte(13, 0);
-    dysendmessage(global.cl_tcp, 0, 0, 0);
+  //request tile update
+  dll39_write_byte(13, global.send_buf);
+  tcp_send(global.cl_tcp, global.send_buf);
 }
 </argument>
       </arguments>

@@ -1,4 +1,4 @@
-//FPS Correction script (sys_fps_correct)
+//FPS сorrection
 
 //if !global.r_fps_correct || fps == global.cl_fps_max {exit;}
 if fps == global.cl_fps_max {exit;}

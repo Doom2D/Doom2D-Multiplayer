@@ -155,7 +155,7 @@ else
     for (i = 1; i <= frg[0, 0]; i+=1) 
     {
         if frg[order[i], 2] >= 0 {
-        if frg[order[i], 3] == global.pl_id {global.inter_text[0] += string(i) + '. [' + frg[order[i], 1] + "]: #";} else {global.inter_text[0] += string(i) + '. ' + frg[order[i], 1] + ": #";}
+        if frg[order[i], 3] == global.pl_id {global.inter_text[0] += string(i) + '. [' + frg[order[i], 1] + "] #";} else {global.inter_text[0] += string(i) + '. ' + frg[order[i], 1] + " #";}
         global.inter_text[1] += string(frg[order[i], 2]) + '#';}
     }
 }
