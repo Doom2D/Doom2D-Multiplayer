@@ -3,7 +3,7 @@ if ui_win3 == noval {exit;}
 
 var cmd4;
 cmd4 = API_Check_Command(4);
-if cmd4 == 0 {exit;}
+if cmd4 == WM_NULL {exit;}
 
 switch cmd4
 {
@@ -18,9 +18,8 @@ switch cmd4
     chdir = string_lower(string_copy(temp_fn, 1, 11));
     if chdir != 'data\music\'
     {
-      API_Dialog_MessageBox(ui_win3,
-          'Файл музыки должен находиться в data\music.',
-          'Ошибка', MB_OK|MB_ICONWARNING);
+      message_box('Файл музыки должен находиться в data\music.',
+                  'Ошибка', MB_OK|MB_ICONWARNING);
       exit;
     }
     t_new_mus = temp_fn;
@@ -42,9 +41,8 @@ switch cmd4
     chdir = string_lower(string_copy(temp_fn, 1, 9));
     if chdir != 'data\sky\'
     {
-      API_Dialog_MessageBox(ui_win3,
-          'Текстура фона должна находиться в data\sky.',
-          'Ошибка', MB_OK|MB_ICONWARNING);
+      message_box('Текстура фона должна находиться в data\sky.',
+                  'Ошибка', MB_OK|MB_ICONWARNING);
       exit;
     }
     t_new_bkg = temp_fn;
@@ -58,8 +56,15 @@ switch cmd4
   case ui_win3_b5:
     global.map_mus = t_new_mus;
     global.map_bkg = t_new_bkg;
-    global.map_w = real(API_Control_GetText(ui_win3_e1));
-    global.map_h = real(API_Control_GetText(ui_win3_e2));
+
+    var neww, newh;
+    neww = real(API_Control_GetText(ui_win3_e1));
+    newh = real(API_Control_GetText(ui_win3_e2));
+    if neww < view_xview + view_wview { view_xview = max(0, view_xview - global.map_w + neww); }
+    if newh < view_yview + view_hview { view_yview = max(0, view_yview - global.map_h + newh); }
+    global.map_w = neww;
+    global.map_h = newh;
+
     global.map_name = string_copy(API_Control_GetText(ui_win3_e3), 1, 32);
     global.map_desc = string_copy(API_Control_GetText(ui_win3_e4), 1, 64);
     ed_bkg_change();

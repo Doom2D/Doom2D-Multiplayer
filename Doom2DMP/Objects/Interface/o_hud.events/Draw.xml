@@ -21,7 +21,7 @@ if global.cl_inst.object_index != o_pl &amp;&amp; global.cl_inst.object_index !=
 
 draw_set_font(global.fnt_sys);
 
-draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Карта: " + global.map_name + "#Режим игры: " + modestr + "#Лимит очков: " + string(global.mp_fraglimit));
+draw_text(view_xview + 832, view_yview + 208, global.sv_name + "#Карта: " + global.map_name + "#Режим игры: " + modestr + "#Лимит очков: " + string(global.mp_scorelimit));
 
 draw_text(view_xview + 832, view_yview + 232, str[1]);
 draw_text(view_xview + 852, view_yview + 232, str[2]);
@@ -61,21 +61,20 @@ if global.cl_inst.w == 6 || global.cl_inst.w == 7
   draw_text(view_xview + 936, view_yview + 140, global.cl_inst.a4);
 }
 
-if global.cl_inst.st_inv &amp;&amp; global.r_gfx
-{
-  draw_set_blend_mode_ext(bm_inv_dest_color, bm_inv_src_color);
-  draw_set_color(c_white);
-  draw_rectangle(view_xview, view_yview, view_xview + 824, view_yview + 768, 0);
-  draw_set_blend_mode(bm_normal);
-  o_con.msg_color = c_black;
-  o_con.msg_color2 = c_white;
-} else {
-  o_con.msg_color = c_white;
-  o_con.msg_color2 = c_black;
-}
-
 if global.r_gfx
 {
+  if global.cl_inst.st_inv
+  {
+    draw_set_blend_mode_ext(bm_inv_dest_color, bm_zero);
+    draw_set_color(c_ltgray);
+    draw_rectangle(view_xview, view_yview, view_xview + 824, view_yview + 768, 0);
+    draw_set_blend_mode(bm_normal);
+    o_con.msg_color = c_black;
+    o_con.msg_color2 = c_white;
+  } else {
+    o_con.msg_color = c_white;
+    o_con.msg_color2 = c_black;
+  }
   if global.cl_inst.st_suit
   {
     draw_set_color(c_lime);

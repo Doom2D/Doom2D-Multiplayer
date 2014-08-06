@@ -3,4 +3,6 @@
   <resource name="set_grid_size" type="RESOURCE"/>
   <resource name="set_grid_vis" type="RESOURCE"/>
   <resource name="set_grid_snap" type="RESOURCE"/>
+  <resource name="round_mouse_x" type="RESOURCE"/>
+  <resource name="round_mouse_y" type="RESOURCE"/>
 </resources>

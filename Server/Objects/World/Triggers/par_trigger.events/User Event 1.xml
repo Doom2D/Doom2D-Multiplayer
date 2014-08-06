@@ -16,20 +16,20 @@
         <argument kind="STRING">//timer check
 if t &gt; 500
 {
-    timer = t - 500;
-    t = 4;
+  timer = t - 500;
+  t = 4;
 }
 if t &gt; 100
 {
-    timer = t - 100;
-    t = 2;
+  timer = t - 100;
+  t = 2;
 }
 
 //add all dem tiles in action zone to the list
 with o_solid
 {
-    if !collision_rectangle(other.xx[1], other.yy[1], other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
-    with other {ds_list_add(tiles, other.id);}
+  if !collision_rectangle(other.xx[1], other.yy[1], other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+  ds_list_add(other.tiles, id);
 }
 </argument>
       </arguments>

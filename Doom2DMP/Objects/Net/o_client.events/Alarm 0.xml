@@ -13,18 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.cl_sync_type == 0 
-{
-    pos_send();
-    shoot_send();
-}
-if global.map_w == 0 &amp;&amp; !global.fget_state &amp;&amp; global.map_done
-{
-    event_user(0);
-}
-
+        <argument kind="STRING">if global.cl_sync_type == 0 {control_send();}
 alarm[0] = global.cl_rate;
-
 
 </argument>
       </arguments>

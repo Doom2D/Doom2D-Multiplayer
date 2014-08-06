@@ -40,6 +40,8 @@ ui_mbar_m2_deltex = API_Menu_AddString(ui_mbar_m2, '&Удалить тексту
   API_Menu_SetItemChecked(ui_mbar_m2_alts, true);
 //end of embedded menu #2//
 
+//ui_mbar_m2_mapnav = API_Menu_AddString(ui_mbar_m2, '&Навигатор');
+
 API_Menu_AddSeparator(ui_mbar_m2);
 ui_mbar_m2_moveobj = API_Menu_AddString(ui_mbar_m2, '&Переместить объекты карты');
 ui_mbar_m2_mirrobj = API_Menu_AddString(ui_mbar_m2, '&Отразить объекты карты');
@@ -65,3 +67,4 @@ ui_mbar_m4_about = API_Menu_AddString(ui_mbar_m4, '&О программе');
 //end of menu//
 
 API_Menu_Set(window_handle(), ui_mbar);
+

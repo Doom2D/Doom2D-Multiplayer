@@ -13,5 +13,5 @@ if trg != noone && instance_exists(trg)
   exit;
 }
 
-x2 = round_mouse_x();
-y2 = round_mouse_y();
+x2 = round_mouse_x() + x_off;
+y2 = round_mouse_y() + y_off;

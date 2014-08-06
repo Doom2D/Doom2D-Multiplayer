@@ -12,10 +12,9 @@ if string_lower(filename_ext(temp_fn)) != string_lower(f_ext) {temp_fn += f_ext;
 
 if file_exists(temp_fn)
 {
-  if API_Dialog_MessageBox(window_handle(),
-         'Файл "' + filename_name(temp_fn) + '" уже существует.' + EOL +
-         'Перезаписать?',
-         '', MB_YESNO|MB_ICONWARNING) == IDNO {return '';}
+  if message_box('Файл "' + filename_name(temp_fn) + '" уже существует.' + EOL +
+                 'Перезаписать?',
+                 '', MB_YESNO|MB_ICONWARNING) == IDNO {return '';}
 }
 
 return temp_fn;

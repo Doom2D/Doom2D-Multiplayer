@@ -7,8 +7,9 @@
     <snap x="16" y="16"/>
   </grid>
   <speed>60</speed>
-  <persistent>false</persistent>
-  <creationCode/>
+  <persistent>true</persistent>
+  <creationCode>
+</creationCode>
   <backgroundColor>4B6496</backgroundColor>
   <drawBackgroundColor>true</drawBackgroundColor>
   <backgrounds>
@@ -97,8 +98,8 @@
   <views>
     <view>
       <visibleOnRoomStart>true</visibleOnRoomStart>
-      <viewInRoom height="576" width="768" x="0" y="0"/>
-      <portOnScreen height="576" width="768" x="0" y="0"/>
+      <viewInRoom height="1" width="1" x="0" y="0"/>
+      <portOnScreen height="1" width="1" x="0" y="0"/>
       <objectFollowing hBorder="32" hSpeed="-1" vBorder="32" vSpeed="-1"/>
     </view>
     <view>

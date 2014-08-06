@@ -13,7 +13,21 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">sys_exit(1);
+        <argument kind="STRING">//quits game
+
+cfg_write('game.cfg');
+
+//free FMOD (if loaded)
+if file_exists('GMFMODSimple.dll') &amp;&amp; file_exists('fmodex.dll')
+{
+  con_add(':: SOUND: Выгружаем GMFMOD FMOD...');
+  FMODfree();
+  UnloadFMOD();
+}
+
+if global.sys_error {con_add(':: SYSTEM: Обнаружены ошибки.');} else {con_add(':: SYSTEM: Ошибок не обнаружено.');}
+con_add(':: SYSTEM: Дата: ' + con_timestamp()) ;
+con_add('================GAME END================');
 </argument>
       </arguments>
     </action>

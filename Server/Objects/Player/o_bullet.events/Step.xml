@@ -44,21 +44,30 @@ if hit_ground
 if hit_player
 {
   if ID.cl_id == a_id {exit;}
-  if ID.st_inv || global.mp_godmode {exit;}
-
-  if !global.mp_gamemode || global.mp_ffire || a_team != ID.cl_team { with ID { plr_hurt(other.dmg); } }
-  ID.killer_id = a_id;
-  ID.kill_type = k_t;
 
   with ID
   {
-    if global.mp_knockback { plr_speed_add( 1, round_to(other.direction, 45) ); }
+    if !global.mp_godmode &amp;&amp; !st_inv
+    {
+      if global.mp_gamemode == GAME_DM || global.mp_ffire || cl_team != other.a_team
+      {
+        killer_id = other.a_id;
+        kill_type = other.k_t;
+        plr_send_effect(1, x, y);
+        plr_hurt(other.dmg);
+        plr_send_pain();
+      }
+    }
+   
+    if global.mp_knockback
+    {
+      plr_speed_add( 1, round_to(other.direction, 30) );
+      plr_send_speed();
+    }
+
     plr_send_stat();
-    plr_send_pain();
-    plr_send_speed();
   }
 
-  plr_send_effect(1, x, y);
   instance_destroy();
 }
 

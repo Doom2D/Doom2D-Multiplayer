@@ -5,7 +5,7 @@ s_x = argument1;
 s_y = argument2;
 
 dll39_buffer_clear(0);
-dll39_write_byte(13, 0);
+write_msg_id(13, 0);
 dll39_write_byte(s_i, 0);
 dll39_write_short(s_x, 0);
 dll39_write_short(s_y, 0);

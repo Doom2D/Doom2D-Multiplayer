@@ -1,20 +1,26 @@
 //loads a config
 //argument0 - config filename
+
+var file;
 file = 'data\cfg\' + string(argument0);
 if argument0 == '' || argument0 == '0' {file = 'data\cfg\game.cfg';}
-if !string_count('.cfg', file) {file += '.cfg';}
+else if string_lower( filename_ext(file) ) != '.cfg' {file += '.cfg';}
+
 if !file_exists(file)
 {
-  con_add(':: ERROR: Файл не найден: ' + string(file) + '.');
+  con_add(':: ERROR: Файл "' + file + '" не найден.');
   exit;
 }
+
+var cfg;
 cfg = file_text_open_read(file);
-con_add(':: SYSTEM: Загрузка конфигурации из файла ' + string(file) + '...');
+con_add(':: SYSTEM: Загрузка конфигурации из файла ' + file + '...');
+
 while !file_text_eof(cfg)
 {
-  cfg_str = file_text_read_string(cfg);
-  con_parse(cfg_str);
+  con_parse( file_text_read_string(cfg) );
   file_text_readln(cfg);
 }
+
 file_text_close(cfg);
-con_add(':: SYSTEM: Загружена конфигурация из файла ' + string(file) + '.');
+con_add(':: SYSTEM: Загружена конфигурация из файла ' + file + '.');

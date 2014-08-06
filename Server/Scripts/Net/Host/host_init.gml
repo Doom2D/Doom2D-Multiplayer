@@ -23,7 +23,7 @@ global.sv_ip = net_my_ip();
 con_add(':: IP: ' + global.sv_ip);
 
 //open tcp socket
-sv_tcp = dll39_tcp_listen(global.sv_port, MAX_PLAYERS, 1);
+sv_tcp = dll39_tcp_listen(global.sv_port, 2, 1);
 if (sv_tcp)
 {
   con_add(":: NET: Открыт TCP-сокет на " + string(global.sv_ip) + ':' + string(global.sv_port));
@@ -69,6 +69,8 @@ if !global.sv_lan && global.sv_portcheck
     }
 }
 
+
+if global.sv_plugins plug_load_all();
 
 event_user(0);
 con_add(':: NET: Сервер включен.');

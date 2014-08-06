@@ -16,7 +16,7 @@ alt_s = API_Menu_GetItemChecked(ui_mbar_m2_alts);
 if alt_s {sf_w = round_p2(img_w); sf_h = round_p2(img_h);} else {sf_w = img_w; sf_h = img_h;}
 
 out_sf = surface_create(sf_w, sf_h);
-if !surface_exists(out_sf) {mb_error(window_handle()); exit;}
+if !surface_exists(out_sf) {mb_error(); exit;}
 surface_set_target(out_sf);
 
 draw_set_alpha(1);
@@ -81,4 +81,4 @@ surface_reset_target();
 if alt_s {surface_save_part(out_sf, get_fn, 0, 0, img_w, img_h);} else {surface_save(out_sf, get_fn);}
 surface_free(out_sf);
 
-if !file_exists(get_fn) {mb_error(window_handle());}
+if !file_exists(get_fn) {mb_error();}

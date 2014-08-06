@@ -1,26 +1,23 @@
 //creating new player
 //0 - id
 //1 - name
-//2 - skin
-//3 - color
-//4 - team
+//2 - team
+//3 - skin
+//4 - color
 
-if instance_exists(global.cl_plr[argument0]) {exit;}
+if instance_exists( global.cl_plr[argument0] ) {exit;}
+
 var _inst;
 _inst = instance_create(0, 0, o_pl);
-_inst.cl_name = 'unknown';
-_inst.cl_id = argument0;
-_inst.cl_name = argument1;
-_inst.cl_skin = argument2;
-_inst.cl_color = argument3;
-_inst.cl_team = argument4;
-
-if argument0 = global.pl_id {global.cl_inst = _inst;}
-
-with (_inst) {skin_load(cl_skin);}
+with _inst
+{
+  cl_id = argument0;
+  cl_name = argument1;
+  cl_team = argument2;
+  cl_skin = argument3;
+  cl_color = argument4;
+  skin_load(cl_skin);
+}
 
 global.cl_plr[argument0] = _inst;
-
-con_add("Игрок " + argument1 + " вошел.");
-
-
+if argument0 == global.pl_id { global.cl_inst = _inst; } else { con_add("Игрок " + argument1 + " вошел."); }

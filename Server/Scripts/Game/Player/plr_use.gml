@@ -1,5 +1,6 @@
 //when player presses the use key
-with instance_place(x, y, trg_atuse)
+with trg_atuse
 {
-    event_user(0);
+  if collision_rectangle(other.x - 16, other.y - 20,
+                         other.x + 16, other.y + 31, id, 0, 0) { event_user(0); }
 }

@@ -13,8 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">x2 = round_mouse_x();
-y2 = round_mouse_y();
+        <argument kind="STRING">x2 = round_mouse_x() + x_off;
+y2 = round_mouse_y() + y_off;
 
 if !keyboard_check(vk_shift) {exit;}
 with par_obj

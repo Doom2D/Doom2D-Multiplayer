@@ -17,28 +17,34 @@
 draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_text(512, 32, 'Серверлист');
+
 draw_set_font(global.fnt_small);
 draw_set_color(c_red);
 draw_text(512, 72, '[ПРОБЕЛ], чтобы обновить список.#[ESC] для выхода.');
+
 draw_set_halign(fa_left);
 draw_set_color(c_white);
-draw_text(64, 128, 'ИМЯ');
-draw_text(536, 128, 'КАРТА');
-draw_text(792, 128, 'ИГРОКИ');
+draw_text(48, 128, 'НАЗВАНИЕ');
+draw_text(520, 128, 'КАРТА');
+draw_text(776, 128, 'ИГРОКИ');
 draw_text(768 + 128, 128, 'ВЕРСИЯ');
+
 draw_set_color(c_red);
-for (i = 1; i &lt;= global.slist[0, 5]; i += 1)
+if global.slist[0, 5] &gt; 0
 {
-    draw_text(64, 144 + 16 * i, global.slist[i, 1]);
-    draw_text(536, 144 + 16 * i, global.slist[i, 2]);
-    draw_text(792, 144 + 16 * i, global.slist[i, 3]);
-    draw_text(768 + 128, 144 + 16 * i, global.slist[i, 4]);
-    
+  for (i = 1; i &lt;= global.slist[0, 5]; i += 1)
+  {
+    draw_text(48, 144 + 16 * i, global.slist[i, 1]);
+    draw_text(520, 144 + 16 * i, global.slist[i, 2]);
+    draw_text(776, 144 + 16 * i, global.slist[i, 3]);
+    draw_text(768 + 128, 144 + 16 * i, global.slist[i, 4]);  
+  }
+
+  draw_set_color(c_white);
+  draw_sprite(s_marker2, 0, 48 - 24, 140 + 16 * select);
+} else {
+  draw_text(48, 160, global.slist[1, 1]);
 }
-draw_set_color(c_white);
-if global.slist[0, 5] &gt; 0 {draw_sprite(s_marker2, 0, 64 - 24, 140 + 16 * select);}
-else
-{draw_set_color(c_red); draw_text(64, 160, global.slist[1, 1]);}
 
 </argument>
       </arguments>

@@ -5,9 +5,11 @@ io_clear();
 ui_windows_destroy(false);
 with par_obj {instance_destroy();}
 
-for (i = 1; i < MAX_TXRS_NUM; i += 1)
+var i, tx_n;
+tx_n = global.tex_n;
+for (i = 1; i < tx_n; i += 1)
 {
-  if global.tex[i] != tex_error && sprite_exists(global.tex[i]) {sprite_delete(global.tex[i]);}
+  if global.tex[i] != tex_error {sprite_delete(global.tex[i]);}
   global.tex[i] = noval;
   global.tex_nm[i] = '';
 }

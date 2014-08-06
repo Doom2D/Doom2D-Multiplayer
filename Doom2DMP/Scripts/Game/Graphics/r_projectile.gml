@@ -1,12 +1,13 @@
 //creates a projectile
 //arg0 - projectile id
-//arg1 - projectile type (coresponds to image index)
+//arg1 - projectile type (corresponds to image index)
 //arg2 - direction
 //arg3 - x
 //arg4 - y
 p = instance_create(argument3, argument4, o_projectile);
 p.pr_id = argument0;
 p.image_single = argument1 - 1;
+p.ang = p.argument2;
 if argument1 == 1
 {
     p.p_spd = 7;

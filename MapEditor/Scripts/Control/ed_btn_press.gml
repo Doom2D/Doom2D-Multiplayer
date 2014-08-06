@@ -13,11 +13,11 @@ if trg != noone && instance_exists(trg)
   exit;
 }
 
-x1 = round_mouse_x();
-y1 = round_mouse_y();
+x1 = round_mouse_x() + x_off;
+y1 = round_mouse_y() + y_off;
 if !keyboard_check(vk_shift) 
 {
-  x1 += x_off - ix_off;
-  y1 += y_off - iy_off;
+  x1 -= ix_off;
+  y1 -= iy_off;
   map_obj_create(obj_sel, tex_sel, x1, y1, 0, 0, x1, y1, x1, y1);
 }

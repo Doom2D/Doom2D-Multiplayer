@@ -3,5 +3,7 @@
   <resource name="Editor" type="GROUP"/>
   <resource name="Windows" type="GROUP"/>
   <resource name="ui_upd_title" type="RESOURCE"/>
+  <resource name="ui_windows_lock" type="RESOURCE"/>
+  <resource name="ui_windows_unlock" type="RESOURCE"/>
   <resource name="ui_windows_destroy" type="RESOURCE"/>
 </resources>

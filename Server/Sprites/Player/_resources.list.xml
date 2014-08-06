@@ -3,7 +3,6 @@
   <resource name="s_pl_mask" type="RESOURCE"/>
   <resource name="s_bullet" type="RESOURCE"/>
   <resource name="msk_projectile" type="RESOURCE"/>
-  <resource name="msk_expl1" type="RESOURCE"/>
-  <resource name="msk_expl2" type="RESOURCE"/>
+  <resource name="msk_explos" type="RESOURCE"/>
   <resource name="msk_punch" type="RESOURCE"/>
 </resources>

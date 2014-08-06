@@ -17,7 +17,7 @@ if alt_s
 }
 
 out_sf = surface_create(sf_w, sf_h);
-if !surface_exists(out_sf) {mb_error(window_handle()); exit;}
+if !surface_exists(out_sf) {mb_error(); exit;}
 surface_set_target(out_sf);
 
 draw_clear(c_black);
@@ -32,7 +32,7 @@ with o_liquid                    {draw_sprite(sprite_index, image_index, x, y);}
 with o_frg                       {draw_sprite(sprite_index, image_index, x, y);}
 
 //to avoid bug with incorrect blending on surfaces in GM
-draw_set_blend_mode_ext(bm_dest_alpha, bm_src_alpha);
+draw_set_blend_mode(bm_add);
 draw_set_color(c_black);
 draw_set_alpha(1);
 draw_rectangle(0, 0, global.map_w, global.map_h, false);
@@ -47,5 +47,5 @@ if alt_s
 }
 surface_free(out_sf);
 
-if !file_exists(get_fn) {mb_error(window_handle());}
+if !file_exists(get_fn) {mb_error();}
 

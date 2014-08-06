@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <constants>
+  <constant name="eol" value="chr(13)+chr(10)"/>
   <constant name="MAX_PLAYERS" value="24"/>
   <constant name="PLAYER_WIDTH" value="33"/>
   <constant name="PLAYER_HEIGHT" value="52"/>
   <constant name="GAME_DM" value="0"/>
   <constant name="GAME_TDM" value="1"/>
   <constant name="GAME_CTF" value="2"/>
+  <constant name="PLUG_ONSTART" value="0"/>
+  <constant name="PLUG_ONMAPSTART" value="1"/>
+  <constant name="PLUG_ONMAPEND" value="2"/>
+  <constant name="PLUG_ONSTEP" value="3"/>
+  <constant name="PLUG_ONCONNECT" value="4"/>
+  <constant name="PLUG_ONDISCONNECT" value="5"/>
+  <constant name="PLUG_ONCONCMD" value="6"/>
+  <constant name="PLUG_ONCHAT" value="7"/>
+  <constant name="PLUG_ONFRAG" value="8"/>
+  <constant name="PLUG_ONSCORE" value="9"/>
+  <constant name="PLUG_ONEND" value="10"/>
   <constant name="GW_CHILD" value="5"/>
   <constant name="GW_HWNDFIRST" value="0"/>
   <constant name="GW_HWNDLAST" value="1"/>
@@ -943,8 +955,6 @@
   <constant name="WM_XBUTTONDOWN" value="-523"/>
   <constant name="WM_XBUTTONUP" value="-524"/>
   <constant name="WM_XBUTTONDBLCLK" value="-525"/>
-  <constant name="WM_MOUSELAST" value="-525"/>
-  <constant name="WM_MOUSELAST" value="-525"/>
   <constant name="WM_MOUSELAST" value="-525"/>
   <constant name="WM_PARENTNOTIFY" value="-528"/>
   <constant name="WM_ENTERMENULOOP" value="-529"/>

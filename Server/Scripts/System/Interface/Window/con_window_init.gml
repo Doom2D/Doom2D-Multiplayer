@@ -3,8 +3,8 @@ if quiet != 0 {exit;}
 //creates the console window
 var winw, winh;
 winw = 400; winh = 320;
-global.gui[0] = API_Window_Create(0, display_get_width() / 2 - floor(winw / 2),
-                                     display_get_height() / 2 - floor(winh / 2),
+global.gui[0] = API_Window_Create(0, (display_get_width()  - winw) / 2,
+                                     (display_get_height() - winh) / 2,
                                      winw, winh,
                                      WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX, 0);
 API_Window_SetText(global.gui[0], room_caption);

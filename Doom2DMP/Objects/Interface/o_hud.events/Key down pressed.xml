@@ -22,6 +22,7 @@ if viewing == 0 {viewing = net_find_plr(0, 1);}
 if instance_exists(id_to_cl(viewing))
 {
     global.cl_inst = id_to_cl(viewing);
+    with o_camera cam_inst = global.cl_inst;
     net_list_clients();
 }
 </argument>

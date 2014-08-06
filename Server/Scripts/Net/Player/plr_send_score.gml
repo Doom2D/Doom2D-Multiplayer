@@ -1,6 +1,6 @@
 //sends team score
 dll39_buffer_clear(0);
-dll39_write_byte(25, 0);
+write_msg_id(25, 0);
 dll39_write_byte(global.team_score[1], 0); //red
 dll39_write_byte(global.team_score[2], 0); //blu
 

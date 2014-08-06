@@ -13,7 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">//processing editor interface
+        <argument kind="STRING">//processing window size changing
+var ch_w, ch_h;
+ch_w = window_get_width();
+ch_h = window_get_height();
+if view_wport != ch_w || view_hport != ch_h { ed_set_window(ch_w, ch_h, true); }
+
+//processing editor interface
 ui_menu_pr();
 ed_tbox_proc();
 

@@ -13,12 +13,11 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">gibtime = get_seconds(7);
-alarm[0] = gibtime;
-alarm[1] = 1;
-gravity = 0.3;
-image_speed = 0;
-image_single = floor( random(image_number) );
+        <argument kind="STRING">image_speed = 0;
+
+alarm[0] = get_seconds(8);
+alarm[1] = 45;
+image_index = irandom(image_number);
 r_part_emit(1, x, y);
 </argument>
       </arguments>

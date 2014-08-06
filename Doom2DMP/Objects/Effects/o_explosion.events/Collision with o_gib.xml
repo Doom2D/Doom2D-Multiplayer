@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="COLLISION" with="o_gib">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.other</appliesTo>
+      <arguments>
+        <argument kind="STRING">if image_alpha &lt; 0.5 {exit;}
+if other.sprite_index == s_splash2 {exit;}
+if other.image_index &gt; 0 {exit;}
+
+if vspeed == 0 { y -= 1; }
+
+//if x &lt; other.x {vspeed -= 1; hspeed = -8;} else if x &gt; other.x {vspeed -= 1; hspeed = 8;}
+//if y &lt; other.y {vspeed = -8;}              else if y &gt; other.y {vspeed = 8;}
+motion_add( point_direction( other.x, other.y, x, y ), 6 );
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

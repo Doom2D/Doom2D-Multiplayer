@@ -30,9 +30,9 @@ str[2] = '';
 str[2] += 'PrimuS#Черный Думер';
 str[2] += '###Черный Думер#ar888';
 str[2] += '###Черный Думер#ar888#Jabberwock';
-str[2] += '###kt0-t0#Rembo#Romixal#Doom2D.org Community#Jenner#39ster#h0bbel#YoYo Games#Igor Pavlov#и др.';
+str[2] += "###kt0-t0#Rembo#Stas'M#39ster#h0bbel#Jenner#YoYo Games#и др.";
 
-str[3] = 'Игра сделана на Game Maker 8.0 с использованием#FMOD (GMFMOD), WinAPI (Max WinAPI 2) и 7-Zip.#Большая часть игровых ресурсов честно украдена у#id Software, Prikol Software и разработчиков Doom 2D: Forever.#Все права на эти хорошие вещи принадлежат их владельцам.#2011-2014';
+str[3] = 'Игра сделана на Game Maker 8.0 с использованием#FMOD (GMFMOD), WinAPI (Max WinAPI 2) и 7-Zip.#Большая часть игровых ресурсов честно украдена у#id Software, Prikol Software и разработчиков Doom 2D: Forever.#Все права на эти хорошие вещи принадлежат их владельцам.##www.doom2d.org, 2011-2014';
 
 </argument>
       </arguments>

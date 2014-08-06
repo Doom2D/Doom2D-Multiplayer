@@ -54,7 +54,10 @@ if global.sv_dl_allow < 0 {global.sv_dl_allow = 0;}
 if global.sv_dl_allow > 1 {global.sv_dl_allow = 1;}
 
 if global.sv_dl_rate < 1 {global.sv_dl_rate = 1;}
-if global.sv_dl_rate > 255 {global.sv_dl_rate = 255;}
+if global.sv_dl_rate > 256 {global.sv_dl_rate = 256;}
+
+if global.sv_dl_mapcfg < 0 {global.sv_dl_mapcfg = 0;}
+if global.sv_dl_mapcfg > 1 {global.sv_dl_mapcfg = 1;}
 
 if global.sv_md5check < 0 {global.sv_md5check = 0;}
 if global.sv_md5check > 1 {global.sv_md5check = 1;}
@@ -68,6 +71,9 @@ if global.sv_log_update > 1 {global.sv_log_update = 1;}
 if global.sv_autoexec < 0 {global.sv_autoexec = 0;}
 if global.sv_autoexec > 2 {global.sv_autoexec = 2;}
 
+if global.sv_plugins < 0 global.sv_plugins = 0;
+if global.sv_plugins > 1 global.sv_plugins = 1;
+
 if global.cl_rc_time < 3 {global.cl_rc_time = 3;}
 if global.cl_rc_time > 120 {global.cl_rc_time = 120;}
 
@@ -78,7 +84,7 @@ if global.mp_gamemode < 0 {global.mp_gamemode = 0;}
 if global.mp_gamemode > 2 {global.mp_gamemode = 2;}
 
 if global.mp_automode < 0 {global.mp_automode = 0;}
-if global.mp_automode > 2 {global.mp_automode = 2;}
+if global.mp_automode > 3 {global.mp_automode = 3;}
 
 if global.mp_ffire < 0 {global.mp_ffire = 0;}
 if global.mp_ffire > 1 {global.mp_ffire = 1;}
@@ -116,8 +122,8 @@ if global.mp_knockback > 1 {global.mp_knockback = 1;}
 if global.mp_selfdamage < 0 {global.mp_selfdamage = 0;}
 if global.mp_selfdamage > 1 {global.mp_selfdamage = 1;}
 
-if global.mp_oldaim < 0 {global.mp_oldaim = 0;}
-if global.mp_oldaim > 1 {global.mp_oldaim = 1;}
+if global.mp_aimtype < 0 {global.mp_aimtype = 0;}
+if global.mp_aimtype > 2 {global.mp_aimtype = 2;}
 
 if global.mp_itemdrop < 0 {global.mp_itemdrop = 0;}
 if global.mp_itemdrop > 2 {global.mp_itemdrop = 2;}

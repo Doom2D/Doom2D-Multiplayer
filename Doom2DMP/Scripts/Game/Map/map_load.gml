@@ -1,41 +1,37 @@
 //load map
 //argument0 - filename
 
+map_clear();
+
+//checking map
 var temp_fn;
 temp_fn = 'data\maps\' + argument0 + '.dlv';
 if !file_exists(temp_fn) 
 {
-    con_add(":: MAP: ERROR: Карты " + temp_fn + " не существует.");
+  con_add(":: MAP: ERROR: Карты " + temp_fn + " не существует.");
+  cl_disconnect();
+  mus_play(global.mus_menu);
+  room_goto(rm_menu);
+  return false;
+}
+
+if global.sv_map_md5 != '*'
+{
+  global.map_md5 = file_md5(temp_fn);
+  con_add(':: MAP: MD5 карты клиента: ' + global.map_md5);
+  con_add(':: MAP: MD5 карты сервера: ' + global.sv_map_md5);
+  if global.map_md5 != global.sv_map_md5
+  {
+    con_add(':: MAP: ERROR: Ваша карта отличается от серверной.');
     cl_disconnect();
     mus_play(global.mus_menu);
     room_goto(rm_menu);
-    exit;
+    return false;
+  }
+} else {
+  con_add(':: MAP: Проверка карт отключена на сервере.');
 }
 
-//free the shit for less lags
-for (i = 1; i < 256; i += 1)
-{
-  if global.tex[i] != tex_error && sprite_exists(global.tex[i]) {sprite_delete(global.tex[i]);}
-  global.tex[i] = -1;
-}
-global.tex_n = 1;
-
-//and this shit
-if global.map_bkg != -1
-{
-  if background_exists(global.map_bkg) {background_delete(global.map_bkg);}
-  global.map_bkg = -1;
-  o_camera.visible = false;
-}
-
-//and this shit
-if global.map_mus != -1
-{
-  FMODSoundFree(global.map_mus);
-  global.map_mus = -1;
-}
-
-ds_list_destroy(global.cl_tiles);
 global.cl_tiles = ds_list_create();
 
 var fnum;
@@ -112,9 +108,10 @@ while !file_text_eof(fnum)
 }
 
 file_text_close(fnum);
-global.map_md5 = file_md5(temp_fn);
 
 if !global.r_gfx {instance_deactivate_object(o_bkg);}
 mus_play(global.map_mus);
-con_add(':: MAP: Загружена карта ' + argument0);
+con_add(':: MAP: Загружена карта: ' + argument0);
+
+return true;
 

@@ -14,30 +14,36 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if !variable_local_exists('l_id') {exit;}
-if !variable_local_exists('p_type') {exit;}
 if other.cl_id == l_id {exit;}
-if p_type == 1 || p_type == 3 {instance_destroy(); exit;}
+if !variable_local_exists('p_type') {exit;}
 
-if !other.st_inv &amp;&amp; !global.mp_godmode
+if p_type == 2
 {
-  if !global.mp_gamemode  || global.mp_ffire || l_team != other.cl_team  {with (other) {plr_hurt(10)};}
-}
-other.killer_id = l_id;
-other.kill_type = 6;
+  with other
+  {
+    if !global.mp_godmode &amp;&amp; !st_inv
+    {
+      if global.mp_gamemode == GAME_DM || global.mp_ffire || cl_team != other.l_team
+      {
+        killer_id = other.l_id;
+        kill_type = 6;
+        plr_send_effect(1, x, y);
+        plr_hurt(10);
+        plr_send_pain();
+      }
+    }
 
-with other
-{
-  if global.mp_knockback { plr_speed_add(1.25, other.direction); }
-  plr_send_stat();
-  if !global.mp_godmode &amp;&amp; !st_inv {plr_send_pain();};
-  plr_send_speed();
+    if global.mp_knockback
+    {
+      plr_speed_add(1.3, other.direction);
+      plr_send_speed();
+    }
+
+    plr_send_stat();
+  }
 }
 
-plr_send_effect(1, other.x, other.y);
 instance_destroy();
-
-//instance_create(x, y, o_explosion);
-//plr_send_explosion(cl_id, 1, x, y);
 </argument>
       </arguments>
     </action>

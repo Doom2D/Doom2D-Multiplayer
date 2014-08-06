@@ -1,4 +1,4 @@
-//creates list of the tiles at the toolbox window
+//creates list of the tiles in the toolbox window
 
 create_text(ui_win1, 8, 4, 64, 12, 'Тайл');
 ui_tl_cb = API_Combobox_Create(ui_win1, 8, 20, 200, 20, CBS_HASSTRINGS|CBS_DROPDOWNLIST|WS_VSCROLL);

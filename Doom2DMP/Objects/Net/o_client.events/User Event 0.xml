@@ -13,21 +13,12 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if file_exists('data\temp\' + global.sv_map + '.7z') &amp;&amp; !file_exists('data\maps\' + global.sv_map + '.dlv') {map_unpack(global.sv_map);}
-map_load(global.sv_map);
-con_add(':: MAP: MD5 карты клиента: ' + global.map_md5);
-con_add(':: MAP: MD5 карты сервера: ' + global.sv_map_md5);
-if global.map_md5 != global.sv_map_md5 &amp;&amp; global.sv_map_md5 != '-255'
-{
-  con_add(':: MAP: ERROR: MD5 не сходятся.');
-  cl_disconnect();
-  mus_play(global.mus_menu);
-  room_goto(rm_menu);
-  exit;
-}
+        <argument kind="STRING">if !file_exists('data\maps\' + global.sv_map + '.dlv') {map_unpack(global.sv_map);}
+if !map_load(global.sv_map) {exit;}
+
 con_add(_welcome);
 instance_create(0, 0, o_hud);
-alarm[2] = 2;
+alarm[2] = 1; //was 2, dunno why - BD
 </argument>
       </arguments>
     </action>

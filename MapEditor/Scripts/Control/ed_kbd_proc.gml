@@ -3,10 +3,10 @@ if keyboard_check(ord('W')) or keyboard_check(vk_up)
 {
   if global.map_h > view_hview
   {
-    if view_yview >= global.ed_camspeed && (view_yview + view_hview) mod global.ed_camspeed == 0
+    if view_yview >= global.ed_camspeed && view_yview mod global.ed_camspeed == 0
       {view_yview -= global.ed_camspeed;}
     else
-      {view_yview -= (view_yview + view_hview) mod global.ed_camspeed;}
+      {view_yview -= view_yview mod global.ed_camspeed;}
     keyboard_clear(ord('W'));
   }
 }
@@ -27,10 +27,10 @@ if keyboard_check(ord('A')) or keyboard_check(vk_left)
 {
   if global.map_w > view_wview
   {
-    if view_xview >= global.ed_camspeed && (view_xview + view_wview) mod global.ed_camspeed == 0
+    if view_xview >= global.ed_camspeed && view_xview mod global.ed_camspeed == 0
       {view_xview -= global.ed_camspeed;}
     else
-      {view_xview -= (view_xview + view_wview) mod global.ed_camspeed;}
+      {view_xview -= view_xview mod global.ed_camspeed;}
     keyboard_clear(ord('A'));
   }
 }
@@ -71,7 +71,7 @@ if keyboard_check_pressed(ord('0'))
 }
 
 //hotkeys
-if keyboard_check_pressed(vk_f1) {dlg_manual();}
+if keyboard_check_pressed(vk_f1) {mb_manual();}
 if keyboard_check_pressed(vk_f2) {map_load('');}
 if keyboard_check_pressed(vk_f3) {map_save(true);}
 if keyboard_check_pressed(vk_f4) {dlg_clearmap();}
@@ -81,7 +81,7 @@ if keyboard_check_pressed(vk_f7) {ui_mapsets_cr();}
 if keyboard_check_pressed(vk_f8) {ui_edsets_cr();}
 if keyboard_check_pressed(vk_f9)
 {
-  if !directory_exists('screenshots') {directory_create('screenshots');}
+  if !directory_exists('screenshots') {dir_create('screenshots');}
   screen_save('screenshots\ed_' + get_timestamp() + '.png');
 } 
 if keyboard_check_pressed(vk_f10) {dlg_exit();}
@@ -92,3 +92,4 @@ if keyboard_check_pressed(ord('G'))
 }
 if keyboard_check_pressed(ord('H')) {set_grid_vis(!global.ed_g_vis, true);}
 if keyboard_check_pressed(ord('J')) {set_grid_snap(!global.ed_g_use, true);}
+

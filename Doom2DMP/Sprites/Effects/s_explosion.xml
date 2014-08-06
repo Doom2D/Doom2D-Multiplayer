@@ -3,8 +3,13 @@
   <origin x="64" y="64"/>
   <mask>
     <separate>false</separate>
-    <shape>RECTANGLE</shape>
-    <bounds alphaTolerance="0" mode="AUTO"/>
+    <shape>DISK</shape>
+    <bounds alphaTolerance="0" mode="MANUAL">
+      <left>16</left>
+      <right>111</right>
+      <top>16</top>
+      <bottom>111</bottom>
+    </bounds>
   </mask>
   <preload>true</preload>
   <smoothEdges>false</smoothEdges>

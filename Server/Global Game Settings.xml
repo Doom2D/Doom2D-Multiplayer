@@ -33,9 +33,9 @@
     <treatCloseAsEscape>false</treatCloseAsEscape>
   </keys>
   <errors>
-    <displayErrors>true</displayErrors>
-    <writeToLog>false</writeToLog>
-    <abortOnError>false</abortOnError>
+    <displayErrors>false</displayErrors>
+    <writeToLog>true</writeToLog>
+    <abortOnError>true</abortOnError>
     <treatUninitializedAsZero>false</treatUninitializedAsZero>
   </errors>
   <gameInfo>

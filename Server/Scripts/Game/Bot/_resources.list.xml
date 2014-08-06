@@ -2,12 +2,12 @@
 <resources>
   <resource name="bot_add" type="RESOURCE"/>
   <resource name="bot_ai" type="RESOURCE"/>
-  <resource name="bot_send_pos" type="RESOURCE"/>
   <resource name="bot_find_health" type="RESOURCE"/>
+  <resource name="bot_find_player" type="RESOURCE"/>
+  <resource name="bot_find_player_team" type="RESOURCE"/>
   <resource name="bot_check_ammo" type="RESOURCE"/>
+  <resource name="bot_send_pos" type="RESOURCE"/>
   <resource name="bot_select_name" type="RESOURCE"/>
   <resource name="bot_select_skin" type="RESOURCE"/>
   <resource name="bot_chat" type="RESOURCE"/>
-  <resource name="bot_find_player" type="RESOURCE"/>
-  <resource name="bot_find_player_team" type="RESOURCE"/>
 </resources>

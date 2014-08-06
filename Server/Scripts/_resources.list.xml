@@ -5,4 +5,5 @@
   <resource name="Map" type="GROUP"/>
   <resource name="Game" type="GROUP"/>
   <resource name="Fsend" type="GROUP"/>
+  <resource name="Plugins" type="GROUP"/>
 </resources>

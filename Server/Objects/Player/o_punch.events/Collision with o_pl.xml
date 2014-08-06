@@ -14,18 +14,31 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if !variable_local_exists('p_id') {exit;}
-if other.cl_id == p_id || other.st_inv || global.mp_godmode || collision_line(x, y, other.x, other.y, o_solid, 0, 1) {exit;}
-if !global.mp_gamemode  || global.mp_ffire || p_team != other.cl_team  {with (other) {plr_hurt(other.dmg)};}
-other.killer_id = p_id;
-other.kill_type = 13 + p_t;
-plr_send_effect(1, other.x, other.y);
-if kb &amp;&amp; global.mp_knockback
-{
-    if other.x &lt; x {other.hsp = -8; other.vsp = -6;}
-    if other.x &gt; x {other.hsp = 8; other.vsp = -6;}   
-}
-with (other) {plr_send_stat(); plr_send_speed();  if !global.mp_godmode &amp;&amp; !st_inv {plr_send_pain();} other.pt = 10;}
+if other.cl_id == p_id {exit;}
+if collision_line(x, y, other.x, other.y, o_solid, 0, 1) {exit;}
 
+with other
+{
+  if !global.mp_godmode &amp;&amp; !st_inv
+  {
+    if global.mp_gamemode == GAME_DM || global.mp_ffire || cl_team != other.p_team
+    {
+      killer_id = other.p_id;
+      kill_type = 13 + other.p_t;
+      plr_send_effect(1, x, y);
+      plr_hurt(other.dmg);
+      plr_send_pain();
+    }
+  }
+
+  if global.mp_knockback
+  {
+    plr_speed_add( (3 + 4 * other.kb) * (1 - point_distance(x, y, other.x, other.y) / 56), other.image_angle );
+    plr_send_speed();
+  }
+
+  plr_send_stat();
+}
 </argument>
       </arguments>
     </action>

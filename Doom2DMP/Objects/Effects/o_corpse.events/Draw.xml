@@ -16,10 +16,6 @@
         <argument kind="STRING">if x + 32 &lt;= view_xview || x - 32 &gt;= view_xview + view_wview {exit;}
 if y + 64 &lt;= view_yview || y &gt;= view_yview + view_hview {exit;}
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, c_white, image_alpha);
-
-//draw_rectangle_color(bbox_left, bbox_top, bbox_right, bbox_bottom, c_lime, c_lime, c_lime, c_lime, true)
-
-if !variable_local_exists('msk') {exit;}
 draw_sprite_ext(msk, image_index, x, y, image_xscale, image_yscale, 0, color, image_alpha);
 </argument>
       </arguments>

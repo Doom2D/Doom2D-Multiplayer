@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="create_text" type="RESOURCE"/>
+  <resource name="message_box" type="RESOURCE"/>
+</resources>

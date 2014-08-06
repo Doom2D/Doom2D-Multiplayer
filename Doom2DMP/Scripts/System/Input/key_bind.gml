@@ -23,10 +23,12 @@ switch (command)
   case '+right': global.key_right = key; break;
   case '+attack': global.key_atk = key; break;
   case '+jump': global.key_jmp = key; break;
+  case '+use': global.key_use = key; break;
   case '+chat': global.key_chat = key; break;
   case '+nextweapon': global.key_chw = key; break;
   case '+prevweapon': global.key_chw2 = key; break;
+  case '+dropflag': global.key_drop = key; break;
+  case '+changeteam': global.key_chteam = key; break;
   case '+screenshot': global.key_scr = key; break;
-  case '+use': global.key_use = key; break;
 }
 //con_add('Команда ' + string(command) + ' теперь висит на клавише ' + string(argument0) + '.');

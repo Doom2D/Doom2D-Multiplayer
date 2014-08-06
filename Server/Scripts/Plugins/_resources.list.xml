@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="plug_load_all" type="RESOURCE"/>
+  <resource name="plug_load_info" type="RESOURCE"/>
+  <resource name="plug_prepare" type="RESOURCE"/>
+  <resource name="plug_load" type="RESOURCE"/>
+  <resource name="plug_unload" type="RESOURCE"/>
+  <resource name="plug_unload_self" type="RESOURCE"/>
+  <resource name="plug_listall" type="RESOURCE"/>
+  <resource name="plug_stat" type="RESOURCE"/>
+  <resource name="plug_exec" type="RESOURCE"/>
+  <resource name="Plugin functions" type="GROUP"/>
+</resources>

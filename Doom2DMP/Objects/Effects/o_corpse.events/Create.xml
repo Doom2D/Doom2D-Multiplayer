@@ -13,12 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">r_part_emit(1, x, y);
-alarm[0] = get_seconds(7);
-image_speed = 0.175;
-
-gravity = 0.3;
-
+        <argument kind="STRING">image_speed = 0;
+alarm[0] = get_seconds(25);
 </argument>
       </arguments>
     </action>

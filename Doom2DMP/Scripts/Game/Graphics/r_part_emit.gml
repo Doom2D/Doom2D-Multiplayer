@@ -1,5 +1,5 @@
 //emits particles with type arg0 from (arg1, arg2)
-if !global.r_gfx || global.fget_state {exit;}
+if !global.r_gfx {exit;}
 
 var inst;
 switch argument0
@@ -18,7 +18,7 @@ switch argument0
         repeat(7)
         {
             inst = instance_create(argument1, argument2, o_gib);
-            inst.speed = 5 + random(5);
+            inst.speed = 4 + irandom(3);
             inst.direction = random(360);
         }
     break;

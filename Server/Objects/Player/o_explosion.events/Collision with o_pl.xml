@@ -13,27 +13,32 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.mp_knockback
+        <argument kind="STRING">if !variable_local_exists('l_id') {exit;}
+
+with other
 {
-    if other.x &lt; x {other.hsp = -7.8;}
-    if other.x &gt; x {other.hsp = 7.8;}   
-    if other.y &gt; y {other.vsp = 7.8;} 
-    if other.y &lt; y {other.vsp = -7.8;} 
-    with (other) {plr_send_speed();}
+  if pt &lt;= 0 &amp;&amp; !global.mp_godmode &amp;&amp; !st_inv
+  {
+    if global.mp_gamemode == GAME_DM || global.mp_ffire || cl_team != other.l_team || (cl_id == other.l_id &amp;&amp; global.mp_selfdamage)
+    {
+      killer_id = other.l_id;
+      kill_type = 5;
+      plr_send_effect(1, x, y);
+      plr_hurt( max( 8, 100 - round( point_distance(x, y, other.x, other.y) / 1.25 ) ) );
+      plr_send_pain();
+    }
+  }
+
+  if global.mp_knockback
+  {
+    //plr_speed_set( 11.03, other.dir );
+    if x &lt; other.x {hsp = -8.5;} else if x &gt; other.x {hsp = 8.5;}
+    if y &lt; other.y {vsp = -8.6;} else if y &gt; other.y {vsp = 8.6;}
+    plr_send_speed();
+  }
+
+  plr_send_stat();
 }
-if other.pt &gt; 0 {exit;}
-if !variable_local_exists('l_id') {exit;}
-
-var dmg, dist;
-dist = round(point_distance(x, y, other.x, other.y) / 1.25);
-if !global.mp_godmode &amp;&amp; !other.st_inv {dmg = 100 - dist;} else {dmg = 0;}
-if dmg &lt; 0 {dmg = 8;}
-if !global.mp_gamemode  || global.mp_ffire || l_team != other.cl_team || (other.cl_id == l_id &amp;&amp; global.mp_selfdamage) {with (other) {plr_hurt(dmg)};}
-other.killer_id = l_id;
-other.kill_type = 5;
-plr_send_effect(1, other.x, other.y);
-with (other) {plr_send_stat(); if !global.mp_godmode &amp;&amp; !st_inv {plr_send_pain();};}
-
 </argument>
       </arguments>
     </action>

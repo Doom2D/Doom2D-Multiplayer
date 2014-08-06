@@ -13,7 +13,9 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">map_clear();
+        <argument kind="STRING">with o_plugin execute_string(plug_code[PLUG_ONMAPEND]);
+
+map_clear();
 map_load(global.sv_map);
 map_next();
 map_pack(global.sv_map);

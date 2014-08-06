@@ -2,7 +2,6 @@
 <resources>
   <resource name="sys_init" type="RESOURCE"/>
   <resource name="sys_fps_correct" type="RESOURCE"/>
-  <resource name="sys_exit" type="RESOURCE"/>
   <resource name="Logs" type="GROUP"/>
   <resource name="Input" type="GROUP"/>
   <resource name="Misc" type="GROUP"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <settings>
   <graphics>
-    <scalingPercent>-1</scalingPercent>
+    <scalingPercent>0</scalingPercent>
     <displayCursor>true</displayCursor>
     <useVsync>false</useVsync>
     <interpolateColors>false</interpolateColors>
@@ -10,7 +10,7 @@
   <windowing>
     <startFullscreen>false</startFullscreen>
     <dontDrawBorder>false</dontDrawBorder>
-    <allowWindowResize>false</allowWindowResize>
+    <allowWindowResize>true</allowWindowResize>
     <alwaysOnTop>false</alwaysOnTop>
     <dontShowButtons>false</dontShowButtons>
     <switchVideoMode>false</switchVideoMode>
@@ -33,9 +33,9 @@
     <treatCloseAsEscape>false</treatCloseAsEscape>
   </keys>
   <errors>
-    <displayErrors>true</displayErrors>
-    <writeToLog>false</writeToLog>
-    <abortOnError>false</abortOnError>
+    <displayErrors>false</displayErrors>
+    <writeToLog>true</writeToLog>
+    <abortOnError>true</abortOnError>
     <treatUninitializedAsZero>false</treatUninitializedAsZero>
   </errors>
   <gameInfo>

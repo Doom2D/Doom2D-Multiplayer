@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-  <resource name="plr_phys" type="RESOURCE"/>
   <resource name="plr_init_phys" type="RESOURCE"/>
+  <resource name="plr_phys" type="RESOURCE"/>
 </resources>

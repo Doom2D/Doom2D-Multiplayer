@@ -3,7 +3,7 @@ var _i, _done, _n;
 _done = false;
 while !_done
 {
-    _i = irandom(list_get_len('name_list') - 1);
+    _i = irandom( list_get_len('name_list') - 1 );
     if list_get_ind('name_taken', list_get_val('name_list', _i)) < 0
     {
         _n = string(list_get_val('name_list', _i))

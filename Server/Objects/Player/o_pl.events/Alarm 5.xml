@@ -16,38 +16,22 @@
         <argument kind="STRING">//bfg projectile
 if (w != 7) || dead || a4 &lt; 40 {exit;}
     
-if aim == 1 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn {b_dir = 0;}
-if aim == -1 &amp;&amp; !kb_lkup &amp;&amp; !kb_lkdn {b_dir = 180;}
-if !global.mp_oldaim
-{
-    if aim == 1 &amp;&amp; kb_lkdn {b_dir = 315;}
-    if aim == -1 &amp;&amp; kb_lkdn {b_dir = 225;}
-    if aim == 1 &amp;&amp; kb_lkup {b_dir = 45;}
-    if aim == -1 &amp;&amp; kb_lkup {b_dir = 135;}
-}
-else
-{
-    if aim == 1 &amp;&amp; kb_lkdn {b_dir = 325;}
-    if aim == -1 &amp;&amp; kb_lkdn {b_dir = 215;}
-    if aim == 1 &amp;&amp; kb_lkup {b_dir = 55;}
-    if aim == -1 &amp;&amp; kb_lkup {b_dir = 125;}
-}
-
+b_dir = plr_aim();
 a4 -= 40;
+
 if position_meeting(x, y, o_water) &amp;&amp; global.mp_waterfrag
 {
-  if !st_inv &amp;&amp; !global.mp_godmode
+  if !global.mp_godmode &amp;&amp; !st_inv
   {
-    //if pt &lt; 1 {plr_send_sound(8, x, y); plr_send_sprite(cl_id, 0, 1); pt = 32;}
     killer_id = cl_id;
     kill_type = 7;
-    if global.mp_waterfrag == 1 {plr_hurt(global.mp_waterbfgdmg);} else {plr_hurt(999);}
-    plr_send_stat();
-    plr_send_pain();
     plr_send_effect(1, x, y);
-  } else {
-    plr_send_stat();
+    if global.mp_waterfrag == 1 { plr_hurt(global.mp_waterbfgdmg); } else { plr_hurt(999); }
+    plr_send_pain();
   }
+  
+  plr_send_stat();
+  
   if global.mp_waterfrag == 2
   {
     with instance_place(x, y, o_water)
@@ -60,6 +44,7 @@ if position_meeting(x, y, o_water) &amp;&amp; global.mp_waterfrag
       s.team = other.cl_team;
     }
   }
+
   exit;
 }
 
@@ -73,8 +58,10 @@ p.pr_id = ds_list_find_index(global.sv_proj, noone);
 ds_list_replace(global.sv_proj, p.pr_id, p.id);
 
 plr_send_stat();
-plr_send_sprite(cl_id, 1, 0); 
+plr_send_sprite(cl_id, 1, 0);
+plr_send_sound(16, x, y);
 with p {plr_send_projectile(3, other.b_dir, x, y);}
+
 </argument>
       </arguments>
     </action>

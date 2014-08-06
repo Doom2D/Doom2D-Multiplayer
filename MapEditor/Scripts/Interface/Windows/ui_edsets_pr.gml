@@ -3,7 +3,7 @@ if ui_win2 == noval {exit;}
 
 var cmd3;
 cmd3 = API_Check_Command(3);
-if cmd3 == 0 {exit;}
+if cmd3 == WM_NULL {exit;}
 
 switch cmd3
 {

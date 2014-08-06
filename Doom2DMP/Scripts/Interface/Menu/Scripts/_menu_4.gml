@@ -18,7 +18,7 @@ str[1, 1] = "if room != rm_menu {exit;}
 
 str[2, 0] = 'Спецэффекты';
 if global.r_gfx {str[2, 4] = 'ДА';} else {str[2, 4] = 'НЕТ';}
-str[2, 1] = 'if global.r_gfx {global.r_gfx = 0; str[2, 4] = "НЕТ";} else {global.r_gfx = 1; str[2, 4] = "ДА";};';
+str[2, 1] = 'if global.r_gfx {con_parse("r_gfx 0"); str[2, 4] = "НЕТ";} else {con_parse("r_gfx 1"); str[2, 4] = "ДА";};';
 
 str[3, 0] = 'Уровень насилия';
 str[3, 4] = string(global.r_massacre);

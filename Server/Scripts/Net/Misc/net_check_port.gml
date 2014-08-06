@@ -16,14 +16,14 @@ dll39_set_format(tcp, 1, "<br>"); //set format to html mode to receive <br> line
 
 //send post request
 dll39_buffer_clear(global._sl_buf);
-dll39_write_chars("POST / HTTP/1.1" + chr(13) + chr(10), global._sl_buf);
-dll39_write_chars("Host: canyouseeme.org" + chr(13) + chr(10), global._sl_buf);
-dll39_write_chars("Keep-Alive: 300" + chr(13) + chr(10), global._sl_buf);
-dll39_write_chars("Connection: keep-alive" + chr(13) + chr(10), global._sl_buf);
-dll39_write_chars("User-Agent: Mozilla/4.0" + chr(13) + chr(10), global._sl_buf);
-dll39_write_chars("Content-Type: application/x-www-form-urlencoded" + chr(13) + chr(10), global._sl_buf);
-dll39_write_chars("Content-Length: " + string(string_length(data)) + chr(13) + chr(10), global._sl_buf);
-dll39_write_chars(chr(13) + chr(10), global._sl_buf);
+dll39_write_chars("POST / HTTP/1.1" + eol, global._sl_buf);
+dll39_write_chars("Host: canyouseeme.org" + eol, global._sl_buf);
+dll39_write_chars("Keep-Alive: 300" + eol, global._sl_buf);
+dll39_write_chars("Connection: keep-alive" + eol, global._sl_buf);
+dll39_write_chars("User-Agent: Mozilla/4.0" + eol, global._sl_buf);
+dll39_write_chars("Content-Type: application/x-www-form-urlencoded" + eol, global._sl_buf);
+dll39_write_chars("Content-Length: " + string(string_length(data)) + eol, global._sl_buf);
+dll39_write_chars(eol, global._sl_buf);
 dll39_write_chars(data, global._sl_buf);
 dll39_write_chars(tcp, global._sl_buf);
 dll39_message_send(tcp, 0, 0, global._sl_buf);

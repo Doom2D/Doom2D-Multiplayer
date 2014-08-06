@@ -22,8 +22,6 @@ o_hud.viewing = 0; global.cl_inst = noone;
 var i;
 i = instance_furthest(x, y, o_pl);
 if instance_exists(i) {if i.id != id {o_hud.viewing = i.cl_id; global.cl_inst = i;}}
-
-
 </argument>
       </arguments>
     </action>

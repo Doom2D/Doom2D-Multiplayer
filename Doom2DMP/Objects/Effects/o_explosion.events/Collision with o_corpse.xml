@@ -11,13 +11,23 @@
       <functionName/>
       <relative>false</relative>
       <not>false</not>
-      <appliesTo>.self</appliesTo>
+      <appliesTo>.other</appliesTo>
       <arguments>
-        <argument kind="STRING">if sprite_index != s_explosion {exit;}
-if other.x &lt; x {other.hspeed = -7.8;}
-if other.x &gt; x {other.hspeed = 7.8;}
-if other.y &lt; y {other.vspeed = -7.8;}
-if other.y &gt; y {other.vspeed = 7.8;}
+        <argument kind="STRING">if image_alpha &lt; 0.5 {exit;}
+if other.sprite_index == s_splash2 {exit;}
+if other.image_index &gt; 0 {exit;}
+
+if point_distance( x, y, other.x, other.y ) &lt;= 30
+{
+  r_part_emit(3, x, y - 8);
+  instance_destroy();
+} else {
+  if vspeed == 0 { y -= 1; }
+
+  //if x &lt; other.x {vspeed -= 1; hspeed = -8;} else if x &gt; other.x {vspeed -= 1; hspeed = 8;}
+  //if y &lt; other.y {vspeed = -8;}              else if y &gt; other.y {vspeed = 8;}
+  motion_add( point_direction( other.x, other.y, x, y ), 8 );
+}
 </argument>
       </arguments>
     </action>

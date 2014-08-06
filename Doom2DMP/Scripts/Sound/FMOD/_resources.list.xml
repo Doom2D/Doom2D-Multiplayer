@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-  <resource name="HowToUse" type="RESOURCE"/>
-  <resource name="Known Problems and Questions" type="RESOURCE"/>
   <resource name="LoadFMOD" type="RESOURCE"/>
   <resource name="UnloadFMOD" type="RESOURCE"/>
   <resource name="FMODfree" type="RESOURCE"/>

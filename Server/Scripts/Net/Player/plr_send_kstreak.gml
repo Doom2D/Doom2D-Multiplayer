@@ -11,6 +11,7 @@ if pin.kill_streak < 2 && pin.kill_streak > -2 {exit;}
 
 switch (pin.kill_streak)
 {
+    case -8: knm = 'RUSSIAN INFANTRY MODE'; break;
     case -5: knm = 'SHAZBOT'; break;
     case -4: knm = 'BLASPHEMY'; break;
     case -3: knm = 'MADNESS'; break;
@@ -19,6 +20,7 @@ switch (pin.kill_streak)
     case 3: knm = 'TRIPLE KILL'; break;
     case 4: knm = 'QUADRO KILL'; break;
     case 5: knm = 'MULTI KILL'; break;
+    case 8: knm = 'OVERKILL'; break;
 }
 
 plr_send_text(argument0, knm, 3, 3, c_red, 412, 216, 4);

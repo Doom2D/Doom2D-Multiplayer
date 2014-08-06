@@ -18,9 +18,9 @@ if global.mp_gamemode &amp;&amp; !global.mp_ffire &amp;&amp; cl_id != other.kill
 killer_id = other.killer_id; 
 kill_type = other.kill_type;
 plr_hurt(other.dmg);
-plr_send_stat();
 plr_send_pain();
 pt = 12; //10
+plr_send_stat();
 </argument>
       </arguments>
     </action>

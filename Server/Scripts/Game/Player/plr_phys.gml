@@ -5,16 +5,9 @@
 //argument2 - jump key
 
 //controls
-if argument0 && !argument1
-{
-    if hsp > -maxhspd {hsp -= acc;}
-    //if !kb_strf {aim = -1;}
-}
-if argument1 && !argument0
-{
-    if hsp < maxhspd {hsp += acc;}
-    //if !kb_strf {aim = 1;}
-}
+if argument0 && !argument1 { if hsp > -maxhspd {hsp -= acc;} }
+if argument1 && !argument0 { if hsp <  maxhspd {hsp += acc;} }
+
 if argument2 && !free && !global.mp_flymode && !st_jet
 {
     if (collision_rectangle(x-16, y, x+16, y+16, o_water, 0, 1) || collision_rectangle(x-16, y, x+16, y+16, o_acid, 0, 1)) && !place_meeting(x, y + 1, o_solid) && !place_meeting(x, y + 1, o_jthr)
@@ -123,7 +116,7 @@ if place_meeting(x, y, o_jthr)
     free = false;
 }
 
-if vsp > 13-(st_jet+global.mp_flymode)*8 {vsp = 13-(st_jet+global.mp_flymode)*8;}
+if vsp > 13-(st_jet || global.mp_flymode)*8 {vsp = 13-(st_jet || global.mp_flymode)*8;}
 
 if place_meeting(x, y, o_lift_up) && vsp > -5 {vsp -= 0.5;}
 if place_meeting(x, y, o_lift_down) && vsp > 3 {vsp -= 0.5;}

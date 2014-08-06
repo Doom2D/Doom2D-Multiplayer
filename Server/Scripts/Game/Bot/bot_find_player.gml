@@ -1,16 +1,22 @@
-target = instance_nearest_nth(x, y, o_pl, 2);
-if !instance_exists(target) {exit;}
+if instance_number(o_pl) < 2 { return noone; }
 
-var ds, selected;
-ds = ds_priority_create();
-ds_priority_add(ds, noone, 100000000);
+var objsel, mindist, newdist;
+objsel = noone;
+mindist = 0;
 
-with target
+with o_pl
 {
-  if !st_talk && !st_vis && id != other.id
-  { ds_priority_add( ds, id, point_distance(x, y, other.x, other.y) ); }
+  if st_talk        {continue;}
+  if st_vis         {continue;}
+  if st_inv if global.bot_cowardly {continue;}
+  if id == other.id {continue;}
+
+  newdist = point_distance(x, y, other.x, other.y);
+  if newdist < mindist || objsel == noone
+  {
+    objsel = id;
+    mindist = newdist;
+  }
 }
 
-selected = ds_priority_find_min(ds);
-ds_priority_destroy(ds);
-return selected;
+return objsel;

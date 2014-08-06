@@ -14,7 +14,6 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">cl_pcs_msg();
-change_weapon();
 
 //calculate delay
 _timer += 1;
@@ -31,9 +30,6 @@ if _timer &gt; 10 * global.cl_fps_max &amp;&amp; global.dem_mode &lt; 2
     mus_play(global.mus_menu);
     room_goto(rm_menu);
 }
-
-if global.cl_sync_type == 0 {exit;}
-cl_input_check();
 </argument>
       </arguments>
     </action>

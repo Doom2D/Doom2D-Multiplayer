@@ -13,7 +13,8 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if image_single == 0 &amp;&amp; !place_meeting(x, y, o_liq) &amp;&amp; global.r_gfx {instance_create(x + random(4) - random(4), y + random(4) - random(4), o_smoke);}
+        <argument kind="STRING">if image_single == 0 &amp;&amp; !place_meeting(x, y, o_liq) &amp;&amp; global.r_gfx
+  {instance_create(x + irandom_range(-4, 4), y + irandom_range(-4, 4), o_smoke);}
 alarm[0] = 2;
 </argument>
       </arguments>

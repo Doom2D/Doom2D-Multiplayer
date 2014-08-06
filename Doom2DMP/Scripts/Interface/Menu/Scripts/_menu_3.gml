@@ -1,4 +1,4 @@
-menu_init(global.fnt_small, c_red, 12, 17);
+menu_init(global.fnt_small, c_red, 14, 17);
 str[0, 0] = 'УПРАВЛЕНИЕ';
 str[1, 0] = 'Вверх'
 str[1, 1] = 'str[1, 4] = "<...>"; key_bind2("+lookup"); str[1, 4] = key_name(global.key_up);';
@@ -40,10 +40,18 @@ str[10, 0] = 'Пред. оружие'
 str[10, 1] = "str[10, 4] = '<...>'; key_bind2('+prevweapon'); str[10, 4] = key_name(global.key_chw2);";
 str[10, 4] = key_name(global.key_chw2);
 
-str[11, 0] = 'Скриншот'
-str[11, 1] = "str[11, 4] = '<...>'; key_bind2('+screenshot'); str[11, 4] = key_name(global.key_scr);";
-str[11, 4] = key_name(global.key_scr);
+str[11, 0] = 'Выбросить флаг'
+str[11, 1] = "str[11, 4] = '<...>'; key_bind2('+dropflag'); str[11, 4] = key_name(global.key_drop);";
+str[11, 4] = key_name(global.key_drop);
 
-str[12, 0] = 'Назад'
-str[12, 1] = 'global.menu_id = 1; instance_create(x, y, o_menu); instance_destroy();';
-str[12, 4] = '';
+str[12, 0] = 'Сменить команду'
+str[12, 1] = "str[12, 4] = '<...>'; key_bind2('+changeteam'); str[12, 4] = key_name(global.key_chteam);";
+str[12, 4] = key_name(global.key_chteam);
+
+str[13, 0] = 'Скриншот'
+str[13, 1] = "str[13, 4] = '<...>'; key_bind2('+screenshot'); str[13, 4] = key_name(global.key_scr);";
+str[13, 4] = key_name(global.key_scr);
+
+str[14, 0] = 'Назад'
+str[14, 1] = 'global.menu_id = 1; instance_create(x, y, o_menu); instance_destroy();';
+str[14, 4] = '';

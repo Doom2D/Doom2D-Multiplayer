@@ -19,6 +19,8 @@ view_xview[1] = -2048;
 view_yview[1] = -2048;
 offset = 0;
 bkoffset = max(0, global.r_drawhud - global.dem_menu) * 200;
+
+cam_inst = noone;
 </argument>
       </arguments>
     </action>

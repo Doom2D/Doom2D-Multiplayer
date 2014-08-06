@@ -3,25 +3,24 @@ if ui_win8 == noval {exit;}
 
 var cmd9;
 cmd9 = API_Check_Command(9);
-if cmd9 == 0 {exit;}
+if cmd9 == WM_NULL {exit;}
 
 switch cmd9
 {
   case ui_win8_b1:
-    if !mb_chkobj(ui_win8) {exit;}
+    if !mb_chkobj() {exit;}
     
     var mr_h, mr_v;
     mr_h = API_Button_GetCheck(ui_win8_cb1);
     mr_v = API_Button_GetCheck(ui_win8_cb2);
     if !(mr_h || mr_v)
     {
-      API_Dialog_MessageBox(ui_win8,
-          'Вы должны указать направление отражения.',
-          'Ошибка', MB_OK|MB_ICONWARNING);
+      message_box('Вы должны указать направление отражения.',
+                  'Ошибка', MB_OK|MB_ICONWARNING);
       exit;
     }
     
-    if !mb_confirm(ui_win8) {exit;}
+    if !dlg_confirm() {exit;}
     API_Window_SetText(ui_win8, 'Обработка...');
     
     var tp_mr, o_pr;

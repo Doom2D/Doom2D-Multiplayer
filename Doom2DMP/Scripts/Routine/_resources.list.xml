@@ -4,4 +4,6 @@
   <resource name="get_seconds" type="RESOURCE"/>
   <resource name="byte_sign" type="RESOURCE"/>
   <resource name="dir_create" type="RESOURCE"/>
+  <resource name="load_file" type="RESOURCE"/>
+  <resource name="filename_uniq" type="RESOURCE"/>
 </resources>

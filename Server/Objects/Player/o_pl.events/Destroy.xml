@@ -16,6 +16,15 @@
         <argument kind="STRING">//remove nick from taken nick list
 ds_list_delete(global.name_taken, list_get_ind('name_taken', cl_name));
 
+with o_plugin
+{
+    last_plr = other;
+    last_plr_id = other.cl_id;
+    last_plr_name = other.cl_name;
+    last_plr_ip = other.cl_ip;
+    execute_string(plug_code[PLUG_ONDISCONNECT]);
+}
+
 //DED
 plr_send_effect(3, x, y);
 plr_send_sound(20, x, y);
@@ -23,14 +32,9 @@ item_drop();
 dll39_socket_close(cl_tcp);
 
 //close map loading stuff
-if fsend_state &amp;&amp; fsend_file != -1
-{
-    if dll39_buffer_exists(fsend_buf) {dll39_buffer_free(fsend_buf);}
-    dll39_file_close(fsend_file);
-    fsend_state = 0;
-}
+if fsend_state {dll39_buffer_free(fsend_buf);}
 
-if global.mp_gamemode &amp;&amp; global.mp_autobalance {o_host.alarm[4] = 300;}
+if global.mp_autobalance &amp;&amp; global.mp_gamemode != GAME_DM {o_host.alarm[4] = 300;}
 </argument>
       </arguments>
     </action>

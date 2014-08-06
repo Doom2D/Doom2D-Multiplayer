@@ -6,6 +6,8 @@
   <constant name="MAP_NOBKG" value="'*NO_BACKGROUND'"/>
   <constant name="NO_TEXTURE" value="0"/>
   <constant name="MAX_TXRS_NUM" value="256"/>
+  <constant name="MIN_WIN_WIDTH" value="320"/>
+  <constant name="MIN_WIN_HEIGHT" value="200"/>
   <constant name="MODE_NORMAL" value="0"/>
   <constant name="MODE_TRIGZONE" value="1"/>
   <constant name="MODE_TRIGACT" value="2"/>
@@ -1006,8 +1008,6 @@
   <constant name="WM_XBUTTONDOWN" value="-523"/>
   <constant name="WM_XBUTTONUP" value="-524"/>
   <constant name="WM_XBUTTONDBLCLK" value="-525"/>
-  <constant name="WM_MOUSELAST" value="-525"/>
-  <constant name="WM_MOUSELAST" value="-525"/>
   <constant name="WM_MOUSELAST" value="-525"/>
   <constant name="WM_PARENTNOTIFY" value="-528"/>
   <constant name="WM_ENTERMENULOOP" value="-529"/>

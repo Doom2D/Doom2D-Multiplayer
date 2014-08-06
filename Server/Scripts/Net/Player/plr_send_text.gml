@@ -2,7 +2,7 @@
 //a0 - id
 
 dll39_buffer_clear(0);
-dll39_write_byte(23, 0);
+write_msg_id(23, 0);
 dll39_write_string(argument1, 0); //text
 dll39_write_double(argument2, 0); //timer
 dll39_write_byte(argument3, 0); //font

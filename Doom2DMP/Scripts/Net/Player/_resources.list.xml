@@ -2,10 +2,8 @@
 <resources>
   <resource name="net_char_look" type="RESOURCE"/>
   <resource name="net_say" type="RESOURCE"/>
-  <resource name="change_weapon" type="RESOURCE"/>
-  <resource name="shoot_send" type="RESOURCE"/>
-  <resource name="pos_send" type="RESOURCE"/>
-  <resource name="cl_input_check" type="RESOURCE"/>
+  <resource name="action_send" type="RESOURCE"/>
+  <resource name="control_send" type="RESOURCE"/>
   <resource name="team_change" type="RESOURCE"/>
   <resource name="net_interp" type="RESOURCE"/>
 </resources>

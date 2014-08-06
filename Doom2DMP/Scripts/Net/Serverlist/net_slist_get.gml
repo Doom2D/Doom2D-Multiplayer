@@ -35,11 +35,9 @@ while 1 {
         {
             global.slist[i, 0] = dll39_read_string(dll39_default_buffer);
             //con_add(global.slist[i, 0]);
-            global.slist[i, 1] = dll39_read_string(dll39_default_buffer);
-            global.slist[i, 1] = string_delete(global.slist[i, 1], 32, string_length(global.slist[i, 1]));
+            global.slist[i, 1] = string_copy( dll39_read_string(dll39_default_buffer), 1, 32 );
             //con_add(global.slist[i, 1]);
-            global.slist[i, 2] = dll39_read_string(dll39_default_buffer);
-            global.slist[i, 2] = string_delete(global.slist[i, 2], 17, string_length(global.slist[i, 1]));
+            global.slist[i, 2] = string_copy( dll39_read_string(dll39_default_buffer), 1, 16 );
             //con_add(global.slist[i, 2]);
             global.slist[i, 3] = dll39_read_string(dll39_default_buffer);
             //con_add(global.slist[i, 3]);

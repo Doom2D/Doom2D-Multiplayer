@@ -5,13 +5,15 @@ randomize();
 quiet = 0;
 if parameter_count() > 0 
 {
-    if string_lower(parameter_string(1)) == '-q' {quiet = 1;} //nothing at all
-    if string_lower(parameter_string(1)) == '-nogui' {quiet = 2;} //1x1 window
+  if string_lower(parameter_string(1)) == '-q' {quiet = 1;} //nothing at all
+  if string_lower(parameter_string(1)) == '-nogui' {quiet = 2;} //1x1 window
 }
 
 //vars
 global.sys_ver = '0.6';
-global.sys_bld = '129';
+global.sys_bld = '130';
+global.sys_ini = '';
+global.sys_ini_old = '';
 global.sv_map = 'dm_superdm';
 global.sv_port = 25666;
 global.sv_port2 = 25667;
@@ -27,7 +29,7 @@ global.sv_portcheck = 1;
 global.sv_rcon = 0;
 global.sv_rcon_pwd = 'pwd';
 global.sv_ipbans = 1;
-global.sv_cycle_maps = 1;
+global.sv_cycle_maps = 2;
 global.sv_cheats = 0;
 global.sv_mastersrv = 'mpms.doom2d.org:25667';
 global.sv_slist_upd = 60;
@@ -39,14 +41,17 @@ global.sv_fps_max = 60;
 global.sv_fps_correct = 0;
 global.sv_dl_allow = 1;
 global.sv_dl_rate = 32;
+global.sv_dl_mapcfg = 1;
 global.sv_md5check = 1;
 global.sv_autosave = 0;
 global.sv_log_update = 0;
-global.sv_autoexec = 1; //0 - doesn't load autoexec 1 - loads autoexec.cfg 2 - loads MAP_NAME.cfg
+global.sv_autoexec = 2; //0 - doesn't load autoexec 1 - loads autoexec.cfg 2 - loads MAP_NAME.cfg
 global.sv_priority = 0;
+global.sv_plugins = 1;
 global.cl_rc_time = 7;
 global.cl_timeout = 15;
 global.mp_gamemode = 0; //0 - DM, 1 - TDM, 2 - CTF
+global._mp_nextmode = -1;
 global.mp_automode = 1;
 global.mp_ffire = 0;
 global.mp_fraglimit = 23;
@@ -60,7 +65,7 @@ global.mp_items = 1;
 global.mp_powerups = 1;
 global.mp_knockback = 1;
 global.mp_selfdamage = 1;
-global.mp_oldaim = 1;
+global.mp_aimtype = 0;
 global.mp_itemdrop = 2;
 global.mp_weaponstay = 0;
 global.mp_penalty = 1;
@@ -101,6 +106,8 @@ global.skin_list = -1;
 global.name_taken = -1;
 global.chat_list = -1;
 global.vote_list = -1;
+global.plug_list = -1;
+global.plug_num = 0;
 global.map_list_ind = -1;
 global.map_list_next = global.sv_map;
 global.map_md5 = '';
@@ -115,17 +122,15 @@ log_init();
 //checks for winapi
 if !file_exists('Max WinAPI 2.dll')
 {
-    log_add(global.sys_log, ":: SYSTEM: ERROR: Max WinAPI 2.dll не найден.");
-    quiet = 2;
+  log_add(global.sys_log, ":: SYSTEM: ERROR: Max WinAPI 2.dll не найден.");
+  quiet = 2;
 }
 
 //console
 con_init();
 con_add('=====SERVER START=====');
-if quiet = 0
-  {con_add(':: WINAPI: Инициализация успешна.');}
-else
-  {con_add(':: SYSTEM: WARNING: Включен тихий режим. GUI отключен.');}
+if quiet = 0 {con_add(':: WINAPI: Инициализация успешна.');}
+else         {con_add(':: SYSTEM: WARNING: Включен тихий режим. GUI отключен.');}
 con_add(':: SYSTEM: Дата: ' + con_timestamp());
 con_add(':: SYSTEM: Версия сервера: ' + global.sys_ver + ' (Сборка ' + global.sys_bld + ').');
 
@@ -136,16 +141,16 @@ sys_file_check();
 cfg_load('server.cfg');
 
 //now for the ban and map lists
-list_load('data\cfg\ip_bans.txt', 'ban_list');
-list_load('data\cfg\bot_chatter.txt', 'chat_list');
 list_load('data\cfg\map_list.txt', 'map_list');
+list_load('data\cfg\ip_bans.txt', 'ban_list');
+list_load('data\cfg\blacklist.txt', 'vote_list');
+list_load('data\cfg\plugins.txt', 'plug_list');
 list_load('data\cfg\bot_names.txt', 'name_list');
 list_load('data\cfg\bot_skins.txt', 'skin_list');
-list_load('data\cfg\blacklist.txt', 'vote_list');
-global.map_played = ds_list_create();
+list_load('data\cfg\bot_chatter.txt', 'chat_list');
 
+global.map_played = ds_list_create();
 global.name_taken = ds_list_create(); //taken names list for bots
-list_add('name_taken', 'DEFAULT');
 
 map_tex_init();
 map_next();

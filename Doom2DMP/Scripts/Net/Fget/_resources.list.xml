@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+  <resource name="net_fget_init" type="RESOURCE"/>
+  <resource name="net_fget_start" type="RESOURCE"/>
+  <resource name="net_fget_check" type="RESOURCE"/>
   <resource name="net_fget_main" type="RESOURCE"/>
-  <resource name="net_fget_inb" type="RESOURCE"/>
-  <resource name="net_fget_finish" type="RESOURCE"/>
   <resource name="net_fget_abort" type="RESOURCE"/>
+  <resource name="net_fget_finish" type="RESOURCE"/>
+  <resource name="net_fget_clear" type="RESOURCE"/>
+  <resource name="net_fget_req" type="RESOURCE"/>
 </resources>

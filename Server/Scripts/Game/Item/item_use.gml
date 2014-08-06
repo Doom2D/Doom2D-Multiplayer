@@ -301,6 +301,7 @@ switch argument0
         }
     break;
     case 29:
+        if cantflag break;
         //red flag
         if global.red_flag == 0
         {
@@ -377,6 +378,7 @@ switch argument0
     break;
         
     case 30:
+        if cantflag break;
         //blu flag
         if global.blu_flag == 0
         {

@@ -17,9 +17,9 @@
 plr_hurt(other.dmg);
 killer_id = 0;
 kill_type = 10;
-plr_send_stat();
 plr_send_pain();
 pt = 48;
+plr_send_stat();
 </argument>
       </arguments>
     </action>

@@ -21,6 +21,7 @@ switch p_type
     e = instance_create(x, y, o_explosion);
     e.l_id = l_id;
     e.l_team = l_team;
+    ///e.dir = direction - 180;
     plr_send_xplos(l_id, 1, x, y);
     plr_send_effect(4, x, y);
   break;

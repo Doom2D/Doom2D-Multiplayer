@@ -39,14 +39,14 @@ switch sw
         c = true;
         x = xstart;
         y = ystart;
-        plr_send_tile(tile_id, active);
+        plr_send_tile(tile_id, true);
       }
     }
     if !c {break;}
     with o_pl
     {
-      if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
-                              other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+      if !collision_rectangle(other.xx[1], other.yy[1],
+                              other.xx[2], other.yy[2], id, 0, 0) {continue;}
       if !place_meeting(x, y, o_solid) {continue;}
       kill_type = 16;
       killer_id = 0;
@@ -67,7 +67,7 @@ switch sw
         c = true;
         x = -2048;
         y = -2048;
-        plr_send_tile(tile_id, active);
+        plr_send_tile(tile_id, false);
       }
     }
     if !c {break;}
@@ -87,7 +87,7 @@ switch sw
           x = -2048;
           y = -2048;
           active = false;
-          plr_send_tile(tile_id, active);
+          plr_send_tile(tile_id, false);
           continue;
         }
         else
@@ -96,7 +96,7 @@ switch sw
           x = xstart;
           y = ystart;
           active = true;
-          plr_send_tile(tile_id, active);
+          plr_send_tile(tile_id, true);
           continue;
         }
       }
@@ -105,8 +105,8 @@ switch sw
     {
       with o_pl
       {
-        if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
-                                other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+        if !collision_rectangle(other.xx[1], other.yy[1],
+                                other.xx[2], other.yy[2], id, 0, 0) {continue;}
         if !place_meeting(x, y, o_solid) {continue;}
         kill_type = 16;
         killer_id = 0;
@@ -142,8 +142,8 @@ switch sw
         if f {break;}
         if id == other.id {continue;}
         if !alive || at &gt; 0 {continue;}
-        if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
-                                other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+        if !collision_rectangle(other.xx[1], other.yy[1],
+                                other.xx[2], other.yy[2], id, 0, 0) {continue;}
         d = true;
         if !(irandom(10) - 7) {continue;}
         if t == 7 {act_t = other.id;}
@@ -168,8 +168,8 @@ switch sw
     {
       if id == other.id {continue;}
       if !alive || at &gt; 0 {continue;}
-      if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
-                              other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+      if !collision_rectangle(other.xx[1], other.yy[1],
+                              other.xx[2], other.yy[2], id, 0, 0) {continue;}
       if t == 7 {act_t = other.id;}
       if alarm[0] &lt; 1 {alarm[0] = 1;} 
     }
@@ -180,8 +180,8 @@ switch sw
     with par_trigger
     {
       if id == other.id {continue;}
-      if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
-                              other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+      if !collision_rectangle(other.xx[1], other.yy[1],
+                              other.xx[2], other.yy[2], id, 0, 0) {continue;}
       at = 0;
       m = true;
       tt = -1;
@@ -191,10 +191,12 @@ switch sw
   break;
   case 6:
     //kill
+    if global.mp_godmode {break;}
     with o_pl
     {
-      if !collision_rectangle(other.xx[1] + 1, other.yy[1] + 1,
-                              other.xx[2] - 1, other.yy[2] - 1, id, 0, 0) {continue;}
+      if st_inv {continue;}
+      if !collision_rectangle(other.xx[1], other.yy[1],
+                              other.xx[2], other.yy[2], id, 0, 0) {continue;}
       plr_send_sound(30, x, y);
       kill_type = 17;
       killer_id = 0;
@@ -203,16 +205,21 @@ switch sw
   break;
   case 7:
     //teleport
-    var inst;
+    var inst, tf_frg;
     if act_t == noone {inst = id;} else {inst = act_t; act_t = noone;}
+    tf_frg = 0;
     if !instance_exists(inst) {break;}
-    with instance_place(xx[1], yy[1], o_pl)
+    if global.mp_telefrag &amp;&amp; !global.mp_godmode
     {
-      if global.mp_telefrag
+      with o_pl
       {
+        if st_inv {continue;}
+        if !collision_rectangle(other.xx[1] - 16, other.yy[1] - 20,
+                                other.xx[1] + 16, other.yy[1] + 31, id, 0, 0) {continue;}
         kill_type = 15;
         killer_id = 0;
         plr_hurt(999);
+        tf_frg += 1
       }
     }
     with o_pl
@@ -225,6 +232,15 @@ switch sw
       plr_send_pos();
       plr_send_effect(7, x, y);
       plr_send_sound(10, x, y);
+      /* - should be finished with score transferring etc
+      if tf_frg &gt; 0
+      {
+        frag += tf_frg;
+        if global.mp_gamemode == GAME_TDM { global.team_score[cl_team] += tf_frg; }
+        kill_streak += tf_frg;
+        kt = 3 * global.sv_fps_max;
+      }
+      */
     }
   break;
   case 8:

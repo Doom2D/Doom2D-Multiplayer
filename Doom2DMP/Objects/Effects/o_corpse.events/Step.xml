@@ -13,17 +13,35 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if image_index &gt;= image_number - 1 {image_speed = 0;}
+        <argument kind="STRING">if x - 32 &gt;= global.map_w || y - 32 &gt;= global.map_h {instance_destroy(); exit;}
 
-if place_meeting(x, y + vspeed / 2, o_solid) || place_meeting(x, y + vspeed / 2, o_jthr) {gravity = 0; vspeed = 0; hspeed = hspeed/1.5;} else {gravity = 0.3;}
-if place_meeting(x, y, o_liq) &amp;&amp; vspeed &gt; 2 {vspeed = 2;}
-if place_meeting(x, y - vspeed, o_solid) {vspeed = abs(vspeed);}
-if place_meeting(x + hspeed, y, o_solid) {hspeed = 0;}
-if x &lt; 0 || y &lt; 0 || x &gt; global.map_w || y &gt; global.map_h {instance_destroy();}
-if place_meeting(x, y, o_lift_up) {vspeed -= 0.5;}
-if place_meeting(x, y, o_lift_down) {if vspeed &gt; 3 {vspeed -= 0.5;}}
-if vspeed &gt; 10 {vspeed = 10;}; if vspeed &lt; -10 {vspeed = -10;}
-if hspeed &gt; 10 {hspeed = 10;}; if hspeed &lt; -10 {hspeed = -10;}
+if vspeed &gt; 13 {vspeed = 13;} else if vspeed &lt; -13 {vspeed = -13;}
+if hspeed &gt; 8  {hspeed = 8; } else if hspeed &lt; -8  {hspeed = -8; }
+
+if !place_meeting(x, y + vspeed, collidable)
+{
+  vspeed += 0.25;
+} else {
+  if abs(vspeed) &gt; 1
+  {
+    vspeed = -vspeed / 4; 
+    snd_play_pos(21, x, y);
+  } else {
+    vspeed = 0;
+  }
+  if abs(hspeed) &gt; 0 {hspeed -= sign(hspeed);}
+}
+
+if place_meeting(x + hspeed, y, collidable) 
+{
+  if abs(hspeed) &gt; 1
+  {
+    hspeed = -hspeed / 4;
+    snd_play_pos(21, x, y);
+  } else {
+    hspeed = 0;
+  }
+}
 </argument>
       </arguments>
     </action>

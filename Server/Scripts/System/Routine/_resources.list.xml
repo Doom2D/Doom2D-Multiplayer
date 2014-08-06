@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="file_md5" type="RESOURCE"/>
+  <resource name="path_relative" type="RESOURCE"/>
+  <resource name="round_to" type="RESOURCE"/>
+  <resource name="load_file" type="RESOURCE"/>
+  <resource name="dir_create" type="RESOURCE"/>
+  <resource name="iif" type="RESOURCE"/>
+</resources>

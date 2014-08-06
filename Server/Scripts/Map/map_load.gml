@@ -13,16 +13,26 @@ if !file_exists(temp_fn)
 con_add("==== MAP LOAD START ====");
 con_add(":: MAP: Загрузка карты " + temp_fn + "...");
 
-if global.mp_automode
+if global._mp_nextmode == -1
 {
-  con_add(":: MAP: Определяем режим...");
-  if string_lower( string_copy(argument0, 1, 2) ) == 'dm' { global.mp_gamemode = GAME_DM; }
-  if string_lower( string_copy(argument0, 1, 3) ) == 'tdm' { global.mp_gamemode = GAME_TDM; }
-  if string_lower( string_copy(argument0, 1, 3) ) == 'ctf'
+  if global.mp_automode > 0
   {
-    if global.mp_automode == 1 { global.mp_gamemode = GAME_CTF; }
-    else { global.mp_gamemode = choose(GAME_TDM, GAME_CTF); }
+    con_add(":: MAP: Определяем режим...");
+    if string_lower( string_copy(argument0, 1, 2) ) == 'dm' { global.mp_gamemode = GAME_DM; }
+    if string_lower( string_copy(argument0, 1, 3) ) == 'tdm' { global.mp_gamemode = GAME_TDM; }
+    if string_lower( string_copy(argument0, 1, 3) ) == 'ctf'
+    {
+      switch global.mp_automode
+      {
+        case 1: global.mp_gamemode = GAME_CTF; break;
+        case 2: global.mp_gamemode = choose(GAME_TDM, GAME_CTF); break;
+        case 3: global.mp_gamemode = GAME_TDM; break;
+      }
+    }
   }
+} else {
+  global.mp_gamemode = global._mp_nextmode;
+  global._mp_nextmode = -1;
 }
 
 var fnum;
@@ -103,6 +113,12 @@ if global.mp_gamemode == GAME_CTF && !flag_check()
 {
   con_add(":: MAP: ERROR: На карте нет флагов. Включен TDM.");
   global.mp_gamemode = GAME_TDM;
+}
+
+//exec plugins
+with o_plugin
+{
+    plug_exec(PLUG_ONMAPSTART);
 }
 con_add(":: MAP: Карта загружена.");
 con_add("===== MAP LOAD END =====");

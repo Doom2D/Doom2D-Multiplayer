@@ -1,50 +1,46 @@
 //packs the map into a 7z archive
 //a0 - map name
 if !global.sv_dl_allow {exit;}
+
 if !file_exists('7z_sv.exe')
 {
-    con_add(':: MAP: PACK: ERROR: 7z_sv.exe не найден.');
-    exit;    
-}
-if !file_exists('data\maps\' + string(argument0) + '.dlv')
-{
-    con_add(':: MAP: PACK: ERROR: Карты ' + string(argument0) + ' не существует.');
-    exit;
-}
-if file_exists('data\temp\' + string(argument0) + '.7z')
-{
-    con_add(':: MAP: PACK: WARNING: Карта '  + string(argument0) + ' уже упакована.');
-    exit;
+  con_add(':: MAP: PACK: ERROR: 7z_sv.exe не найден.');
+  exit;    
 }
 
-var mapname, pack, sky, mus, tex;
+var mapname;
 mapname = string(argument0);
 
+if file_exists('data\temp\' + mapname + '.7z')
+{
+  con_add(':: MAP: PACK: WARNING: Карта '  + mapname + ' уже упакована.');
+  exit;
+}
+if !file_exists('data\maps\' + mapname + '.dlv')
+{
+  con_add(':: MAP: PACK: ERROR: Карты ' + mapname + ' не существует.');
+  exit;
+}
+
+con_add(':: MAP: PACK: Упаковка карты ' + mapname + '...');
+
 //creates the temp directory
-if !directory_exists(working_directory + '\data\temp') {directory_create('data\temp');}
-
-//finds all the files
-//music
-mus = '"data\music\' + file_find_first('data\music\' + mapname + '.*', 0) + '" '
-file_find_close();
-if mus = '"data\music\" ' {mus = ' ';}
-
-//sky
-sky = '"data\sky\' +  file_find_first('data\sky\' + mapname + '.*', 0) + '" '
-file_find_close();
-if sky = '"data\sky\" ' {sky = ' ';}
-
-//texture folder
-tex = ' ';
-if directory_exists(working_directory + '\data\textures\' + mapname) {tex = '"data\textures\' + mapname + '" ';}
-
-pack = '"' + working_directory + '\data\temp\' + mapname + '.7z' + '" ';
+if !directory_exists('data\temp') {dir_create('data\temp');}
 
 //launches 7z.exe
-execute_program('7z_sv.exe', ' a -r -y -mx9 ' + pack + sky + mus + tex + '"data\maps\' + mapname + '.dlv"', true);
+execute_program('7z_sv.exe',
+                'a -r -y -mx9' +
+                ' "data\temp\'     + mapname +  '.7z"' +
+                ' "data\maps\'     + mapname + '.dlv"' +
+                ' "data\music\'    + mapname +   '.*"' +
+                ' "data\sky\'      + mapname +   '.*"' +
+                ' "data\textures\' + mapname +     '"' +
+                iif( global.sv_dl_mapcfg, ' "data\cfg\mapcfg\' + mapname + '.cfg"', '' ),
+                true);
 sleep(30);
 
-if file_exists(working_directory + '\data\temp\' + mapname + '.7z')
+if file_exists('data\temp\' + mapname + '.7z')
   {con_add(':: MAP: PACK: Карта упакована в ' + 'data\temp\' + mapname + '.7z');}
 else
   {con_add(':: MAP: PACK: ERROR: Карта не была упакована. Возможно, произошла ошибка при архивации.');}
+

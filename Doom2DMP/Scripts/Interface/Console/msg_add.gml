@@ -12,5 +12,5 @@ with o_con
       msg_str = string_delete(msg_str, 1, string_pos('#', msg_str));
     }
   }
-  alarm[0] = 222;
+  if global.fget_state { alarm[0] = 3.7 * fps; } else { alarm[0] = get_seconds(3.7); }
 }

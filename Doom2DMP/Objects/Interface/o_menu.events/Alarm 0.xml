@@ -14,11 +14,11 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if global.con {alarm[0] = 300; exit;}
-var dem_fn;
-dem_fn = demo_find()
-if dem_fn == 'demos\' || dem_fn == "" {alarm[0] = 300; exit;}
 
-global.dem_will = "PLAY";
+var dem_fn;
+dem_fn = demo_find();
+if dem_fn == 'demos\' {alarm[0] = 300; exit;}
+
 global.dem_menu = 1;
 global.dem_fn = dem_fn;
 global.menu_id = -1;

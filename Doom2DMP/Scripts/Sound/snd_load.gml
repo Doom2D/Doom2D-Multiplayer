@@ -243,4 +243,11 @@ FMODSoundSetGroup(global.snd[32], 2);
 FMODSoundSet3dMinMaxDistance(global.snd[32], 0, 512);
 FMODSoundSetMaxVolume(global.snd[32], .3);
 break;
+
+case 33:
+//33 - BFG chargin' mah lazer
+global.snd[33] = FMODSoundAdd('data\sounds\weapon\bfg_charge.wav', true);
+FMODSoundSetGroup(global.snd[33], 2);
+FMODSoundSet3dMinMaxDistance(global.snd[33], 0, 1024);
+break;
 }

@@ -30,7 +30,7 @@ draw_set_halign(fa_left);
 
 if global._inter_reconnect
 {
-    draw_text(8, 750, 'Переподключение через ' + string(round(alarm[0]/60)) + ' сек.');
+    draw_text(8, 750, 'Переподключение через ' + string( ceil( alarm[0] / global.cl_fps_max ) ) + ' сек.');
 }
 </argument>
       </arguments>

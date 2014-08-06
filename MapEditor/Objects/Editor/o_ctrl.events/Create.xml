@@ -18,9 +18,10 @@
 //Editor initialization
 global.ed_apptitle = room_caption;
 set_application_title(global.ed_apptitle);
+rtl_window_set_size_limit( window_handle(), MIN_WIN_WIDTH, MIN_WIN_HEIGHT );
 background_assign(bk_current, bk_grid16);
 //DA HARD WAY
-if filename_dir(program_directory) != filename_dir(temp_directory) { set_working_directory(program_directory); }
+if filename_dir(program_directory) != filename_dir(temp_directory) { rtl_set_working_directory(program_directory); }
 
 //texture array
 var i;
@@ -74,6 +75,11 @@ tex_sel = NO_TEXTURE;
 API_Init();
 API_Check_Set(1, window_handle());
 
+win_x = 0;
+win_y = 0;
+std_win_w = max( round_to( display_get_width()  / 1.5, global.ed_camspeed ), MIN_WIN_WIDTH  );
+std_win_h = max( round_to( display_get_height() / 1.5, global.ed_camspeed ), MIN_WIN_HEIGHT );
+
 ui_win1 = noval; //toolbox window
 ui_win2 = noval; //editor settings window
 ui_win3 = noval; //map settings window
@@ -82,6 +88,7 @@ ui_win5 = noval; //textures deleting window
 ui_win6 = noval; //objects moving window
 ui_win7 = noval; //map optimization window
 ui_win8 = noval; //objects mirroring window
+ui_win9 = noval; //map navigation window
 
 ui_menu_cr();
 ed_ui_init();
@@ -92,7 +99,7 @@ t4_std = 0;
 
 instance_create(x, y, o_cam);
 
-//trying to load map from command line argument filename
+//trying to load map from command-line argumented filename
 if parameter_count() &gt; 0 { map_load( parameter_string(1) ); }
 
 </argument>

@@ -10,4 +10,5 @@
   <resource name="o_lift_down" type="RESOURCE"/>
   <resource name="o_lift_left" type="RESOURCE"/>
   <resource name="o_lift_right" type="RESOURCE"/>
+  <resource name="collidable" type="RESOURCE"/>
 </resources>

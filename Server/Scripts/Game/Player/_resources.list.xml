@@ -2,6 +2,7 @@
 <resources>
   <resource name="plr_init_phys" type="RESOURCE"/>
   <resource name="plr_phys" type="RESOURCE"/>
+  <resource name="plr_speed_set" type="RESOURCE"/>
   <resource name="plr_speed_add" type="RESOURCE"/>
   <resource name="plr_speed_inv" type="RESOURCE"/>
   <resource name="plr_changewpn" type="RESOURCE"/>
@@ -12,4 +13,5 @@
   <resource name="plr_select_team" type="RESOURCE"/>
   <resource name="plr_kill" type="RESOURCE"/>
   <resource name="plr_use" type="RESOURCE"/>
+  <resource name="plr_aim" type="RESOURCE"/>
 </resources>

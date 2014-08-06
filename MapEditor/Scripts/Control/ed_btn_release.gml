@@ -79,8 +79,8 @@ if trg != noone && instance_exists(trg)
   }
 }
 
-x2 = round_mouse_x();
-y2 = round_mouse_y();
+x2 = round_mouse_x() + x_off;
+y2 = round_mouse_y() + y_off;
 
 if !obj_block(obj_sel) || !keyboard_check(vk_shift) {exit;}
 

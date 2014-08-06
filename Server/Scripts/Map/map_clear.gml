@@ -14,9 +14,11 @@ with o_itm_spwn {instance_destroy();}
 with par_trigger {instance_destroy();}
 
 con_add(":: MAP: Удаляем текстуры...");
-for (i = 1; i < 256; i += 1)
+var i, tx_n;
+tx_n = global.tex_n;
+for (i = 1; i < tx_n; i += 1)
 {
-  if global.tex[i] != tex_none && sprite_exists(global.tex[i]) {sprite_delete(global.tex[i]);}
+  if global.tex[i] != tex_none {sprite_delete(global.tex[i]);}
   global.tex[i] = -1;
   global.tex_nm[i] = '';
 }
@@ -35,9 +37,8 @@ global.blu_flag = 0;
 ds_list_destroy(global.sv_tiles);
 global.sv_tiles = ds_list_create();
 
-if global.sv_log_update
-{
-    log_init(); //delete logs if needed
-}
+//delete logs if needed
+if global.sv_log_update {log_init();}
 
 con_add(":: MAP: Карта очищена.");
+

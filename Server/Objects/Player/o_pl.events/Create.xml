@@ -18,6 +18,8 @@
 plr_init_phys();
 fail = 0;
 spawn = instance_nearest(0, 0, o_spawn);
+cantflag = false;
+respinv = false;
 kb_left = 0;
 kb_rght = 0;
 kb_left_n = 0;
@@ -25,7 +27,6 @@ kb_rght_n = 0;
 kb_lkup = 0;
 kb_lkdn = 0;
 kb_jump = 0;
-kb_strf = 0;
 killer_id = 0;
 kill_type = 0;
 kill_streak = 0;
@@ -35,11 +36,12 @@ ap = 0;
 a1 = 50;
 a2 = 0;
 a3 = 0;
+a4 = 0;
 aim = 1;
 b_dir = 0;
 ct = 0;
-a4 = 0;
-w = 1;
+w = 1; //current player weapon
+ch_wpn = 0 //if weapon was changed while cooldown, it will actually changed after it
 hw[0] = 1;
 hw[1] = 1;
 for (i = 2; i &lt; 10; i += 1) {hw[i] = 0;}
@@ -48,6 +50,8 @@ pt = 0; //pain sound cooldown
 dt = 0; //drown time
 jt = 0; //jump cooldown for bots
 frag = 0;
+deaths = 0;
+kills = 0;
 dead = 0;
 ping = 0;
 st_inv = 0; //invulnerability
@@ -60,17 +64,10 @@ st_flag = 0; //if 1, carries the red flag, 2 - the blu flag
 st_suit = 0;
 voted = false;
 
-fsend_path = '';
-fsend_file = -1;
-fsend_pos = 0;
-fsend_state = 0;
-fsend_size = 0;
-fsend_md5 = '';
-fsend_cmd5 = '';
-fsend_buf = -1;
+net_fsend_init();
 
 alarm[0] = 2;
-alarm[2] = 1;
+
 </argument>
       </arguments>
     </action>

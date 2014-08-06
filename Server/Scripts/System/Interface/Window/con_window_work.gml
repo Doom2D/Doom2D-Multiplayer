@@ -12,10 +12,10 @@ switch cmd
             var str, entp;
             entp = false;
             str = API_Control_GetText(global.gui[2]);
-            if string_copy(str, string_length(str) - 1, 2) = chr(13)+chr(10) {entp = true;}
-            if string_count(chr(13)+chr(10), str) > 0
+            if string_copy(str, string_length(str) - 1, 2) = eol {entp = true;}
+            if string_count(eol, str) > 0
             {
-                str = string_replace_all(str, chr(13)+chr(10), '');
+                str = string_replace_all(str, eol, '');
                 API_Control_SetText(global.gui[2], str);
                 API_Edit_SetSel(global.gui[2], string_length(str), string_length(str));
             }

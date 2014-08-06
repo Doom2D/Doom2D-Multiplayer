@@ -15,4 +15,5 @@
   <resource name="ui_mapopt_pr" type="RESOURCE"/>
   <resource name="ui_mirrobj_cr" type="RESOURCE"/>
   <resource name="ui_mirrobj_pr" type="RESOURCE"/>
+  <resource name="ui_mapnav_cr" type="RESOURCE"/>
 </resources>

@@ -1,5 +1,5 @@
 global.g_part_sys = part_system_create();
-part_system_depth(global.g_part_sys, -5);
+part_system_depth(global.g_part_sys, -3);
 
 //blood
 global.g_particle[1] = part_type_create();

@@ -4,12 +4,10 @@
   <resource name="Log" type="GROUP"/>
   <resource name="Configs" type="GROUP"/>
   <resource name="List" type="GROUP"/>
+  <resource name="Routine" type="GROUP"/>
   <resource name="sys_init" type="RESOURCE"/>
   <resource name="sys_exit" type="RESOURCE"/>
   <resource name="sys_file_check" type="RESOURCE"/>
   <resource name="sys_fps_correct" type="RESOURCE"/>
   <resource name="sys_set_priority" type="RESOURCE"/>
-  <resource name="file_md5" type="RESOURCE"/>
-  <resource name="path_relative" type="RESOURCE"/>
-  <resource name="round_to" type="RESOURCE"/>
 </resources>

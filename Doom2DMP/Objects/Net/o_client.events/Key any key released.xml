@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<event category="KEYRELEASE" id="1">
+  <actions>
+    <action id="603" library="1">
+      <!--action name: Code-->
+      <kind>CODE</kind>
+      <allowRelative>false</allowRelative>
+      <question>false</question>
+      <canApplyTo>true</canApplyTo>
+      <actionType>CODE</actionType>
+      <functionName/>
+      <relative>false</relative>
+      <not>false</not>
+      <appliesTo>.self</appliesTo>
+      <arguments>
+        <argument kind="STRING">if global.cl_sync_type != 1 {exit;}
+
+//another looong condition
+if !keyboard_check_released(global.key_left) {
+  if !keyboard_check_released(global.key_right) {
+    if !keyboard_check_released(global.key_up) {
+      if !keyboard_check_released(global.key_dn) {
+        if !keyboard_check_released(global.key_jmp) {
+          exit;
+        }
+      }
+    }
+  }
+}
+
+control_send();
+</argument>
+      </arguments>
+    </action>
+  </actions>
+</event>

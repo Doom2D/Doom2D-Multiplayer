@@ -1,13 +1,18 @@
-var ds, selected;
-ds = ds_priority_create();
-ds_priority_add(ds, noone, 100000000);
+var objsel, mindist, newdist;
+objsel = noone;
+mindist = 0;
 
 with o_item
 {
-  if (item == 1 || item == 2 || item == 5 || item == 6) && id != other.id
-  { ds_priority_add( ds, id, point_distance(x, y, other.x, other.y) ); }
+  if item == 1 || item == 2 || item == 5 || item == 6
+  {
+    newdist = point_distance( x, y, other.x, other.y );
+    if newdist < mindist || objsel == noone
+    {
+      objsel = id;
+      mindist = newdist;
+    }
+  }
 }
 
-selected = ds_priority_find_min(ds);
-ds_priority_destroy(ds);
-return selected;
+return objsel;

@@ -3,13 +3,12 @@
 
 if global.tex_n < 3
 {
-  API_Dialog_MessageBox(window_handle(),
-      'В списке недостаточно текстур для сортировки.',
-      'Ошибка', MB_OK|MB_ICONWARNING);
+  message_box('В списке недостаточно текстур для сортировки.',
+              'Ошибка', MB_OK|MB_ICONWARNING);
   exit;
 }
 
-if !mb_confirm(window_handle()) {exit;}
+if !dlg_confirm() {exit;}
 
 var src_l, new_l, ind_l;
 src_l = ds_list_create();

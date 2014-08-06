@@ -25,7 +25,6 @@ if global.mp_gamemode
     if argument3 == 2 {_color = c_blue;}
 }
 
-_bot = host_add_player(_id, -1, _name, _skin, _color, true, argument3);
-_bot.cl_ip = 'BOT';
+_bot = host_add_player(_id, -1, _name, _skin, _color, true, argument3, 'BOT');
 _bot.kb_left = 1;
 con_add(":: BOT: Добавлен бот " + _name + " в слот " + string(_id) + ".");

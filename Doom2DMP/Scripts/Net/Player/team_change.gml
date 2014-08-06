@@ -1,7 +1,7 @@
 //sends a teamchange request
 if !variable_global_exists('cl_inst') {exit;}
 if !instance_exists(global.cl_inst) {exit;}
-if global.dem_mode >= 2 {exit;}
+if global.fget_state || global.dem_mode >= 2 {exit;}
 
 if global.mp_gamemode == 0
 {

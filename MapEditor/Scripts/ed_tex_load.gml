@@ -1,26 +1,22 @@
 if global.tex_n == MAX_TXRS_NUM {exit;}
 
-var tx_f, transp, tx_nm, t_err, i;
+var tx_f, tx_n, transp, tx_nm, t_err;
 tx_f = argument0;
-
-for (i = 1; i < MAX_TXRS_NUM; i += 1)
-{
-  if global.tex[i] == noval {break;}
-}
+tx_n = global.tex_n;
 
 if file_exists(tx_f)
 {
   transp = string_lower(filename_ext(tx_f)) == '.gif';
-  global.tex[i] = sprite_add(tx_f, noval, transp, false, 0, 0);
-  sprite_collision_mask(global.tex[i], false, 1, 0, 0, 0, 0, 1, 0);
+  global.tex[tx_n] = sprite_add(tx_f, noval, transp, false, 0, 0);
+  sprite_collision_mask(global.tex[tx_n], false, 1, 0, 0, 0, 0, 1, 0);
   t_err = false;
 } else {
-  global.tex[i] = tex_error;
+  global.tex[tx_n] = tex_error;
   t_err = true;
 }
 
 tx_nm = path_relative(tx_f);
-global.tex_nm[i] = tx_nm;
+global.tex_nm[tx_n] = tx_nm;
 tx_nm = dp_textures(tx_nm);
 if t_err {tx_nm = '*' + tx_nm;}
 

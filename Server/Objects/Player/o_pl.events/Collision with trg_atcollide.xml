@@ -11,9 +11,9 @@
       <functionName/>
       <relative>false</relative>
       <not>false</not>
-      <appliesTo>.self</appliesTo>
+      <appliesTo>.other</appliesTo>
       <arguments>
-        <argument kind="STRING">with other {event_user(0);}
+        <argument kind="STRING">event_user(0);
 </argument>
       </arguments>
     </action>

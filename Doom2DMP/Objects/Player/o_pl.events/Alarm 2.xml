@@ -13,18 +13,32 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if st_ber &amp;&amp; global.r_gfx &amp;&amp; (!st_vis || (cl_team == global.cl_inst.cl_team &amp;&amp; global.mp_gamemode) || id == global.cl_inst)
+        <argument kind="STRING">if !instance_exists(global.cl_inst) {alarm[2] = 30; exit;}
+if st_ber &amp;&amp; global.r_gfx &amp;&amp; (!st_vis || (cl_team == global.cl_inst.cl_team &amp;&amp; global.mp_gamemode != 0) || id == global.cl_inst)
 {
-    a = instance_create(x, y, o_smoke);
-    a.image_blend = c_maroon;
-    a.image_angle = irandom(360);
-    a.vspeed = random_range(-1, -0.1);
+  var a;
+  a = instance_create(x, y, o_smoke);
+  a.image_blend = c_maroon;
+  a.image_angle = random(360);
+  a.vspeed = random_range(-1, -0.1);
 }
 
-if st_inv {image_alpha = 0.3;}
+if st_vis
+{
+  if id == global.cl_inst || dname || (cl_team == global.cl_inst.cl_team &amp;&amp; global.mp_gamemode != 0)
+  {
+    image_alpha = 0.43;
+  } else {
+    image_alpha = 0;
+  }
+} else {
+  image_alpha = 1;
+}
 
-if st_vis {if dname || (cl_team == global.cl_inst.cl_team &amp;&amp; global.mp_gamemode) || id == global.cl_inst {image_alpha = 0.13;} else {image_alpha = 0;};}
-if !st_vis &amp;&amp; !st_inv {image_alpha = 1;}
+if id != global.cl_inst
+{
+  if st_inv { image_blend = c_aqua; } else { image_blend = c_white; }
+}
 
 alarm[2] = 30;
 </argument>

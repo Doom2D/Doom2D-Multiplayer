@@ -5,9 +5,13 @@ while 1
 {
   //receive shit
   if global.dem_mode == 3 {exit;}
-  if global.dem_mode < 2 {msg_size = dll39_message_receive(global.cl_tcp, 0, dll39_default_buffer);}
-  else {msg_size = 0;}
-  if msg_size < 0 {exit;} //got nothing
+  if global.dem_mode < 2
+  {
+    msg_size = dll39_message_receive(global.cl_tcp, 0, dll39_default_buffer);
+    if msg_size < 0 {exit;} //got nothing
+  } else {
+    msg_size = 0;
+  }
 
   _delay = 0;
 
@@ -25,16 +29,13 @@ while 1
     if msg_blocks > 0 {dll39_read_ushort(dll39_default_buffer);} else {msg_blocks += 1;}
   */
     msg_id = dll39_read_byte(dll39_default_buffer); //got message id
+    if msg_id != dll39_read_byte(dll39_default_buffer) {exit;} //simple protocol validity check
 
     if global.dem_mode == 1 && msg_id > 0 && msg_id != 21 && msg_id != 22 && msg_id != 23
     {
-      dll39_set_pos(0, dll39_default_buffer);
-      dll39_buffer_clear(global.dem_b);
       dll39_write_ushort(_dem_delay, global.dem_b);
       dll39_write_ushort(msg_size, global.dem_b);
-      dll39_file_write(global.dem_f, global.dem_b);
-      dll39_file_write(global.dem_f, dll39_default_buffer);
-      dll39_set_pos(1, dll39_default_buffer);
+      dll39_buffer_copy(global.dem_b, dll39_default_buffer);
       _dem_delay = 0;
     }
 
@@ -44,25 +45,25 @@ while 1
         if global.map_w {break;}
 
         //receive mah id and server info
+        var sv_dlallow;
         global.pl_id = dll39_read_byte(dll39_default_buffer);
-        con_add(':: NET: Получен ID: ' + string(global.pl_id) + '.');
         global.sv_name = dll39_read_string(dll39_default_buffer);
         global.sv_map = dll39_read_string(dll39_default_buffer);
         global.sv_map_md5 = dll39_read_string(dll39_default_buffer);
         global.sv_maxplayers = dll39_read_byte(dll39_default_buffer);
-        global.mp_fraglimit = dll39_read_byte(dll39_default_buffer);
+        global.mp_scorelimit = dll39_read_byte(dll39_default_buffer);
         global.mp_gamemode = dll39_read_byte(dll39_default_buffer);
-        global.sv_dlallow = dll39_read_byte(dll39_default_buffer);
+        sv_dlallow = dll39_read_byte(dll39_default_buffer);
         global.cl_fps_max = dll39_read_byte(dll39_default_buffer);
-        global.mp_waterfrag = dll39_read_byte(dll39_default_buffer);
-        _welcome = '';
         _welcome = dll39_read_string(dll39_default_buffer);
         con_add(':: NET: Получена информация о сервере.');
 
-        if !global.sv_dlallow || global.dem_mode == 2 {event_user(0);} else {global.map_done = 0;}
+        if !sv_dlallow { con_add(':: NET: FGET: Передача карт отключена на сервере.'); }
+        if !sv_dlallow || global.dem_mode == 2 {event_user(0);}
 
         room_speed = global.cl_fps_max;
         alarm[0] = 5;
+        alarm[11] = 45 * global.cl_fps_max;
       break;
 
       case 2:
@@ -83,18 +84,19 @@ while 1
 
       case 3:
         //some create new player
-        var _name, _skin, _color, _id, _team;
-        _id = dll39_read_byte(dll39_default_buffer);
-        _team = dll39_read_byte(dll39_default_buffer);
-        _name = dll39_read_string(dll39_default_buffer);
-        _skin = dll39_read_string(dll39_default_buffer);
-        _color = dll39_read_int(dll39_default_buffer);
-        cl_new_plr(_id, _name, _skin, _color, _team);
+        //args: id, name, team, skin, color
+        if global.fget_state {break;}
+        cl_new_plr( dll39_read_byte(dll39_default_buffer),
+                    dll39_read_string(dll39_default_buffer),
+                    dll39_read_byte(dll39_default_buffer),
+                    dll39_read_string(dll39_default_buffer),
+                    dll39_read_int(dll39_default_buffer) );
         if instance_exists(o_hud) { with o_hud { if !alarm[0] {net_list_clients();} } }
       break;
 
       case 4:
         //player left
+        if global.fget_state {break;}
         var _id;
         _id = dll39_read_byte(dll39_default_buffer);
         if _id < 1 {break;}
@@ -114,6 +116,7 @@ while 1
 
       case 6:
         //received pong
+        if global.fget_state {break;}
         global.cl_ping = round( _timer / (global.cl_fps_max / 1000) );
         _timer = 0;
         if global.dem_mode == 2 {global.cl_ping = 0;}
@@ -121,6 +124,7 @@ while 1
 
       case 7:
         //received position update
+        if global.fget_state {break;}
         var _id, byte_st;
         _id = dll39_read_byte(dll39_default_buffer);
         if !instance_exists(global.cl_plr[_id]) {break;}
@@ -164,6 +168,7 @@ while 1
 
       case 8:
         //kill message
+        if global.fget_state {break;}
         var killer_id, victim_id, killer_name, victim_name, kill_type, kill_msg;
         killer_id = dll39_read_byte(dll39_default_buffer);
         victim_id = dll39_read_byte(dll39_default_buffer);
@@ -201,6 +206,7 @@ while 1
 
       case 9:
         //stats update
+        if global.fget_state {break;}
         var _id, byte_st, _oh;
         _oh = 0;
         _id = dll39_read_byte(dll39_default_buffer);
@@ -232,6 +238,7 @@ while 1
 
       case 10:
         //item create
+        if global.fget_state {break;}
         var _id, it, xx, yy, anm, o;
         _id = dll39_read_short(dll39_default_buffer);
         _it = dll39_read_byte(dll39_default_buffer);
@@ -248,6 +255,7 @@ while 1
 
       case 11:
         //item destroy
+        if global.fget_state {break;}
         var d_id;
         d_id = dll39_read_short(dll39_default_buffer);
         if !instance_exists(global.cl_itm[d_id]) {break;}
@@ -258,6 +266,7 @@ while 1
       case 12:
         //particles
         //args: type, x, y
+        if global.fget_state {break;}
         r_part_emit( dll39_read_byte(dll39_default_buffer),
                      dll39_read_short(dll39_default_buffer),
                      dll39_read_short(dll39_default_buffer) );
@@ -266,6 +275,7 @@ while 1
       case 13:
         //sound
         //args: sound id, play x, play y
+        if global.fget_state {break;}
         snd_play_pos( dll39_read_byte(dll39_default_buffer),
                       dll39_read_short(dll39_default_buffer),
                       dll39_read_short(dll39_default_buffer) );
@@ -273,6 +283,7 @@ while 1
 
       case 14:
         //sprite change
+        if global.fget_state {break;}
         var spr_id, spr_attack, spr_pain;
         spr_id = dll39_read_byte(dll39_default_buffer);
         if !instance_exists(global.cl_plr[spr_id]) {break;}
@@ -292,6 +303,7 @@ while 1
       case 15:
         //an hero appears
         //args: player id, death x, death y
+        if global.fget_state {break;}
         r_corpse( dll39_read_byte(dll39_default_buffer),
                   dll39_read_short(dll39_default_buffer),
                   dll39_read_short(dll39_default_buffer) );
@@ -299,15 +311,17 @@ while 1
 
       case 16:
         //projectile
+        if global.fget_state {break;}
         r_projectile( dll39_read_short(dll39_default_buffer),
                       dll39_read_byte(dll39_default_buffer),
-                      dll39_read_short(dll39_default_buffer),
-                      dll39_read_short(dll39_default_buffer),
-                      dll39_read_short(dll39_default_buffer) );
+                      dll39_read_double(dll39_default_buffer),
+                      dll39_read_double(dll39_default_buffer),
+                      dll39_read_double(dll39_default_buffer) );
       break;
 
       case 17:
         //speed
+        if global.fget_state {break;}
         var s_id, s_inst;
         s_id = dll39_read_byte(dll39_default_buffer);
         if !instance_exists(global.cl_plr[s_id]) {break;}
@@ -318,6 +332,7 @@ while 1
 
       case 18:
         //explosion
+        if global.fget_state {break;}
         r_explosion( dll39_read_byte(dll39_default_buffer),
                      dll39_read_byte(dll39_default_buffer),
                      dll39_read_short(dll39_default_buffer),
@@ -335,6 +350,7 @@ while 1
 
       case 20:
         //char params change
+        if global.fget_state {break;}
         _id = dll39_read_byte(dll39_default_buffer);
         _inst = id_to_cl(_id);
         if !instance_exists(_inst) {break;}
@@ -350,6 +366,7 @@ while 1
         if _inst.cl_skin != _new_skin
         {
           _inst.cl_skin = _new_skin;
+          //skin_release(_inst);
           with _inst {skin_load(cl_skin);}
         }
         if instance_exists(o_hud) { with o_hud { if !alarm[0] {net_list_clients();} } }
@@ -357,32 +374,33 @@ while 1
 
       case 21:
         //fsend state
-        var _state, _file, _size, _md5, _cmd5;
+        var _state;
         _state = dll39_read_byte(dll39_default_buffer);
-        _size = dll39_read_uint(dll39_default_buffer);
-        _file = dll39_read_string(dll39_default_buffer);
-        _md5 = dll39_read_string(dll39_default_buffer);
-        _cmd5 = dll39_read_string(dll39_default_buffer);
-        if _state && !global.fget_state {net_fget_main(_file, _size, _md5, _cmd5);}
-        if !_state && global.fget_state
+        if _state == false && global.fget_state {net_fget_finish(); break;}
+
+        if _state == true && !global.fget_state
         {
-          net_fget_finish(_size, _md5);
-          if global.sv_dlallow && !global.map_done { with o_client {event_user(0);} }
+          var _file, _size, _md5, _cmd5;
+          _file = dll39_read_string(dll39_default_buffer);
+          _size = dll39_read_uint(dll39_default_buffer);
+          _md5 = dll39_read_string(dll39_default_buffer);
+          _cmd5 = dll39_read_string(dll39_default_buffer);
+          net_fget_start(_file, _size, _md5, _cmd5);
         }
       break;
 
       case 22:
-        //fsend inbyte
-        net_fget_inb();
+        //fsend data chunk
+        net_fget_main();
       break;
 
       case 23:
         //hud text
-        if global.dem_mode >= 2 {break;}
+        if global.fget_state || global.dem_mode >= 2 {break;}
         var n, ns, nt, nf, nc, nx, ny, ns;
         n = 1;
         ns = dll39_read_string(dll39_default_buffer); //text
-        nt = dll39_read_double(dll39_default_buffer) * global.cl_fps_max; //timer
+        nt = get_seconds( dll39_read_double(dll39_default_buffer) ); //timer
         nf = dll39_read_byte(dll39_default_buffer); //font
         nc = dll39_read_int(dll39_default_buffer);
         nx = dll39_read_double(dll39_default_buffer); //offset x
@@ -408,6 +426,7 @@ while 1
 
       case 24:
         //team change
+        if global.fget_state {break;}
         _id = dll39_read_byte(dll39_default_buffer);
         _inst = id_to_cl(_id);
         if !instance_exists(_inst) {break;}
@@ -420,6 +439,7 @@ while 1
 
       case 25:
         //team score
+        if global.fget_state {break;}
         global.team_score[1] = dll39_read_byte(dll39_default_buffer);
         global.team_score[2] = dll39_read_byte(dll39_default_buffer);
         if instance_exists(o_hud) { with o_hud { if !alarm[0] {net_list_clients();} } }
@@ -427,23 +447,23 @@ while 1
 
       case 26:
         //tile change
-        var tile, state, tinst;
-        tile = dll39_read_ushort(dll39_default_buffer);
+        if global.fget_state {break;}
+        var tile, state;
+        tile = ds_list_find_value( global.cl_tiles, dll39_read_ushort(dll39_default_buffer) );
+        if !instance_exists(tile) {break;}
         state = dll39_read_byte(dll39_default_buffer);
 
-        tinst = ds_list_find_value(global.cl_tiles, tile);
-        if !instance_exists(tinst) {break;}
-
-        if state
+        if state == true
         {
-          with tinst
+          with tile
           {
             visible = true;
+            image_index = 0;
             x = xstart;
             y = ystart;
           }
-        } else {
-          with tinst
+        } else if state == false {
+          with tile
           {
             visible = false;
             x = -2048;
@@ -454,14 +474,15 @@ while 1
 
       case 27:
         //server shit change
+        if global.fget_state {break;}
         global.sv_name = dll39_read_string(dll39_default_buffer);
         global.sv_maxplayers = dll39_read_byte(dll39_default_buffer);
-        global.mp_fraglimit = dll39_read_byte(dll39_default_buffer);
-        global.mp_waterfrag = dll39_read_byte(dll39_default_buffer);
+        global.mp_scorelimit = dll39_read_byte(dll39_default_buffer);
       break;
 
       case 28:
         //projectile destroy
+        if global.fget_state {break;}
         var proj, prin;
         proj = dll39_read_short(dll39_default_buffer);
         prin = ds_list_find_value(global.cl_proj, proj);

@@ -13,23 +13,34 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if !variable_global_exists('cl_inst'){exit;}
-if !instance_exists(global.cl_inst){exit;}
-if global.cl_inst.x &lt; -256 {exit;}
+        <argument kind="STRING">if !instance_exists(cam_inst){exit;}
+if cam_inst.x &lt; -256 {exit;}
 
 //because of width and height shit need to manage views manually
-view_xview = global.cl_inst.x - 512 + bkoffset / 2;
-view_yview = global.cl_inst.y - 389 + offset;
+view_xview = cam_inst.x - 512 + bkoffset / 2;
+view_yview = cam_inst.y - 389 + offset;
 if view_xview &gt; global.map_w - 1024 + bkoffset {view_xview = global.map_w - 1024 + bkoffset;}
 if view_yview &gt; global.map_h - 768 {view_yview = global.map_h - 768;}
 if view_xview &lt; 0 {view_xview = 0;}
 if view_yview &lt; 0 {view_yview = 0;}
 
-if instance_exists(o_menu) {exit;}
 if global.dem_mode &gt;= 2 {exit;}
-if keyboard_check(global.key_up) &amp;&amp; offset &gt; -192 &amp;&amp; !global.con {offset -= 4;}
-if keyboard_check(global.key_dn) &amp;&amp; offset &lt; 192 &amp;&amp; !global.con {offset += 4;}
-if !keyboard_check(global.key_up) &amp;&amp; !keyboard_check(global.key_dn) &amp;&amp; offset != 0 {offset -= 4 * sign(offset);}
+
+var k_up, k_dn;
+k_up = false; k_dn = false;
+
+if cam_inst.object_index == o_pl
+{
+  if !global.con &amp;&amp; !o_con.saymode &amp;&amp; !instance_exists(o_menu)
+  {
+    k_up = keyboard_check(global.key_up);
+    k_dn = keyboard_check(global.key_dn);
+    if k_up { if offset &gt; -192 {offset -= 4;} }
+    if k_dn { if offset &lt;  192 {offset += 4;} }
+  }  
+}
+
+if offset != 0 { if !k_up &amp;&amp; !k_dn {offset -= 4 * sign(offset);} }
 </argument>
       </arguments>
     </action>

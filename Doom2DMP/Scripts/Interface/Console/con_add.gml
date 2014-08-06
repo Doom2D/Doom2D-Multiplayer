@@ -1,15 +1,13 @@
 //adds string to console
 with o_con
 {
-  s = string(argument0);
-  if string_length(s) > 145 && string_count('#', s) == 0
-  {
-    s = string_insert('#', s, 146);
-  }
-  con_str += s + '#';
-  if !argument1 {msg_add(s);}
-  log_add(global.sys_log, s);
-  var t_cnt;
+  var str, t_cnt;
+  str = string(argument0);
+  if string_length(str) > 145 && string_count('#', str) == 0 { str = string_insert('#', str, 146); }
+  con_str += str + '#';
+  if !argument1 && room != rm_init {msg_add(str);}
+  log_add(global.sys_log, str);
+
   t_cnt = string_count('#', con_str);
   if t_cnt > 20
   {

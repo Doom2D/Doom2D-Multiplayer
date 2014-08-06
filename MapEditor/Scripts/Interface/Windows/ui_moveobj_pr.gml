@@ -3,12 +3,12 @@ if ui_win6 == noval {exit;}
 
 var cmd7;
 cmd7 = API_Check_Command(7);
-if cmd7 == 0 {exit;}
+if cmd7 == WM_NULL {exit;}
 
 switch cmd7
 {
   case ui_win6_b1:
-    if !mb_chkobj(ui_win6) {exit;}
+    if !mb_chkobj() {exit;}
   
     var move_x, move_y;
     move_x = real(API_Control_GetText(ui_win6_e1));
@@ -16,13 +16,12 @@ switch cmd7
 
     if move_x == 0 && move_y == 0
     {
-      API_Dialog_MessageBox(ui_win6,
-          'Вы должны указать хотя бы одно значение.',
-          'Ошибка', MB_OK|MB_ICONWARNING);
+      message_box('Вы должны указать хотя бы одно значение.',
+                  'Ошибка', MB_OK|MB_ICONWARNING);
       exit;
     }
     
-    if !mb_confirm(ui_win6) {exit;}
+    if !dlg_confirm() {exit;}
     API_Window_SetText(ui_win6, 'Обработка...');
     
     var x_type, y_type;

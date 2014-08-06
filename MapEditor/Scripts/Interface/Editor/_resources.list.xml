@@ -8,4 +8,5 @@
   <resource name="ui_menu_cr" type="RESOURCE"/>
   <resource name="ui_menu_pr" type="RESOURCE"/>
   <resource name="tb_tex_reset" type="RESOURCE"/>
+  <resource name="tb_tex_setfirst" type="RESOURCE"/>
 </resources>

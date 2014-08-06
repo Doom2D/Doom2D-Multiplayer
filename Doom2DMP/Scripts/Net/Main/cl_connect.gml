@@ -14,7 +14,6 @@ global.map_desc = '';
 global.team_score[1] = 0;
 global.team_score[2] = 0;
 global.debug_counter = 0;
-if global.dem_b == -1 {global.dem_b = dll39_buffer_create();}
 
 for(i = 0; i < 255; i += 1)
 {
@@ -31,12 +30,9 @@ for(i = 0; i < 2048; i += 1)
   ds_list_add(global.cl_proj, noone);
 }
 
-ds_list_destroy(global.cl_tiles);
-global.cl_tiles = ds_list_create();
-
 con_parse('cls');
 
-if global.dem_will == 'PLAY' {demo_play();}
+if global.dem_fn != '' {demo_play();}
 
 if global.dem_mode >= 2 {exit;}
 

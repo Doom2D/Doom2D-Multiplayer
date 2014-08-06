@@ -4,5 +4,6 @@
   <resource name="Player" type="GROUP"/>
   <resource name="Misc" type="GROUP"/>
   <resource name="Item" type="GROUP"/>
+  <resource name="Voting" type="GROUP"/>
   <resource name="Serverlist" type="GROUP"/>
 </resources>

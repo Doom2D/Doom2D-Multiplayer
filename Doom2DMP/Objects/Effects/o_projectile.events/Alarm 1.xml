@@ -13,7 +13,13 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if image_single &gt; 0 {if direction == 0 || direction == 45 || direction == 315 || direction == 325 || direction = 55 {image_angle -= 45;} else {image_angle += 45;} alarm[1] = 10;}
+        <argument kind="STRING">if image_single &gt; 0
+{
+  //     if hspeed &gt; 0 {ang -= 45;}
+  //else if hspeed &lt; 0 {ang += 45;}
+  ang -= 45 * sign(hspeed);
+  alarm[1] = 10;
+}
 </argument>
       </arguments>
     </action>

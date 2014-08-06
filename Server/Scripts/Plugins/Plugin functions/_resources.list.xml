@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <resource name="psleep" type="RESOURCE"/>
+  <resource name="loadfile" type="RESOURCE"/>
+  <resource name="dofile" type="RESOURCE"/>
+  <resource name="dostring" type="RESOURCE"/>
+  <resource name="assert" type="RESOURCE"/>
+  <resource name="void" type="RESOURCE"/>
+  <resource name="ini_load" type="RESOURCE"/>
+  <resource name="ini_free" type="RESOURCE"/>
+  <resource name="whoami" type="RESOURCE"/>
+  <resource name="getmyname" type="RESOURCE"/>
+  <resource name="getmycode" type="RESOURCE"/>
+  <resource name="getmyspeed" type="RESOURCE"/>
+</resources>

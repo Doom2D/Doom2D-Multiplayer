@@ -1,6 +1,4 @@
-//window_set_size(view_wview, view_hview);
-//window_center();
-window_default();
+ed_set_window(std_win_w, std_win_h, false);
 
 //creates toolbox window
 ui_win1 = API_Window_Create(window_handle(),

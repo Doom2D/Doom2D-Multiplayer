@@ -1,7 +1,7 @@
 //processes menu
 var cmd1;
 cmd1 = API_Check_Command(1);
-if cmd1 == 0 {exit;}
+if cmd1 == WM_NULL {exit;}
 
 switch cmd1
 {
@@ -54,9 +54,12 @@ switch cmd1
       map_minimap(2);
     break;
     case ui_mbar_m2_alts:
-      API_Menu_SetItemChecked(ui_mbar_m2_alts, abs(API_Menu_GetItemChecked(ui_mbar_m2_alts) - MFS_CHECKED));
+      API_Menu_SetItemChecked(ui_mbar_m2_alts, -API_Menu_GetItemChecked(ui_mbar_m2_alts) + MFS_CHECKED);
     break;
   //end of embedded menu//
+  case ui_mbar_m2_mapnav:
+    ui_mapnav_cr();
+  break;
   case ui_mbar_m2_moveobj:
     ui_moveobj_cr();
   break;
@@ -84,13 +87,13 @@ switch cmd1
   
   //fourth menu
   case ui_mbar_m4_manual:
-    dlg_manual();
+    mb_manual();
   break;
   case ui_mbar_m4_about:
-    API_Dialog_MessageBox(window_handle(),
-        'Редактор карт для Doom 2D Multiplayer 0.6' + EOL +
-        '© PrimuS, Черный Думер' + EOL +
-        'www.doom2d.org, 2011-2014',
-        'О программе', MB_OK|MB_ICONINFORMATION);
+    message_box('Редактор карт для Doom 2D Multiplayer 0.6' + EOL +
+                '© PrimuS, Черный Думер' + EOL +
+                'www.doom2d.org, 2011-2014',
+                'О программе', MB_OK|MB_ICONINFORMATION);
   break;
 }
+

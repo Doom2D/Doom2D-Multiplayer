@@ -12,5 +12,6 @@
   <resource name="ed_tex_delete" type="RESOURCE"/>
   <resource name="ed_spr_select" type="RESOURCE"/>
   <resource name="ed_bkg_change" type="RESOURCE"/>
+  <resource name="ed_set_window" type="RESOURCE"/>
   <resource name="Max WinAPI 2" type="GROUP"/>
 </resources>

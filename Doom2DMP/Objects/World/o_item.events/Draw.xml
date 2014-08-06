@@ -13,8 +13,7 @@
       <not>false</not>
       <appliesTo>.self</appliesTo>
       <arguments>
-        <argument kind="STRING">if global.fget_state {exit;}
-if x + item_w &lt;= view_xview || x &gt;= view_xview + view_wview - o_camera.bkoffset {exit;}
+        <argument kind="STRING">if x + item_w &lt;= view_xview || x &gt;= view_xview + view_wview - o_camera.bkoffset {exit;}
 if y + item_h &lt;= view_yview || y &gt;= view_yview + view_hview {exit;}
 draw_sprite(sprite_index, image_index, x, y);
 </argument>

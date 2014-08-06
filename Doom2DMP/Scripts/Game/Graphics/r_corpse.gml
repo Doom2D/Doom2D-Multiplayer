@@ -8,5 +8,7 @@ corpse.sprite_index = victim.sprites[9, 0];
 corpse.msk = victim.sprites[9, 1];
 corpse.image_xscale = -victim.image_xscale;
 corpse.color = victim.cl_color;
-//corpse.hspeed = victim.hsp;
-//corpse.vspeed = victim.vsp;
+corpse.vspeed = victim.vsp / 2;
+corpse.hspeed = victim.hsp / 2;
+
+if victim == global.cl_inst { with o_camera { cam_inst = corpse; } }

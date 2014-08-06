@@ -14,15 +14,8 @@
       <appliesTo>.self</appliesTo>
       <arguments>
         <argument kind="STRING">if !lul {exit;}
-if !variable_local_exists('ingame')
-{
-    global.menu_id = 0;
-}
-else
-{
-    global.menu_id = 7;
+if !variable_local_exists('ingame') { global.menu_id = 0; } else { global.menu_id = 7; }
 
-}
 snd_play(26);
 instance_create(0, 0, o_menu);
 instance_destroy();

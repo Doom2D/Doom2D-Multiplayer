@@ -1,22 +1,10 @@
 //makes player shoot some shit according to current weapon
+
 if cd > 0 {exit;}
 if dead {exit;}
-if aim == 1 && !kb_lkup && !kb_lkdn {b_dir = 0;}
-if aim == -1 && !kb_lkup && !kb_lkdn {b_dir = 180;}
-if !global.mp_oldaim
-{
-    if aim == 1 && kb_lkdn {b_dir = 315;}
-    if aim == -1 && kb_lkdn {b_dir = 225;}
-    if aim == 1 && kb_lkup {b_dir = 45;}
-    if aim == -1 && kb_lkup {b_dir = 135;}
-}
-else
-{
-    if aim == 1 && kb_lkdn {b_dir = 325;}
-    if aim == -1 && kb_lkdn {b_dir = 215;}
-    if aim == 1 && kb_lkup {b_dir = 55;}
-    if aim == -1 && kb_lkup {b_dir = 125;}
-}
+if respinv {exit;}
+
+b_dir = plr_aim();
 
 switch w
 {
@@ -29,10 +17,9 @@ switch w
         b.image_angle = b_dir;
         b.dmg = 10 + 20 * st_ber;
         b.kb = st_ber;
-        b.alarm[0] = 1;
         plr_send_stat();
         plr_send_sound(17, x, y);
-        cd = 20;
+        cd = 20 - 5 * st_ber;
     break;
     case 1:
         //pistol
@@ -78,8 +65,8 @@ switch w
             b.a_id = cl_id;
             b.a_i_id = id;
             b.a_team = cl_team;
-            b.dmg = 10 + irandom(2);
-            b.direction = b_dir + irandom_range(-13, 13);
+            b.dmg = 10 + irandom(3);
+            b.direction = b_dir + irandom_range(-12, 12);
             b.k_t = 3;
         }
         a2 -= 2;
@@ -153,9 +140,9 @@ switch w
     case 7:
         //bfg
         if a4 < 40 {exit;}
-        alarm[5] = 50;    
-        plr_send_sound(16, x, y);
-        cd = 120;
+        alarm[5] = 60;    
+        plr_send_sound(33, x, y);
+        cd = 130;
     break;
     case 8:
         //superchaingun
@@ -166,7 +153,7 @@ switch w
             b.a_id = cl_id;
             b.a_i_id = id;
             b.a_team = cl_team;
-            b.dmg = 15;
+            b.dmg = 10;
             b.direction = b_dir + irandom_range(-4, 4);
             b.k_t = 8;
         }
@@ -184,8 +171,7 @@ switch w
         b.p_team = cl_team;
         b.image_angle = b_dir;
         b.dmg = 16;
-        b.kb = 0;
-        b.alarm[0] = 1;
+        b.kb = -1;
         plr_send_stat();
         if ct < 1 {plr_send_sound(18, x, y); ct = 100;}
         cd = 5;

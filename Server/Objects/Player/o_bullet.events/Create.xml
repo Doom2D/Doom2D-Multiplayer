@@ -15,7 +15,7 @@
       <arguments>
         <argument kind="STRING">image_speed = 0;
 spd = 16;
-alarm[0] = 60;
+alarm[0] = 90;
 </argument>
       </arguments>
     </action>

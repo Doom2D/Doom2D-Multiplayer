@@ -3,12 +3,12 @@ if ui_win7 == noval {exit;}
 
 var cmd8;
 cmd8 = API_Check_Command(8);
-if cmd8 == 0 {exit;}
+if cmd8 == WM_NULL {exit;}
 
 switch cmd8
 {
   case ui_win7_b1:
-    if !mb_chkobj(ui_win7) {exit;}
+    if !mb_chkobj() {exit;}
     
     var op_tl, op_it, op_ar, op_tg;
     op_tl = API_Button_GetCheck(ui_win7_cb1);
@@ -17,9 +17,8 @@ switch cmd8
     op_tg = API_Button_GetCheck(ui_win7_cb4);
     if !(op_tl || op_it || op_ar || op_tg)
     {
-      API_Dialog_MessageBox(ui_win7,
-          'Вы должны выбрать тайлы для оптимизации.',
-          'Ошибка', MB_OK|MB_ICONWARNING);
+      message_box('Вы должны выбрать тайлы для оптимизации.',
+                  'Ошибка', MB_OK|MB_ICONWARNING);
       exit;
     }
     
@@ -28,13 +27,12 @@ switch cmd8
     o_out = API_Button_GetCheck(ui_win7_cb6);
     if !(o_dup || o_out)
     {
-      API_Dialog_MessageBox(ui_win7,
-          'Вы должны указать способ оптимизации.',
-          'Ошибка', MB_OK|MB_ICONWARNING);
+      message_box('Вы должны указать способ оптимизации.',
+                  'Ошибка', MB_OK|MB_ICONWARNING);
       exit;
     }
     
-    if !mb_confirm(ui_win7) {exit;}
+    if !dlg_confirm() {exit;}
     API_Window_SetText(ui_win7, 'Обработка...');
     
     var dup_r, out_r;
@@ -86,13 +84,12 @@ switch cmd8
     var obj_num, obj_done;
     obj_num = instance_number(par_obj);
     obj_done = dup_r + out_r;
-    API_Dialog_MessageBox(window_handle(),
-        'Тайлов до оптимизации: '             + string(obj_num + obj_done) + EOL +
-        'Тайлов после оптимизации: '          + string(obj_num)            + EOL +
-        'Удалено тайлов-дубликатов: '         + string(dup_r)              + EOL +
-        'Удалено тайлов за пределами карты: ' + string(out_r)              + EOL +
-        'Удалено всего: '                     + string(obj_done),
-        'Оптимизация тайлов', MB_OK|MB_ICONINFORMATION);
+    message_box('Тайлов до оптимизации: '             + string(obj_num + obj_done) + EOL +
+                'Тайлов после оптимизации: '          + string(obj_num)            + EOL +
+                'Удалено тайлов-дубликатов: '         + string(dup_r)              + EOL +
+                'Удалено тайлов за пределами карты: ' + string(out_r)              + EOL +
+                'Удалено всего: '                     + string(obj_done),
+                'Оптимизация тайлов', MB_OK|MB_ICONINFORMATION);
   break;
   
   case ui_win7_b2:

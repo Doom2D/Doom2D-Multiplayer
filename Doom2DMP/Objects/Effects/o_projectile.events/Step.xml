@@ -18,7 +18,7 @@ if place_meeting(x, y, o_liq) {speed = 2.35;} else {speed = p_spd;}
 if x &lt; -300 || y &lt; -300 || x &gt; global.map_w + 300 || y &gt; global.map_h + 300 {instance_destroy();}
 if place_meeting(x, y, o_lift_up) {vspeed -= 0.5;}
 if place_meeting(x, y, o_lift_down) {vspeed += 0.5;}
-if image_single == 0 {image_angle = direction;}
+if image_single == 0 {ang = direction;}
 
 /*
 if direction == 0 || direction == 180 || direction == 90 || direction == 270 {exit;}

@@ -31,10 +31,9 @@ if tx_n > MAX_TXRS_NUM
 {
   file_text_close(fnum);
   map_clear(false);
-  API_Dialog_MessageBox(window_handle(),
-      'Количество текстур на карте превышает лимит.' + EOL +
-      'Загрузка карты прекращена.',
-      'Ошибка', MB_OK|MB_ICONERROR);
+  message_box('Количество текстур на карте превышает лимит.' + EOL +
+              'Загрузка карты прекращена.',
+              'Ошибка', MB_OK|MB_ICONERROR);
   exit;
 }
 
@@ -80,9 +79,8 @@ ed_bkg_change();
 
 if err_l
 {
-  API_Dialog_MessageBox(window_handle(),
-      'Некоторые текстуры не были загружены.',
-      'Ошибка', MB_OK|MB_ICONWARNING);
+  message_box('Некоторые текстуры не были загружены.',
+              'Ошибка', MB_OK|MB_ICONWARNING);
 }
 
 ui_upd_title();

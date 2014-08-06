@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-  <resource name="log_add" type="RESOURCE"/>
   <resource name="log_init" type="RESOURCE"/>
+  <resource name="log_add" type="RESOURCE"/>
 </resources>
